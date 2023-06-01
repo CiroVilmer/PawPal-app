@@ -13,9 +13,8 @@ export const userRouter = createTRPCRouter({
             name: z.string(),
             dni: z.number(),
             email: z.string(),
-            userPreferences: z.object({
-                emailUpdates: z.boolean(),
-            }),
+            emailUpdates: z.boolean(),
+
         })
     )
     .mutation(({ input, ctx }) => {
@@ -24,14 +23,11 @@ export const userRouter = createTRPCRouter({
             name: input.name,
             dni: input.dni, 
             email: input.email,
-            userPreferences: {
-                create: {
-                    data:{
-                        emailUpdates: input.userPreferences.emailUpdates,
-                    },
-                },
-            }, 
-
+            userPreference:{
+                create:{
+                    emailUpdates: input.emailUpdates
+                }
+            }
         }    
         });
         return user
