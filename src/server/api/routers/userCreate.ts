@@ -13,16 +13,24 @@ export const userRouter = createTRPCRouter({
             name: z.string(),
             dni: z.number(),
             email: z.string(),
-            
+            userPreferences: z.object({
+                emailUpdates: z.boolean(),
+            }),
         })
     )
     .mutation(({ input, ctx }) => {
         const user = prisma.user.create({
         data:{
             name: input.name,
-            dni: input.dni,
+            dni: input.dni, 
             email: input.email,
-
+            userPreferences: {
+                create: {
+                    data:{
+                        emailUpdates: input.userPreferences.emailUpdates,
+                    },
+                },
+            }, 
 
         }    
         });
