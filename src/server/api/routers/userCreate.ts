@@ -26,11 +26,34 @@ export const userRouter = createTRPCRouter({
             userPreference:{
                 create:{
                     emailUpdates: input.emailUpdates
-                }
-            }
+                },
+            },
         }    
         });
         return user
+    })
+
+
+    loginUser: protectedProcedure
+    .input(z.object({
+        email: z.string(),
+        password: z.string(),
+    }))
+    .mutation(async ({ input, ctx}) =>{
+        const email = input.email;
+
+        let user = await ctx.prisma.user.findUnique({
+            where:{
+                email,
+            }
+        })
+
+        if(!user){
+             
+        }
+
+
+
     })
 
 });
