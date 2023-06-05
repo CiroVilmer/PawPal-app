@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { date, z } from "zod";
 import {
   createTRPCRouter,
   publicProcedure,
@@ -31,7 +31,7 @@ export const userRouter = createTRPCRouter({
         }    
         });
         return user
-    })
+    }),
 
 
     loginUser: protectedProcedure
@@ -44,16 +44,20 @@ export const userRouter = createTRPCRouter({
 
         let user = await ctx.prisma.user.findUnique({
             where:{
-                email,
+                email: email,
             }
         })
 
-        if(!user){
-             
+        let password = input.password;
+        if(user && user.password === password){
+
         }
 
 
+        if(!user){
+            return
+        }
 
-    })
+    }),
 
 });

@@ -136,6 +136,7 @@ model User {
   userPreferenceId String?         @unique
 
   @@index([email])
+  @@unique([email, password])
   @@index([userPreferenceId])
 }
 
