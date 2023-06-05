@@ -8,6 +8,8 @@ import {
 import DiscordProvider from "next-auth/providers/discord";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { request } from "http";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 
@@ -62,6 +64,30 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }), 
+
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     email: { label: "Email", type: "text", placeholder: "jsmith" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials) {
+    //     const user = await prisma.user.findUnique({
+    //       where: {
+    //         email: credentials.email,
+    //       },
+    //     });
+        
+    //     if (user && user.password === credentials.password) {
+    //       return user;
+    //     } else {
+    //       return null;
+    //     }
+    //   },
+    // }),
+
+
+
 
     /**
      * ...add more providers here.

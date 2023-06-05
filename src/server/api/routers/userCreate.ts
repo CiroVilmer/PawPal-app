@@ -5,6 +5,8 @@ import {
   protectedProcedure,
 } from "~/server/api/trpc";
 
+import { CredentialsProvider } from "next-auth/providers";
+
 import { prisma } from "~/server/db";
 //min 36:25
 export const userRouter = createTRPCRouter({
@@ -33,31 +35,75 @@ export const userRouter = createTRPCRouter({
         return user
     }),
 
+    loginUser: publicProcedure.input(
+        z.object({
+            email: z.string(),
+        })
+    )
+    .mutation(({ input, ctx }) => {
+        const user = prisma.user.findUnique({
+            where: {
+                email: input.email,
+            },
+        });
+        return user;
+    }),
 
-    loginUser: protectedProcedure
+    updateUser: protectedProcedure
+    .input(z.object({
+        name: z.string(),
+        dni: z.number(),
+        email: z.string(),
+        emailUpdates: z.boolean(),
+    }))
+    .mutation(({ input, ctx }) => {
+        const user = prisma.user.update({
+            where: {
+                email: input.email,
+            },
+            data:{
+                name: input.name,
+                dni: input.dni, 
+                email: input.email,
+                userPreference:{
+                    update:{
+                        emailUpdates: input.emailUpdates
+                    },
+                },
+            },
+        });
+        return user;
+    }
+    ),
+
+    deleteUser: protectedProcedure
     .input(z.object({
         email: z.string(),
-        password: z.string(),
     }))
-    .mutation(async ({ input, ctx}) =>{
-        const email = input.email;
+    .mutation(({ input, ctx }) => {
+        const user = prisma.user.delete({
+            where: {
+                email: input.email,
+            },
+        });
+        return user;
+    }
+    ),
 
-        let user = await ctx.prisma.user.findUnique({
-            where:{
-                email: email,
-            }
-        })
+    getUser: protectedProcedure
+    .input(z.object({
+        email: z.string(),
+    }))
+    .mutation(({ input, ctx }) => {
+        const user = prisma.user.findUnique({
+            where: {
+                email: input.email,
+            },
+        });
+        return user;
+    }
+    ),
 
-        let password = input.password;
-        if(user && user.password === password){
 
-        }
-
-
-        if(!user){
-            return
-        }
-
-    }),
 
 });
