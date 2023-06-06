@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import { AppType } from "next/app";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
+import CreateAccount from "./createAccount";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -14,5 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     </SessionProvider>
   );
 };
+
+
 
 export default api.withTRPC(MyApp);

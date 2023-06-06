@@ -3,9 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 import { AuthenticationTitle } from "./AuthPage";
 import { api } from "~/utils/api";
+import CreateAccount from "./createAccount";
 
 
-const Home: NextPage = () => {
+const Home = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
@@ -18,7 +19,6 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center bg-white">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           
-         
           <AuthenticationTitle/>
       
 
