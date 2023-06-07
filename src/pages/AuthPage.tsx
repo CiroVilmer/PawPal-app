@@ -5,6 +5,8 @@ import CreateAccount from './createAccount';
 import Link from 'next/link';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
+import login_validate from 'lib/validate';
+
 
 import 
   {
@@ -87,12 +89,10 @@ import
               Correo electronico
               <input
                 type="email"
-                name="email"
                 id="email"
                 className="block w-full border border-gray-300 rounded-md py-2 px-3 font-normal"
                 placeholder="ejemplo@gmail.com"
-                onChange={formik.handleChange}
-                value={formik.values.email}
+                {...formik.getFieldProps('email')}
                 required
               />
             </label>
@@ -106,6 +106,8 @@ import
                     className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal" // Added pr-10 for button spacing
                     placeholder="Password"
                     required
+                    {...formik.getFieldProps('password')}
+
                   />
                   <button
                     className="absolute right-1 ml-auto bg-transparent border-none p-2"

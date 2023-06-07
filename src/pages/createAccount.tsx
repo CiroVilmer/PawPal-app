@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { Formik } from 'formik';
+import { Formik, useFormik } from 'formik';
+
 import 
   {
     TextInput,
@@ -28,6 +29,22 @@ export function CreateAccount(): JSX.Element
 {
     const [passwordShown, setPasswordShown] = useState(false);
 
+    const formik = useFormik({
+      initialValues: {
+        firstName: '',
+        lastName: '',
+        dni: '',
+        email: '',
+        password: '',
+      },
+      onSubmit
+    })
+
+    async function onSubmit(values: any) {
+      console.log(values)
+      
+    }
+
     const togglePassword = () => {
       // When the handler is invoked
       // inverse the boolean state of passwordShown
@@ -45,85 +62,96 @@ export function CreateAccount(): JSX.Element
           </h1>
         </div>
 
+        <form action="" onSubmit={formik.handleSubmit}>
+
         <div className="flex justify-center items-center position-center mb-2">
             
-          <div className = "flex flex-row">
-            <label className="text-md pr-2 font-semibold">
-              Nombre
-              <input
-                className="block border border-gray-300 rounded-md py-1 px-2 w-40 font-normal"
-                type="text"
-                id="first_name"
-                placeholder="Pepe"
-                required
-              />
-            </label>
-          </div>
-
-          <div>
-            <label className="text-md pl-1 font-semibold">
-              Apellido
-              <input
-                className="block border border-gray-300 rounded-md py-1 px-2 font-normal"
-                type="text"
-                id="last_name"
-                placeholder="Urizar"
-                required
-              />
-            </label>
-          </div>
-        </div>
-
-        <div>
-            <label className = "text-md px-1 font-semibold"> 
-                Documento
+            <div className = "flex flex-row">
+              <label className="text-md pr-2 font-semibold">
+                Nombre
                 <input
-                    type="number"
-                    id="dni"
-                    className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-tighter"
-                    placeholder="1111111111"
-                    required
-                />
-                <label className = "font-thin text-xs text-gray-400">*numero de 8 digitos</label>
-                
-            </label>
-        </div>
-            <div>
-                <label className = "text-md px-1 font-semibold"> 
-                Correo electronico
-                <input
-                  type="email"
-                  id="email"
-                  className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal"
-                  placeholder="Ejemplo@gmail.com"
+                  className="block border border-gray-300 rounded-md py-1 px-2 w-40 font-normal"
+                  type="text"
+                  id="first_name"
+                  placeholder="Pepe"
+                  {...formik.getFieldProps('firstName')}
                   required
+
                 />
-                </label>
-            </div>
-            <div>
-              <label className="text-md px-1 font-semibold relative">
-                Contraseña
-                <div className="relative flex">
-                  <input
-                    type={passwordShown ? 'text' : 'password'}
-                    className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal" // Added pr-10 for button spacing
-                    placeholder="Password"
-                    required
-                  />
-                  <button
-                    className="absolute right-1 ml-auto bg-transparent border-none p-2"
-                    onClick={togglePassword}
-                  >
-                    {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
-                  </button>
-                </div>
               </label>
             </div>
 
-          <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600">
-            Crear cuenta 
-          </button>
-          
+            <div>
+              <label className="text-md pl-1 font-semibold">
+                Apellido
+                <input
+                  className="block border border-gray-300 rounded-md py-1 px-2 font-normal"
+                  type="text"
+                  id="last_name"
+                  placeholder="Urizar"
+                  required
+                  {...formik.getFieldProps('lastName')}
+  
+                />
+              </label>
+            </div>
+          </div>
+  
+          <div>
+              <label className = "text-md px-1 font-semibold"> 
+                  Documento
+                  <input
+                      type="number"
+                      id="dni"
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-tighter"
+                      placeholder="1111111111"
+                      required
+                      {...formik.getFieldProps('dni')}
+                  />
+                  <label className = "font-thin text-xs text-gray-400">*numero de 8 digitos</label>
+                  
+              </label>
+          </div>
+              <div>
+                  <label className = "text-md px-1 font-semibold"> 
+                  Correo electronico
+                  <input
+                    type="email"
+                    id="email"
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal"
+                    placeholder="Ejemplo@gmail.com"
+                    required
+                    {...formik.getFieldProps('email')}
+                  />
+                  </label>
+              </div>
+              <div>
+                <label className="text-md px-1 font-semibold relative">
+                  Contraseña
+                  <div className="relative flex">
+                    <input
+                      type={passwordShown ? 'text' : 'password'}
+                      className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal" // Added pr-10 for button spacing
+                      placeholder="Password"
+                      required
+                      {...formik.getFieldProps('password')}
+                    />
+                    <button
+                      className="absolute right-1 ml-auto bg-transparent border-none p-2"
+                      onClick={togglePassword}
+                      type="button"
+                    >
+                      {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
+                    </button>
+                  </div>
+                </label>
+              </div>
+  
+            <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
+              Crear cuenta 
+            </button>  
+
+        </form>
 
           <div className = "flex justify-center mb-1 text-gray-500">
             <label>
