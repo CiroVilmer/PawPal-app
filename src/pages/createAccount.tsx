@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
+import { register_validate } from 'lib/validate';
+import { z } from "zod";
 
 import 
 {
@@ -18,31 +20,44 @@ import
   Button,
   Input
 } from '@mantine/core';
+import { object } from 'zod';
 
 async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000"})
 }
 
 
+
+
 export function CreateAccount(): JSX.Element  
 {
+
+  const createAccount = api.user.createUser.useMutation({
+    onSuccess: (createUser) => {
+      console.log(createUser);
+      setInputValue('');
+    },
+  });
+
     const [passwordShown, setPasswordShown] = useState(false);
 
     const formik = useFormik({
       initialValues: {
-        firstName: '',
-        lastName: '',
+        name: '',
         dni: '',
         email: '',
         password: '',
       },
+      //validate: register_validate,
       onSubmit
     })
 
-    async function onSubmit(values: any) {
+    async function onSubmit(values: { email: string; name: string; password: string; dni: string; }) {
       console.log(values)
-      
+
+      createAccount.mutate(values);
     }
+
 
     const togglePassword = () => {
       // When the handler is invoked
@@ -68,14 +83,17 @@ export function CreateAccount(): JSX.Element
                 Nombre
                 <input
                   className="block border border-gray-300 rounded-md py-2 px-2 w-40 font-normal"
-                  type="text"
+                  type="string"
                   id="first_name"
                   placeholder="Pepe"
-                  {...formik.getFieldProps('firstName')}
                   required
+                  {...formik.getFieldProps('firstName')}
+
 
                 />
               </label>
+              {formik.errors.name && formik.touched.name ? <div className = "text-red-500 text-xs">{formik.errors.name}</div> : null}
+
             </div>
 
             <div>
@@ -83,7 +101,7 @@ export function CreateAccount(): JSX.Element
                 Apellido
                 <input
                   className="block border border-gray-300 rounded-md py-2 px-2 font-normal"
-                  type="text"
+                  type="string"
                   id="last_name"
                   placeholder="Urizar"
                   required
@@ -91,6 +109,7 @@ export function CreateAccount(): JSX.Element
   
                 />
               </label>
+              {/* {formik.errors.lastName && formik.touched.lastName ? <div className = "text-red-500 text-xs">{formik.errors.lastName}</div> : null} */}
             </div>
           </div>
   
@@ -99,26 +118,29 @@ export function CreateAccount(): JSX.Element
               Documento
             </label>
             <input
-              type="number"
+              type="string"
               id="dni"
               className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-normal mb-2"
               placeholder="47026956"
               required
               {...formik.getFieldProps('dni')}
-            />                  
+            />
+            {formik.errors.dni && formik.touched.dni ? <div className = "text-red-500 text-xs">{formik.errors.dni}</div> : null}
+           
             
             <label className = "text-md px-1 font-semibold"> 
               Correo electronico
             </label>
             <input
-              type="email"
+              type="string"
               id="email"
               className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal mb-2"
               placeholder="Ejemplo@gmail.com"
               required
               {...formik.getFieldProps('email')}
             />
-            
+            {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
+
             <label className="text-md px-1 font-semibold relative">
               Contraseña
             </label>
@@ -137,6 +159,8 @@ export function CreateAccount(): JSX.Element
               >
                 {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
               </button>
+              {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
+
             </div>
             
           </div>
@@ -174,3 +198,7 @@ export function CreateAccount(): JSX.Element
 };
 
 export default CreateAccount;
+
+function setInputValue(arg0: string) {
+  throw new Error('Function not implemented.');
+}

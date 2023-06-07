@@ -36,11 +36,13 @@ import
         email: '',
         password:''
       },
+      validate: login_validate,
       onSubmit
       })
     async function onSubmit (values: any){
       console.log(values)
     }
+
 
     const [passwordShown, setPasswordShown] = useState(false);
 
@@ -84,7 +86,7 @@ import
             </h1>
           </div> 
           <form action="" onSubmit={formik.handleSubmit}>
-          <div className = "jutify-center items-center">
+          <div className = "jutify-center items-center" >
             <label className = "text-md px-1 font-semibold"> 
               Correo electronico
               <input
@@ -94,7 +96,10 @@ import
                 placeholder="ejemplo@gmail.com"
                 {...formik.getFieldProps('email')}
                 required
+                
               />
+              {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null
+              }
             </label>
           </div>
           <div>
@@ -107,16 +112,20 @@ import
                     placeholder="Password"
                     required
                     {...formik.getFieldProps('password')}
-
                   />
+
                   <button
                     className="absolute right-1 ml-auto bg-transparent border-none p-2"
                     onClick={togglePassword}
                   >
                     {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
-                  </button>
+                  </button>                 
                 </div>
               </label>
+            </div>
+            <div>
+            {formik.errors.password && formik.touched.password? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null
+              }
             </div>
           <div className="flex justify-between items-center text-xs mb-3">
             <label className="flex items-center">
