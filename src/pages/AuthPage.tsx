@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 import CreateAccount from './createAccount';
 import Link from 'next/link';
 import { useFormik } from 'formik';
+import { useRef } from 'react';
 
 import 
   {
@@ -24,11 +25,20 @@ import
   }
 
 
-
   export function AuthenticationTitle(): JSX.Element {
-
     const {data : session} = useSession() 
     // ALGO PARA EL BOTON DE SIGN IN
+
+    const formik = useFormik({
+      initialValues:{
+        email: '',
+        password:''
+      },
+      onSubmit
+      })
+    async function onSubmit (values: any){
+      console.log(values)
+    }
 
     const [passwordShown, setPasswordShown] = useState(false);
 
@@ -71,15 +81,18 @@ import
               Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
             </h1>
           </div> 
-            
+          <form action="" onSubmit={formik.handleSubmit}>
           <div className = "jutify-center items-center">
             <label className = "text-md px-1 font-semibold"> 
               Correo electronico
               <input
                 type="email"
+                name="email"
                 id="email"
                 className="block w-full border border-gray-300 rounded-md py-2 px-3"
                 placeholder="ejemplo@gmail.com"
+                onChange={formik.handleChange}
+                value={formik.values.email}
                 required
               />
             </label>
@@ -90,7 +103,10 @@ import
                 <div className="relative flex">
                   <input
                     type={passwordShown ? 'text' : 'password'}
+                    name= "password"
                     className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2" // Added pr-10 for button spacing
+                    onChange={formik.handleChange}
+                    value={formik.values.password}                    
                     placeholder="Password"
                     required
                   />
@@ -114,10 +130,13 @@ import
           </div>
 
           <div>
-          <button className="w-full bg-orange-500 text-white rounded-xl py-2 mb-1 hover:bg-orange-600">
+          <button className="w-full bg-orange-500 text-white rounded-xl py-2 mb-1 hover:bg-orange-600" type='submit'>
             Iniciar sesión
+            
           </button>
           </div>
+
+          </form>
           <div className = "flex justify-center mb-1 text-gray-500">
             <label>
               - o -

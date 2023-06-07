@@ -65,29 +65,25 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }), 
 
-    // CredentialsProvider({
-    //   name: "Credentials",
-    //   credentials: {
-    //     email: { label: "Email", type: "text", placeholder: "jsmith" },
-    //     password: { label: "Password", type: "password" },
-    //   },
-    //   async authorize(credentials) {
-    //     const user = await prisma.user.findUnique({
-    //       where: {
-    //         email: credentials.email,
-    //       },
-    //     });
-        
-    //     if (user && user.password === credentials.password) {
-    //       return user;
-    //     } else {
-    //       return null;
-    //     }
-    //   },
-    // }),
-
-
-
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "Email", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
+      },
+      authorize: (credentials) => {
+        const user = prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
+      },
+    }),
 
     /**
      * ...add more providers here.
