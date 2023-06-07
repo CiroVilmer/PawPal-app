@@ -28,82 +28,86 @@ export function CreateAccount(): JSX.Element
     }
   return (
     
-    <div className="container max-w-md mr-auto absolute mt-10 left-28">
+    <div className="container max-w-md mr-auto absolute mt-16 left-28">
         
-        <div className="border-solid border border-gray rounded-md shadow-md p-6">
-          <div className="flex justify-center font-bold py-1 text-xl mb-3 ">
+        <div className="border-solid border border-gray rounded-md shadow-md p-8">
+          <div className="flex justify-center font-bold py-1 text-xl mb-3">
             <h1 className="text-5xl font-bold text-black px-12">
               Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
             </h1>
           </div>
 
-            <div className="position-center">
-            <div className="flex justify-center items-center">
-        <div className = "flex flex-row">
-            <label className="text-md px-1 font-semibold">
+          <div className="flex justify-center items-center position-center mb-2">
+            
+            <div className = "flex flex-row">
+              <label className="text-md pr-2 font-semibold">
                 Nombre
                 <input
-                    type="text"
-                    className="block border border-gray-300 rounded-md py-2 px-2"
-                    placeholder="Pepe"
-                    required
-                />
-            </label>
+                  className="block border border-gray-300 rounded-md py-1 px-2 w-40"
+                  type="text"
+                  id="first_name"
+                  placeholder="Pepe"
+                  required
+                 />
+              </label>
             </div>
 
-                <div className="flex justify-center items-center">
-                    <label className="text-md px-1 font-semibold">
-                        Apellido
-                        <input
-                            type="text"
-                            className="block border border-gray-300 rounded-md py-2 px-2"
-                            placeholder="Urizar"
-                            required
-                    />
-                    </label>
-                </div>
+            <div>
+              <label className="text-md pl-1 font-semibold">
+                Apellido
+                <input
+                  className="block border border-gray-300 rounded-md py-1 px-2"
+                  type="text"
+                  id="last_name"
+                  placeholder="Urizar"
+                  required
+                />
+              </label>
             </div>
-        </div>
-        <div className = "jutify-center items-center">
+          </div>
+
+        <div>
             <label className = "text-md px-1 font-semibold"> 
                 Documento
                 <input
                     type="text"
-                    className="block w-full border border-gray-300 rounded-md py-2 px-3"
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62"
                     placeholder="1111111111"
                     required
                 />
             </label>
         </div>
-
-            <div className = "jutify-center items-center">
+            <div>
                 <label className = "text-md px-1 font-semibold"> 
                 Correo electronico
                 <input
-                    type="text"
-                    className="block w-full border border-gray-300 rounded-md py-2 px-3"
-                    placeholder="ejemplo@gmail.com"
+                    type="email"
+                    id="email"
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2"
+                    placeholder="Ejemplo@gmail.com"
                     required
                 />
                 </label>
             </div>
-          <div>
-            <label className="text-md px-1 font-semibold relative">
-              Contraseña
-              <input
-                type={passwordShown ? 'text' : 'password'}
-                className="block w-full border border-gray-300 rounded-md py-2 px-3 pr-10"
-                placeholder="Password"
-                required
-              />
-              <button
-                className="bg-transparent border-none p-2 text-gray-500 dark:text-gray-400"
-                onClick={togglePassword}
-              >
-                {passwordShown ? 'Hide' : 'Show'}
-              </button>
-            </label>
-          </div>
+            <div>
+              <label className="text-md px-1 font-semibold relative">
+                Contraseña
+                <div className="relative flex">
+                  <input
+                    type={passwordShown ? 'text' : 'password'}
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2" // Added pr-10 for button spacing
+                    placeholder="Password"
+                    required
+                  />
+                  <button
+                    className="ml-auto bg-transparent border-none p-2 text-gray-500"
+                    onClick={togglePassword}
+                  >
+                    {passwordShown ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </label>
+            </div>
 
           <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600">
             Crear cuenta 

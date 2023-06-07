@@ -55,9 +55,9 @@ import
     };
 
     return ( 
-      <div className="container max-w-md mr-auto absolute mt-10 left-28">
+      <div className="container max-w-md mr-auto absolute mt-15 left-28">
         
-        <div className="border-solid border border-gray rounded-md shadow-md p-6">
+        <div className="border-solid border border-gray rounded-md shadow-md p-8">
           <div className="flex justify-center font-bold py-1 text-xl mb-3 ">
             <h1 className="text-5xl font-bold text-black px-12">
               Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
@@ -68,30 +68,33 @@ import
             <label className = "text-md px-1 font-semibold"> 
               Correo electronico
               <input
-                type="text"
+                type="email"
+                id="email"
                 className="block w-full border border-gray-300 rounded-md py-2 px-3"
                 placeholder="ejemplo@gmail.com"
                 required
               />
             </label>
           </div>
-          <div>
-            <label className="text-md px-1 font-semibold relative">
-              Contraseña
-              <input
-                type={passwordShown ? 'text' : 'password'}
-                className="block w-full border border-gray-300 rounded-md py-2 px-3 pr-10"
-                placeholder="Password"
-                required
-              />
-              <button
-                className="bg-transparent border-none p-2 text-gray-500 dark:text-gray-400"
-                onClick={togglePassword}
-              >
-                {passwordShown ? 'Hide' : 'Show'}
-              </button>
-            </label>
-          </div>
+          <div className="mb-2">
+              <label className="text-md px-1 font-semibold relative">
+                Contraseña
+                <div className="relative flex">
+                  <input
+                    type={passwordShown ? 'text' : 'password'}
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2" // Added pr-10 for button spacing
+                    placeholder="Password"
+                    required
+                  />
+                  <button
+                    className="ml-auto bg-transparent border-none p-2 text-gray-500"
+                    onClick={togglePassword}
+                  >
+                    {passwordShown ? 'Hide' : 'Show'}
+                  </button>
+                </div>
+              </label>
+            </div>
           <div className="flex justify-between items-center text-xs mb-3">
             <label className="flex items-center">
               <input type="checkbox" className="form-checkbox accent-orange-500  mr-1.5" />
@@ -103,17 +106,19 @@ import
           </div>
 
           <div>
-          <button className="w-full bg-orange-500 text-white rounded-xl py-2 mb-1 hover:bg-orange-600"
-           onClick={() => signIn()}>Iniciar sesión</button>
+          <button className="w-full bg-orange-500 text-white rounded-xl py-2 mb-1 hover:bg-orange-600">
+            Iniciar sesión
+          </button>
           </div>
           <div className = "flex justify-center mb-1 text-gray-500">
             <label>
               - o -
             </label>
           </div>
-          <button className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
-            Iniciar sesión con google
+          <button className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100"
+           onClick={() => signIn()}>Iniciar sesión con google
           </button>
+         
           <p className="text-center text-gray-500 text-sm  py-2">
             Do not have an account yet?{' '}<br></br>
 
