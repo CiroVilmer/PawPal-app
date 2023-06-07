@@ -3,6 +3,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import CreateAccount from './createAccount';
 import Link from 'next/link';
+import { useFormik } from 'formik';
+
 import 
   {
     TextInput,
@@ -16,6 +18,12 @@ import
     Group,
     Button,
   } from '@mantine/core';
+
+  async function handleGoogleSignin() {
+    signIn('google',{callbackUrl:"http://localhost:3000"})
+  }
+
+
 
   export function AuthenticationTitle(): JSX.Element {
 
@@ -115,8 +123,8 @@ import
               - o -
             </label>
           </div>
-          <button className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100"
-           onClick={() => signIn()}>Iniciar sesión con google
+          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+            Iniciar sesión con google
           </button>
          
           <p className="text-center text-gray-500 text-sm  py-2">

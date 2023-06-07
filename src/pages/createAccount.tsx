@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { Formik } from 'formik';
 import 
   {
     TextInput,
@@ -16,6 +17,11 @@ import
     Button,
     Input
   } from '@mantine/core';
+import Google from 'next-auth/providers/google';
+
+async function handleGoogleSignin() {
+    signIn('google',{callbackUrl:"http://localhost:3000"})
+}
 
 export function CreateAccount(): JSX.Element  
 {
@@ -28,7 +34,7 @@ export function CreateAccount(): JSX.Element
     }
   return (
     
-    <div className="container max-w-md mr-auto absolute mt-16 left-28">
+    <div className="container max-w-md mr-auto absolute mt-auto left-28">
         
         <div className="border-solid border border-gray rounded-md shadow-md p-8">
           <div className="flex justify-center font-bold py-1 text-xl mb-3">
@@ -119,7 +125,7 @@ export function CreateAccount(): JSX.Element
               - o -
             </label>
           </div>
-          <button className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
             Crear cuenta con google
           </button>
           <p className="text-center text-gray-500 text-sm  py-2">
