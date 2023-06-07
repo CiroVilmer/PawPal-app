@@ -89,7 +89,7 @@ import
                 type="email"
                 name="email"
                 id="email"
-                className="block w-full border border-gray-300 rounded-md py-2 px-3"
+                className="block w-full border border-gray-300 rounded-md py-2 px-3 font-normal"
                 placeholder="ejemplo@gmail.com"
                 onChange={formik.handleChange}
                 value={formik.values.email}
@@ -97,24 +97,21 @@ import
               />
             </label>
           </div>
-          <div className="mb-2">
+          <div>
               <label className="text-md px-1 font-semibold relative">
                 Contraseña
                 <div className="relative flex">
                   <input
                     type={passwordShown ? 'text' : 'password'}
-                    name= "password"
-                    className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2" // Added pr-10 for button spacing
-                    onChange={formik.handleChange}
-                    value={formik.values.password}                    
+                    className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal" // Added pr-10 for button spacing
                     placeholder="Password"
                     required
                   />
                   <button
-                    className="ml-auto bg-transparent border-none p-2 text-gray-500"
+                    className="absolute right-1 ml-auto bg-transparent border-none p-2"
                     onClick={togglePassword}
                   >
-                    {passwordShown ? 'Hide' : 'Show'}
+                    {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
                   </button>
                 </div>
               </label>
