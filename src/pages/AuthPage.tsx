@@ -146,7 +146,7 @@ import
           </button>
          
           <p className="text-center text-gray-500 text-sm  py-2">
-            Do not have an account yet?{' '}<br></br>
+            ¿Todavía no creaste una cuenta?{' '}<br></br>
 
             <button className="text-sm text-orange-500 hover:underline">
             

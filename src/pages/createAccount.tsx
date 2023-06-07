@@ -52,10 +52,10 @@ export function CreateAccount(): JSX.Element
     }
   return (
     
-    <div className="container max-w-md mr-auto absolute mt-6 left-28">
+    <div className="container max-w-md mr-auto absolute mt-3 left-28">
       <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
         <div className="flex justify-center font-bold py-1 text-xl mb-3">
-          <h1 className="text-5xl font-bold text-black px-12">
+          <h1 className="text-5xl font-bold text-black">
             Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
           </h1>
         </div>
@@ -102,13 +102,13 @@ export function CreateAccount(): JSX.Element
             <input
               type="number"
               id="dni"
-              className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-tighter mb-2"
-              placeholder="1111111111"
+              className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-normal mb-2"
+              placeholder="47026956"
               required
               {...formik.getFieldProps('dni')}
             />                  
             
-            <label className = "text-md font-semibold"> 
+            <label className = "text-md px-1 font-semibold"> 
               Correo electronico
             </label>
             <input
@@ -160,7 +160,7 @@ export function CreateAccount(): JSX.Element
             Crear cuenta con google
           </button>
           <p className="text-center text-gray-500 text-sm pt-1">
-            Ya eres un miembro?{' '}<br></br>
+            ¿Ya eres un miembro?{' '}<br></br>
 
             <button className="text-sm text-orange-500 hover:underline">
             
