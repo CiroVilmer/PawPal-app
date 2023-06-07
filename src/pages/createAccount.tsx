@@ -52,9 +52,7 @@ export function CreateAccount(): JSX.Element
     }
   return (
     
-    //<div className="container max-w-md mr-auto absolute mt-auto left-28">
-    <div className = "container flex justify-center max-w-md ">
-        
+    <div className="container max-w-md mr-auto absolute mt-6 left-28">
       <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
         <div className="flex justify-center font-bold py-1 text-xl mb-3">
           <h1 className="text-5xl font-bold text-black px-12">
@@ -64,13 +62,13 @@ export function CreateAccount(): JSX.Element
 
         <form action="" onSubmit={formik.handleSubmit}>
 
-        <div className="flex justify-center items-center position-center mb-2">
+        <div className="flex justify-center items-center position-center mb-2 gap-4">
             
             <div className = "flex flex-row">
               <label className="text-md pr-2 font-semibold">
                 Nombre
                 <input
-                  className="block border border-gray-300 rounded-md py-1 px-2 w-40 font-normal"
+                  className="block border border-gray-300 rounded-md py-2 px-2 w-40 font-normal"
                   type="text"
                   id="first_name"
                   placeholder="Pepe"
@@ -85,7 +83,7 @@ export function CreateAccount(): JSX.Element
               <label className="text-md pl-1 font-semibold">
                 Apellido
                 <input
-                  className="block border border-gray-300 rounded-md py-1 px-2 font-normal"
+                  className="block border border-gray-300 rounded-md py-2 px-2 font-normal"
                   type="text"
                   id="last_name"
                   placeholder="Urizar"
@@ -98,58 +96,58 @@ export function CreateAccount(): JSX.Element
           </div>
   
           <div>
-              <label className = "text-md px-1 font-semibold"> 
-                  Documento
-                  <input
-                      type="number"
-                      id="dni"
-                      className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-tighter"
-                      placeholder="1111111111"
-                      required
-                      {...formik.getFieldProps('dni')}
-                  />
-                  <label className = "font-thin text-xs text-gray-400">*numero de 8 digitos</label>
-                  
-              </label>
+            <label className = "text-md px-1 font-semibold"> 
+              Documento
+            </label>
+            <input
+              type="number"
+              id="dni"
+              className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-tighter mb-2"
+              placeholder="1111111111"
+              required
+              {...formik.getFieldProps('dni')}
+            />                  
+            
+            <label className = "text-md font-semibold"> 
+              Correo electronico
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal mb-2"
+              placeholder="Ejemplo@gmail.com"
+              required
+              {...formik.getFieldProps('email')}
+            />
+            
+            <label className="text-md px-1 font-semibold relative">
+              Contraseña
+            </label>
+            <div className="relative flex">
+              <input
+                type={passwordShown ? 'text' : 'password'}
+                className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal mb-6" // Added pr-10 for button spacing
+                placeholder="Password"
+                required
+                {...formik.getFieldProps('password')}
+              />
+              <button
+                className="absolute right-1 ml-auto bg-transparent border-none p-2"
+                onClick={togglePassword}
+                type="button"
+              >
+                {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
+              </button>
+            </div>
+            
           </div>
-              <div>
-                  <label className = "text-md px-1 font-semibold"> 
-                  Correo electronico
-                  <input
-                    type="email"
-                    id="email"
-                    className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal"
-                    placeholder="Ejemplo@gmail.com"
-                    required
-                    {...formik.getFieldProps('email')}
-                  />
-                  </label>
-              </div>
-              <div>
-                <label className="text-md px-1 font-semibold relative">
-                  Contraseña
-                  <div className="relative flex">
-                    <input
-                      type={passwordShown ? 'text' : 'password'}
-                      className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal" // Added pr-10 for button spacing
-                      placeholder="Password"
-                      required
-                      {...formik.getFieldProps('password')}
-                    />
-                    <button
-                      className="absolute right-1 ml-auto bg-transparent border-none p-2"
-                      onClick={togglePassword}
-                      type="button"
-                    >
-                      {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
-                    </button>
-                  </div>
-                </label>
-              </div>
+              
+                
+              
   
-            <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
-              Crear cuenta 
-            </button>  
+          <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
+            Crear cuenta 
+          </button>  
 
         </form>
 
@@ -161,7 +159,7 @@ export function CreateAccount(): JSX.Element
           <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
             Crear cuenta con google
           </button>
-          <p className="text-center text-gray-500 text-sm  py-2">
+          <p className="text-center text-gray-500 text-sm pt-1">
             Ya eres un miembro?{' '}<br></br>
 
             <button className="text-sm text-orange-500 hover:underline">
