@@ -5,20 +5,19 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
 
 import 
-  {
-    TextInput,
-    PasswordInput,
-    Checkbox,
-    Anchor,
-    Paper,
-    Title,
-    Text,
-    Container,
-    Group,
-    Button,
-    Input
-  } from '@mantine/core';
-import Google from 'next-auth/providers/google';
+{
+  TextInput,
+  PasswordInput,
+  Checkbox,
+  Anchor,
+  Paper,
+  Title,
+  Text,
+  Container,
+  Group,
+  Button,
+  Input
+} from '@mantine/core';
 
 async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000"})
@@ -52,7 +51,7 @@ export function CreateAccount(): JSX.Element
     }
   return (
     
-    <div className="container max-w-md mr-auto absolute mt-3 left-28">
+    <div className="flex container max-w-md mr-auto absolute mt-3 left-28">
       <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
         <div className="flex justify-center font-bold py-1 text-xl mb-3">
           <h1 className="text-5xl font-bold text-black">

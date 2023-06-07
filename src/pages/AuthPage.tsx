@@ -124,7 +124,7 @@ import
              Recuerdame
             </label>
             <button className="text-orange-500 hover:underline">
-              Olvidaste tu contraseña?
+            <Link href = "/forgotPassword">¿Olvidaste tu contraseña?</Link>
             </button>
           </div>
 
