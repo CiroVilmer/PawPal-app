@@ -98,7 +98,7 @@ import
                 required
                 
               />
-              {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null
+              {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs px-1">{formik.errors.email}</div> : null
               }
             </label>
           </div>
@@ -121,12 +121,11 @@ import
                     {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
                   </button>                 
                 </div>
+                {formik.errors.password && formik.touched.password? <div className = "text-red-500 text-xs px-1">{formik.errors.password}</div> : null}
+
               </label>
-            </div>
-            <div>
-            {formik.errors.password && formik.touched.password? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null
-              }
-            </div>
+          </div>
+          
           <div className="flex justify-between items-center text-xs mb-3">
             <label className="flex items-center">
               <input type="checkbox" className="form-checkbox accent-orange-500  mr-1.5" />
@@ -138,10 +137,10 @@ import
           </div>
 
           <div>
-          <button className="w-full bg-orange-500 text-white rounded-xl py-2 mb-1 hover:bg-orange-600" type='submit'>
-            Iniciar sesión
-            
-          </button>
+            <button className="w-full bg-orange-500 text-white rounded-md py-2 mb-1 hover:bg-orange-600" type='submit'>
+              Iniciar sesión
+              
+            </button>
           </div>
 
           </form>
@@ -150,7 +149,7 @@ import
               - o -
             </label>
           </div>
-          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-md py-2 hover:bg-gray-100">
             Iniciar sesión con google
           </button>
          
