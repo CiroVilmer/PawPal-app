@@ -31,7 +31,6 @@ export function CreateAccount(): JSX.Element
 {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
-
     const [passwordShown, setPasswordShown] = useState(false);
 
     const formik = useFormik({
@@ -52,6 +51,10 @@ export function CreateAccount(): JSX.Element
       createAccount(values, {
         onSuccess: () => {
           console.log("User Created");
+        },
+        onError: (error) => {
+
+          console.log(error);
         }
       })
     }

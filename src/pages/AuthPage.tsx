@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useFormik } from 'formik';
 import { useRef } from 'react';
 import login_validate from 'lib/validate';
+import { useRouter } from 'next/router';
 
 
 import 
@@ -33,6 +34,8 @@ import { router } from '@trpc/server';
     const {data : session} = useSession() 
     // ALGO PARA EL BOTON DE SIGN IN
 
+    const router = useRouter()
+
     const formik = useFormik({
       initialValues:{
         email: '',
@@ -49,10 +52,13 @@ import { router } from '@trpc/server';
         password: values.password,
         callbackUrl: "http://localhost:3000"
       })
+
       console.log(status)
 
       if(status?.ok){
-        console.log("User Logged in")
+        console.log("User Logged in") 
+        
+        void router.push("/homepage")
       }
     }
 

@@ -88,10 +88,12 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   pages: {
     signIn: "/auth/signin", // Displays signin buttons
     error: "/auth/error", // Error code passed in query string as ?error=
   }
+
 };
 
 /**
