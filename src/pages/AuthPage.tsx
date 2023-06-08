@@ -21,6 +21,8 @@ import
     Group,
     Button,
   } from '@mantine/core';
+import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
+import { router } from '@trpc/server';
 
   async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000"})
@@ -41,6 +43,17 @@ import
       })
     async function onSubmit (values: any){
       console.log(values)
+      const status = await signIn('credentials', {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+        callbackUrl: "http://localhost:3000"
+      })
+      console.log(status)
+
+      if(status?.ok){
+        console.log("User Logged in")
+      }
     }
 
 
