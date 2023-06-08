@@ -27,17 +27,10 @@ async function handleGoogleSignin() {
 }
 
 
-
-
 export function CreateAccount(): JSX.Element  
 {
 
-  const createAccount = api.user.createUser.useMutation({
-    onSuccess: (createUser) => {
-      console.log(createUser);
-      setInputValue('');
-    },
-  });
+  const { mutate: createAccount } = api.user.createUser.useMutation();
 
     const [passwordShown, setPasswordShown] = useState(false);
 
@@ -52,10 +45,14 @@ export function CreateAccount(): JSX.Element
       onSubmit
     })
 
-    async function onSubmit(values: { email: string; name: string; password: string; dni: string; }) {
+    async function onSubmit(values: { email: string; name: string;  password: string; dni: string; }) {
       console.log(values)
 
-      createAccount.mutate(values);
+      createAccount(values, {
+        onSuccess: () => {
+          console.log("User Created");
+        }
+      })
     }
 
 
