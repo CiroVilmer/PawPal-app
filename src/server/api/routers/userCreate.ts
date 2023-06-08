@@ -11,6 +11,7 @@ export const userRouter = createTRPCRouter({
     createUser: publicProcedure.input(
         z.object({
             name: z.string(),
+            surName: z.string(),
             dni: z.string(),
             email: z.string(),
             // emailUpdates: z.boolean(),
@@ -21,6 +22,7 @@ export const userRouter = createTRPCRouter({
         const user = prisma.user.create({
         data:{
             name: input.name,
+            surName: input.surName,
             dni: input.dni, 
             email: input.email,
             // userPreference:{
@@ -52,7 +54,7 @@ export const userRouter = createTRPCRouter({
     
     getUser: protectedProcedure
     .input(z.object({
-        id: z.number(),
+        id: z.string(),
     }))
     .query(({ input, ctx }) => {
         const user = prisma.user.findUnique({

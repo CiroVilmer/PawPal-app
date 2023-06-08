@@ -31,12 +31,12 @@ export function CreateAccount(): JSX.Element
 {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
-
     const [passwordShown, setPasswordShown] = useState(false);
 
     const formik = useFormik({
       initialValues: {
         name: '',
+        surName: '',
         dni: '',
         email: '',
         password: '',
@@ -45,12 +45,16 @@ export function CreateAccount(): JSX.Element
       onSubmit
     })
 
-    async function onSubmit(values: { email: string; name: string;  password: string; dni: string; }) {
+    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: string; }) {
       console.log(values)
 
       createAccount(values, {
         onSuccess: () => {
           console.log("User Created");
+        },
+        onError: (error) => {
+
+          console.log(error);
         }
       })
     }
@@ -84,7 +88,7 @@ export function CreateAccount(): JSX.Element
                   id="first_name"
                   placeholder="Pepe"
                   required
-                  {...formik.getFieldProps('firstName')}
+                  {...formik.getFieldProps('name')}
 
 
                 />
@@ -102,11 +106,11 @@ export function CreateAccount(): JSX.Element
                   id="last_name"
                   placeholder="Urizar"
                   required
-                  {...formik.getFieldProps('lastName')}
+                  {...formik.getFieldProps('surName')}
   
                 />
               </label>
-              {/* {formik.errors.lastName && formik.touched.lastName ? <div className = "text-red-500 text-xs">{formik.errors.lastName}</div> : null} */}
+              {formik.errors.surName && formik.touched.surName ? <div className = "text-red-500 text-xs">{formik.errors.surName}</div> : null} 
             </div>
           </div>
   

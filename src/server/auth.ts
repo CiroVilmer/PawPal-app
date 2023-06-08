@@ -66,36 +66,34 @@ export const authOptions: NextAuthOptions = {
     }), 
 
     CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        email: { label: "Email", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
-      },
-      authorize: (credentials) => {
-        const user = prisma.user.findUnique({
+      name: "credentials",
+      credentials: {},
+      async authorize(credentials) {
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        }
+
+        const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email,
           },
         });
-        if (user) {
+
+        if (user?.password === password) {
           return user;
         } else {
-          return null;
+          throw new Error("No user found");
         }
       },
-      
     }),
-
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
   ],
+
+  pages: {
+    signIn: "/auth/signin", // Displays signin buttons
+    error: "/auth/error", // Error code passed in query string as ?error=
+  }
+
 };
 
 /**
