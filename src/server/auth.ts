@@ -48,6 +48,14 @@ export const authOptions: NextAuthOptions = {
         id: user.id,
       },
     }),
+
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+      }
+
+      return token;
+    }
   },
   adapter: PrismaAdapter(prisma),
   providers: [

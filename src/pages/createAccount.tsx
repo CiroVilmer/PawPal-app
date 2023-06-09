@@ -21,8 +21,6 @@ import
   Input
 } from '@mantine/core';
 import { object } from 'zod';
-import { check } from 'prettier';
-import Email from 'next-auth/providers/email';
 
 async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000"})
@@ -33,52 +31,41 @@ export function CreateAccount(): JSX.Element
 {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
-  const { mutate: checkIfUserExist} = api.user.checkEmail.useMutation();
+    const [passwordShown, setPasswordShown] = useState(false);
 
-  const [passwordShown, setPasswordShown] = useState(false);
+    const formik = useFormik({
+      initialValues: {
+        name: '',
+        surName: '',
+        dni: '',
+        email: '',
+        password: '',
+      },
+      validate: register_validate,
+      onSubmit
+    })
 
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      surName: '',
-      dni: '',
-      email: '',
-      password: '',
-    },
-    validate: register_validate,
-    onSubmit
-  })
-
-  async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: string; }) {
-    console.log(values)
-
-    const userF = await checkIfUserExist({
-      email: values.email,
-    });
-
-    if(userF === null){
+    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: string; }) {
+      console.log(values)
 
       createAccount(values, {
         onSuccess: () => {
           console.log("User Created");
         },
+        onError: (error) => {
+
+          console.log(error);
+          console.log("User not Created");
+        }
       })
-      
-    }
-    else if(userF !== null)
-    {
-      console.log("Email is already used")
     }
 
 
-  }
-
-
-  const togglePassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
-    setPasswordShown(!passwordShown)
-  }
+    const togglePassword = () => {
+      // When the handler is invoked
+      // inverse the boolean state of passwordShown
+      setPasswordShown(!passwordShown)
+    }
   return (
     
     <div className="flex container max-w-md mr-auto absolute mt-3 left-28">
