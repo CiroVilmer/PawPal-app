@@ -24,6 +24,7 @@ import
   } from '@mantine/core';
 import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
 import { router } from '@trpc/server';
+import { any } from 'zod';
 
   async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
@@ -35,7 +36,8 @@ import { router } from '@trpc/server';
     // ALGO PARA EL BOTON DE SIGN IN
 
     const router = useRouter()
-
+    const { mutate: findUser} = api.user.findUser.useMutation();
+    
     const formik = useFormik({
       initialValues:{
         email: '',
@@ -46,11 +48,12 @@ import { router } from '@trpc/server';
       })
     async function onSubmit (values: any){
       console.log(values)
+
       const status = await signIn('credentials', {
         redirect: false,
         email: values.email,
         password: values.password,
-        callbackUrl: "http://localhost:3000"
+        callbackUrl: "http://localhost:3000/homepage"
       })
 
       console.log(status)

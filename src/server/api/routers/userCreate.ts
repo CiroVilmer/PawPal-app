@@ -53,7 +53,7 @@ export const userRouter = createTRPCRouter({
     }
     ),
 
-    checkEmail: publicProcedure
+    findUser: publicProcedure
     .input(z.object({
         email: z.string(),
     }))
@@ -63,26 +63,31 @@ export const userRouter = createTRPCRouter({
                 email: input.email,
             },
         });
-        return user
+
+        if(user){
+            return user
+        }else{
+            return null
+        }
     },
     ),
 
     
     
-    getUser: protectedProcedure
-    .input(z.object({
-        id: z.string(),
-    }))
-    .query(({ input, ctx }) => {
-        const user = prisma.user.findUnique({
-            where:{
-                id: input.id,
-            },
-        });
-        return user
-    }
+    // getUser: protectedProcedure
+    // .input(z.object({
+    //     id: z.string(),
+    // }))
+    // .query(({ input, ctx }) => {
+    //     const user = prisma.user.findUnique({
+    //         where:{
+    //             id: input.id,
+    //         },
+    //     });
+    //     return user
+    // }
 
-    ),
+    // ),
     
 
 });
