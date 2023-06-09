@@ -1,3 +1,4 @@
+import Email from "next-auth/providers/email";
 import { z } from "zod";
 import {
   createTRPCRouter,
@@ -42,7 +43,7 @@ export const userRouter = createTRPCRouter({
         email: z.string(),
         password: z.string(),
     }))
-    .mutation(({ input, ctx }) => {
+    .query(({ input, ctx }) => {
         const user = prisma.user.findUnique({
             where:{
                 email: input.email,
@@ -51,6 +52,22 @@ export const userRouter = createTRPCRouter({
         return user
     }
     ),
+
+    checkEmail: publicProcedure
+    .input(z.object({
+        email: z.string(),
+    }))
+    .mutation(({ input, ctx }) => {
+        const user = prisma.user.findUnique({
+            where:{
+                email: input.email,
+            },
+        });
+        return user
+    },
+    ),
+
+    
     
     getUser: protectedProcedure
     .input(z.object({

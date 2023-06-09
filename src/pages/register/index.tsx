@@ -8,17 +8,6 @@ const createUser  = api.user.createUser.useMutation({
     }
 });
 
-function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    
-    createUser.mutate({
-        name: "",
-        dni: 0,
-        email: "",
-        emailUpdates: false
-    });
-}
-
 const[show, setShow] = useState(false)
 const formik = useFormik({
   initialValues:{

@@ -26,7 +26,7 @@ import { staticGenerationAsyncStorage } from 'next/dist/client/components/static
 import { router } from '@trpc/server';
 
   async function handleGoogleSignin() {
-    signIn('google',{callbackUrl:"http://localhost:3000"})
+    signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
   }
 
 
@@ -136,6 +136,7 @@ import { router } from '@trpc/server';
                   <button
                     className="absolute right-1 ml-auto bg-transparent border-none p-2"
                     onClick={togglePassword}
+                    type='button'
                   >
                     {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
                   </button>                 
