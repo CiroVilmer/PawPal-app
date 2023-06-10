@@ -7,7 +7,11 @@ import React from "react";
 export function HomePage(): JSX.Element {
 
     return (
-        <label htmlFor="">Logged In</label>
+        <div>
+            <h1>Home Page - LoggedIn</h1>
+            <button onClick={() => signOut()}>Sign Out</button>
+        </div>
+
     )
 
 }

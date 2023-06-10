@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
-import { z } from "zod";
+import { number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import 
 {
@@ -19,7 +19,8 @@ import
   Group,
   Button,
   Input,
-  NumberInput
+  NumberInput,
+  Flex
 } from '@mantine/core';
 import { object } from 'zod';
 
@@ -38,7 +39,7 @@ export function CreateAccount(): JSX.Element
       initialValues: {
         name: '',
         surName: '',
-        dni: '',
+        dni: 0,
         email: '',
         password: '',
       },
@@ -46,7 +47,7 @@ export function CreateAccount(): JSX.Element
       onSubmit
     })
 
-    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: string; }) {
+    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: number; }) {
       console.log(values)
 
       createAccount(values, {
@@ -57,20 +58,17 @@ export function CreateAccount(): JSX.Element
 
           console.log(error);
           console.log("User not Created");
+          //alertar al usuario que el mail puede estar en uso
         }
       })
     }
 
 
-    const togglePassword = () => {
-      // When the handler is invoked
-      // inverse the boolean state of passwordShown
-      setPasswordShown(!passwordShown)
-    }
+    
   return (
     
-    <div className="flex container max-w-md mr-auto absolute mt-3 left-28">
-      <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
+    <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
+      <div className="border-solid border border-gray rounded-md w-62 shadow-md p-8">
         <div className="flex justify-center font-bold py-1 text-xl mb-3">
           <h1 className="text-5xl font-bold text-black">
             Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
@@ -79,9 +77,9 @@ export function CreateAccount(): JSX.Element
 
         <form action="" onSubmit={formik.handleSubmit}>
 
-          <div className="flex justify-center items-center position-center mb-2 gap-4">
+          <Flex direction={"row"} gap={"md"}>
             
-            <Input.Wrapper  withAsterisk label="Nombre">
+            <Input.Wrapper withAsterisk label="Nombre">
                 <Input
                   type="string"
                   id="first_name"
@@ -93,7 +91,7 @@ export function CreateAccount(): JSX.Element
               {formik.errors.name && formik.touched.name ? <div className = "text-red-500 text-xs">{formik.errors.name}</div> : null}
             </Input.Wrapper>
 
-            <Input.Wrapper id="dni" withAsterisk label="Apellido">
+            <Input.Wrapper withAsterisk label="Apellido">
                 <Input
                   type="string"
                   id="last_name"
@@ -105,12 +103,12 @@ export function CreateAccount(): JSX.Element
               
               {formik.errors.surName && formik.touched.surName ? <div className = "text-red-500 text-xs">{formik.errors.surName}</div> : null} 
             </Input.Wrapper>
-          </div>
+          </Flex>
   
           <div>
             <Input.Wrapper id="dni" withAsterisk label="Documento">
               <Input
-                type='string'
+                type='number'
                 id="dni"
                 placeholder="47026956"
                 maxLength={8}
@@ -121,34 +119,26 @@ export function CreateAccount(): JSX.Element
               {formik.errors.dni && formik.touched.dni ? <div className = "text-red-500 text-xs">{formik.errors.dni}</div> : null}
             </Input.Wrapper>
             
-            <label className = "text-md px-1 font-semibold"> 
-              Correo electronico
-            </label>
-            <Input
-              type="string"
-              id="email"
-              placeholder="Ejemplo@gmail.com"
-              required
-              {...formik.getFieldProps('email')}
-            />
-            {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
-
+            <Input.Wrapper withAsterisk label="Correo electrónico">
+              <Input
+                type="string"
+                id="email"
+                placeholder="Ejemplo@gmail.com"
+                required
+                {...formik.getFieldProps('email')}
+              />
+              {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
+            </Input.Wrapper>
             <Input.Wrapper withAsterisk label="Contraseña" className='mb-6'>
               <PasswordInput
-                type={passwordShown ? 'text' : 'password'}
                 placeholder="Password"
                 required
+                
                 {...formik.getFieldProps('password')}
                 visibilityToggleIcon={({ reveal, size }) =>
                 reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
               />
-              {/* <button
-                className="absolute right-1 ml-auto bg-transparent border-none p-2"
-                onClick={togglePassword}
-                type="button"
-              >
-                {passwordShown ? <FiEyeOff color='A9B1BC' size="1.25em" className='pt-1'/> : <FiEye color='A9B1BC' size="1.25em" className='pt-1'/>}
-              </button> */}
+              
               {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
             </Input.Wrapper>
             

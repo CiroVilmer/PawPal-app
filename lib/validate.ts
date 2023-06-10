@@ -7,6 +7,7 @@ export default function login_validate(values){
         errors.email = "Email requerido";
     }
 
+
     if(!values.password){
         errors.password = "Contraseña requerida";
     }else if(values.password.length < 8){
@@ -28,7 +29,13 @@ export function register_validate(values){
         errors.password = "Contraseña requerida";
     }else if(values.password.length < 8){
         errors.password = "La contraseña debe tener mínimo 8 caracteres";
+    }else if(values.password.length > 20){
+        errors.password = "La contraseña debe tener máximo 20 caracteres";
+    }else if(values.password.includes(" ")){
+        errors.password = "La contraseña no puede tener espacios";
     }
+
+
 
     // if(!values.confirm_password){
     //     errors.confirm_password = "Confirm Password is required";
@@ -47,6 +54,7 @@ export function register_validate(values){
     if(!values.dni){
         errors.dni = "DNI requerido";
     }
+
 
     return errors;
 }
