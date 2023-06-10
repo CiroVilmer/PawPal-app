@@ -41,13 +41,6 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
 
     jwt: async ({ token, user }) => {
       if (user) {
@@ -100,7 +93,13 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/auth/signin", // Displays signin buttons
     error: "/auth/error", // Error code passed in query string as ?error=
-  }
+  },
+
+  session: {
+    strategy: "jwt",
+  },
+
+
 
 };
 
