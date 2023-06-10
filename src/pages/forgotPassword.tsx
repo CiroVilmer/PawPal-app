@@ -3,35 +3,30 @@ import Link from 'next/link';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { api } from "~/utils/api";
-import {Carousel} from '@mantine/carousel';
-import { CarouselSlide } from '@mantine/carousel/lib/CarouselSlide/CarouselSlide';
+import { Stepper,Button, Group } from '@mantine/core';
 
+    
 
-
-function Demo() {
-    return (
-      <Carousel
-        withIndicators
-        height={200}
-        slideSize="33.333333%"
-        slideGap="md"
-        loop
-        align="start"
-        breakpoints={[
-          { maxWidth: 'md', slideSize: '50%' },
-          { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
-        ]}
-      >
-        <Carousel.Slide>1</Carousel.Slide>
-        <Carousel.Slide>2</Carousel.Slide>
-        <Carousel.Slide>3</Carousel.Slide>
-        {/* ...other slides */}
-      </Carousel>
-    );
-  }
 
 export function forgotPassword():JSX.Element
 {
+    const [active, setActive] = useState(1);
+    const [highestStepVisited, setHighestStepVisited] = useState(active);
+  
+    const handleStepChange = (nextStep: number) => {
+      const fueraDeLimite = nextStep > 3 || nextStep < 0;
+  
+      if (fueraDeLimite) {
+        return;
+      }
+  
+      setActive(nextStep);
+      setHighestStepVisited((hSC) => Math.max(hSC, nextStep));
+    };
+    const shouldAllowSelectStep = (step: number) => highestStepVisited >= step && active !== step;
+
+
+
     
     return( 
         
@@ -67,11 +62,10 @@ export function forgotPassword():JSX.Element
 
                     </form>    
 
-                    <div>
-                        <button className="w-full bg-orange-500 text-white rounded-md py-2 mb-1 hover:bg-orange-600" type='submit'>
-                            Continuar
-                        </button>
-                    </div>
+                    <Stepper size="sm" active={0}>
+                        <Stepper.Step label="Step 1" description="Create an account" />
+                        <Stepper.Step label="Step 2" description="Verify email" />
+                    </Stepper>
 
                     
                 </div> 

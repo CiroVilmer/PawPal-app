@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import { useRef } from 'react';
 import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
+import {FiEyeOff, FiEye} from 'react-icons/fi'
 
 
 import 
@@ -141,8 +142,7 @@ import { any } from 'zod';
                     onClick={togglePassword}
                     type='button'
                   >
-                    {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
-                  </button>                 
+                  {passwordShown ? <FiEyeOff color='A9B1BC' size="1.25em" className='pt-1'/> : <FiEye color='A9B1BC' size="1.25em" className='pt-1'/>}                  </button>                 
                 </div>
                 {formik.errors.password && formik.touched.password? <div className = "text-red-500 text-xs px-1">{formik.errors.password}</div> : null}
 

@@ -7,7 +7,6 @@ import CreateAccount from "./createAccount";
 
 
 const Home = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>

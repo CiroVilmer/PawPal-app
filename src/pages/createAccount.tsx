@@ -5,7 +5,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
 import { z } from "zod";
-
+import { FiEye, FiEyeOff } from 'react-icons/fi'
 import 
 {
   TextInput,
@@ -18,7 +18,8 @@ import
   Container,
   Group,
   Button,
-  Input
+  Input,
+  NumberInput
 } from '@mantine/core';
 import { object } from 'zod';
 
@@ -78,31 +79,22 @@ export function CreateAccount(): JSX.Element
 
         <form action="" onSubmit={formik.handleSubmit}>
 
-        <div className="flex justify-center items-center position-center mb-2 gap-4">
+          <div className="flex justify-center items-center position-center mb-2 gap-4">
             
-            <div className = "flex flex-row">
-              <label className="text-md pr-2 font-semibold">
-                Nombre
-                <input
-                  className="block border border-gray-300 rounded-md py-2 px-2 w-40 font-normal"
+            <Input.Wrapper  withAsterisk label="Nombre">
+                <Input
                   type="string"
                   id="first_name"
                   placeholder="Pepe"
+                  size='sm'
                   required
                   {...formik.getFieldProps('name')}
-
-
                 />
-              </label>
               {formik.errors.name && formik.touched.name ? <div className = "text-red-500 text-xs">{formik.errors.name}</div> : null}
+            </Input.Wrapper>
 
-            </div>
-
-            <div>
-              <label className="text-md pl-1 font-semibold">
-                Apellido
-                <input
-                  className="block border border-gray-300 rounded-md py-2 px-2 font-normal"
+            <Input.Wrapper id="dni" withAsterisk label="Apellido">
+                <Input
                   type="string"
                   id="last_name"
                   placeholder="Urizar"
@@ -110,60 +102,55 @@ export function CreateAccount(): JSX.Element
                   {...formik.getFieldProps('surName')}
   
                 />
-              </label>
+              
               {formik.errors.surName && formik.touched.surName ? <div className = "text-red-500 text-xs">{formik.errors.surName}</div> : null} 
-            </div>
+            </Input.Wrapper>
           </div>
   
           <div>
-            <label className = "text-md px-1 font-semibold"> 
-              Documento
-            </label>
-            <input
-              type="string"
-              id="dni"
-              className="block w-full border border-gray-300 rounded-md py-2 px-2 w-62 font-normal tracking-normal mb-2"
-              placeholder="47026956"
-              required
-              {...formik.getFieldProps('dni')}
-            />
-            {formik.errors.dni && formik.touched.dni ? <div className = "text-red-500 text-xs">{formik.errors.dni}</div> : null}
-           
+            <Input.Wrapper id="dni" withAsterisk label="Documento">
+              <Input
+                type='string'
+                id="dni"
+                placeholder="47026956"
+                maxLength={8}
+                required
+                {...formik.getFieldProps('dni')}
+              />
+              
+              {formik.errors.dni && formik.touched.dni ? <div className = "text-red-500 text-xs">{formik.errors.dni}</div> : null}
+            </Input.Wrapper>
             
             <label className = "text-md px-1 font-semibold"> 
               Correo electronico
             </label>
-            <input
+            <Input
               type="string"
               id="email"
-              className="block w-full border border-gray-300 rounded-md py-2 px-2 font-normal mb-2"
               placeholder="Ejemplo@gmail.com"
               required
               {...formik.getFieldProps('email')}
             />
             {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
 
-            <label className="text-md px-1 font-semibold relative">
-              Contraseña
-            </label>
-            <div className="relative flex">
-              <input
+            <Input.Wrapper withAsterisk label="Contraseña" className='mb-6'>
+              <PasswordInput
                 type={passwordShown ? 'text' : 'password'}
-                className="block w-full border border-gray-300 rounded-md py-2 px-2 pr-2 font-normal mb-6" // Added pr-10 for button spacing
                 placeholder="Password"
                 required
                 {...formik.getFieldProps('password')}
+                visibilityToggleIcon={({ reveal, size }) =>
+                reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
               />
-              <button
+              {/* <button
                 className="absolute right-1 ml-auto bg-transparent border-none p-2"
                 onClick={togglePassword}
                 type="button"
               >
-                {passwordShown ? <img className = "py-1" src="/ojo-cerrado.png" alt="visible" /> : <img className = "py-1" src="/visible.png" alt="no"/>}
-              </button>
+                {passwordShown ? <FiEyeOff color='A9B1BC' size="1.25em" className='pt-1'/> : <FiEye color='A9B1BC' size="1.25em" className='pt-1'/>}
+              </button> */}
               {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
-
-            </div>
+            </Input.Wrapper>
             
           </div>
               
@@ -176,25 +163,23 @@ export function CreateAccount(): JSX.Element
 
         </form>
 
-          <div className = "flex justify-center mb-1 text-gray-500">
-            <label>
-              - o -
-            </label>
-          </div>
-          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
-            Crear cuenta con google
-          </button>
-          <p className="text-center text-gray-500 text-sm pt-1">
-            ¿Ya eres un miembro?{' '}<br></br>
-
-            <button className="text-sm text-orange-500 hover:underline">
-            
-              <Link href = "/">Iniciar sesión</Link>
-             
-          </button>
-          </p>   
-          
+        <div className = "flex justify-center mb-1 text-gray-500">
+          <label>
+            - o -
+          </label>
         </div>
+        <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+          Crear cuenta con google
+        </button>
+        <p className="text-center text-gray-500 text-sm pt-1">
+          ¿Ya eres un miembro?{' '}<br></br>
+
+          <button className="text-sm text-orange-500 hover:underline">     
+            <Link href = "/">Iniciar sesión</Link>
+          </button>
+        </p>   
+          
+      </div>
     </div>
   );
 };
