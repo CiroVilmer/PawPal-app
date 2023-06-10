@@ -1,4 +1,6 @@
 import Email from "next-auth/providers/email";
+import bcrypt from "bcrypt";
+
 import { z } from "zod";
 import {
   createTRPCRouter,
@@ -19,7 +21,11 @@ export const userRouter = createTRPCRouter({
             password: z.string(),
         })
     )
-    .mutation(({ input, ctx }) => {
+    .mutation(async ({ input, ctx }) => {
+
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(input.password, salt);
+
         const user = prisma.user.create({
         data:{
             name: input.name,
@@ -31,7 +37,7 @@ export const userRouter = createTRPCRouter({
             //         emailUpdates: input.emailUpdates
             //     },
             // },
-            password: input.password,
+            password: hashedPassword,
         }    
         });
         return user

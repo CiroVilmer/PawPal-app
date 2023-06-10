@@ -8,8 +8,8 @@ import { useRef } from 'react';
 import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi'
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 
   {
     TextInput,
@@ -41,6 +41,19 @@ import { any } from 'zod';
     const router = useRouter()
     const { mutate: findUser} = api.user.findUser.useMutation();
     
+    const tostError = () => toast.error("Usuario o contraseña incorrectos", {
+      
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      
+    })
+
     const formik = useFormik({
       initialValues:{
         email: '',
@@ -69,6 +82,7 @@ import { any } from 'zod';
 
       if(!status?.ok){
         console.log("User not Logged in")
+        tostError()
         //alertar al usuario que el email o la contraseña son incorrectos
       }
     }
@@ -84,6 +98,7 @@ import { any } from 'zod';
 
     
     return ( 
+      
       <div className="flex h-screen items-center max-w-screen-lg  p-3 container justify-center lg:ml-28 lg:justify-start">
         <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
           <div className="flex justify-center font-bold py-1 mb-16">
@@ -92,7 +107,6 @@ import { any } from 'zod';
             </h1>
              
           </div>
-          
           <form action="" onSubmit={formik.handleSubmit}>
             <div>
               <Input.Wrapper withAsterisk label = "Correo electronico" className='w-96 mb-5'> 
@@ -161,6 +175,7 @@ import { any } from 'zod';
           </p>   
           
         </div>
+        <ToastContainer/>
       </div>
     );
   }

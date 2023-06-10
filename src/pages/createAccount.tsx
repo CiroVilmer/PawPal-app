@@ -6,6 +6,8 @@ import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
 import { number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 
 {
   TextInput,
@@ -63,8 +65,6 @@ export function CreateAccount(): JSX.Element
       })
     }
 
-
-    
   return (
     
     <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
@@ -145,8 +145,7 @@ export function CreateAccount(): JSX.Element
           </div>
               
                 
-              
-  
+
           <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
             Crear cuenta 
           </button>  

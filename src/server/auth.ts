@@ -12,6 +12,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { request } from "http";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
+import bcrypt from "bcrypt";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -80,8 +81,9 @@ export const authOptions: NextAuthOptions = {
             email,
           },
         });
-
-        if (user?.password === password) {
+        const hashedPassword = user?.password?.toString() || "";
+        const isMatch = await bcrypt.compare(password, hashedPassword);
+        if (isMatch && user) {
           return user;
         } else {
           throw new Error("No user found");
