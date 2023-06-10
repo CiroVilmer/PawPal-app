@@ -66,6 +66,11 @@ import { any } from 'zod';
         
         void router.push("/homepage")
       }
+
+      if(!status?.ok){
+        console.log("User not Logged in")
+        //alertar al usuario que el email o la contraseña son incorrectos
+      }
     }
 
 

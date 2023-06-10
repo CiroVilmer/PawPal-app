@@ -13,7 +13,7 @@ export const userRouter = createTRPCRouter({
         z.object({
             name: z.string(),
             surName: z.string(),
-            dni: z.string(),
+            dni: z.number(),
             email: z.string(),
             // emailUpdates: z.boolean(),
             password: z.string(),

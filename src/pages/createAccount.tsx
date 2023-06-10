@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
-import { z } from "zod";
+import { number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import 
 {
@@ -39,7 +39,7 @@ export function CreateAccount(): JSX.Element
       initialValues: {
         name: '',
         surName: '',
-        dni: '',
+        dni: 0,
         email: '',
         password: '',
       },
@@ -47,7 +47,7 @@ export function CreateAccount(): JSX.Element
       onSubmit
     })
 
-    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: string; }) {
+    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: number; }) {
       console.log(values)
 
       createAccount(values, {
@@ -58,6 +58,7 @@ export function CreateAccount(): JSX.Element
 
           console.log(error);
           console.log("User not Created");
+          //alertar al usuario que el mail puede estar en uso
         }
       })
     }
@@ -107,7 +108,7 @@ export function CreateAccount(): JSX.Element
           <div>
             <Input.Wrapper id="dni" withAsterisk label="Documento">
               <Input
-                type='string'
+                type='number'
                 id="dni"
                 placeholder="47026956"
                 maxLength={8}
