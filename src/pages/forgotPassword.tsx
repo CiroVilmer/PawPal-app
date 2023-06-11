@@ -1,14 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
-import { useFormik } from 'formik';
 import { useState } from 'react';
-import { api } from "~/utils/api";
 import { Stepper,Button, Group, ColorPicker } from '@mantine/core';
-import { IconSquareRounded } from '@tabler/icons-react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
 import { multiStepForm } from './multiStepForm';
-import { relative } from 'path';
-import { emailForm } from './emailForm';
+import NewPassword from './newPassword';
+import EmailForm from './emailForm';
+import RecoveryCode from './recoveryCode';
+
 
     
 
@@ -19,7 +17,7 @@ export function forgotPassword():JSX.Element
     const [highestStepVisited, setHighestStepVisited] = useState(active);
   
     const handleStepChange = (nextStep: number) => {
-      const fueraDeLimite = nextStep > 3 || nextStep < 0;
+      const fueraDeLimite = nextStep > 2 || nextStep < 0;
   
       if (fueraDeLimite) {
         return;
@@ -30,41 +28,36 @@ export function forgotPassword():JSX.Element
     };
     const shouldAllowSelectStep = (step: number) => highestStepVisited >= step && active !== step;
 
-    const {steps, currentStepIndex, back, next, isFirstStep, isLastStep} = multiStepForm([])
+    
+    
+    const {steps, step, currentStepIndex, back, next, isFirstStep, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
     
     return( 
         
-        //<div className="container max-w-md mr-auto absolute mt-15 left-28">
-        <div className = "flex justify-start max-w-md mt-20 ml-28">        
+        <div className='flex max-w-md items-center'>
             
-      
-            <Button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" variant='normal'>
-                <Link href="/emailForm">formulario email</Link>
-            </Button>
-                    
-
-                <Stepper size="xs" active={currentStepIndex} color='orange'>
+            
+               {step}
+               
+               <Stepper size="xs" active={currentStepIndex} color='orange'>
                     <Stepper.Step label="Paso 1" description="Ingresar mail" />
                     <Stepper.Step label="Paso 2" description="Código de seguridad" />
-                    <Stepper.Step label="Paso 3" description="Reestablecer contraseña" />
+                    <Stepper.Step label="Paso 3" description="Reestablecer contraseña" /> 
                 </Stepper>
 
                 <div className='pt-5 pb-3'>
                     {!isFirstStep && 
                     <Button type="button" variant="light" color='orange' leftIcon={<AiOutlineArrowLeft></AiOutlineArrowLeft>} style={{color:"orange"}} onClick={back}>
-                    Back
+                        Back
                     </Button>}
-                    <Button type='button' variant="light" color='orange' rightIcon={<AiOutlineArrowRight></AiOutlineArrowRight>} className='text-orange-600 relative ' onClick={next}>{isLastStep ? "Reestablecer contraseña":"Next step"}</Button>
+                        
+                    {!isLastStep && (
+                    <Button type='button' variant="light" color='orange' rightIcon={<AiOutlineArrowRight></AiOutlineArrowRight>} className='text-orange-600 relative' onClick={next}>
+                        {isLastStep ? "Reestablecer contraseña" : "Obtener codigo"}
+                    </Button>)}                
                 </div>  
-               
-                    
-                
-                
-                           
             
-        </div>
-        
-        
+        </div>     
     )
 }
 

@@ -136,7 +136,7 @@ import { any } from 'zod';
               
             </div>
               
-            <Flex className="flex items-center mb-8" direction={"row"} gap={"lg"}>
+            <Flex className="flex items-center mb-8" direction={"row"} justify={"space-between"}>
               <Checkbox
                 color='orange'
                 size={"xs"}
@@ -146,6 +146,7 @@ import { any } from 'zod';
                 <Link href = "/forgotPassword">¿Olvidaste tu contraseña?</Link>
               </button>
             </Flex>
+
             
             <div>
               <button className="w-full bg-orange-500 text-white rounded-md py-2 mb-1 hover:bg-orange-600" type='submit'>
