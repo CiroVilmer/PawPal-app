@@ -35,25 +35,25 @@ import { any } from 'zod';
 
 
   export function AuthenticationTitle(): JSX.Element {
-    const {data : session} = useSession() 
-    // ALGO PARA EL BOTON DE SIGN IN
+    
 
     const router = useRouter()
     const { mutate: findUser} = api.user.findUser.useMutation();
     
     const tostError = () => toast.error("Usuario o contraseña incorrectos", {
       
-      position: "top-left",
+      position: "bottom-left",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: false,
+      pauseOnHover: true,
       draggable: true,
       progress: undefined,
       theme: "light",
       
     })
 
+    
     const formik = useFormik({
       initialValues:{
         email: '',
@@ -100,7 +100,7 @@ import { any } from 'zod';
     return ( 
       
       <div className="flex h-screen items-center max-w-screen-lg  p-3 container justify-center lg:ml-28 lg:justify-start">
-        <div className="border-solid border border-gray rounded-md shadow-md p-8 ">
+        <div className="border-solid border border-gray rounded-xl shadow-md p-8 ">
           <div className="flex justify-center font-bold py-1 mb-16">
             <h1 className="text-5xl font-bold text-black px-12">
               Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>

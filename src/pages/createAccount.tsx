@@ -68,7 +68,7 @@ export function CreateAccount(): JSX.Element
   return (
     
     <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
-      <div className="border-solid border border-gray rounded-md w-62 shadow-md p-8">
+      <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
         <div className="flex justify-center font-bold py-1 text-xl mb-3">
           <h1 className="text-5xl font-bold text-black">
             Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
@@ -107,11 +107,11 @@ export function CreateAccount(): JSX.Element
   
           <div>
             <Input.Wrapper id="dni" withAsterisk label="Documento">
-              <Input
+              <Input  
+                
+                placeholder='34567829'
+                id='dni'
                 type='number'
-                id="dni"
-                placeholder="47026956"
-                maxLength={8}
                 required
                 {...formik.getFieldProps('dni')}
               />
@@ -144,8 +144,6 @@ export function CreateAccount(): JSX.Element
             
           </div>
               
-                
-
           <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
             Crear cuenta 
           </button>  
@@ -175,6 +173,4 @@ export function CreateAccount(): JSX.Element
 
 export default CreateAccount;
 
-function setInputValue(arg0: string) {
-  throw new Error('Function not implemented.');
-}
+
