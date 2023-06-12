@@ -12,30 +12,27 @@ const NewPassword:React.FC = () => {
         
         <FormWrapper >
 
-            <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
-                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-            </h1>
+                <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
+                    Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                </h1>
+                <div className="flex justify-center mt-8 mb-3">
+                    <button className="text-md text-gray-800">         
+                    <Link href = "/">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
+                    </button>
+                </div>
+                <label className="flex justify-center text-center font-thin text-lg mb-6">
+                    Ingresa la nueva contraseña.  
+                </label>
+                <PasswordInput
+                    label="Nueva contraseña"
+                    placeholder="contraseña123"
+                    visibilityToggleIcon={({ reveal }) => reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                    mb="xl"
+                />
                 
-            <label className="flex justify-center text-center font-thin text-lg mb-10">
-                Ingresar la nueva contraseña
-            </label>
-            <Stack maw={360} mx="auto">
-                <PasswordInput
-                    label="Contraseña"
-                    placeholder="contraseña123"
-                    visibilityToggleIcon={({ reveal }) => reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                />
-                <PasswordInput
-                    label="Confirmar contraseña"
-                    placeholder="contraseña123"
-                    visibilityToggleIcon={({ reveal }) => reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                />
                 <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600" type='submit'>
                     Reestablecer contraseña  
                 </button>
-                
-            </Stack>
-
         </FormWrapper>
     )
 }

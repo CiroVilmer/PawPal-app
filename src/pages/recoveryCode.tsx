@@ -20,7 +20,7 @@ const RecoveryCode : React.FC = () => {
             <label className="flex justify-center text-center font-thin text-lg mb-16">
                 Te enviamos un código a tu casilla de mail
             </label>
-            <Group position='center'mb={21}>
+            <Group position='center'mb={30}>
                 <PinInput type="number" size='xl' autoFocus></PinInput>
             </Group>
             
