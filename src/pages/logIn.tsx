@@ -191,6 +191,9 @@ import { time } from 'console';
           
         </div>
         <ToastContainer/>
+        <button className="border border-solid border-rounded rounded-xl text-sm text-orange-500 hover:underline">            
+              <Link href = "/mapa">mapa</Link>
+            </button>
       </div>
     );
   }
