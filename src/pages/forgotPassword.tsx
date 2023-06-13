@@ -8,9 +8,7 @@ import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
 import { FormWrapper } from "./FormWrapper"
 import Link from "next/link"
 import { toast } from "react-toastify"
-
-
-
+import { Formik, useFormik } from "formik"
 
 
 export function forgotPassword():JSX.Element
@@ -18,6 +16,7 @@ export function forgotPassword():JSX.Element
     const [active, setActive] = useState(1);
     const [highestStepVisited, setHighestStepVisited] = useState(active);
   
+
     const handleStepChange = (nextStep: number) => {
       const fueraDeLimite = nextStep > 2 || nextStep < 0;
   
@@ -44,7 +43,7 @@ export function forgotPassword():JSX.Element
       })
     
     const {steps, step, currentStepIndex, back, next, isFirstStep, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
-    
+
     return( 
         <div className="flex h-screen  items-center p-3 justify-center lg:justify-start  lg:ml-28">    
             <div className="flex flex-col border-solid border border-gray rounded-xl shadow-md p-8 max-w-md ">   
@@ -74,13 +73,14 @@ export function forgotPassword():JSX.Element
 
                     <Flex className="ml-auto">
                         {!isLastStep && (
-                        <Button
+                        <Button 
                             type="button"
                             variant="light"
                             color="orange"
                             rightIcon={<AiOutlineArrowRight />}
                             className="text-orange-600"
                             onClick={next}
+                            
                         >
                             Siguiente
                         </Button>

@@ -28,6 +28,7 @@ import
 import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
 import { router } from '@trpc/server';
 import { any } from 'zod';
+import { time } from 'console';
 
   async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
@@ -40,18 +41,31 @@ import { any } from 'zod';
     const router = useRouter()
     const { mutate: findUser} = api.user.findUser.useMutation();
     
-    const tostError = () => toast.error("Usuario o contraseña incorrectos", {
+    const toastError = () => toast.error("Usuario o contraseña incorrectos", {
       
       position: "bottom-left",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       theme: "light",
       
     })
+
+    const toastSuccess = () => toast.success("Usuario logeado con éxito", {
+
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
+
 
     
     const formik = useFormik({
@@ -76,13 +90,13 @@ import { any } from 'zod';
 
       if(status?.ok){
         console.log("User Logged in") 
-        
         void router.push("/homepage")
       }
 
       if(!status?.ok){
         console.log("User not Logged in")
-        tostError()
+
+        toastError()
         //alertar al usuario que el email o la contraseña son incorrectos
       }
     }

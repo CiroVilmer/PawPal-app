@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
-import { number, z } from "zod";
+import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,35 +35,62 @@ export function CreateAccount(): JSX.Element
 {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
-    const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
 
-    const formik = useFormik({
-      initialValues: {
-        name: '',
-        surName: '',
-        dni: 0,
-        email: '',
-        password: '',
+  const userCreatedAlert = () => toast.success("Usuario creado con éxito", {
+    position: "bottom-left",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  })
+
+  const userNotCreatedAlert = () => toast.error("Usuario no creado", {
+    position: "bottom-left",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  })
+
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      surName: '',
+      dni: 0,
+      email: '',
+      password: '',
+    },
+    validate: register_validate,
+    onSubmit
+
+  })
+
+  async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: number; }) {
+    console.log(values)
+
+    createAccount(values, {
+      onSuccess: () => {
+        console.log("User Created");
+        userCreatedAlert();
+       },
+      onError: (error) => {
+        console.log(error);
+        userNotCreatedAlert();
+        console.log("User not Created");
+        //alertar al usuario que el mail puede estar en uso
+        
       },
-      validate: register_validate,
-      onSubmit
-    })
-
-    async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: number; }) {
-      console.log(values)
-
-      createAccount(values, {
-        onSuccess: () => {
-          console.log("User Created");
-        },
-        onError: (error) => {
-
-          console.log(error);
-          console.log("User not Created");
-          //alertar al usuario que el mail puede estar en uso
-        }
-      })
-    }
+      
+    });
+  }
 
   return (
     
@@ -167,6 +194,7 @@ export function CreateAccount(): JSX.Element
         </p>   
           
       </div>
+      <ToastContainer/>
     </div>
   );
 };

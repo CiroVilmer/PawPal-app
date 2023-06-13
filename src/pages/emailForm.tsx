@@ -2,7 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { FormWrapper } from './FormWrapper';
 import {Input} from '@mantine/core'
+import { useFormik } from 'formik';
+import { get } from 'http';
+import { getFetch } from '@trpc/client';
+
 const EmailForm : React.FC = () => {
+
     return(
 
         <FormWrapper >
