@@ -1,5 +1,5 @@
 import {Stepper} from '@mantine/core';
-import { multiStepForm } from './multiStepForm';
+import { multiStepForm } from './Components/multiStepForm';
 
 
 export function ProgressBar() : JSX.Element {
@@ -8,7 +8,7 @@ export function ProgressBar() : JSX.Element {
     
     return(
 
-    
+        
         <Stepper size="xs" active={currentStepIndex} color='orange'>
             <Stepper.Step label="Paso 1" description="Ingresar mail" />
             <Stepper.Step label="Paso 2" description="Código de seguridad" />

@@ -1,11 +1,11 @@
 import { Stepper,Flex, Button} from "@mantine/core"
 import React, { ReactNode,useState } from "react"
-import { multiStepForm } from "./multiStepForm"
+import { multiStepForm } from "./Components/multiStepForm"
 import EmailForm from "./emailForm"
 import RecoveryCode from "./recoveryCode"
 import NewPassword from "./newPassword"
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
-import { FormWrapper } from "./FormWrapper"
+import { FormWrapper } from "./Components/FormWrapper"
 import Link from "next/link"
 import { toast } from "react-toastify"
 import { Formik, useFormik } from "formik"
@@ -15,7 +15,6 @@ export function forgotPassword():JSX.Element
 {
     const [active, setActive] = useState(1);
     const [highestStepVisited, setHighestStepVisited] = useState(active);
-  
 
     const handleStepChange = (nextStep: number) => {
       const fueraDeLimite = nextStep > 2 || nextStep < 0;
@@ -40,9 +39,11 @@ export function forgotPassword():JSX.Element
         progress: undefined,
         theme: "light",
         
-      })
+    })
+
     
-    const {steps, step, currentStepIndex, back, next, isFirstStep, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
+
+    const {steps, step, currentStepIndex, back, nextForm, isFirstStep, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
 
     return( 
         <div className="flex h-screen  items-center p-3 justify-center lg:justify-start  lg:ml-28">    
@@ -79,7 +80,7 @@ export function forgotPassword():JSX.Element
                             color="orange"
                             rightIcon={<AiOutlineArrowRight />}
                             className="text-orange-600"
-                            onClick={next}
+                            onClick={nextForm}
                             
                         >
                             Siguiente
@@ -87,7 +88,7 @@ export function forgotPassword():JSX.Element
                         )}
                     </Flex>
                 </Flex>
-                
+   
 
                     
                     

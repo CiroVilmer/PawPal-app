@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import { PasswordInput,Stack } from "@mantine/core";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { FormWrapper } from "./FormWrapper";
+import { FormWrapper } from "./Components/FormWrapper";
 import Link from "next/link";
 
 
 
 const NewPassword:React.FC = () => {
+
+    
 
     return(
         
@@ -20,14 +22,14 @@ const NewPassword:React.FC = () => {
                     <Link href = "/">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
                     </button>
                 </div>
-                <label className="flex justify-center text-center font-thin text-lg mb-6">
-                    Ingresa la nueva contraseña.  
+                <label className="flex justify-center text-center font-thin text-lg mb-7">
+                    Ingresa la nueva contraseña para efectuar el cambio.  
                 </label>
                 <PasswordInput
                     label="Nueva contraseña"
                     placeholder="contraseña123"
                     visibilityToggleIcon={({ reveal }) => reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                    mb="xl"
+                    mb={32}
                 />
                 
                 <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600" type='submit'>
