@@ -14,7 +14,9 @@ import NewPassword from './newPassword';
 const EmailForm : React.FC = () => {
     
     
-    const {steps, step, currentStepIndex, back, nextForm, isFirstStep, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
+    const { step, currentStepIndex} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
+
+    
 
     return(
 
@@ -42,9 +44,7 @@ const EmailForm : React.FC = () => {
                 />
                 {/* {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null} */}
                 </Input.Wrapper>
-                <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600" type='submit' onClick={nextForm}>
-                    Enviar código  
-                </button>
+                
                 
         </FormWrapper>
     )
