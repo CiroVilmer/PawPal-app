@@ -1,17 +1,12 @@
 import React, {useState} from "react";
 import { PasswordInput,Stack } from "@mantine/core";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { FormWrapper } from "./Components/FormWrapper";
 import Link from "next/link";
-
-
+import { FormWrapper } from "./Components/FormWrapper";
 
 const NewPassword:React.FC = () => {
-
-    
-
     return(
-        
+
         <FormWrapper >
 
                 <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">

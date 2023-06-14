@@ -10,26 +10,39 @@ import Link from "next/link"
 import { toast } from "react-toastify"
 import { Formik, useFormik } from "formik"
 import next from "next/types"
+import { procedureTypes } from "@trpc/server"
 
 
 export function forgotPassword():JSX.Element
 {
-    function handleClick() {
-        nextStep();
-    }
-
-    const {nextStep, steps, currentStepIndex} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
-
+    
+    let {step, nextStep, currentStepIndex, isLastStep} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
+    
+    
     return( 
         <div className="flex h-screen  items-center p-3 justify-center lg:justify-start  lg:ml-28">    
             <div className="flex flex-col border-solid border border-gray rounded-xl shadow-md p-8 max-w-md ">   
                 {/* TENGO QUE SUMARLE A CURRENT STEP INDEX PARA MOSTRAR LOS FORMS */}
-                {steps[currentStepIndex]}
-                
+                {step}
+                                
+                {!isLastStep && (
+                <Button 
+                    type='button' 
+                    variant="light" 
+                    color='orange' 
+                    rightIcon={<AiOutlineArrowRight></AiOutlineArrowRight>} 
+                    className='text-orange-600 justify-end' 
+                    onClick={nextStep}
+                    
+                    >
+
+                    siguiente
+                </Button>)}
             </div>   
-            <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600" type='submit' onClick={handleClick}>
-                   {currentStepIndex} Enviar código 
-            </button> 
+            
+                    
+                            
+            
         </div>
     )
 }

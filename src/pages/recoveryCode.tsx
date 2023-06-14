@@ -1,9 +1,7 @@
-
 import Link from 'next/link';
 import React from 'react';
 import { PinInput, Group } from '@mantine/core';
 import { FormWrapper } from './Components/FormWrapper';
-
 
 const RecoveryCode : React.FC = () => {
     return(
@@ -17,7 +15,7 @@ const RecoveryCode : React.FC = () => {
                     <Link href = "/">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
                 </button>
             </div>
-            <label className="flex justify-center text-center font-thin text-lg mb-12">
+            <label className="flex justify-center text-center font-thin text-lg mb-16">
                 Te enviamos un código a tu casilla de mail
             </label>
             <Group position='center'mb={45}>

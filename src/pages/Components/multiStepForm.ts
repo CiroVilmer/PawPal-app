@@ -16,11 +16,14 @@ export function multiStepForm(steps: ReactElement[]){
             return i+1})
     }
 
+    
+
     return{
         currentStepIndex,
         steps,
         step: steps[currentStepIndex],
-        nextStep,        
+        nextStep,
+        isLastStep: currentStepIndex ===  steps.length - 1
     }
     
 }
