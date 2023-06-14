@@ -23,6 +23,7 @@
     "@trpc/server": "^10.26.0",
     "bcrypt": "^5.1.0",
     "formik": "^2.4.1",
+    "fs": "^0.0.1-security",
     "leaflet": "^1.9.4",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",
@@ -58,7 +59,14 @@
   },
   "ct3aMetadata": {
     "initVersion": "7.13.1"
+  },
+  "browser": {
+    "fs": false,
+    "dns": false,
+    "net": false,
+    "child_process": false,
+    "tls": false
+    
   }
 
 }
-
