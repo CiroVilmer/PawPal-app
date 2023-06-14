@@ -1,9 +1,9 @@
 import { Stepper,Flex, Button } from "@mantine/core"
 import React, { ReactNode } from "react"
 import { multiStepForm } from "./multiStepForm"
-import EmailForm from "./emailForm"
-import RecoveryCode from "./recoveryCode"
-import NewPassword from "./newPassword"
+import EmailForm from "../emailForm"
+import RecoveryCode from "../recoveryCode"
+import NewPassword from "../newPassword"
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
  
 
@@ -13,7 +13,7 @@ type FormWrapperProps = {
 
 export function FormWrapper({children} : FormWrapperProps){
 
-    const {currentStepIndex, isFirstStep, isLastStep, back, next} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
+    const {currentStepIndex, isFirstStep, isLastStep, back, nextForm} = multiStepForm([<EmailForm/>,<RecoveryCode/>,<NewPassword/>])
 
 
     return (
