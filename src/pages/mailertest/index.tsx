@@ -1,43 +1,45 @@
 import { NextPage } from "next";
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import { transporter } from "../../server/api/mailer";
 import { api } from "~/utils/api";
 import { z } from "zod";
-
+import { useFormik } from "formik";
     
 const emailGet = {
     email: "",
 };
 
+
 async function sendEmail(){
-    const user = api.user.getUserByEmail.useQuery(emailGet);
+    // const user = api.user.getUserByEmail.useQuery(emailGet);
+    const user = "cirov2005@gmail.com";
 
-    if (user){
-        console.log(user);
+    console.log(user);
 
-        await transporter.sendMail({
-            from: '"Fred Foo 👻" <foo@example.com>', // sender address
-            to: user.data?.email, // list of receivers
-            subject: "Password change", // Subject line
-            text: "CODE", // plain text body
-            html: "<b>Hello world?</b>", // html body
-        });
-
-    }
+    await transporter.sendMail({
+        from: 'pawpal.contacto@gmail.com', // sender address
+        to: user, // list of receivers
+        subject: "Password change", // Subject line
+        text: "CODE", // plain text body
+        html: "<b>Hello world?</b>", // html body
+    }, function(err: any, info: any){
+        if(err){
+            console.log(err);
+        }else{
+            console.log(info);
+        }
+    });
 }
 interface Props {}
 const mailerTest: NextPage = (Props): JSX.Element =>  {
 
     return (
         <div className="sign in form">
-                <form  >
+                <form  onSubmit={sendEmail}>
                     <input 
                     type="text" 
                     placeholder="Username"
-                    />
-                    <input 
-                    type="password" 
-                    placeholder="Password" 
+                    
                     />
                     <button type="submit">Sign In</button>
                 </form>
