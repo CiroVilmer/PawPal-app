@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { api } from "~/utils/api";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -8,31 +8,31 @@ import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import 
-{
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Anchor,
-  Paper,
-  Title,
-  Text,
-  Container,
-  Group,
-  Button,
-  Input,
-  NumberInput,
-  Flex
+import { TRPCError } from '@trpc/server';
+import {
+TextInput,
+PasswordInput,
+Checkbox,
+Anchor,
+Paper,
+Title,
+Text,
+Container,
+Group,
+Button,
+Input,
+NumberInput,
+Flex
 } from '@mantine/core';
 import { object } from 'zod';
+import { on } from 'events';
 
 async function handleGoogleSignin() {
-    signIn('google',{callbackUrl:"http://localhost:3000"})
+  signIn('google', { callbackUrl: "http://localhost:3000" })
 }
 
 
-export function CreateAccount(): JSX.Element  
-{
+export function CreateAccount(): JSX.Element {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
   const [passwordShown, setPasswordShown] = useState(false);
@@ -73,127 +73,128 @@ export function CreateAccount(): JSX.Element
 
   })
 
-  async function onSubmit(values: { email: string; name: string; surName:string;  password: string;}) {
+  async function onSubmit(values: { email: string; name: string; surName: string; password: string; }) {
     console.log(values)
-    event?.preventDefault();
-
-    const user = createAccount(values);
-
-    if(user === null){
-      console.log(user);
-      userNotCreatedAlert();
-    }else{
+    
+    try {
+      const response = await createAccount(values);
+      console.log(response)
       userCreatedAlert();
     }
+     catch (error) {
+      if (error instanceof TRPCError) {
+        userNotCreatedAlert();
+      }
+  }
   }
 
-  return (
-    
-    <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
-      <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
-        <div className="flex justify-center font-bold py-1 text-xl mb-3">
-          <h1 className="text-5xl font-bold text-black">
-            Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-          </h1>
-        </div>
+      return (
 
-        <form action="" onSubmit={formik.handleSubmit}>
+        <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
+          <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
+            <div className="flex justify-center font-bold py-1 text-xl mb-3">
+              <h1 className="text-5xl font-bold text-black">
+                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+              </h1>
+            </div>
 
-          <Flex direction={"row"} gap={"md"}>
-            
-            <Input.Wrapper withAsterisk label="Nombre">
-                <Input
-                  type="string"
-                  id="first_name"
-                  placeholder="Pepe"
-                  size='sm'
-                  required
-                  {...formik.getFieldProps('name')}
-                />
-              {formik.errors.name && formik.touched.name ? <div className = "text-red-500 text-xs">{formik.errors.name}</div> : null}
-            </Input.Wrapper>
+            <form action="" onSubmit={formik.handleSubmit}>
 
-            <Input.Wrapper withAsterisk label="Apellido">
-                <Input
-                  type="string"
-                  id="last_name"
-                  placeholder="Urizar"
-                  required
-                  {...formik.getFieldProps('surName')}
-  
-                />
-              
-              {formik.errors.surName && formik.touched.surName ? <div className = "text-red-500 text-xs">{formik.errors.surName}</div> : null} 
-            </Input.Wrapper>
-          </Flex>
-  
-          <div>
-            
-            
-            <Input.Wrapper withAsterisk label="Correo electrónico">
-              <Input
-                type="string"
-                id="email"
-                placeholder="Ejemplo@gmail.com"
-                required
-                {...formik.getFieldProps('email')}
-              />
-              {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
-            </Input.Wrapper>
-            <Input.Wrapper withAsterisk label="Contraseña" className=''>
-              <PasswordInput
-                placeholder="Password"
-                required
-                
-                {...formik.getFieldProps('password')}
-                visibilityToggleIcon={({ reveal, size }) =>
-                reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-              />
-              
-              {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
-            </Input.Wrapper>
-            <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-6'>
-              <PasswordInput
-                placeholder="Password"
-                required
-                
-                {...formik.getFieldProps('confirmPassword')}
-                visibilityToggleIcon={({ reveal, size }) =>
-                reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-              />
-              
-              {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className = "text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
-            </Input.Wrapper>
+              <Flex direction={"row"} gap={"md"}>
+
+                <Input.Wrapper withAsterisk label="Nombre">
+                  <Input
+                    type="string"
+                    id="first_name"
+                    placeholder="Pepe"
+                    size='sm'
+                    required
+                    {...formik.getFieldProps('name')}
+                  />
+                  {formik.errors.name && formik.touched.name ? <div className="text-red-500 text-xs">{formik.errors.name}</div> : null}
+                </Input.Wrapper>
+
+                <Input.Wrapper withAsterisk label="Apellido">
+                  <Input
+                    type="string"
+                    id="last_name"
+                    placeholder="Urizar"
+                    required
+                    {...formik.getFieldProps('surName')}
+
+                  />
+
+                  {formik.errors.surName && formik.touched.surName ? <div className="text-red-500 text-xs">{formik.errors.surName}</div> : null}
+                </Input.Wrapper>
+              </Flex>
+
+              <div>
+
+
+                <Input.Wrapper withAsterisk label="Correo electrónico">
+                  <Input
+                    type="string"
+                    id="email"
+                    placeholder="Ejemplo@gmail.com"
+                    required
+                    {...formik.getFieldProps('email')}
+                  />
+                  {formik.errors.email && formik.touched.email ? <div className="text-red-500 text-xs">{formik.errors.email}</div> : null}
+                </Input.Wrapper>
+                <Input.Wrapper withAsterisk label="Contraseña" className=''>
+                  <PasswordInput
+                    placeholder="Password"
+                    required
+
+                    {...formik.getFieldProps('password')}
+                    visibilityToggleIcon={({ reveal, size }) =>
+                      reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                  />
+
+                  {formik.errors.password && formik.touched.password ? <div className="text-red-500 text-xs">{formik.errors.password}</div> : null}
+                </Input.Wrapper>
+                <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-6'>
+                  <PasswordInput
+                    placeholder="Password"
+                    required
+
+                    {...formik.getFieldProps('confirmPassword')}
+                    visibilityToggleIcon={({ reveal, size }) =>
+                      reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                  />
+
+                  {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className="text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
+                </Input.Wrapper>
+              </div>
+
+              <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
+                Crear cuenta
+              </button>
+
+            </form>
+
+            <div className="flex justify-center mb-1 text-gray-500">
+              <label>
+                - o -
+              </label>
+            </div>
+            <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+              Crear cuenta con google
+            </button>
+            <p className="text-center text-gray-500 text-sm pt-1">
+              ¿Ya eres un miembro?{' '}<br></br>
+
+              <button className="text-sm text-orange-500 hover:underline">
+                <Link href="/">Iniciar sesión</Link>
+              </button>
+            </p>
+
           </div>
-              
-          <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
-            Crear cuenta 
-          </button>  
-
-        </form>
-
-        <div className = "flex justify-center mb-1 text-gray-500">
-          <label>
-            - o -
-          </label>
+          <ToastContainer />
         </div>
-        <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
-          Crear cuenta con google
-        </button>
-        <p className="text-center text-gray-500 text-sm pt-1">
-          ¿Ya eres un miembro?{' '}<br></br>
+      );
+    };
 
-          <button className="text-sm text-orange-500 hover:underline">     
-            <Link href = "/">Iniciar sesión</Link>
-          </button>
-        </p>   
-          
-      </div>
-      <ToastContainer/>
-    </div>
-  );
-};
-
-export default CreateAccount;
+    export default CreateAccount;
 
 

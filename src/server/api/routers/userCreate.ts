@@ -1,11 +1,10 @@
 import Email from "next-auth/providers/email";
 import bcrypt from "bcrypt";
-
 import { z } from "zod";
 import {
-  createTRPCRouter,
-  publicProcedure,
-  protectedProcedure,
+    createTRPCRouter,
+    publicProcedure,
+    protectedProcedure,
 } from "~/server/api/trpc";
 
 import { prisma } from "~/server/db";
@@ -21,85 +20,87 @@ export const userRouter = createTRPCRouter({
             password: z.string(),
         })
     )
-    .mutation(async ({ input, ctx }) => {
+        .mutation(async ({ input, ctx }) => {
 
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(input.password, salt);
+            const salt = await bcrypt.genSalt();
+            const hashedPassword = await bcrypt.hash(input.password, salt);
 
-        const checkUser = prisma.user.findUnique({where:{
-            email: input.email
-        }})
+            const checkUser = await ctx.prisma.user.findFirst({
+                where: {
+                    email: input.email
+                }
+            })
 
-        if(await checkUser === null){
-            const user = prisma.user.create({
-                data:{
-                    name: input.name,
-                    surName: input.surName,
-                    email: input.email,
-                    // userPreference:{
-                    //     create:{
-                    //         emailUpdates: input.emailUpdates
-                    //     },
-                    // },
-                    password: hashedPassword,
-                }    
+            if (!checkUser) {
+                const user = prisma.user.create({
+                    data: {
+                        name: input.name,
+                        surName: input.surName,
+                        email: input.email,
+                        // userPreference:{
+                        //     create:{
+                        //         emailUpdates: input.emailUpdates
+                        //     },
+                        // },
+                        password: hashedPassword,
+                    }
                 });
-                return user
-        }else{
-            return null
-        }
+                return true
+            } else {
+                throw new Error("User already exists")
+            }
 
-    }),
+        }),
 
 
     loginUser: protectedProcedure
-    .input(z.object({
-        email: z.string(),
-        password: z.string(),
-    }))
-    .query(({ input, ctx }) => {
-        const user = prisma.user.findUnique({
-            where:{
-                email: input.email,
-            },
-        });
-        return user
-    }
-    ),
+        .input(z.object({
+            email: z.string(),
+            password: z.string(),
+        }))
+        .query(({ input, ctx }) => {
+            const user = prisma.user.findUnique({
+                where: {
+                    email: input.email,
+                },
+            });
+            return user
+        }
+        ),
 
     findUser: publicProcedure
-    .input(z.object({
-        email: z.string(),
-    }))
-    .mutation(({ input, ctx }) => {
-        const user = prisma.user.findUnique({
-            where:{
-                email: input.email,
-            },
-        });
+        .input(z.object({
+            email: z.string(),
+        }))
+        .mutation(({ input, ctx }) => {
+            const user = prisma.user.findUnique({
+                where: {
+                    email: input.email,
+                },
+            });
 
-        if(user){
-            return user
-        }else{
-            return null
-        }
-    },
-    ),
+            if (user) {
+                return user
+            } else {
+                return null
+            }
+        },
+        ),
 
     getUserByEmail: publicProcedure
-    .input(z.object({
-        email: z.string(),
-    }))
-    .query(({ input, ctx }) => {
-        const user = prisma.user.findUnique({
-            where:{
-                email: input.email,
-            },
-        });
-        return user
-    }
+        .input(z.object({
+            email: z.string(),
+        }))
+        .query(({ input, ctx }) => {
+            const user = prisma.user.findUnique({
+                where: {
+                    email: input.email,
+                },
+            });
+            return user
+        }
 
-    ),
-    
+        ),
+
 
 });
