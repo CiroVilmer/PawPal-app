@@ -35,7 +35,7 @@ import { time } from 'console';
   }
 
 
-  export function AuthenticationTitle(): JSX.Element {
+  export function LogInForm(): JSX.Element {
     
 
     const router = useRouter()
@@ -197,3 +197,5 @@ import { time } from 'console';
       </div>
     );
   }
+
+export default LogInForm;

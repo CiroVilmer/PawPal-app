@@ -35,6 +35,13 @@ export function register_validate(values){
         errors.password = "La contraseña no puede tener espacios";
     }
 
+    if(!values.confirmPassword){
+        errors.confirmPassword = "Confirmar contraseña";
+    }else if(values.confirmPassword !== values.password){
+        errors.confirmPassword = "Las contraseñas no coinciden";
+    }
+
+
 
 
     // if(!values.confirm_password){
@@ -51,9 +58,7 @@ export function register_validate(values){
         errors.surName = "Apellido requerido";
     }
 
-    if(!values.dni){
-        errors.dni = "DNI requerido";
-    }
+
 
 
     return errors;

@@ -9,13 +9,13 @@ import {
 } from "~/server/api/trpc";
 
 import { prisma } from "~/server/db";
+import { error } from "console";
 //min 36:25
 export const userRouter = createTRPCRouter({
     createUser: publicProcedure.input(
         z.object({
             name: z.string(),
             surName: z.string(),
-            dni: z.number(),
             email: z.string(),
             // emailUpdates: z.boolean(),
             password: z.string(),
@@ -26,21 +26,29 @@ export const userRouter = createTRPCRouter({
         const salt = await bcrypt.genSalt();
         const hashedPassword = await bcrypt.hash(input.password, salt);
 
-        const user = prisma.user.create({
-        data:{
-            name: input.name,
-            surName: input.surName,
-            dni: input.dni, 
-            email: input.email,
-            // userPreference:{
-            //     create:{
-            //         emailUpdates: input.emailUpdates
-            //     },
-            // },
-            password: hashedPassword,
-        }    
-        });
-        return user
+        const checkUser = prisma.user.findUnique({where:{
+            email: input.email
+        }})
+
+        if(await checkUser === null){
+            const user = prisma.user.create({
+                data:{
+                    name: input.name,
+                    surName: input.surName,
+                    email: input.email,
+                    // userPreference:{
+                    //     create:{
+                    //         emailUpdates: input.emailUpdates
+                    //     },
+                    // },
+                    password: hashedPassword,
+                }    
+                });
+                return user
+        }else{
+            return null
+        }
+
     }),
 
 

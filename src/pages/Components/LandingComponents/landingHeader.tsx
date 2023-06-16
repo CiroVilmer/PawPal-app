@@ -25,8 +25,8 @@ export function Header():JSX.Element {
                     <button>Inicio</button>
                     <button>Mapa</button>
                     <button>Contacto</button>
-                    <button className='border-2 border-black p-1 w-36 rounded-md hover:bg-zinc-100 hover:transition-colors'>Crear cuenta</button>
-                    <button className='border-2 border-black bg-black text-white p-1 w-36 rounded-md'>Iniciar sesión</button>
+                    <button className='border-2 border-black p-1 w-36 rounded-md hover:bg-zinc-100 hover:transition-colors'><Link href={'/createAccount'}>Crear cuenta</Link></button>
+                    <button className='border-2 border-black bg-black text-white p-1 w-36 rounded-md'><Link href={'/logIn'}>Iniciar sesión</Link> </button>
                     
                 </Flex>
                 <div className='flex items-center justify-end md:hidden'>

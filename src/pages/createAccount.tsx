@@ -64,32 +64,27 @@ export function CreateAccount(): JSX.Element
     initialValues: {
       name: '',
       surName: '',
-      dni: 0,
       email: '',
       password: '',
+      confirmPassword: '',
     },
     validate: register_validate,
     onSubmit
 
   })
 
-  async function onSubmit(values: { email: string; name: string; surName:string;  password: string; dni: number; }) {
+  async function onSubmit(values: { email: string; name: string; surName:string;  password: string;}) {
     console.log(values)
+    event?.preventDefault();
 
-    createAccount(values, {
-      onSuccess: () => {
-        console.log("User Created");
-        userCreatedAlert();
-       },
-      onError: (error) => {
-        console.log(error);
-        userNotCreatedAlert();
-        console.log("User not Created");
-        //alertar al usuario que el mail puede estar en uso
-        
-      },
-      
-    });
+    const user = createAccount(values);
+
+    if(user === null){
+      console.log(user);
+      userNotCreatedAlert();
+    }else{
+      userCreatedAlert();
+    }
   }
 
   return (
@@ -133,18 +128,7 @@ export function CreateAccount(): JSX.Element
           </Flex>
   
           <div>
-            <Input.Wrapper id="dni" withAsterisk label="Documento">
-              <Input  
-                
-                placeholder='34567829'
-                id='dni'
-                type='number'
-                required
-                {...formik.getFieldProps('dni')}
-              />
-              
-              {formik.errors.dni && formik.touched.dni ? <div className = "text-red-500 text-xs">{formik.errors.dni}</div> : null}
-            </Input.Wrapper>
+            
             
             <Input.Wrapper withAsterisk label="Correo electrónico">
               <Input
@@ -156,7 +140,7 @@ export function CreateAccount(): JSX.Element
               />
               {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null}
             </Input.Wrapper>
-            <Input.Wrapper withAsterisk label="Contraseña" className='mb-6'>
+            <Input.Wrapper withAsterisk label="Contraseña" className=''>
               <PasswordInput
                 placeholder="Password"
                 required
@@ -168,7 +152,18 @@ export function CreateAccount(): JSX.Element
               
               {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
             </Input.Wrapper>
-            
+            <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-6'>
+              <PasswordInput
+                placeholder="Password"
+                required
+                
+                {...formik.getFieldProps('confirmPassword')}
+                visibilityToggleIcon={({ reveal, size }) =>
+                reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+              />
+              
+              {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className = "text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
+            </Input.Wrapper>
           </div>
               
           <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
