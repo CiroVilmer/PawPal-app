@@ -113,8 +113,8 @@ import { time } from 'console';
     
     return ( 
       
-      <div className="flex h-screen items-center max-w-screen-lg  p-3 container justify-center lg:ml-28 lg:justify-start">
-        <div className="border-solid border border-gray rounded-xl shadow-md p-8 ">
+      <div className="flex h-screen items-center max-w-screen   bg-orange-400">
+        <div className="border border-solid bg-white rounded-xl shadow-md justify-center p-8 lg:ml-28 lg:justify-start">
           <div className="flex justify-center font-bold py-1 mb-16">
             <h1 className="text-5xl font-bold text-black px-12">
               Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
@@ -191,7 +191,7 @@ import { time } from 'console';
           
         </div>
         <ToastContainer/>
-        <button className="border border-solid border-rounded rounded-xl text-sm text-orange-500 hover:underline">            
+        <button className="border border-rounded rounded-md ml-20 py-5 px-5 border-pink-500 text-sm bg-pink-500 text-white hover:underline">            
               <Link href = "/mapa">mapa</Link>
             </button>
       </div>

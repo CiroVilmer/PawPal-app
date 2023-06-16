@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { AuthenticationTitle } from "./logIn";
+import { LandingPage } from "./landingPage";
 
 
 
@@ -15,8 +15,7 @@ const Home = () => {
       <main className="">
         <div className="">
           
-          <AuthenticationTitle/>
-      
+          <LandingPage/>  
 
         </div>
       </main>
