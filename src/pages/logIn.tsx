@@ -113,13 +113,16 @@ import { time } from 'console';
     
     return ( 
       
-      <div className="flex h-screen items-center max-w-screen   bg-orange-400">
+      <div className="flex h-screen items-center max-w-screen">
         <div className="border border-solid bg-white rounded-xl shadow-md justify-center p-8 lg:ml-28 lg:justify-start">
           <div className="flex justify-center font-bold py-1 mb-16">
-            <h1 className="text-5xl font-bold text-black px-12">
-              Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-            </h1>
-             
+            <button>
+                <Link href="/">
+                  <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
+                    Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                  </h1>
+                </Link>
+            </button>
           </div>
           <form action="" onSubmit={formik.handleSubmit}>
             <div>
@@ -163,7 +166,7 @@ import { time } from 'console';
 
             
             <div>
-              <button className="w-full bg-orange-500 text-white rounded-md py-2 mb-1 hover:bg-orange-600" type='submit'>
+              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1" type='submit'>
                 Iniciar sesión
                 
               </button>
@@ -176,7 +179,7 @@ import { time } from 'console';
             </label>
           </div>
 
-          <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-md py-2 hover:bg-gray-100">
+          <button type="button" onClick={handleGoogleSignin} className="w-full border-2 border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2">
             Iniciar sesión con google
           </button>
 

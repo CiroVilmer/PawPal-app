@@ -24,12 +24,14 @@ const NewPassword:React.FC = () => {
                     label="Nueva contraseña"
                     placeholder="contraseña123"
                     visibilityToggleIcon={({ reveal }) => reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                    mb={32}
+                    mb={52}
                 />
                 
-                <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600" type='submit'>
+                <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600 mb-9" type='submit'>
                     Reestablecer contraseña  
                 </button>
+               
+                
         </FormWrapper>
     )
 }

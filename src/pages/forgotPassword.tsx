@@ -31,12 +31,13 @@ export function forgotPassword():JSX.Element
                     variant="light" 
                     color='orange' 
                     rightIcon={<AiOutlineArrowRight></AiOutlineArrowRight>} 
-                    className='text-orange-600 justify-end' 
+                    className='text-orange-600 w-1/2 self-center' 
                     onClick={nextStep}
+                    
                     
                     >
 
-                    siguiente
+                    Siguiente
                 </Button>)}
             </div>   
             

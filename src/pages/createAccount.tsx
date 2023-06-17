@@ -92,10 +92,15 @@ export function CreateAccount(): JSX.Element {
 
         <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
           <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
+            
             <div className="flex justify-center font-bold py-1 text-xl mb-3">
-              <h1 className="text-5xl font-bold text-black">
-                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-              </h1>
+              <button>
+                <Link href="/">
+                  <h1 className="text-5xl font-bold text-black">
+                    Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                  </h1>
+                </Link>
+              </button>
             </div>
 
             <form action="" onSubmit={formik.handleSubmit}>
@@ -141,7 +146,7 @@ export function CreateAccount(): JSX.Element {
                   />
                   {formik.errors.email && formik.touched.email ? <div className="text-red-500 text-xs">{formik.errors.email}</div> : null}
                 </Input.Wrapper>
-                <Input.Wrapper withAsterisk label="Contraseña" className=''>
+                <Input.Wrapper withAsterisk label="Contraseña">
                   <PasswordInput
                     placeholder="Password"
                     required
@@ -167,7 +172,7 @@ export function CreateAccount(): JSX.Element {
                 </Input.Wrapper>
               </div>
 
-              <button className="w-full bg-orange-500 text-white rounded-xl py-2 hover:bg-orange-600" type='submit'>
+              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1" type='submit'>
                 Crear cuenta
               </button>
 
@@ -178,14 +183,14 @@ export function CreateAccount(): JSX.Element {
                 - o -
               </label>
             </div>
-            <button type="button" onClick={handleGoogleSignin} className="w-full bg-white-500 border border-sm border-black text-black rounded-xl py-2 hover:bg-gray-100">
+            <button type="button" onClick={handleGoogleSignin} className="w-full border-2 border-black bg-white text-black  hover:text-white hover:bg-gray-800 focus:text-black focus:bg-white rounded-xl py-2">
               Crear cuenta con google
             </button>
             <p className="text-center text-gray-500 text-sm pt-1">
               ¿Ya eres un miembro?{' '}<br></br>
 
               <button className="text-sm text-orange-500 hover:underline">
-                <Link href="/">Iniciar sesión</Link>
+                <Link href="/logIn">Iniciar sesión</Link>
               </button>
             </p>
 
