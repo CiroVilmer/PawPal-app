@@ -35,7 +35,7 @@ const EmailForm : React.FC = () => {
                 />
                 {/* {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs">{formik.errors.email}</div> : null} */}    
             </Input.Wrapper>
-            <button className="w-full bg-orange-500 text-white rounded-md py-2 mb-8 hover:bg-orange-600" type='submit'>
+            <button className="w-full bg-orange-400 text-white rounded-md py-2 mb-8 hover:bg-orange-500 active:bg-orange-600 transform transition duration-300 ease-in active:scale-[.98]" type='submit'>
                 Enviar código  
             </button>
         </FormWrapper>

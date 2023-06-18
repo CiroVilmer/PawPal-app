@@ -20,7 +20,7 @@ export function forgotPassword():JSX.Element
     
     
     return( 
-        <div className="flex h-screen  items-center p-3 justify-center lg:justify-start  lg:ml-28">    
+        <div className="flex h-screen  items-center justify-center lg:justify-start  lg:ml-28">    
             <div className="flex flex-col border-solid border border-gray rounded-xl shadow-md p-8 max-w-md ">   
                 {/* TENGO QUE SUMARLE A CURRENT STEP INDEX PARA MOSTRAR LOS FORMS */}
                 {step}
@@ -31,7 +31,7 @@ export function forgotPassword():JSX.Element
                     variant="light" 
                     color='orange' 
                     rightIcon={<AiOutlineArrowRight></AiOutlineArrowRight>} 
-                    className='text-orange-600 w-1/2 self-center' 
+                    className='text-orange-600 w-1/2 self-center transition duration-200 hover:-translate-y-1' 
                     onClick={nextStep}
                     
                     

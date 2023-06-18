@@ -9,12 +9,18 @@ const NewPassword:React.FC = () => {
 
         <FormWrapper >
 
-                <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
-                    Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-                </h1>
-                <div className="flex justify-center mt-8 mb-3">
+            <div className="flex justify-center font-bold ">
+                <button>
+                    <Link href="/">
+                    <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-1">
+                        Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                    </h1>
+                    </Link>
+                </button>
+            </div>
+                <div className="flex justify-center mt-7 mb-3">
                     <button className="text-md text-gray-800">         
-                    <Link href = "/">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
+                    <Link href = "/logIn">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
                     </button>
                 </div>
                 <label className="flex justify-center text-center font-thin text-lg mb-7">
@@ -27,7 +33,7 @@ const NewPassword:React.FC = () => {
                     mb={52}
                 />
                 
-                <button className="w-full bg-orange-500 text-white rounded-md py-2 hover:bg-orange-600 mb-9" type='submit'>
+                <button className="w-full bg-orange-400 text-white rounded-md py-2 hover:bg-orange-500 active:bg-orange-600 transform transition duration-300 ease-in active:scale-[.98] mb-9" type='submit'>
                     Reestablecer contraseña  
                 </button>
                

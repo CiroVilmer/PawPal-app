@@ -7,12 +7,18 @@ const RecoveryCode : React.FC = () => {
     return(
         <FormWrapper >
           
-            <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
-                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-            </h1>
+          <div className="flex justify-center font-bold ">
+                <button>
+                    <Link href="/">
+                    <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
+                        Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                    </h1>
+                    </Link>
+                </button>
+            </div>
             <div className="flex justify-center mt-8 mb-5">
                 <button className="text-md text-gray-800">         
-                    <Link href = "/">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
+                    <Link href = "/logIn">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
                 </button>
             </div>
             <label className="flex justify-center text-center font-thin text-lg mb-10">
@@ -21,7 +27,7 @@ const RecoveryCode : React.FC = () => {
             <Group position='center'mb={45}>
                 <PinInput type="number" size='xl' autoFocus></PinInput>
             </Group>
-            <button className="w-full bg-orange-500 text-white rounded-md mb-6 py-2 hover:bg-orange-600" type='submit'>
+            <button className="mb-6 w-full bg-orange-400 text-white rounded-md py-2 hover:bg-orange-500 active:bg-orange-600 transform transition duration-300 ease-in active:scale-[.98]" type='submit'>
                     Verificar código  
                 </button>
             

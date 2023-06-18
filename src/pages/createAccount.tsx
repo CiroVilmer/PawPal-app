@@ -90,10 +90,10 @@ export function CreateAccount(): JSX.Element {
 
       return (
 
-        <div className="flex h-screen items-center max-w-screen-lg p-3 container  justify-center lg:ml-28 lg:justify-start">
+        <div className="flex h-screen items-center max-w-screen-lg container  justify-center lg:ml-28 lg:justify-start">
           <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
             
-            <div className="flex justify-center font-bold py-1 text-xl mb-3">
+            <div className="flex justify-center font-bold py-1 text-xl mb-4">
               <button>
                 <Link href="/">
                   <h1 className="text-5xl font-bold text-black">
@@ -158,7 +158,7 @@ export function CreateAccount(): JSX.Element {
 
                   {formik.errors.password && formik.touched.password ? <div className="text-red-500 text-xs">{formik.errors.password}</div> : null}
                 </Input.Wrapper>
-                <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-6'>
+                <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9'>
                   <PasswordInput
                     placeholder="Password"
                     required
@@ -172,24 +172,25 @@ export function CreateAccount(): JSX.Element {
                 </Input.Wrapper>
               </div>
 
-              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1" type='submit'>
+              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
                 Crear cuenta
               </button>
 
             </form>
 
-            <div className="flex justify-center mb-1 text-gray-500">
-              <label>
-                - o -
-              </label>
+            <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
+              <div className="border-t grow ml-8 border-gray-200"></div>
+              <label> o </label>
+              <div className=" border-t grow mr-8 border-gray-200"></div>
             </div>
-            <button type="button" onClick={handleGoogleSignin} className="w-full border-2 border-black bg-white text-black  hover:text-white hover:bg-gray-800 focus:text-black focus:bg-white rounded-xl py-2">
+
+            <button type="button" onClick={handleGoogleSignin} className="w-full border-2 border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
               Crear cuenta con google
             </button>
             <p className="text-center text-gray-500 text-sm pt-1">
               ¿Ya eres un miembro?{' '}<br></br>
 
-              <button className="text-sm text-orange-500 hover:underline">
+              <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">
                 <Link href="/logIn">Iniciar sesión</Link>
               </button>
             </p>

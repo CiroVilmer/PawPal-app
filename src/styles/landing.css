@@ -1,0 +1,9 @@
+.hovered .content-wrapper {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+  
+  .hovered .content {
+    margin-top: 2rem;
+  }

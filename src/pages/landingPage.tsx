@@ -16,26 +16,48 @@ export function LandingPage(): JSX.Element{
                     
                 </div> 
                 
-                <div className="sticky h-auto flex flex-col items-center justify-start bg-amber-200 text-white">
+                <div className="sticky h-auto flex flex-col items-center justify-start bg-stone-200 text-white">
                     <h2 className="text-4xl pt-28">¿Cómo funciona nuestra aplicación?</h2>
                     
                     
-                    <div className="flex justify-center flex-col md:flex-row mt-36 p-4 gap-16">
-                        
-                        <div className="flex justify-center bg-white shadow-md border-2 border-orange-300 w-80 h-96 rounded-lg  dark:bg-gray-800 dark:border-gray-700">
-                            <img src="/mapa.jpg" alt="mapa" className="absolute top-52 mx-auto h-36 w-44 rounded-full shadow-md border-2 border-orange-400"/>
+                    <div className="flex justify-center flex-col md:flex-row mt-44 gap-14 mb-20 ">
+                        <div className="bg-slate-50 w-80 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group">
+                            <div className="bg-cover aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm transition-all duration-500 z-20" style={{ backgroundImage: 'url(mapa-personitas.png)' }}></div>
+                            <div id="content-wrapper" className="flex flex-col opacity-0 group-hover:opacity-100 invisible group-hover:visible h-0 group-hover:h-full delay-200 z-10">
+                                <div id="content" className="flex flex-col items-center -mt-28  group-hover:mt-2 transition-all duration-300 delay-600">
+                                    <h1 className="font-bold text-2xl tracking-wide text-slate-900">Mapa</h1>
+                                    <p className="font-light text-center text-slate-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque at sequi, fugiat aut molestias, est voluptas eveniet perspiciatis fuga esse aspernatur odio numquam! Modi provident quos saepe reprehenderit aliquam amet.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex justify-center bg-white shadow-md border-2 border-orange-300 w-80 h-96 rounded-lg  dark:bg-gray-800 dark:border-gray-700">
-                            <img src="/publicaciones.png" alt="mapa" className="absolute top-52 mx-auto h-36 w-44 rounded-full bg-white shadow-md border-2 border-orange-400"/>
+                        <div className="bg-slate-50 w-80 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group">
+                            <div className="bg-cover  aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm  transition-all duration-500 z-20" style={{ backgroundImage: 'url(/publicaciones.png)' }}></div>
+                            <div id="content-wrapper" className="flex flex-col opacity-0 group-hover:opacity-100 invisible group-hover:visible h-0 group-hover:h-full delay-200 z-10">
+                                <div id="content" className="flex flex-col items-center -mt-28  group-hover:mt-2 transition-all duration-300 delay-600">
+                                    <h1 className="font-bold text-2xl tracking-wide text-slate-900">Publicaciones</h1>
+                                    <p className="font-light text-center text-slate-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque at sequi, fugiat aut molestias, est voluptas eveniet perspiciatis fuga esse aspernatur odio numquam! Modi provident quos saepe reprehenderit aliquam amet.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex justify-center bg-white shadow-md border-2 border-orange-300 w-80 h-96 rounded-lg  dark:bg-gray-800 dark:border-gray-700">
+                        <div className="bg-slate-50 w-80 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group">
+                            <div className="bg-cover  aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm  transition-all duration-500 z-20" style={{ backgroundImage: 'url(/chat.jpg)' }}></div>
+                            <div id="content-wrapper" className="flex flex-col opacity-0 group-hover:opacity-100 invisible group-hover:visible h-0 group-hover:h-full delay-200 z-10">
+                                <div id="content" className="flex flex-col items-center -mt-28  group-hover:mt-2 transition-all duration-300 delay-600">
+                                    <h1 className="font-bold text-2xl tracking-wide text-slate-900">Chat</h1>
+                                    <p className="font-light text-center text-slate-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque at sequi, fugiat aut molestias, est voluptas eveniet perspiciatis fuga esse aspernatur odio numquam! Modi provident quos saepe reprehenderit aliquam amet.</p>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                     
                     
                 </div>
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-stone-300 text-white">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-orange-300 text-white">
+                    <h2 className="text-4xl">facu se la come</h2>
+                    <p>y ciro se la da</p>
+                </div>
+
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-amber-200 text-white">
                     <h2 className="text-4xl">facu se la come</h2>
                     <p>y ciro se la da</p>
                 </div>
