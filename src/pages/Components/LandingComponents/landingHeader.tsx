@@ -5,10 +5,11 @@ import HamburgerButton from './hamburger';
 
 
 
-export function Header():JSX.Element {
-
+export function Header(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
 
+    
+      
 
     return(
         <div className= 
@@ -22,7 +23,7 @@ export function Header():JSX.Element {
             <div className="grow w-full ">
                 <Flex direction={'row'} className='hidden md:flex md:items-center md:justify-end md:gap-3 lg:gap-8'>
                     <button className='hover:-translate-y-1 duration-300'>Inicio</button>
-                    <button className='hover:-translate-y-1 duration-300'><Link href={'/mapa'}>Mapa</Link></button>
+                    <button className='hover:-translate-y-1 duration-300'><Link href={'/mapPage'}>Mapa</Link></button>
                     <button className='hover:-translate-y-1 duration-300'>Contacto</button>
                     <button className='border-2 p-1 w-36 rounded-md hover:bg-gray-100 active:bg-gray-200 transform transition duration-300 ease-in active:scale-[.98]'><Link href={'/createAccount'}>Crear cuenta</Link></button>
                     <button className='border-2 border-black bg-black text-white p-1 w-36 mr-10 rounded-md hover:text-black hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]'><Link href={'/logIn'}>Iniciar sesión</Link> </button>
@@ -37,3 +38,4 @@ export function Header():JSX.Element {
         </div>
     )
 }
+

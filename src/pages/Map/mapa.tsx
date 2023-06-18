@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Chip, Group } from "@mantine/core";
 
 const MapComponent: React.FC = () => {
   useEffect(() => {
@@ -19,27 +20,13 @@ const MapComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="map-container">
-      <div id="map"></div>
-
-      <style jsx>{`
-        .map-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-        }
-
-        #map {
-          width: 100%;
-          height: 100%;
-          max-width: 100%;
-          max-height: 100%;
-          // border: gray 8px solid;
-          // border-radius: 8px;
-          // outline: none;
-        }
-      `}</style>
+    <div className="flex items-center justify-center h-screen">
+      <div id="map" className="w-full h-full">
+        
+      </div>
+      
+        
+      
     </div>
   );
 };
