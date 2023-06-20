@@ -114,8 +114,8 @@ import { time } from 'console';
     
     return ( 
       
-      <div className="flex h-screen items-center max-w-screen">
-        <div className="border border-solid bg-white rounded-xl shadow-md justify-center p-8 lg:ml-28 lg:justify-start">
+      <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
+      <div className="w-full max-w-md md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-28 md:rounded-xl p-8 bg-slate-50">
           <div className="flex justify-center font-bold py-1 mb-16">
             <button>
                 <Link href="/">
@@ -125,9 +125,9 @@ import { time } from 'console';
                 </Link>
             </button>
           </div>
-          <form action="" onSubmit={formik.handleSubmit}>
+          <form action={''} onSubmit={formik.handleSubmit}>
             <div>
-              <Input.Wrapper withAsterisk label = "Correo electronico" className='w-96 mb-5'> 
+              <Input.Wrapper withAsterisk label = "Correo electronico" className='w-full mb-5'> 
                 <Input
                   type="email"
                   id="email"
@@ -161,7 +161,7 @@ import { time } from 'console';
                 label="Recuerdame"
               />
               <button className="text-orange-500 text-xs hover:underline transform transition duration-100 ease-out active:scale-[.99]">
-                <Link href = "/forgotPassword">¿Olvidaste tu contraseña?</Link>
+                <Link href = "/emailForm">¿Olvidaste tu contraseña?</Link>
               </button>
             </Flex>
 
@@ -196,9 +196,7 @@ import { time } from 'console';
           
         </div>
         <ToastContainer/>
-        <button className="border border-rounded rounded-md ml-20 py-5 px-5 border-pink-500 text-sm bg-pink-500 text-white hover:underline">            
-              <Link href = "/mapa">mapa</Link>
-            </button>
+        
       </div>
     );
   }

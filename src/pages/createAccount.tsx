@@ -90,8 +90,8 @@ export function CreateAccount(): JSX.Element {
 
       return (
 
-        <div className="flex h-screen items-center max-w-screen-lg container  justify-center lg:ml-28 lg:justify-start">
-          <div className="border-solid border border-gray rounded-xl w-62 shadow-md p-8">
+        <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
+          <div className="md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-28 md:rounded-xl p-8 bg-slate-50" >
             
             <div className="flex justify-center font-bold py-1 text-xl mb-4">
               <button>
