@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Chip, Group } from "@mantine/core";
 
 const MapComponent: React.FC = () => {
+  const [searchValue, setSearchValue] = useState('');
+
   useEffect(() => {
     const map = L.map('map').setView([-34.5695195, -58.4468003], 12);
 
@@ -19,14 +21,26 @@ const MapComponent: React.FC = () => {
     };
   }, []);
 
+  const handleSearch = () => {
+    console.log('Realizar búsqueda:', searchValue);
+    // Aquí puedes implementar la lógica de búsqueda en el mapa utilizando el valor de searchValue
+  };
+
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div id="map" className="w-full h-full">
-        
+    <div className="relative h-screen">
+      <div className="absolute top-4 left-4 z-10">
+        <input
+          type="text"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Buscar..."
+          className="px-2 py-1 rounded"
+        />
+        <button onClick={handleSearch} className="px-4 py-2 ml-2 bg-blue-500 text-white rounded">
+          Buscar
+        </button>
       </div>
-      
-        
-      
+      <div id="map" className="w-full h-full absolute top-0 left-0"></div>
     </div>
   );
 };
