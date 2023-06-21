@@ -22,9 +22,6 @@ export const userRouter = createTRPCRouter({
     )
         .mutation(async ({ input, ctx }) => {
 
-            const salt = await bcrypt.genSalt();
-            const hashedPassword = await bcrypt.hash(input.password, salt);
-
             const checkUser = await ctx.prisma.user.findFirst({
                 where: {
                     email: input.email
@@ -32,6 +29,10 @@ export const userRouter = createTRPCRouter({
             })
 
             if (!checkUser) {
+
+                const salt = await bcrypt.genSalt();
+                const hashedPassword = await bcrypt.hash(input.password, salt);
+
                 const user = prisma.user.create({
                     data: {
                         name: input.name,
@@ -45,7 +46,7 @@ export const userRouter = createTRPCRouter({
                         password: hashedPassword,
                     }
                 });
-                return true
+                return user
             } else {
                 throw new Error("User already exists")
             }

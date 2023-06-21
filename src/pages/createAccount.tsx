@@ -6,8 +6,8 @@ import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
 import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import toast, { Toaster } from 'react-hot-toast';
 import { TRPCError } from '@trpc/server';
 import {
 TextInput,
@@ -26,6 +26,7 @@ Flex
 } from '@mantine/core';
 import { object } from 'zod';
 import { on } from 'events';
+import { BsCcCircle } from 'react-icons/bs';
 
 async function handleGoogleSignin() {
   signIn('google', { callbackUrl: "http://localhost:3000" })
@@ -36,28 +37,6 @@ export function CreateAccount(): JSX.Element {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
   const [passwordShown, setPasswordShown] = useState(false);
-
-  const userCreatedAlert = () => toast.success("Usuario creado con éxito", {
-    position: "bottom-left",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  })
-
-  const userNotCreatedAlert = () => toast.error("Usuario no creado", {
-    position: "bottom-left",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  })
 
 
   const formik = useFormik({
@@ -73,19 +52,21 @@ export function CreateAccount(): JSX.Element {
 
   })
 
-  async function onSubmit(values: { email: string; name: string; surName: string; password: string; }) {
+  async function onSubmit(values: { email: string; name: string; surName: string; password: string;}) {
     console.log(values)
     
-    try {
-      const response = await createAccount(values);
-      console.log(response)
-      userCreatedAlert();
-    }
-     catch (error) {
-      if (error instanceof TRPCError) {
-        userNotCreatedAlert();
+    await createAccount(values, {
+      onSuccess: () => {
+        console.log("User Created")
+        toast.success("Usuario creado")
+      },
+      onError: (error) => {
+        console.log(error)
+        toast.error("Email en uso")
       }
-  }
+    })
+    
+
   }
 
       return (
@@ -196,7 +177,10 @@ export function CreateAccount(): JSX.Element {
             </p>
 
           </div>
-          <ToastContainer />
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
         </div>
       );
     };
