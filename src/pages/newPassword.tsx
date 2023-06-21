@@ -35,7 +35,7 @@ const NewPassword:React.FC = () => {
                     mb={28}
                 />
                     
-                <Progress size={"sm"} value={66} color="orange" animate></Progress>
+                <Progress size={"sm"} value={66} color="orange"></Progress>
                 <div className='flex justify-center mt-8'>
                     <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
                         <Link href={'./newPassword'}> Cambiar contraseña </Link>
