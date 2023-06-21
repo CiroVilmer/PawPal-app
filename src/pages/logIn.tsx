@@ -7,8 +7,9 @@ import { useFormik } from 'formik';
 import { useRef } from 'react';
 import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
-import {FiEyeOff, FiEye} from 'react-icons/fi'
-import { ToastContainer, toast } from 'react-toastify';
+import {FiEyeOff, FiEye} from 'react-icons/fi';
+import toast, { Toaster } from 'react-hot-toast';
+
 import 'react-toastify/dist/ReactToastify.css';
 import 
   {
@@ -40,31 +41,6 @@ import { time } from 'console';
 
     const router = useRouter()
     const { mutate: findUser} = api.user.findUser.useMutation();
-    
-    const toastError = () => toast.error("Usuario o contraseña incorrectos", {
-      
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      
-    })
-
-    const toastSuccess = () => toast.success("Usuario logeado con éxito", {
-
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })
 
 
     
@@ -95,8 +71,8 @@ import { time } from 'console';
 
       if(!status?.ok){
         console.log("User not Logged in")
+        toast.error("Email o contraseña incorrectos")
 
-        toastError()
         //alertar al usuario que el email o la contraseña son incorrectos
       }
     }
@@ -195,8 +171,10 @@ import { time } from 'console';
           </p>   
           
         </div>
-        <ToastContainer/>
-        
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     );
   }
