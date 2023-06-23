@@ -28,7 +28,7 @@ const MapComponent: React.FC = () => {
 
   return (
     <div className="relative h-screen">
-      <div className="absolute top-4 left-4 z-10">
+      <div className="absolute top-5 left-20 z-20">
         <input
           type="text"
           value={searchValue}
@@ -36,11 +36,11 @@ const MapComponent: React.FC = () => {
           placeholder="Buscar..."
           className="px-2 py-1 rounded"
         />
-        <button onClick={handleSearch} className="px-4 py-2 ml-2 bg-blue-500 text-white rounded">
+        <button onClick={handleSearch} className="px-4 py-1 ml-2 bg-orange-400 text-white rounded">
           Buscar
         </button>
       </div>
-      <div id="map" className="w-full h-full absolute top-0 left-0"></div>
+      <div id="map" className="w-full h-full absolute top-0 left-0 z-10"></div>
     </div>
   );
 };
