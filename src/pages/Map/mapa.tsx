@@ -28,7 +28,7 @@ const MapComponent: React.FC = () => {
 
   return (
     <div className="relative h-screen">
-      <div className="absolute top-5 left-20 z-20">
+      <div className="flex flex-row absolute top-5 left-20 z-20">
         <input
           type="text"
           value={searchValue}
@@ -39,6 +39,13 @@ const MapComponent: React.FC = () => {
         <button onClick={handleSearch} className="px-4 py-1 ml-2 bg-orange-400 text-white rounded">
           Buscar
         </button>
+        <Chip.Group multiple>
+          <Group position="center" mt="md">
+            <Chip value="1">Multiple chips</Chip>
+            <Chip value="2">Can be selected</Chip>
+            <Chip value="3">At a time</Chip>
+          </Group>
+      </Chip.Group>
       </div>
       <div id="map" className="w-full h-full absolute top-0 left-0 z-10"></div>
     </div>

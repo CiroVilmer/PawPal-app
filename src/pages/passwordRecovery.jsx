@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import EmailForm from './emailForm';
-import NewPassword from './newPassword';
-import RecoveryCode from './recoveryCode';
+import EmailForm from './CambiarContraseña/emailForm';
+import NewPassword from './CambiarContraseña/newPassword';
+import RecoveryCode from './CambiarContraseña/recoveryCode';
 
 const PasswordRecovery = () => {
   const [step, setStep] = useState(1);

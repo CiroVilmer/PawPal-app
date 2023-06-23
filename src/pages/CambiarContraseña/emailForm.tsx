@@ -24,7 +24,7 @@ const EmailForm : React.FC = () => {
                     </button>
                 </div>
                 <label className="flex justify-center text-center font-thin text-lg mb-5">
-                    Ingresa tu correo electrónico y te enviaremos un código para que recuperes el acceso a tu cuenta.  
+                    Ingresa el correo electrónico registrado y recibirás un código para cambiar tu contraseña.  
                 </label>
                 <Input.Wrapper label="Correo electrónico" mb={28}>
                     <Input

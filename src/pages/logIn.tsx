@@ -137,7 +137,7 @@ import { time } from 'console';
                 label="Recuerdame"
               />
               <button className="text-orange-500 text-xs hover:underline transform transition duration-100 ease-out active:scale-[.99]">
-                <Link href = "/emailForm">¿Olvidaste tu contraseña?</Link>
+                <Link href = "/passwordRecovery">¿Olvidaste tu contraseña?</Link>
               </button>
             </Flex>
 
