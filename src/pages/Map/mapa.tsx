@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import L from 'leaflet';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import { Chip, Group } from "@mantine/core";
+import { Chip, Group } from '@mantine/core';
+
+const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
 
 const MapComponent: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  useEffect(() => {
-    const map = L.map('map').setView([-34.5695195, -58.4468003], 12);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 20,
-    }).addTo(map);
-
-    return () => {
-      map.remove();
-    };
-  }, []);
-
   const handleSearch = () => {
     console.log('Realizar búsqueda:', searchValue);
-    // Aquí puedes implementar la lógica de búsqueda en el mapa utilizando el valor de searchValue
   };
 
   return (
     <div className="relative h-screen">
-      <div className="flex flex-row absolute top-5 left-20 z-20">
+      <div className="absolute top-6 left-20 z-20 flex items-center">
         <input
           type="text"
           value={searchValue}
@@ -36,18 +22,22 @@ const MapComponent: React.FC = () => {
           placeholder="Buscar..."
           className="px-2 py-1 rounded"
         />
-        <button onClick={handleSearch} className="px-4 py-1 ml-2 bg-orange-400 text-white rounded">
+        <button onClick={handleSearch} className="px-4 py-1 bg-orange-400 text-white rounded ml-2">
           Buscar
         </button>
+      </div>
+      <div className="absolute top-16 left-5 z-20 mt-4 md:mt-8 lg:mt-12">
         <Chip.Group multiple>
           <Group position="center" mt="md">
             <Chip value="1">Multiple chips</Chip>
             <Chip value="2">Can be selected</Chip>
             <Chip value="3">At a time</Chip>
           </Group>
-      </Chip.Group>
+        </Chip.Group>
       </div>
-      <div id="map" className="w-full h-full absolute top-0 left-0 z-10"></div>
+      <div id="map" className="w-full h-full absolute top-0 left-0 z-10">
+        <LeafletMap />
+      </div>
     </div>
   );
 };
