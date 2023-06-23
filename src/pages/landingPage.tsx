@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
 const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
   <div className="flex flex-col">
     <div className="flex justify-center">
-      <img src="/fotoProvisoria.png" alt={image} className="flex justify-center scale-[.85] mb-2 shadow-orange-500 shadow-lg hover:scale-[.90] duration-500"/>
+      <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 hover:shadow-lg  hover:scale-[.90] duration-500"/>
     </div>
     <h1 className='flex justify-center text-md font-bold mb-1'>{title}</h1>
     <p className='text-xs text-center max-w-xs px-7'>{description}</p>
@@ -42,21 +42,20 @@ export function LandingPage(): JSX.Element {
         <Header />
       
         <div className="flex justify-center flex-col w-full md:relative">
-            <div className="sticky top-7 h-screen bg-orange-300">
-                <div className="flex flex-row gap-48">
-                    <div className="flex flex-col mt-20 lg:mt-48 ml-20">
-                        <h1 className="font-bold flex mb-6 justify-start text-5xl">Bienvenido a PawPal!</h1>
-                        <h2 className="font-normal flex text-xl lg:max-w-xl justify-start text-left mb-8">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti repudiandae praesentium fugiat quia, saepe asperiores ut! Facere ullam amet quaerat natus! Ad deserunt ea architecto! Modi vel animi distinctio.
-                        </h2>
-                        <button className='border-2 p-1 w-36 h-12 rounded-md border-black hover:bg-orange-100 active:bg-orange-200 transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Empezar ahora</button>
-
-                    </div>
-                    <div className="mt-24 drop-shadow-2xl"><img  src="/Cool-dog.png" alt="perro"/></div>
-                </div>
+            <div className="sticky top-7 h-screen bg-orange-300 flex items-center">
+              <div className="flex flex-row items-center flex-grow justify-between mx-20">
+                  <div className="flex flex-col">
+                    <h1 className="font-bold flex mb-6 text-5xl">Bienvenido a PawPal!</h1>
+                    <h2 className="font-normal flex text-xl lg:max-w-xl  text-left mb-8">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti repudiandae praesentium fugiat quia, saepe asperiores ut! Facere ullam amet quaerat natus! Ad deserunt ea architecto! Modi vel animi distinctio.
+                    </h2>
+                    <button className='border-2 p-1 w-36 h-12 rounded-md border-black hover:bg-orange-100 active:bg-orange-200 transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Empezar ahora</button>
+                  </div>
+                  <div className="drop-shadow-2xl "><img  src="fotoProvisoria.png" alt=""/></div>
+              </div>
             </div>
 
-            <div className="sticky h-auto flex flex-col items-center justify-start bg-stone-400 ">
+            <div className="sticky h-auto flex flex-col items-center justify-start bg-stone-300 ">
               <h2 className="text-4xl pt-28 text-center font-semibold text-black mb-5">¿Cómo funciona nuestra aplicación?</h2>
               <h3 className='text-center text-black text-lg max-w-2xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi omnis recusandae, quasi totam voluptatum perferendis. Earum laboriosam, eius quaerat laborum iure nostrum, odit soluta consequatur obcaecati omnis et. Fuga, adipisci.</h3>
 
@@ -81,32 +80,32 @@ export function LandingPage(): JSX.Element {
               </div>
             </div>
 
-            <div className="sticky -top-3 h-auto bg-orange-300">
-              <div className="flex flex-row-reverse items-center my-24">
-                <div className="flex flex-col mr-8">
-                  <h1 className="font-bold flex mb-6 ml-20 justify-end text-right text-5xl">¿Cuál es nuestro objetivo?</h1>
-                  <h2 className="font-normal flex text-xl ml-20 lg:max-w-xl justify-end text-right">
+            <div className="sticky -top-3 h-screen bg-orange-300 flex items-center">
+              <div className="flex flex-row-reverse items-center flex-grow justify-between mx-20">
+                <div className="flex flex-col">
+                  <h1 className="font-bold flex mb-6 justify-end text-right text-5xl">¿Cuál es nuestro objetivo?</h1>
+                  <h2 className="font-normal flex text-xl lg:max-w-xl justify-end text-right">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti repudiandae praesentium fugiat quia, saepe asperiores ut! Facere ullam amet quaerat natus! Ad deserunt ea architecto! Modi vel animi distinctio.
                   </h2>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                     <Pics
-                      image="/fotoProvisoria"
+                      image="/fotoProvisoria.png"
                       title="Concientizar"
                       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam error quo at accusantium, voluptatem tenetur."
                     />
                     <Pics
-                      image="/fotoProvisoria"
+                      image="/fotoProvisoria.png"
                       title="Ayudar"
                       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam error quo at accusantium, voluptatem tenetur."
                     />
                     <Pics
-                      image="/fotoProvisoria"
+                      image="/fotoProvisoria.png"
                       title="Facilitar"
                       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam error quo at accusantium, voluptatem tenetur."
                     />
                     <Pics
-                      image="/fotoProvisoria"
+                      image="/fotoProvisoria.png"
                       title="Difundir"
                       description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam error quo at accusantium, voluptatem tenetur."
                     />
@@ -114,9 +113,17 @@ export function LandingPage(): JSX.Element {
               </div>   
             </div>
 
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-start bg-stone-400">
-            <h1 className="text-5xl mt-28">facu se la come</h1>
-            <p>y ciro se la da</p>
+            <div className="sticky top-0 h-screen flex  items-center justify-start bg-stone-300">
+            <div className="flex flex-row items-center flex-grow justify-between mx-20">
+                <div className="flex flex-col justify-start">
+                  <h1 className="font-bold flex mb-6 text-5xl text-left">Ponete en contacto con nosotros!</h1>
+                  <h2 className="font-normal flex text-xl lg:max-w-xl text-left mb-8">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti repudiandae praesentium fugiat quia, saepe asperiores ut! Facere ullam amet quaerat natus! Ad deserunt ea architecto! Modi vel animi distinctio.
+                  </h2>
+                  <button className='border-2 p-1 w-36 h-12 rounded-md border-black hover:bg-orange-100 active:bg-orange-200 transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Contacto</button>
+                </div>
+                <div className="shadow-xl"><img  src="/fotoProvisoria.png" alt="fotoProv"/></div>
+              </div>
             </div>
         </div>
         <Footer />
