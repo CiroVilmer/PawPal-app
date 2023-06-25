@@ -10,6 +10,7 @@ const MapComponent: React.FC = () => {
 
   const handleSearch = () => {
     console.log('Realizar búsqueda:', searchValue);
+    //Poner la lógica para buscar la dirección en el mapa
   };
 
   return (
