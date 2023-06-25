@@ -25,8 +25,14 @@ const LeafletMap: React.FC = () => {
             maxZoom: 20,
         }).addTo(map);
 
-        const marker = L.marker([-34.5499958, -58.454212], { icon: myIcon }).addTo(map);
-        marker.bindPopup("<b>Estás en ORT!</b><br>La sede de PAWPAL").openPopup;
+        function addMarker(lat: number, lng: number, name: string, description: string, map: L.Map) {
+            var marker = L.marker([lat, lng], {icon: myIcon}).addTo(map);
+            marker.bindPopup("<b>" + name + "</b><br>" + description).openPopup;
+        }
+
+        //PLANTILLA PARA AGREGAR MARCADORES AL MAPA
+        //addMarker(-lat, lng, "nombre", "descripcion");
+        addMarker(-34.5499958, -58.454212, "ORT", "La sede de PAWPAL", map);
 
         return () => {
             map.remove();
