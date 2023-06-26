@@ -3,7 +3,7 @@ import L from 'leaflet';
 
 var myIcon = L.icon({
     iconUrl: 'https://play-lh.googleusercontent.com/G5Z7H6eE-n5tSuCszYbf_SZHRAIEmB-zLzZk_DGOMKsf7um_thkZS4QbXcMn6Tql8nVI',
-    iconSize: [40 , 40],
+    iconSize: [40, 40],
 });
 
 const LeafletMap: React.FC = () => {
@@ -25,14 +25,20 @@ const LeafletMap: React.FC = () => {
             maxZoom: 20,
         }).addTo(map);
 
-        function addMarker(lat: number, lng: number, name: string, description: string, map: L.Map) {
-            var marker = L.marker([lat, lng], {icon: myIcon}).addTo(map);
-            marker.bindPopup("<b>" + name + "</b><br>" + description).openPopup;
-        }
+        function addMarker(lat: number, lng: number, name: string, description: string, myImage: string) {
+            var marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
+          
+            const content = document.createElement('div');
+            content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;
+            content.style.textAlign = 'center';
+          
+            marker.bindPopup(content).openPopup();
+          }
+          
 
         //PLANTILLA PARA AGREGAR MARCADORES AL MAPA
         //addMarker(-lat, lng, "nombre", "descripcion");
-        addMarker(-34.5499958, -58.454212, "ORT", "La sede de PAWPAL", map);
+        addMarker(-34.5499958, -58.454212, "ORT", "La sede de PAWPAL", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVJARrtwWfIeKn_D67r5yTFqvvy6X_FvlHloU23f1UGzvAvsIMDKLl92xO2qhIllEnbU4&usqp=CAU");
 
         return () => {
             map.remove();
