@@ -6,11 +6,11 @@ interface HamburgerButtonProps {
 }
 
 const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, setIsOpen }) => {
-  const genericHamburgerLine = `h-1 w-6 my-0.5 rounded-full bg-black transition ease transform duration-300`;
+  const genericHamburgerLine = `h-1 w-6 my-0.5 rounded-full bg-orange-600 transition ease transform duration-300`;
 
   return (
     <button
-      className="flex flex-col h-10 w-10 rounded justify-center items-center group"
+      className="flex flex-col rounded group"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div

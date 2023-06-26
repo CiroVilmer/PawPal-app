@@ -21,6 +21,7 @@ export function Footer(): JSX.Element {
                     <SiGmail className="mx-auto w-4 h-4"/>
                 </button>
                 
+                
 
             </div>
         </div>
