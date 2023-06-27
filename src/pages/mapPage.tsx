@@ -4,8 +4,9 @@ import { Chip, Group } from "@mantine/core";
 
 export default function MapPage() {
   return (
+    
     <div>
-      
+
       <MapComponent />
     </div>
   );

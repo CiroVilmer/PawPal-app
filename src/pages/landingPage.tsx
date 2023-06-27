@@ -31,8 +31,8 @@ const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
     <div className="flex justify-center">
       <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 hover:shadow-lg  hover:scale-[.90] duration-500"/>
     </div>
-    <h1 className='flex justify-center text-md font-bold mb-1'>{title}</h1>
-    <p className='text-xs text-center max-w-xs px-7'>{description}</p>
+    <h1 className='flex justify-center text-md font-bold mb-1'>{}</h1>
+    <p className='text-xs text-center max-w-xs px-7'>{}</p>
   </div>
 );
 
