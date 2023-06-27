@@ -27,7 +27,7 @@ const LeafletMap: React.FC = () => {
 
         function addMarker(lat: number, lng: number, name: string, description: string, myImage: string) {
             var marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
-          
+            
             const content = document.createElement('div');
             content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;
             content.style.textAlign = 'center';

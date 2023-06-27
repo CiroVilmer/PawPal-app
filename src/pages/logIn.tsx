@@ -11,7 +11,6 @@ import {FiEyeOff, FiEye} from 'react-icons/fi';
 import toast, { Toaster } from 'react-hot-toast';
 
 
-import 'react-toastify/dist/ReactToastify.css';
 import 
   {
     TextInput,

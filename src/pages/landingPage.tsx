@@ -42,8 +42,8 @@ export function LandingPage(): JSX.Element {
         <Header />
       
         <div className="flex justify-center flex-col w-full md:relative">
-            <div className="sticky top-7 h-screen bg-orange-300 flex items-center">
-              <div className="flex flex-row items-center flex-grow justify-between mx-20">
+            <div className="sticky top-0 h-screen bg-orange-300 ">
+              <div className="flex flex-row items-center flex-grow justify-between mx-20 mt-72">
                   <div className="flex flex-col">
                     <h1 className="font-bold flex mb-6 text-5xl">Bienvenido a PawPal!</h1>
                     <h2 className="font-normal flex text-xl lg:max-w-xl  text-left mb-8">

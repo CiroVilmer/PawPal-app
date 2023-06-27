@@ -20,13 +20,13 @@ const MapComponent: React.FC = () => {
   };
 
   const Chips: React.FC<ChipProps> = ({num, servicio}) => (
-    <Chip value={num} color='orange' variant='outline' className='shadow-md rounded-full'>{servicio}</Chip>
+    <Chip value={num} color='orange' variant='outline' className=''>{servicio}</Chip>
 
   );
 
   return (
     <div className="relative h-screen">
-      <div className="flex flex-row absolute flex-grow gap-8 left-20 z-20 items-center mt-5">
+      <div className="flex flex-col md:flex-row absolute flex-grow gap-8 md:left-20 z-20 items-center mt-5">
         <div className="relative group">
           <button
               onClick={handleSearch}
@@ -49,15 +49,21 @@ const MapComponent: React.FC = () => {
         
       
         <Chip.Group multiple>
-          <Group position="center">
+          <div className='flex flex-col md:flex-row w-72 overflow-x-scroll md:overflow-x-hidden lg:w-auto gap-4 overflow-hidden'>
             <Chips num='1' servicio='Veterinaria'/>
             <Chips num='2' servicio='Peluquería'/>
             <Chips num='3' servicio='Refugio'/>
             <Chips num='4' servicio='PetShop'/>
             <Chips num='5' servicio='Guardería'/>
+            <Chips num='6' servicio='Peluquería'/>
+            <Chips num='7' servicio='Refugio'/>
+            <Chips num='8' servicio='PetShop'/>
+            <Chips num='9' servicio='Guardería'/>
+            
+
             {/* <button className="flex justify-end items-center pr-3 py-1 w-16 h-8 border-none bg-slate-100 text-black  rounded-full "></button> */}
             
-          </Group>
+          </div>
         </Chip.Group>
       </div>
       <div id="map" className="w-full h-full absolute top-0 left-0 z-10">
