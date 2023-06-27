@@ -20,13 +20,13 @@ const MapComponent: React.FC = () => {
   };
 
   const Chips: React.FC<ChipProps> = ({num, servicio}) => (
-    <Chip value={num} color='orange' variant='light' className='border-2 rounded-full border-orange-200'>{servicio}</Chip>
+    <Chip value={num} color='orange' variant='outline' className='shadow-md rounded-full'>{servicio}</Chip>
 
   );
 
   return (
     <div className="relative h-screen">
-      <div className="flex flex-row absolute flex-grow gap-8 left-20 z-20 items-end mt-5">
+      <div className="flex flex-row absolute flex-grow gap-8 left-20 z-20 items-center mt-5">
         <div className="relative group">
           <button
               onClick={handleSearch}
@@ -49,7 +49,7 @@ const MapComponent: React.FC = () => {
         
       
         <Chip.Group multiple>
-          <Group position="center" mt="md">
+          <Group position="center">
             <Chips num='1' servicio='Veterinaria'/>
             <Chips num='2' servicio='Peluquería'/>
             <Chips num='3' servicio='Refugio'/>
