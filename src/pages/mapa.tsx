@@ -8,6 +8,7 @@ import { BsScissors, BsHouseHeartFill } from 'react-icons/bs';
 import { BiBone } from 'react-icons/bi';
 import { GiDogHouse } from 'react-icons/gi';
 import { ReactNode } from 'react';
+import EmailForm from './CambiarContraseña/emailForm';
 
 const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
 
@@ -32,29 +33,28 @@ const MapComponent: React.FC = () => {
   );
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
-      <div id="map" className="w-full h-full absolute top-0 left-0 z-10">
-        <LeafletMap />
-      </div>
+    <div className="relative h-screen w-screen">
+      <div className="flex flex-col">
+        <div id="map" className="w-full h-full absolute top-0 left-0 z-10">
+          <LeafletMap />
+        </div>
 
-      <div className="relative z-20 flex flex-col md:flex md:flex-row-reverse md:gap-8 md:absolute md:left-20 md:flex-grow md:items-center md:mt-5">
-        
-        <Chip.Group multiple>
-          <div className="flex flex-row gap-4 overflow-x-auto">
-            <Chips num="1" icono={<MdPets />} servicio="Veterinaria" />
-            <Chips num="2" icono={<BsScissors />} servicio="Peluquería" />
-            <Chips num="3" icono={<GiDogHouse />} servicio="Refugio" />
-            <Chips num="4" icono={<BiBone />} servicio="PetShop" />
-            <Chips num="5" icono={<BsHouseHeartFill />} servicio="Guardería" />
-            <Chips num="6" icono={<MdPets />} servicio="Veterinaria" />
-            <Chips num="7" icono={<BsScissors />} servicio="Peluquería" />
-          </div>
-        </Chip.Group>
-
-        <div className="relative flex items-end">
+        <div className="relative z-20 flex flex-col md:flex md:flex-row-reverse md:gap-8 md:absolute md:left-20 md:flex-grow md:items-center md:mt-5">
           
-            <div className="md:relative relative group">
-              
+          <Chip.Group multiple>
+            <div className="flex flex-row gap-4 overflow-x-auto">
+              <Chips num="1" icono={<MdPets />} servicio="Veterinaria" />
+              <Chips num="2" icono={<BsScissors />} servicio="Peluquería" />
+              <Chips num="3" icono={<GiDogHouse />} servicio="Refugio" />
+              <Chips num="4" icono={<BiBone />} servicio="PetShop" />
+              <Chips num="5" icono={<BsHouseHeartFill />} servicio="Guardería" />
+              <Chips num="6" icono={<MdPets />} servicio="Veterinaria" />
+              <Chips num="7" icono={<BsScissors />} servicio="Peluquería" />
+            </div>
+          </Chip.Group>
+
+          <div className="relative flex items-end">
+            <div className="md:relative relative group">    
               <input
                 type="text"
                 value={searchValue}
@@ -69,24 +69,25 @@ const MapComponent: React.FC = () => {
                 <FaSearchLocation />
               </button>
             </div>
-          
-        </div>
-      </div>
-      <div className='absolute bg-white rounded h-auto w-auto top-52 px-2 flex justify-start ml-3 items-center z-20'>
-        <div className='flex flex-col gap-24 mt-3'>
-          <div className='flex flex-col gap-3'>
-            <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-            <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-            <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-            <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>  
-          </div>
-          <div>            
-            <button className='bg-slate-300 rounded-full h-6 w-6 mb-3 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
           </div>
         </div>
-        
+        <div className='md:absolute md:bg-white md:rounded md:h-auto md:w-auto md:top-[25%] md:drop-shadow-xl md:px-2 md:ml-3  z-20'>
+          <div className='flex flex-col gap-24 mt-3'>
+            <div className='flex flex-col gap-3'>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>  
+            </div>
+            <div>            
+              <button className='bg-slate-300 rounded-full h-6 w-6 mb-3 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
+            </div>
+          </div>
+        </div>
+        <div className="-top-5">
+          <EmailForm/>
+        </div>
       </div>
-      
       
 
     </div>
