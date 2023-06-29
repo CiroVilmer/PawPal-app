@@ -6,7 +6,6 @@ import { Formik, useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
 import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
-import 'react-toastify/dist/ReactToastify.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { TRPCError } from '@trpc/server';
 import {
@@ -62,7 +61,7 @@ export function CreateAccount(): JSX.Element {
       onSuccess: () => {
         console.log("User Created")
         toast.success("Usuario creado")
-        void router.push("/homepage")
+        void router.push("/map")
 
       },
       onError: (error) => {
@@ -77,7 +76,10 @@ export function CreateAccount(): JSX.Element {
       return (
 
         <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
-          <div className="md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-28 md:rounded-xl p-8 bg-slate-50" >
+          <div className="md:flex md:flex-row-reverse md:gap-72">
+            {/* <img src="/Doggie.png" alt="dog" /> */}
+          
+          <div className="md:border-solid md:border md:shadow-md rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white" >
             
             <div className="flex justify-center font-bold py-1 text-xl mb-4">
               <button>
@@ -170,7 +172,7 @@ export function CreateAccount(): JSX.Element {
               <div className=" border-t grow mr-8 border-gray-200"></div>
             </div>
 
-            <button type="button" onClick={handleGoogleSignin} className="w-full border-2 border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
+            <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
               Crear cuenta con google
             </button>
             <p className="text-center text-gray-500 text-sm pt-1">
@@ -186,6 +188,7 @@ export function CreateAccount(): JSX.Element {
             position="top-center"
             reverseOrder={false}
           />
+          </div>
         </div>
       );
     };

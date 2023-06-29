@@ -60,7 +60,7 @@ const MapComponent: React.FC = () => {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Buscar..."
-                className="px-4 md:w-2 py-1 rounded-full flex items-end border-2 outline-none focus:border-orange-400 md:group-hover:w-56 md:transition-all md:duration-1000"
+                className="px-4 md:w-2 py-1 rounded-full flex items-end border-2 outline-none focus:border-orange-400 md:group-hover:w-56 md:focus:w-56 md:transition-all md:duration-1000"
               />
               <button
                 onClick={handleSearch}
