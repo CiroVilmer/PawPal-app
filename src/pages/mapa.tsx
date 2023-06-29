@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
 import { Chip, Group, Switch } from '@mantine/core';
 import { FaSearchLocation } from 'react-icons/fa';
-import { MdPets } from 'react-icons/md';
+import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill } from 'react-icons/bs';
 import { BiBone } from 'react-icons/bi';
 import { GiDogHouse } from 'react-icons/gi';
@@ -39,28 +39,28 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className="relative z-20 flex gap-5 md:flex md:flex-row-reverse md:gap-8 md:absolute md:left-20 md:flex-grow md:items-center md:mt-5">
+        <div className="z-20 md:ml-10 flex md:flex-row-reverse md:absolute md:left-20 md:flex-grow md:items-center md:mt-5">
           
           <Chip.Group multiple>
-            <div className="flex flex-row gap-2 mt-4 md:mt-0 mx-5 overflow-x-auto">
+            <div className="flex flex-row gap-2 mt-4 md:mt-0 md:mx-0 mx-5 overflow-x-auto">
               <Chips num="1" icono={<MdPets />} servicio="Veterinaria" />
               <Chips num="2" icono={<BsScissors />} servicio="Peluquería" />
               {/* <Chips num="3" icono={<GiDogHouse />} servicio="Refugio" /> */}
               <Chips num="4" icono={<BiBone />} servicio="PetShop" />
               <Chips num="5" icono={<BsHouseHeartFill />} servicio="Guardería" />
-              <Chips num="6" icono={<MdPets />} servicio="Veterinaria" />
-              <Chips num="7" icono={<BsScissors />} servicio="Peluquería" />
+              <Chips num="6" icono={<MdSpa />} servicio="Spa" />
+              <Chips num="7" icono={<MdLocalCafe />} servicio="Cafes" />
             </div>
           </Chip.Group>
 
           <div className="flex justify-center">
-            <div className="md:relative relative group">    
+            <div className="md:relative absolute bottom-[5%] right-[20%] group">    
               <input
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Buscar..."
-                className="px-4 border-l-0 md:w-2 py-1 rounded-full flex items-end border-2 focus:w-56 outline-none focus:border-orange-400 md:group-hover:w-56 md:transition-all md:duration-1000"
+                className="px-4 md:w-2 py-1 rounded-full flex items-end border-2 outline-none focus:border-orange-400 md:group-hover:w-56 md:transition-all md:duration-1000"
               />
               <button
                 onClick={handleSearch}
@@ -71,22 +71,22 @@ const MapComponent: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className='md:absolute md:bg-white md:rounded md:h-auto md:w-auto md:top-[25%] md:drop-shadow-xl md:px-2 md:ml-3  md:z-20'>
+        <div className='md:absolute md:bg-white md:rounded md:h-auto md:w-auto md:top-[30%] md:drop-shadow-xl md:px-2 md:ml-3  md:z-20'>
           <div className='md:flex md:flex-col md:gap-24 md:mt-3'>
             <div className='flex flex-col gap-3'>
-              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
-              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>  
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
+              <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>  
             </div>
             <div>            
-              <button className='bg-slate-300 rounded-full h-6 w-6 mb-3 flex justify-center items-center'><MdPets className='text-white text-2xl'/></button>
+              <button className='bg-slate-300 rounded-full h-6 w-6 mb-3 flex justify-center items-center'></button>
             </div>
           </div>
         </div>
-        <div className="-top-5 md:hidden">
+        {/* <div className="-top-5 md:hidden">
           <EmailForm/>
-        </div>
+        </div> */}
       </div>
       
 

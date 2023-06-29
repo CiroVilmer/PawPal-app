@@ -27,6 +27,8 @@ Flex
 import { object } from 'zod';
 import { on } from 'events';
 import { BsCcCircle } from 'react-icons/bs';
+import { useRouter } from 'next/router';
+
 
 async function handleGoogleSignin() {
   signIn('google', { callbackUrl: "http://localhost:3000" })
@@ -38,6 +40,7 @@ export function CreateAccount(): JSX.Element {
   const { mutate: createAccount } = api.user.createUser.useMutation();
   const [passwordShown, setPasswordShown] = useState(false);
 
+  const router = useRouter()
 
   const formik = useFormik({
     initialValues: {
@@ -59,6 +62,8 @@ export function CreateAccount(): JSX.Element {
       onSuccess: () => {
         console.log("User Created")
         toast.success("Usuario creado")
+        void router.push("/homepage")
+
       },
       onError: (error) => {
         console.log(error)

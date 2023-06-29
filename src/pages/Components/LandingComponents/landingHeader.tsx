@@ -13,7 +13,7 @@ export function Header(): JSX.Element {
 
     return(
         <div className= 
-            "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white z-20"
+            "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white bg-opacity-95 z-20"
         >
             
             <button className='flex flex-row items-center'>
