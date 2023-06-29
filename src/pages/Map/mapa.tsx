@@ -27,15 +27,7 @@ const MapComponent: React.FC = () => {
           Buscar
         </button>
       </div>
-      <div className="absolute top-16 left-5 z-20 mt-4 md:mt-8 lg:mt-12">
-        <Chip.Group multiple>
-          <Group position="center" mt="md">
-            <Chip value="1">Multiple chips</Chip>
-            <Chip value="2">Can be selected</Chip>
-            <Chip value="3">At a time</Chip>
-          </Group>
-        </Chip.Group>
-      </div>
+      
       <div id="map" className="w-full h-full absolute top-0 left-0 z-10">
         <LeafletMap />
       </div>

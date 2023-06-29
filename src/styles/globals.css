@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.leaflet-control-attribution {
+    width: 0px;
+    height: 0px;
+}
+
+.leaflet-top {
+    margin-top: 4px;
+    margin-left: 5px;
+    display: block; /* Asegurarse de que esté visible por defecto */
+}
+
+@media (max-width: 640px) {
+    .leaflet-top {
+        display: none; /* Ocultar en dispositivos con un ancho máximo de 640px (dispositivos móviles) */
+    }
+}
