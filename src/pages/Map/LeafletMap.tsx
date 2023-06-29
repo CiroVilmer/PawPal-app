@@ -33,7 +33,7 @@ const LeafletMap: React.FC = () => {
             content.style.textAlign = 'center';
           
             marker.bindPopup(content).openPopup();
-          }
+        }
           
 
         //PLANTILLA PARA AGREGAR MARCADORES AL MAPA
