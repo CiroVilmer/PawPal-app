@@ -39,10 +39,10 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className="z-20 md:ml-10 flex md:flex-row-reverse md:absolute md:left-20 md:flex-grow md:items-center md:mt-5">
+        <div className="z-20 lg:ml-10 flex lg:flex-row-reverse lg:absolute lg:left-20 lg:flex-grow lg:items-center lg:mt-5">
           
           <Chip.Group multiple>
-            <div className="flex flex-row gap-2 mt-4 md:mt-0 md:mx-0 mx-5 overflow-x-auto">
+            <div className="flex flex-row gap-2 mt-4 lg:mt-0 lg:mx-0 mx-5 overflow-x-auto">
               <Chips num="1" icono={<MdPets />} servicio="Veterinaria" />
               <Chips num="2" icono={<BsScissors />} servicio="Peluquería" />
               {/* <Chips num="3" icono={<GiDogHouse />} servicio="Refugio" /> */}
@@ -54,7 +54,7 @@ const MapComponent: React.FC = () => {
           </Chip.Group>
 
           <div className="flex justify-center">
-            <div className="md:relative absolute bottom-[5%] right-[20%] group">    
+            <div className="lg:relative absolute bottom-[5%] right-[20%] group">    
               <input
                 type="text"
                 value={searchValue}

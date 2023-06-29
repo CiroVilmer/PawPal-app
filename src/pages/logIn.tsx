@@ -92,7 +92,6 @@ import { time } from 'console';
       
       <div className="flex h-screen items-end md:items-center max-w-screen justify-center lg:justify-start"  style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
         <div className="w-full max-w-md shadow-2xl md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white">
-
             <div className="flex justify-center font-bold py-1 mb-16">
               <button>
                   <Link href="/">

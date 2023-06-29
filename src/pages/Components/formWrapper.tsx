@@ -1,8 +1,13 @@
 import Link from "next/link"
-import React from 'react'
+import React, {ReactNode} from 'react'
 
-export function FormWrapper(): JSX.Element{
+type formProps = {
+    children : ReactNode,
+}
+const FormWrapper : React.FC<formProps> = ({children}) => {
+    
     return(
+        <>
         <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
             <div className="md:flex md:flex-row-reverse md:gap-72">
                 <img src="/Doggie.png" alt="dog" />
@@ -17,10 +22,14 @@ export function FormWrapper(): JSX.Element{
                             </h1>
                             </Link>
                         </button>
+                        {children}
                     </div>
                 </div>
             </div>
         </div>
+        </>
     )
 
 }
+
+export default FormWrapper;

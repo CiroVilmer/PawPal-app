@@ -8,7 +8,7 @@ import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import toast, { Toaster } from 'react-hot-toast';
 import { TRPCError } from '@trpc/server';
-import { FormWrapper } from './Components/formWrapper';
+
 import {
 TextInput,
 PasswordInput,
@@ -78,7 +78,7 @@ export function CreateAccount(): JSX.Element {
 
         <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
             <div className="md:flex md:flex-row-reverse md:gap-72">
-                <img src="/Doggie.png" alt="dog" />
+                {/* <img src="/Doggie.png" alt="dog" /> */}
           
                 <div className="md:border-solid md:border md:shadow-md rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white" >
                     
