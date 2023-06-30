@@ -30,6 +30,7 @@ import { staticGenerationAsyncStorage } from 'next/dist/client/components/static
 import { router } from '@trpc/server';
 import { any } from 'zod';
 import { time } from 'console';
+import FormWrapper from './Components/formWrapper';
 
   async function handleGoogleSignin() {
     signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
@@ -90,23 +91,14 @@ import { time } from 'console';
     
     return ( 
       
-      <div className="flex h-screen items-end md:items-center max-w-screen justify-center lg:justify-start"  style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
-        <div className="w-full max-w-md shadow-2xl md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white">
-            <div className="flex justify-center font-bold py-1 mb-16">
-              <button>
-                  <Link href="/">
-                    <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-3">
-                      Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-                    </h1>
-                  </Link>
-              </button>
-            </div>
+      <FormWrapper>
             <form action={''} onSubmit={formik.handleSubmit}>
               <div>
-                <Input.Wrapper withAsterisk label = "Correo electronico" className='w-full mb-5'> 
+                <Input.Wrapper withAsterisk label = "Correo electronico" className='w-80 mb-5'> 
                   <Input
                     type="email"
                     id="email"
+                    
                     placeholder="ejemplo@gmail.com"
                     {...formik.getFieldProps('email')}
                     required
@@ -118,8 +110,10 @@ import { time } from 'console';
               
                 <Input.Wrapper withAsterisk label="Contraseña" className='mb-2'>
                   <PasswordInput
-                    placeholder="Password"
+                    placeholder="password"
                     required
+                    size='sm'
+                    style = {{width: '400'}}
                     {...formik.getFieldProps('password')}
                     visibilityToggleIcon={({ reveal, size }) =>
                     reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
@@ -170,12 +164,12 @@ import { time } from 'console';
               </button>
             </p>   
             
-        </div>
+        
         <Toaster
           position="top-center"
           reverseOrder={false}
         />
-      </div>
+      </FormWrapper>
     );
   }
 

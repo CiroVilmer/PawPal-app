@@ -4,11 +4,12 @@ import { Flex, Text, Button } from '@mantine/core';
 import HamburgerButton from './hamburger';
 
 
-
 export function Header(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
 
-    
+    function scrollUp(){
+        window.scrollTo({top:0, behavior: 'smooth'})
+    }
       
 
     return(
@@ -16,7 +17,7 @@ export function Header(): JSX.Element {
             "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white bg-opacity-95 z-20"
         >
             
-            <button className='flex flex-row items-center'>
+            <button onClick={scrollUp} className='flex flex-row items-center'>
                 <img src='/logoPawPal.png' alt='logo'/>
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>

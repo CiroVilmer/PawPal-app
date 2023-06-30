@@ -35,6 +35,9 @@ const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
     <p className='text-xs text-center max-w-xs px-7'>{description}</p>
   </div>
 );
+export function scrollUp(){
+  window.scrollTo({top:0, behavior: 'smooth'})
+}
 
 export function LandingPage(): JSX.Element {
   return (
@@ -120,7 +123,7 @@ export function LandingPage(): JSX.Element {
                   <h2 className="font-normal flex text-xl lg:max-w-xl text-left mb-8">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime corrupti repudiandae praesentium fugiat quia, saepe asperiores ut! Facere ullam amet quaerat natus! Ad deserunt ea architecto! Modi vel animi distinctio.
                   </h2>
-                  <button className='border-2 p-1 w-36 h-12 rounded-md border-black hover:bg-orange-100 active:bg-orange-200 transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Contacto</button>
+                  <button onClick={scrollUp} className='border-2 p-1 w-36 h-12 rounded-md border-black hover:bg-orange-100 active:bg-orange-200 transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Contacto</button>
                 </div>
                 <div className="shadow-xl"><img  src="/fotoProvisoria.png" alt="fotoProv"/></div>
               </div>

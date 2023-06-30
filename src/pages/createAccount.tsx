@@ -28,6 +28,7 @@ import { object } from 'zod';
 import { on } from 'events';
 import { BsCcCircle } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import FormWrapper from './Components/formWrapper';
 
 
 async function handleGoogleSignin() {
@@ -62,7 +63,7 @@ export function CreateAccount(): JSX.Element {
       onSuccess: () => {
         console.log("User Created")
         toast.success("Usuario creado")
-        void router.push("/map")
+        void router.push("/homepage")
 
       },
       onError: (error) => {
@@ -76,122 +77,112 @@ export function CreateAccount(): JSX.Element {
 
       return (
 
-        <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
-            <div className="md:flex md:flex-row-reverse md:gap-72">
-                {/* <img src="/Doggie.png" alt="dog" /> */}
-          
-                <div className="md:border-solid md:border md:shadow-md rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white" >
-                    
-                    <div className="flex justify-center font-bold py-1 text-xl mb-4">
-                        <button>
-                            <Link href="/">
-                            <h1 className="text-5xl font-bold text-black">
-                                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-                            </h1>
-                            </Link>
-                        </button>
-                    </div>
+        <FormWrapper>
                     
                 
-            <form action="" onSubmit={formik.handleSubmit}>
+              <form action="" onSubmit={formik.handleSubmit}>
 
-              <Flex direction={"row"} gap={"md"}>
+                <Flex direction={"row"} gap={"md"}>
 
-                <Input.Wrapper withAsterisk label="Nombre">
-                  <Input
-                    type="string"
-                    id="first_name"
-                    placeholder="Pepe"
-                    size='sm'
-                    required
-                    {...formik.getFieldProps('name')}
-                  />
-                  {formik.errors.name && formik.touched.name ? <div className="text-red-500 text-xs">{formik.errors.name}</div> : null}
-                </Input.Wrapper>
+                  <Input.Wrapper withAsterisk label="Nombre">
+                    <Input
+                      type="string"
+                      id="first_name"
+                      placeholder="Pepe"
+                      size='sm'
+                      style={{ width: 150 }}
+                      required
+                      {...formik.getFieldProps('name')}
+                    />
+                    {formik.errors.name && formik.touched.name ? <div className="text-red-500 text-xs">{formik.errors.name}</div> : null}
+                  </Input.Wrapper>
 
-                <Input.Wrapper withAsterisk label="Apellido">
-                  <Input
-                    type="string"
-                    id="last_name"
-                    placeholder="Urizar"
-                    required
-                    {...formik.getFieldProps('surName')}
+                  <Input.Wrapper withAsterisk label="Apellido">
+                    <Input
+                      type="string"
+                      id="last_name"
+                      placeholder="Urizar"
+                      style={{ width: 150 }}
+                      size='sm'
+                      required
+                      {...formik.getFieldProps('surName')}
 
-                  />
+                    />
 
-                  {formik.errors.surName && formik.touched.surName ? <div className="text-red-500 text-xs">{formik.errors.surName}</div> : null}
-                </Input.Wrapper>
-              </Flex>
+                    {formik.errors.surName && formik.touched.surName ? <div className="text-red-500 text-xs">{formik.errors.surName}</div> : null}
+                  </Input.Wrapper>
+                </Flex>
 
-              <div>
+                <div>
 
 
-                <Input.Wrapper withAsterisk label="Correo electrónico">
-                  <Input
-                    type="string"
-                    id="email"
-                    placeholder="Ejemplo@gmail.com"
-                    required
-                    {...formik.getFieldProps('email')}
-                  />
-                  {formik.errors.email && formik.touched.email ? <div className="text-red-500 text-xs">{formik.errors.email}</div> : null}
-                </Input.Wrapper>
-                <Input.Wrapper withAsterisk label="Contraseña">
-                  <PasswordInput
-                    placeholder="Password"
-                    required
+                  <Input.Wrapper withAsterisk label="Correo electrónico">
+                    <Input
+                      type="string"
+                      id="email"
+                      placeholder="ejemplo@gmail.com"
+                      size='sm'
+                      required
+                      {...formik.getFieldProps('email')}
+                    />
+                    {formik.errors.email && formik.touched.email ? <div className="text-red-500 text-xs">{formik.errors.email}</div> : null}
+                  </Input.Wrapper>
+                  <Input.Wrapper withAsterisk label="Contraseña">
+                    <PasswordInput
+                      placeholder="password"
+                      required
 
-                    {...formik.getFieldProps('password')}
-                    visibilityToggleIcon={({ reveal, size }) =>
-                      reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                  />
+                      {...formik.getFieldProps('password')}
+                      visibilityToggleIcon={({ reveal, size }) =>
+                        reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                    />
 
-                  {formik.errors.password && formik.touched.password ? <div className="text-red-500 text-xs">{formik.errors.password}</div> : null}
-                </Input.Wrapper>
-                <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9'>
-                  <PasswordInput
-                    placeholder="Password"
-                    required
+                    {formik.errors.password && formik.touched.password ? <div className="text-red-500 text-xs">{formik.errors.password}</div> : null}
+                  </Input.Wrapper>
+                  <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9'>
+                    <PasswordInput
+                      placeholder="password"
+                      required
 
-                    {...formik.getFieldProps('confirmPassword')}
-                    visibilityToggleIcon={({ reveal, size }) =>
-                      reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
-                  />
+                      {...formik.getFieldProps('confirmPassword')}
+                      visibilityToggleIcon={({ reveal, size }) =>
+                        reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                    />
 
-                  {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className="text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
-                </Input.Wrapper>
+                    {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className="text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
+                  </Input.Wrapper>
+                </div>
+
+                <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
+                  Crear cuenta
+                </button>
+
+              </form>
+
+              <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
+                <div className="border-t grow ml-8 border-gray-200"></div>
+                <label> o </label>
+                <div className=" border-t grow mr-8 border-gray-200"></div>
               </div>
 
-              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
-                Crear cuenta
+              <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
+                Crear cuenta con google
               </button>
+              <p className="text-center text-gray-500 text-sm pt-1">
+                ¿Ya eres un miembro?{' '}<br></br>
 
-            </form>
+                <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">
+                  <Link href="/logIn">Iniciar sesión</Link>
+                </button>
+              </p>
+              <Toaster
+              position="top-center"
+              reverseOrder={false}
+              />
 
-            <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
-              <div className="border-t grow ml-8 border-gray-200"></div>
-              <label> o </label>
-              <div className=" border-t grow mr-8 border-gray-200"></div>
-            </div>
-
-            <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
-              Crear cuenta con google
-            </button>
-            <p className="text-center text-gray-500 text-sm pt-1">
-              ¿Ya eres un miembro?{' '}<br></br>
-
-              <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">
-                <Link href="/logIn">Iniciar sesión</Link>
-              </button>
-            </p>
-
-          </div>
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-          />
-        </div>
-        </div>
+        </FormWrapper>
+            
+          
       );
     };
 
