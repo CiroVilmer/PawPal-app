@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import { Chip, Group } from '@mantine/core';
 
 const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
 
