@@ -3,23 +3,13 @@ import { PasswordInput,Stack } from "@mantine/core";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Link from "next/link";
 import { Progress } from '@mantine/core';
+import FormWrapper from "../Components/formWrapper";
 
 
 const NewPassword:React.FC = () => {
     return(
 
-        <div className="flex h-screen items-end md:items-center max-w-screen justify-center  lg:justify-start" style={{ backgroundImage: 'url(/Group-2.png)', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
-            <div className="w-full max-w-md md:border-solid md:border md:shadow-lg rounded-t-2xl mb-15 lg:ml-28 md:rounded-xl p-8 bg-slate-50">
-
-                <div className="flex justify-center font-bold ">
-                    <button>
-                        <Link href="/">
-                            <h1 className="flex justify-center text-5xl font-bold py-1 text-black px-12 mb-1">
-                                Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
-                            </h1>
-                        </Link>
-                    </button>
-                </div>
+        <FormWrapper>
                 <div className="flex justify-center mt-7 mb-3">
                     <button className="text-md text-gray-800">         
                         <Link href = "/logIn">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
@@ -41,9 +31,7 @@ const NewPassword:React.FC = () => {
                         <Link href={'./newPassword'}> Cambiar contraseña </Link>
                     </button>
                 </div>
-            </div> 
-                
-        </div>
+        </FormWrapper>
     )
 }
 
