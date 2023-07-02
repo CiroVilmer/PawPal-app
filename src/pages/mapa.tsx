@@ -44,7 +44,7 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className={largeScreen ? "z-20 ml-10 flex flex-row-reverse absolute left-20 flex-grow items-center gap-3" : 'z-20 flex justify-center'}>
+        <div className={largeScreen ? "z-20 flex flex-row-reverse absolute left-10 flex-grow items-center gap-3" : 'z-20 flex justify-center'}>
           
           <Chip.Group multiple>
             <div className={largeScreen ? 'flex flex-row gap-2 ':'flex flex-row gap-2 overflow-x-auto w-80 mx-3 mt-4 absolute top-0'}>
@@ -68,7 +68,7 @@ const MapComponent: React.FC = () => {
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                   placeholder="Buscar..."
-                  className="px-4 md:w-2 py-1 w-56 rounded-full border-2 focus:w-56 outline-none focus:border-orange-400 md:group-hover:w-56 transition-all duration-1000"
+                  className="px-4  py-1 w-56 rounded-full border-2 focus:w-56 outline-none focus:border-orange-400 transition-all duration-1000"
                 />
                 <button
                   onClick={handleSearch}

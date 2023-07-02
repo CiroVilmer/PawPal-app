@@ -91,7 +91,7 @@ import FormWrapper from './Components/formWrapper';
     
     return ( 
       
-      <FormWrapper>
+      <FormWrapper title='Iniciar sesión' question='¿todavía no creaste una cuenta?' link='/createAccount' linkTo='Crear cuenta' buttonText='Iniciar sesión'>
             <form action={''} onSubmit={formik.handleSubmit}>
               <div>
                 <Input.Wrapper withAsterisk label = "Correo electronico" className='w-80 mb-5'> 
@@ -134,37 +134,12 @@ import FormWrapper from './Components/formWrapper';
                   <Link href = "/passwordRecovery">¿Olvidaste tu contraseña?</Link>
                 </button>
               </Flex>
-
-              
-              <div>
-                <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
-                  Iniciar sesión
-                  
-                </button>
-              </div>
-
             </form>
-
-            <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
-                <div className="border-t grow ml-8 border-gray-200"></div>
-                <label> o </label>
-                <div className=" border-t grow mr-8 border-gray-200"></div>
-            </div>
-
-            <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
-              Iniciar sesión con google
-            </button>
-
-          
-            <p className="text-center text-gray-500 text-sm  py-2">
-              ¿Todavía no creaste una cuenta?{' '}<br></br>
-              
-              <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
-                <Link href = "/createAccount">Crear cuenta</Link>
+            <div>
+              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
+                Iniciar sesión
               </button>
-            </p>   
-            
-        
+            </div>
         <Toaster
           position="top-center"
           reverseOrder={false}

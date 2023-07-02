@@ -7,11 +7,16 @@
     height: 0px;
 }
 
-.leaflet-top {
-    margin-top: 4px;
-    margin-left: 5px;
-    display: block; /* Asegurarse de que esté visible por defecto */
+.leaflet-control-zoom {
+    outline: 1px solid red;
+    margin-top: 0px;
+    margin-left: 0px;
+    border-radius: 4px;
+    padding: 0px;
+    display: none;    
 }
+
+
 
 @media (max-width: 640px) {
     .leaflet-top {

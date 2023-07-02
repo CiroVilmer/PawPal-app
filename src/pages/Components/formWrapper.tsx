@@ -1,40 +1,72 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import { useMediaQuery } from "@mantine/hooks"; 
+import { useMediaQuery } from "@mantine/hooks";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 
 interface FormWrapperProps {
   children: ReactNode;
+  title: string;
+  question: string;
+  link: string;
+  linkTo: string;
+  buttonText: string;
 }
-
-const FormWrapper: React.FC<FormWrapperProps> = ({ children }) => {
+async function handleGoogleSignin() {
+    signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
+  }
+const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, link, linkTo, buttonText }) => {
 
     const largeScreen = useMediaQuery("(min-width: 1100px)");
-        
+    
 
   return (
-    <div className={ largeScreen ? "flex w-full h-screen justify-start" : "flex h-full w-full items-center justify-center"}>
+    <div className={ largeScreen ? "flex w-full h-screen justify-start" : "flex h-screen w-screen justify-center items-end bg-orange-400"}>
 
-        {/* <div className='z-20 absolute bottom-[0%] right-[0%] w-24 h-24'><img src="/logoPawPal.png" alt="logo" /> </div> */}
         <img src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0" : "hidden" } alt="background"></img>
-        {/* <div className="z-30 bg-orange-400 saturate-150 flex h-screen items-end md:items-center justify-center lg:justify-start">
-            <div className=' z-10 md:absolute md:shadow-gray-700 md:right-[0%] md:bg-white md:bg-cover md:shadow-2xl md:-inset-x-20 md:rounded-r-full md:w-screen md:h-screen'></div> */}
+        
 
             <div className="md:flex md:flex-row-reverse md:items-center md:gap-64">
-                <img src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80 ' : 'hidden'}/>
+                <img src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80' : 'hidden'}/>
             
-                <div className="z-20 shadow-inner md:border-solid md:border md:shadow-md rounded-t-2xl mb-15 lg:ml-44 md:rounded-xl p-8 bg-white ">
-                    <div className="flex justify-center font-bold py-1 text-xl mb-4">
+                <div className={largeScreen ? "z-20 border-solid md:border shadow-md ml-44 rounded-xl p-8 bg-white md:w-auto w-screen mt-20 md:mt-0" : "p-8 w-screen h-full rounded-t-2xl bg-white shadow-inner shadow-slate-300"}>
+                    <div className="flex flex-col justify-center font-bold py-1 text-xl mb-4">
                         <button>
                             <Link href="/">
-                                <h1 className="text-5xl font-bold text-black">
-                                    Paw<span className="text-[rgb(252,119,80,100%)]">Pal</span>
+                                <h1 className="text-4xl font-bold text-black">
+                                    {title}
                                 </h1>
                             </Link>
                         </button>
+                        <div className={largeScreen ? 'hidden' : 'text-center text-gray-500 text-sm py-2 font-normal'}> 
+                            {question}{' '}<br></br>
+              
+                            <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
+                                <Link href = {link}>{linkTo}</Link>
+                            </button>
+                        </div>
                     </div>
                 
                     {children}
+                    <div>
+                        
+                        <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
+                            <div className="border-t grow ml-8 border-gray-200"></div>
+                            <label> o </label>
+                            <div className=" border-t grow mr-8 border-gray-200"></div>
+                        </div>
+
+                        <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
+                            {buttonText} con google
+                        </button>
+                    </div>
+                    <div className={largeScreen ? 'text-center text-gray-500 text-sm  py-2' : "hidden"}> 
+                        {question}{' '}<br></br>
+              
+                        <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
+                            <Link href = {link} >{linkTo}</Link>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
