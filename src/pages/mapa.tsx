@@ -44,7 +44,7 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className={largeScreen ? "z-20 ml-10 flex flex-row-reverse absolute left-20 flex-grow items-center gap-3" : 'z-20 '}>
+        <div className={largeScreen ? "z-20 ml-10 flex flex-row-reverse absolute left-20 flex-grow items-center gap-3" : 'z-20 flex justify-center'}>
           
           <Chip.Group multiple>
             <div className={largeScreen ? 'flex flex-row gap-2 ':'flex flex-row gap-2 overflow-x-auto w-80 mx-3 mt-4 absolute top-0'}>
@@ -59,8 +59,10 @@ const MapComponent: React.FC = () => {
           </Chip.Group>
 
           <div className={largeScreen ?  '' : 'absolute bottom-0 w-full' }>
-            <div className='flex items-center justify-center bg-gray-200 h-24 md:bg-transparent rounded-t-2xl w-auto md:rounded-none z-20 group'>
+            <div className='flex items-center justify-center bg-gray-200 h-20 md:bg-transparent rounded-t-2xl w-auto md:rounded-none z-20 group'>
+              
               <div className="relative">
+                <div className='md:hidden w-14 relative -right-20 -top-3 rounded-full bg-gray-400 h-1'></div>
                 <input
                   type="text"
                   value={searchValue}
