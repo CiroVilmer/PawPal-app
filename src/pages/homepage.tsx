@@ -29,7 +29,7 @@ export function HomePage(): JSX.Element {
                         <h2 className="text-xl">Email: {session.user.email} </h2>
                         
                         <div className="flex justify-center">
-                            <button onClick={() => signOut()} className="bg-pink-300 border rounded-full w-24 p-2 hover:bg-pink-300 hover:ring-2 hover:ring-offset-1 hover:ring-pink-200 hover:scale-105 transition-all duration-200" >Sign Out</button>
+                            <button onClick={() => void signOut()} className="bg-pink-300 border rounded-full w-24 p-2 hover:bg-pink-300 hover:ring-2 hover:ring-offset-1 hover:ring-pink-200 hover:scale-105 transition-all duration-200" >Sign Out</button>
                         </div>
                     </div>
                 </div>

@@ -12,9 +12,12 @@ interface FormWrapperProps {
   linkTo: string;
   buttonText: string;
 }
-async function handleGoogleSignin() {
-    signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
-  }
+const handleGoogleSignin = () => {
+    signIn('google', { callbackUrl: "http://localhost:3000/homepage" }).catch((error) => {
+      console.error(error);
+    });
+  };
+
 const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, link, linkTo, buttonText }) => {
 
     const largeScreen = useMediaQuery("(min-width: 1100px)");
@@ -58,7 +61,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, li
                             <div className=" border-t grow mr-8 border-gray-200"></div>
                         </div>
 
-                        <button type="button" onClick={handleGoogleSignin} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
+                        <button type="button" onClick={() => handleGoogleSignin()} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
                             {buttonText} con google
                         </button>
                     </div>

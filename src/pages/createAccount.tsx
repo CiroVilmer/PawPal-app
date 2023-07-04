@@ -31,11 +31,6 @@ import { useRouter } from 'next/router';
 import FormWrapper from './Components/formWrapper';
 
 
-async function handleGoogleSignin() {
-  signIn('google', { callbackUrl: "http://localhost:3000" })
-}
-
-
 export function CreateAccount(): JSX.Element {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
@@ -56,10 +51,10 @@ export function CreateAccount(): JSX.Element {
 
   })
 
-  async function onSubmit(values: { email: string; name: string; surName: string; password: string;}) {
+  function onSubmit(values: { email: string; name: string; surName: string; password: string;}) {
     console.log(values)
     
-    await createAccount(values, {
+     createAccount(values, {
       onSuccess: () => {
         console.log("User Created")
         toast.success("Usuario creado")
@@ -167,7 +162,7 @@ export function CreateAccount(): JSX.Element {
             
           
       );
-    };
+    }
 
     export default CreateAccount;
 

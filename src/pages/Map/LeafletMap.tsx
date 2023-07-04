@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import markerIcon from '../../../public/marcador.png';
 
-var myIcon = L.icon({
+const myIcon = L.icon({
   iconUrl: 'https://play-lh.googleusercontent.com/G5Z7H6eE-n5tSuCszYbf_SZHRAIEmB-zLzZk_DGOMKsf7um_thkZS4QbXcMn6Tql8nVI',
   // iconUrl: markerIcon.toString(),
   iconSize: [40, 40],
@@ -32,7 +32,7 @@ const LeafletMap: React.FC = () => {
 
     function addMarker(lat: number, lng: number, name: string, description: string, myImage: string) { // Agrega un marcador al mapa
       if (mapRef.current) {
-        var marker = L.marker([lat, lng], { icon: myIcon }).addTo(mapRef.current);
+        const marker = L.marker([lat, lng], { icon: myIcon }).addTo(mapRef.current);
 
         const content = document.createElement('div');
         content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;

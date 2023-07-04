@@ -31,18 +31,10 @@ import { any } from 'zod';
 import { time } from 'console';
 import FormWrapper from './Components/formWrapper';
 
-  async function handleGoogleSignin() {
-    signIn('google',{callbackUrl:"http://localhost:3000/homepage"})
-  }
-
-
 export function LogInForm(): JSX.Element {
     
 
   const router = useRouter()
-  const { mutate: findUser} = api.user.findUser.useMutation();
-
-
     
   const formik = useFormik({
     initialValues:{
@@ -52,7 +44,7 @@ export function LogInForm(): JSX.Element {
     validate: login_validate,
     onSubmit
   })
-  async function onSubmit (values: any){
+  async function onSubmit (values: {email: string; password: string}){
     console.log(values)
 
     const status = await signIn('credentials', {
@@ -61,8 +53,6 @@ export function LogInForm(): JSX.Element {
     password: values.password,
     callbackUrl: "http://localhost:3000/homepage"
     })
-
-    console.log(status)
 
     if(status?.ok){
       console.log("User Logged in") 
