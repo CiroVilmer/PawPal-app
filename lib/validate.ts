@@ -1,5 +1,8 @@
-export default function login_validate(values){
-    const errors = {};
+const login_validate = (values: { email: string, password: string}) => {
+    const errors = {
+        email: "",
+        password: ""
+    };
 
     if(!values.email){
         errors.email = "Email requerido";
@@ -16,8 +19,16 @@ export default function login_validate(values){
     return errors;
 }
 
-export function register_validate(values){
-    const errors = {};
+export default login_validate;
+
+export function register_validate(values: {email: string, password: string, confirmPassword: string, name: string, surName: string}){
+    const errors = {
+        email: "",
+        password: "",
+        confirmPassword: "",
+        name: "",
+        surName: ""
+    };
 
     if(!values.email){
         errors.email = "Email requerido";

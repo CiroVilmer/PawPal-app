@@ -20,9 +20,7 @@ export const postRouter = createTRPCRouter({
             data: {
                 title: input.title,
                 location: input.location,
-                author:{ connect: { id: ctx.session.userId } },
-
-
+                author:{ connect: { id: ctx.session.user.id } },
             }
         });
         return post
