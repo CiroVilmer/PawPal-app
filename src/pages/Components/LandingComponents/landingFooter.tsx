@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import {BsFacebook, BsInstagram, BsTwitter} from 'react-icons/bs';
 import {SiGmail} from 'react-icons/si';
-export function Footer(): JSX.Element {
+
+const Footer : React.FC = () : JSX.Element => {
     return(
         <div className='w-full flex flex-col bg-stone-200 py-10'>
             <div className='flex flex-row items-center justify-center gap-3'>
@@ -33,3 +34,5 @@ export function Footer(): JSX.Element {
         </div>
     )
 }
+
+export default Footer;

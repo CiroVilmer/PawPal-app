@@ -2,7 +2,7 @@ import React from "react";
 import {useMediaQuery} from "@mantine/hooks";
 
 
-export function Publicaciones(): JSX.Element {
+const Publicaciones: React.FC = () : JSX.Element => {
     const largeScreen = useMediaQuery('(min-width: 992px)');
     return (
         <div>
@@ -11,3 +11,5 @@ export function Publicaciones(): JSX.Element {
     );
 
 }
+
+export default Publicaciones;

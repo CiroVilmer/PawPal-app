@@ -4,7 +4,7 @@ import { Flex, Text, Button } from '@mantine/core';
 import HamburgerButton from './hamburger';
 
 
-export function Header(): JSX.Element {
+const Header: React.FC = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
 
     function scrollUp(){
@@ -41,3 +41,4 @@ export function Header(): JSX.Element {
     )
 }
 
+export default Header;

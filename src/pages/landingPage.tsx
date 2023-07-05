@@ -1,6 +1,6 @@
 import React from "react";
-import { Footer } from "./Components/LandingComponents/landingFooter";
-import {Header} from "./Components/LandingComponents/landingHeader";
+import Footer from "./Components/LandingComponents/landingFooter";
+import Header from "./Components/LandingComponents/landingHeader";
 
 interface CardProps {
   backgroundImage: string;
@@ -39,7 +39,7 @@ export function scrollUp(){
   window.scrollTo({top:0, behavior: 'smooth'})
 }
 
-export function LandingPage(): JSX.Element {
+const LandingPage: React.FC = () : JSX.Element => {
   return (
     <div>
         <Header />
@@ -133,3 +133,5 @@ export function LandingPage(): JSX.Element {
     </div>
   );
 }
+
+export default LandingPage;
