@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { LandingPage } from "./landingPage";
+import  LandingPage  from "./landingPage";
 
 
 
