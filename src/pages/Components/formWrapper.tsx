@@ -8,6 +8,7 @@ interface FormWrapperProps {
   children: ReactNode;
   title: string;
   buttonText: string;
+ 
 }
 const handleGoogleSignin = () => {
     signIn('google', { callbackUrl: "http://localhost:3000/homepage" }).catch((error) => {
@@ -55,6 +56,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
                         <button type="button" onClick={() => handleGoogleSignin()} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
                             {buttonText} con google
                         </button>
+                        
                     </div>
                     
                 </div>

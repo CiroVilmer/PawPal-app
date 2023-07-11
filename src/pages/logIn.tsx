@@ -89,7 +89,7 @@ export function LogInForm(): JSX.Element {
           ¿Todavía no creaste una cuenta?{' '}<br></br>
           <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
             <Link href = "/createAccount">Crear cuenta</Link>
-        </button>
+          </button>
         </div>
         <div>
           <Input.Wrapper withAsterisk label = "Correo electronico" className='w-80 mb-5'> 
