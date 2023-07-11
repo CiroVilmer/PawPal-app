@@ -9,7 +9,7 @@ import FormWrapper from "../Components/formWrapper";
 const NewPassword:React.FC = () => {
     return(
 
-        <FormWrapper title='' link='' buttonText='' linkTo='' question=''>
+        <FormWrapper title=''  buttonText='' >
                 <div className="flex justify-center mt-7 mb-3">
                     <button className="text-md text-gray-800">         
                         <Link href = "/logIn">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   

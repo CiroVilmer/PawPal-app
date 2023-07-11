@@ -7,7 +7,7 @@ const EmailForm : React.FC = () => {
 
     return(
 
-        <FormWrapper title='' link='' buttonText='' linkTo='' question=''>
+        <FormWrapper title=''  buttonText='' >
 
                 <div className="flex justify-center mt-5 mb-3">
                     <button className="text-md text-gray-800">         

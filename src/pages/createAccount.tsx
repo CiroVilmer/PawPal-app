@@ -72,9 +72,10 @@ export function CreateAccount(): JSX.Element {
 
       return (
 
-        <FormWrapper title='Crear cuenta' question='¿Ya eres miembro?' link='/logIn' linkTo='Iniciar sesión' buttonText='Crear cuenta'>
-                    
-                
+        <FormWrapper title='Crear cuenta' buttonText='Crear cuenta'>
+                {/* link='/logIn' */}
+                {/* question='¿Ya eres miembro?' */}
+                {/* linkTo='Iniciar sesión' */}
               <form action="" onSubmit={formik.handleSubmit}>
 
                 <Flex direction={"row"} gap={"md"}>

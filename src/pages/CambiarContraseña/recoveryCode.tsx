@@ -6,7 +6,7 @@ import FormWrapper from '../Components/formWrapper';
 
 const RecoveryCode : React.FC = () => {
     return(
-        <FormWrapper title='' link='' buttonText='' linkTo='' question=''>
+        <FormWrapper title=''  buttonText='' >
             <div className="flex justify-center mt-8 mb-5">
                 <button className="text-md text-gray-800">         
                     <Link href = "/logIn">Volver al <span className = "text-orange-600 hover:underline">Log in</span></Link>   
