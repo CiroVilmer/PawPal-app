@@ -7,18 +7,15 @@ import { signIn, signOut, useSession } from "next-auth/react";
 interface FormWrapperProps {
   children: ReactNode;
   title: string;
-  question: string;
-  link: string;
-  linkTo: string;
   buttonText: string;
 }
 const handleGoogleSignin = () => {
     signIn('google', { callbackUrl: "http://localhost:3000/homepage" }).catch((error) => {
       console.error(error);
     });
-  };
+};
 
-const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, link, linkTo, buttonText }) => {
+const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }) => {
 
     const largeScreen = useMediaQuery("(min-width: 1100px)");
     
@@ -43,13 +40,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, li
                                 </h1>
                             </Link>
                         </button>
-                        <div className={largeScreen ? 'hidden' : 'text-center text-gray-500 text-sm py-2 font-normal'}> 
-                            {question}{' '}<br></br>
-              
-                            <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
-                                <Link href = {link}>{linkTo}</Link>
-                            </button>
-                        </div>
+                        
                     </div>
                 
                     {children}
@@ -65,13 +56,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, question, li
                             {buttonText} con google
                         </button>
                     </div>
-                    <div className={largeScreen ? 'text-center text-gray-500 text-sm  py-2' : "hidden"}> 
-                        {question}{' '}<br></br>
-              
-                        <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
-                            <Link href = {link} >{linkTo}</Link>
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

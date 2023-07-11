@@ -8,7 +8,7 @@ import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi';
 import toast, { Toaster } from 'react-hot-toast';
-
+import { useMediaQuery } from "@mantine/hooks";
 
 import 
   {
@@ -33,6 +33,8 @@ import FormWrapper from './Components/formWrapper';
 
 export function LogInForm(): JSX.Element {
     
+  const largeScreen = useMediaQuery("(min-width: 1100px)");
+
 
   const router = useRouter()
     
@@ -76,12 +78,19 @@ export function LogInForm(): JSX.Element {
     setPasswordShown(!passwordShown)
   }
 
-
+  
     
   return ( 
       
-    <FormWrapper title='Iniciar sesión' question='¿Todavía no creaste una cuenta?' link='/createAccount' linkTo='Crear cuenta' buttonText='Iniciar sesión'>
+    <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
+      
       <form action={''} onSubmit={formik.handleSubmit}>
+        <div className={largeScreen ? 'hidden' : 'text-center text-gray-500 text-sm py-2 font-normal'}> 
+          ¿Todavía no creaste una cuenta?{' '}<br></br>
+          <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
+            <Link href = "/createAccount">Crear cuenta</Link>
+        </button>
+        </div>
         <div>
           <Input.Wrapper withAsterisk label = "Correo electronico" className='w-80 mb-5'> 
             <Input
@@ -122,8 +131,9 @@ export function LogInForm(): JSX.Element {
             Iniciar sesión
           </button>
         </div>
+        
       </form>
-            
+        
       <Toaster
         position="top-center"
         reverseOrder={false}
