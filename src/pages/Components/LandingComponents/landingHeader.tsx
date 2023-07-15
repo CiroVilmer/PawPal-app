@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import { Flex, Text, Button } from '@mantine/core';
 import HamburgerButton from './hamburger';
-
+import {useMediaQuery} from '@mantine/hooks'
 
 const Header: React.FC = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,24 +11,33 @@ const Header: React.FC = (): JSX.Element => {
         window.scrollTo({top:0, behavior: 'smooth'})
     }
       
+    const mediumScreen = useMediaQuery("(min-width: 768px)");
 
     return(
-        <div className= 
-            "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white bg-opacity-95 z-20"
-        >
+        <div className= "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white z-20">
             
             <button onClick={scrollUp} className='flex flex-row items-center'>
                 <img src='/logoPawPal.png' alt='logo'/>
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>
-            <div className="grow w-full ">
-                <div className='flex bg-slate-50 h-auto mt-72 p-3 justify-end right-8 flex-col gap-3 md:mt-0 md:bg-transparent md:p-0 md:flex md:flex-row md:justify-end md:items-center lg:gap-8'>
+            <div className="grow w-full">
+                <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : 'hidden  bg-slate-50 h-auto mt-72 p-3 justify-end right-8 flex-col gap-3'}>
                     
-                    <button className='hover:-translate-y-1 duration-300'>Inicio</button>
-                    <button className='hover:-translate-y-1 duration-300'><Link href={'/mapa'}>Mapa</Link></button>
-                    <button className='hover:-translate-y-1 duration-300'>Contacto</button>
-                    <button className='md:border-2 p-1 md:w-36 rounded-md hover:bg-gray-100 active:bg-gray-200 transform transition duration-300 ease-in active:scale-[.98]'><Link href={'/createAccount'}>Crear cuenta</Link></button>
-                    <button className='md:border-2 md:border-black md:bg-black md:text-white p-1 md:w-36 md:mr-10 rounded-md hover:text-black hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]'><Link href={'/logIn'}>Iniciar sesión</Link> </button>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                        Inicio
+                    </button>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                        <Link href={'/mapa'}>Mapa</Link>
+                    </button>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                        Contacto
+                    </button>
+                    <button className={mediumScreen ? 'border-2 w-36 rounded-md hover:bg-gray-200 active:bg-gray-200 p-1 transform transition duration-300 ease-in active:scale-[.98]': ""}>
+                        <Link href={'/createAccount'}>Crear cuenta</Link>
+                    </button>
+                    <button className={mediumScreen ? 'border-2 w-36 border-black bg-black text-white p-1 md:mr-10 rounded-md hover:text-black hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]' : ""}>
+                        <Link href={'/logIn'}>Iniciar sesión</Link> 
+                    </button>
                     
                 </div>
                 <div className='absolute right-7 top-7 md:hidden'>
