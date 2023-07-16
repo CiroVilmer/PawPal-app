@@ -34,7 +34,7 @@ const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
       <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 hover:shadow-lg  hover:scale-[.90] duration-500"/>
     </div>
     <h1 className='flex justify-center text-md font-bold mb-1'>{title}</h1>
-    <p className='text-xs text-center max-w-xs px-7'>{description}</p>
+    <p className='text-xs text-center max-w-xs lg:px-7'>{description}</p>
   </div>
 );
 export function scrollUp(){
@@ -52,7 +52,7 @@ const LandingPage: React.FC = () : JSX.Element => {
         <Header />
       
         <div className="flex justify-center flex-col w-full md:relative">
-            <div className="flex lg:items-center items-start sticky top-0 h-auto lg:h-screen bg-orange-300 ">
+            <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-orange-300 ">
               <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between mx-20" : "flex flex-col p-5 justify-center mt-28"}>
                 <div className="flex flex-col">
                   <h1 className="font-bold flex lg:mb-6 mb-12 lg:text-5xl text-4xl justify-center lg:justify-start text-center">Bienvenido a PawPal!</h1>
@@ -99,7 +99,7 @@ const LandingPage: React.FC = () : JSX.Element => {
               </div>
             </div>
 
-            <div className="sticky -top-64 h-auto bg-orange-300 flex items-center md:p-0">
+            <div className="sticky -top-64 lg:-top-5 h-auto bg-orange-300 flex items-center md:p-0">
               <div className={largeScreen ? "flex flex-row-reverse items-center flex-grow px-16 justify-between py-24" : "flex flex-col justify-start gap-8 py-12 px-5"}>
                 <div className="flex flex-col">
                   <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-5xl mb-6">¿Cuál es nuestro objetivo?</h1>
@@ -115,18 +115,18 @@ const LandingPage: React.FC = () : JSX.Element => {
                     />
                     <Pics
                       image="/fotoProvisoria.png"
-                      title="Ayudar"
-                      description="Buscamos ayudar a refugios y dueños en la difusión y búsqueda de mascotas perdidas."
+                      title="Facilitar"
+                      description="Facilitar la búsqueda mascotas perdidas y la interacción entre usuarios y refugios."
                     />
                     <Pics
                       image="/fotoProvisoria.png"
-                      title="Facilitar"
-                      description="Facilitar la búsqueda de servicios para mascotas y la interacción entre usuarios y refugios."
+                      title="Ayudar"
+                      description="Pretendemos ayudar a refugios y dueños en la busqueda de hogares para mascotas."
                     />
                     <Pics
                       image="/fotoProvisoria.png"
                       title="Difundir"
-                      description="Difundimos información relevante sobre adopción, servicios veterinarios y puntos de interés para los usuarios."
+                      description="Difundimos información relevante sobre adopciones y mascotas perdidas/encontradas."
                     />
                 </div>
               </div>   
