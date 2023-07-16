@@ -17,8 +17,8 @@ interface objetivoPicsProps{
 }
 //Diseño de las cards
 const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
-  <div className="bg-slate-50 w-80 mb-16 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group grow-0 hover:scale-110 duration-700 ">
-    <div className="bg-cover aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm transition-all duration-1000 transform-gpu group-hover:scale-75 z-20" style={{ backgroundImage }}></div>
+  <div className="bg-slate-50 w-80 mb-16 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group grow-0 lg:hover:scale-110 duration-700 ">
+    <div className="bg-cover aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm transition-all duration-1000 transform-gpu lg:group-hover:scale-75 z-20" style={{ backgroundImage }}></div>
     <div id="content-wrapper" className="flex flex-col opacity-100 visible h-full delay-200 z-10">
       <div id="content" className="flex flex-col items-center mt-2 opacity-100 transition-all duration-1000 delay-600">
         <h1 className="font-bold text-2xl tracking-wide text-slate-900">{title}</h1>
@@ -99,13 +99,13 @@ const LandingPage: React.FC = () : JSX.Element => {
               </div>
             </div>
 
-            <div className="sticky -top-12 h-auto bg-orange-300 flex items-center md:p-0">
+            <div className="sticky -top-64 h-auto bg-orange-300 flex items-center md:p-0">
               <div className={largeScreen ? "flex flex-row-reverse items-center flex-grow px-16 justify-between py-24" : "flex flex-col justify-start gap-8 py-12 px-5"}>
                 <div className="flex flex-col">
                   <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-5xl mb-6">¿Cuál es nuestro objetivo?</h1>
                   <p className="font-normal flex md:text-xl lg:max-w-xl text-md justify-end lg:text-right text-center">
-                    Nuestro objetivo es ayudar a los refugios a difundir, concientizar y buscar voluntarios, mientras brindamos a los dueños la posibilidad de encontrar servicios para sus mascotas y buscar o difundir mascotas perdidas.                  
-                  </p>
+                    
+                  Nuestro objetivo es brindar a los dueños la posibilidad de encontrar servicios para sus mascotas, buscar o difundir mascotas perdidas, y al mismo tiempo ayudar a los refugios a difundir, concientizar y buscar voluntarios.                  </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 self-center">
                     <Pics

@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
-import { Chip, Group, Switch } from '@mantine/core';
+import { Chip } from '@mantine/core';
 import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
-import { BsScissors, BsHouseHeartFill } from 'react-icons/bs';
+import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
 import { BiBone } from 'react-icons/bi';
-import { GiDogHouse } from 'react-icons/gi';
 import { ReactNode } from 'react';
-import EmailForm from './CambiarContraseña/emailForm';
 import { useMediaQuery } from "@mantine/hooks"; 
+import Link from 'next/link';
 
 const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
 
@@ -85,7 +84,7 @@ const MapComponent: React.FC = () => {
         <div className={largeScreen ? 'absolute top-[30%] bg-white rounded h-auto  shadow-xl px-2 ml-3 z-20' : 'hidden'}>
               <div className='md:flex md:flex-col md:gap-24 md:mt-3'>
                 <div className='flex flex-col gap-3'>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'></button>
+                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><BsFillFileEarmarkPostFill></BsFillFileEarmarkPostFill></Link></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>  
