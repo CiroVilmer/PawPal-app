@@ -85,7 +85,7 @@ export function LogInForm(): JSX.Element {
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
       
       <form action={''} onSubmit={formik.handleSubmit}>
-        <div className={largeScreen ? 'hidden' : 'text-center text-gray-500 text-sm py-2 font-normal'}> 
+        <div className='text-center text-gray-500 text-sm mb-3 font-normal'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
           <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
             <Link href = "/createAccount">Crear cuenta</Link>

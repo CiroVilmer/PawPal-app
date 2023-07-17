@@ -3,15 +3,15 @@ import {useMediaQuery} from "@mantine/hooks";
 import Navigation from "./Components/navigation";
 
 
-const Publicaciones: React.FC = () : JSX.Element => {
+const Chats: React.FC = () : JSX.Element => {
     const largeScreen = useMediaQuery('(min-width: 1040px)');
     return (
         <div className="">
-            <h1>Publicaciones</h1>
+            <h1>Chats</h1>
             <footer><Navigation/></footer>
         </div>
     )
 
 }
 
-export default Publicaciones;
+export default Chats;

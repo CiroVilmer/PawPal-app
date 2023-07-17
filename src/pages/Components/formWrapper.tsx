@@ -32,11 +32,11 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
             
                 <div className={largeScreen ? "z-20 border-solid md:border shadow-md ml-44 rounded-xl p-8 bg-white md:w-auto w-screen mt-20 md:mt-0" : "p-8 w-screen h-full rounded-t-2xl bg-white shadow-inner shadow-slate-300"}>
                     
-                    <div className="flex flex-col justify-center font-bold py-1 text-xl mb-4">
+                    <div className="flex flex-col justify-center font-bold py-1 text-xl mb-2">
                         
                         <button>
                             <Link href="/">
-                                <h1 className="text-4xl font-bold text-orange-400">
+                                <h1 className="text-4xl font-bold text-stone-600">
                                     {title}
                                 </h1>
                             </Link>
@@ -53,7 +53,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
                             <div className=" border-t grow mr-8 border-gray-200"></div>
                         </div>
 
-                        <button type="button" onClick={() => handleGoogleSignin()} className="w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
+                        <button type="button" onClick={() => handleGoogleSignin()} className="mb-6 w-full border border-black rounded-xl bg-white text-black  hover:text-white hover:bg-gray-800  active:bg-white active:text-black py-2 transform transition duration-400 ease-in active:scale-[.98]">
                             {buttonText} con google
                         </button>
                         

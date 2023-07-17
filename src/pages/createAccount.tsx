@@ -77,7 +77,12 @@ export function CreateAccount(): JSX.Element {
                 {/* question='¿Ya eres miembro?' */}
                 {/* linkTo='Iniciar sesión' */}
               <form action="" onSubmit={formik.handleSubmit}>
-
+              <div className='text-center text-gray-500 text-sm mb-3 font-normal'> 
+                ¿Ya eres miembro?{' '}<br></br>
+                <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
+                  <Link href = "/logIn">Iniciar sesión</Link>
+                </button>
+              </div>
                 <Flex direction={"row"} gap={"md"}>
 
                   <Input.Wrapper withAsterisk label="Nombre">
