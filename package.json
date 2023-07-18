@@ -23,6 +23,7 @@
     "@trpc/server": "^10.26.0",
     "bcrypt": "^5.1.0",
     "formik": "^2.4.1",
+    "framer-motion": "^10.12.22",
     "leaflet": "^1.9.4",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",

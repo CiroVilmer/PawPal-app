@@ -46,7 +46,6 @@ export function scrollUp(){
 const LandingPage: React.FC = () : JSX.Element => {
   
   const largeScreen = useMediaQuery("(min-width: 1140px)");
-  
   return (
     <div>
         <Header />

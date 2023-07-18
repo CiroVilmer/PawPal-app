@@ -21,15 +21,15 @@ const Header: React.FC = (): JSX.Element => {
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>
             <div className="grow w-full">
-                <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : 'hidden  bg-slate-50 h-auto mt-72 p-3 justify-end right-8 flex-col gap-3'}>
+                <div className={mediumScreen ? 'flex justify-end flex-row gap-6' :`flex flex-col rounded-l-xl shadow-xl translate-x-72 mt-72 ${isOpen === true ? "bg-white h-auto opacity-100 translate-x-0 duration-700 p-3 justify-end right-8 flex-col gap-3 " : ""} `}>
                     
-                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
                         Inicio
                     </button>
-                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
                         <Link href={'/mapa'}>Mapa</Link>
                     </button>
-                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':'border rounded-full'}>
+                    <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
                         Contacto
                     </button>
                     <button className={mediumScreen ? 'border-2 w-36 rounded-md hover:bg-gray-200 active:bg-gray-200 p-1 transform transition duration-300 ease-in active:scale-[.98]': ""}>
