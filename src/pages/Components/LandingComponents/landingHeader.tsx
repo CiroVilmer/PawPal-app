@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
-import { Flex, Text, Button } from '@mantine/core';
 import HamburgerButton from './hamburger';
 import {useMediaQuery} from '@mantine/hooks'
+import {motion} from 'framer-motion';
 
 const Header: React.FC = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ const Header: React.FC = (): JSX.Element => {
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>
             <div className="grow w-full">
-                <div className={mediumScreen ? 'flex justify-end flex-row gap-6' :`flex flex-col rounded-l-xl shadow-xl translate-x-72 mt-72 ${isOpen === true ? "bg-white h-auto opacity-100 translate-x-0 duration-700 p-3 justify-end right-8 flex-col gap-3 " : ""} `}>
+                <div className={mediumScreen ? 'flex justify-end flex-row gap-6' :`flex flex-col rounded-l-xl shadow-xl gap-3 p-3 bg-white h-auto absolute top-[88px] -right-1 opacity-0 ${isOpen === true ? "opacity-100  duration-700" : "hidden"} `}>
                     
                     <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
                         Inicio
