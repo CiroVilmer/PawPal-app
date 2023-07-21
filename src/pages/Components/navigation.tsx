@@ -1,55 +1,34 @@
 import React, { useState } from "react";
 import { HiHome, HiChatAlt2, HiSpeakerphone, HiUserCircle } from "react-icons/hi";
 import Link from "next/link";
+import path from "path";
+import { motion } from "framer-motion";
 
-function NavigationItem({
-    path,
-    icono,
-    name,
-  }: {
-    path: string;
-    icono: JSX.Element;
-    name: string;
-}){
+function NavigationItem({path, icono, name,}: {path: string; icono: JSX.Element; name: string;}){
   
     return (
       <Link href={path}>
-        {icono}
-        <span className="">{name}</span>
+        <div className="flex flex-col gap-1 items-center mt-2">
+          <i className="text-xl">{icono}</i>
+          <span className="font-semibold">{name}</span>
+        </div>
       </Link>
     );
   }
 
 const Navigation = () => {
   const [active, setActive] = useState(0);
-  const Menus = [
-    { name: "Inicio", icono: <HiHome />, path: "/publicaciones" },
-    { name: "Explorar", icono: <HiSpeakerphone />, path: "" },
-    { name: "Chat", icono: <HiChatAlt2 />, path: "/chats" },
-  ];
+  
 
   return (
     <div className="bg-slate-200 px-6 w-full h-16 rounded-t-2xl absolute bottom-0">
       <ul className="flex relative flex-row gap-x-12 px-6 justify-center">
-        <span className="w-3.5 h-3.5 bg-transparent absolute top-4 -left-[18px] rounded-tr-[11px] shadow-myShadow"></span>
-        <span className="w-3.5 h-3.5 bg-transparent absolute top-4 -right-[18px] rounded-tl-[11px] shadow-myShadow1"></span>
-        {Menus.map((menu, i) => (
-          <li className="w-16" key={i}>
-            
-              <main className="flex flex-col items-center mt-6" onClick={() => setActive(i)}>
-                <span className={`text-2xl z-10 duration-500 ${i === active ? "active -mt-2 text-orange-400" : ""}`}>
-                  {menu.icono}
-                </span>
-                <span
-                  className={`font-semibold ${active === i ? "-translate-y-[0.5px] duration-700 opacity-100 text-sm" : "opacity-0 translate-y-12"
-                    }`}
-                >
-                  {menu.name}
-                </span>
-              </main>
-            
-          </li>
-        ))}
+        <div className="flex flex-row flex-grow justify-between">
+      
+          <NavigationItem path="/publicaciones" icono={<HiHome />} name="Inicio"/>
+          <NavigationItem path="/refugios" icono={<HiSpeakerphone />} name="Refugios" />
+          <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat" />
+        </div>
       </ul>
     </div>
   );

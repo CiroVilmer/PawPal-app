@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import { signIn, signOut, useSession } from "next-auth/react";
-import { api } from "~/utils/api";
-import CreateAccount from './createAccount';
 import Link from 'next/link';
 import { useFormik } from 'formik';
 import login_validate from 'lib/validate';
@@ -12,16 +10,8 @@ import { useMediaQuery } from "@mantine/hooks";
 
 import 
   {
-    TextInput,
     PasswordInput,
     Checkbox,
-    Anchor,
-    Paper,
-    Title,
-    Text,
-    Container,
-    Group,
-    Button,
     Input,
     Flex
   } from '@mantine/core';
