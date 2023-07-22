@@ -1,10 +1,8 @@
 import { getSession } from "next-auth/react";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 import { GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next";
 import React from "react";
-import { type } from "os";
-import { Session } from "next-auth";
+
 
 type User = {
     username: string;    

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { HiHome, HiChatAlt2, HiSpeakerphone, HiMap } from "react-icons/hi";
 import Link from "next/link";
-import path from "path";
-import { motion } from "framer-motion";
+
 
 function NavigationItem({path, icono, name,}: {path: string; icono: JSX.Element; name: string;}){
   

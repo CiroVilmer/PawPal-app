@@ -1,32 +1,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { api } from "~/utils/api";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { register_validate } from 'lib/validate';
-import { boolean, number, z } from "zod";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import toast, { Toaster } from 'react-hot-toast';
-import { TRPCError } from '@trpc/server';
-
-import {
-TextInput,
-PasswordInput,
-Checkbox,
-Anchor,
-Paper,
-Title,
-Text,
-Container,
-Group,
-Button,
-Input,
-NumberInput,
-Flex
-} from '@mantine/core';
-import { object } from 'zod';
-import { on } from 'events';
-import { BsCcCircle } from 'react-icons/bs';
+import { PasswordInput, Input, Flex } from '@mantine/core';
 import { useRouter } from 'next/router';
 import FormWrapper from './Components/formWrapper';
 
@@ -34,7 +13,6 @@ import FormWrapper from './Components/formWrapper';
 export function CreateAccount(): JSX.Element {
 
   const { mutate: createAccount } = api.user.createUser.useMutation();
-  const [passwordShown, setPasswordShown] = useState(false);
 
   const router = useRouter()
 

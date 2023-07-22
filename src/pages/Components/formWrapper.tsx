@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { useMediaQuery } from "@mantine/hooks";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 
 interface FormWrapperProps {

@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { PasswordInput,Stack } from "@mantine/core";
+import React from "react";
+import { PasswordInput } from "@mantine/core";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import Link from "next/link";
 import { Progress } from '@mantine/core';

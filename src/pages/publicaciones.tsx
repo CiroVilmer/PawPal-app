@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useMediaQuery} from "@mantine/hooks";
 import Navigation from "./Components/navigation";
 import CustomizedTabs from "./Components/tabs";

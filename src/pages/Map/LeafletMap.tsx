@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import markerIcon from '../../../public/marcador.png';
-import dynamic from 'next/dynamic';
+
 
 const LeafletMap: React.FC = () => {  const mapRef = useRef<L.Map | null>(null);
 

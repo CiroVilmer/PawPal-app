@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import HamburgerButton from './hamburger';
 import {useMediaQuery} from '@mantine/hooks'
-import {motion} from 'framer-motion';
 
 const Header: React.FC = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);

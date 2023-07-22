@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import {BsFacebook, BsInstagram, BsTwitter} from 'react-icons/bs';
 import {SiGmail} from 'react-icons/si';
 

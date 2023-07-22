@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {Input, Button, Progress} from '@mantine/core'
+import {Input, Progress} from '@mantine/core'
 import FormWrapper from '../Components/formWrapper';
 
 const EmailForm : React.FC = () => {

@@ -4,7 +4,6 @@ import Navigation from "./Components/navigation";
 
 
 const Chats: React.FC = () : JSX.Element => {
-    const largeScreen = useMediaQuery('(min-width: 1040px)');
     return (
         <div>
             <div className="h-auto flex items-center flex-col justify-start mt-10">

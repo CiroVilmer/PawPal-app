@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from 'next/link';
 import { useFormik } from 'formik';
 import login_validate from 'lib/validate';
