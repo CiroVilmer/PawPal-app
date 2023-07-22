@@ -10,7 +10,7 @@ const Publicaciones: React.FC = () : JSX.Element => {
     return (
         <div>
             
-            <div className="min-h-screen flex items-center flex-col justify-start mt-10">
+            <div className="h-auto flex items-center flex-col justify-start mt-10">
                 <h1 className="mb-10">Publicaciones</h1>
                 <div><CustomizedTabs/></div>
                 
