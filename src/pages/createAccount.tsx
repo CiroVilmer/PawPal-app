@@ -61,15 +61,15 @@ export function CreateAccount(): JSX.Element {
                   <Link href = "/logIn">Iniciar sesión</Link>
                 </button>
               </div>
-                <Flex direction={"row"} gap={"md"}>
+                <Flex className='flex flex-row justify-between '>
 
                   <Input.Wrapper withAsterisk label="Nombre">
                     <Input
                       type="string"
                       id="first_name"
-                      placeholder="Pepe"
+                      placeholder=""
                       size='sm'
-                      style={{ width: 150 }}
+                      className='w-36'
                       required
                       {...formik.getFieldProps('name')}
                     />
@@ -80,8 +80,8 @@ export function CreateAccount(): JSX.Element {
                     <Input
                       type="string"
                       id="last_name"
-                      placeholder="Urizar"
-                      style={{ width: 150 }}
+                      placeholder=""
+                      className='w-36'
                       size='sm'
                       required
                       {...formik.getFieldProps('surName')}
@@ -99,7 +99,7 @@ export function CreateAccount(): JSX.Element {
                     <Input
                       type="string"
                       id="email"
-                      placeholder="ejemplo@gmail.com"
+                      placeholder=""
                       size='sm'
                       required
                       {...formik.getFieldProps('email')}
@@ -108,9 +108,9 @@ export function CreateAccount(): JSX.Element {
                   </Input.Wrapper>
                   <Input.Wrapper withAsterisk label="Contraseña">
                     <PasswordInput
-                      placeholder="password"
+                      placeholder=""
                       required
-
+                      className='w-80'
                       {...formik.getFieldProps('password')}
                       visibilityToggleIcon={({ reveal, size }) =>
                         reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
@@ -120,7 +120,7 @@ export function CreateAccount(): JSX.Element {
                   </Input.Wrapper>
                   <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9'>
                     <PasswordInput
-                      placeholder="password"
+                      placeholder=""
                       required
 
                       {...formik.getFieldProps('confirmPassword')}

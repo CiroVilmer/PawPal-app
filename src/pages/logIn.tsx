@@ -13,11 +13,12 @@ import
     PasswordInput,
     Checkbox,
     Input,
-    Flex
+    Flex,
+    RingProgress
   } from '@mantine/core';
 import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
 import { router } from '@trpc/server';
-import { any } from 'zod';
+import { any, boolean } from 'zod';
 import { time } from 'console';
 import FormWrapper from './Components/formWrapper';
 
@@ -82,19 +83,19 @@ export function LogInForm(): JSX.Element {
           </button>
         </div>
         <div>
-          <Input.Wrapper withAsterisk label = "Correo electronico" className='w-80 mb-5'> 
+          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-80'> 
             <Input
               type="email"
               id="email"         
-              placeholder="ejemplo@gmail.com"
+              placeholder=""
               {...formik.getFieldProps('email')}
               required
             />
             {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs px-1">{formik.errors.email}</div> : null}
           </Input.Wrapper>  
-          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2'>
+          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-80'>
             <PasswordInput
-              placeholder="password"
+              placeholder=""
               required
               size='sm'
               style = {{width: '400'}}
