@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
 const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
   <div className="flex flex-col">
     <div className="flex justify-center">
-      <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 hover:shadow-lg  hover:scale-[.90] duration-500"/>
+      <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 hover:shadow-lg select-none pointer-events-none hover:scale-[.90] duration-500"/>
     </div>
     <h1 className='flex justify-center text-md font-bold mb-1'>{title}</h1>
     <p className='text-xs text-center max-w-xs lg:px-7'>{description}</p>
@@ -140,7 +140,7 @@ const LandingPage: React.FC = () : JSX.Element => {
                   </p>
                   <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className='border-2 p-1 w-36 h-12 rounded-md border-black transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Contacto</button>
                 </div>
-                <div className={largeScreen ? "shadow-xl" : "hidden"}><img  src="/fotoProvisoria.png" alt="fotoProv"/></div>
+                <div className={largeScreen ? "shadow-xl select-none pointer-events-none" : "hidden"}><img  src="/fotoProvisoria.png" alt="fotoProv"/></div>
               </div>
             </div>
         </div>

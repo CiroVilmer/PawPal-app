@@ -24,11 +24,11 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
   return (
     <div className={ largeScreen ? "flex w-full h-screen justify-start" : "flex h-screen w-screen px-1 justify-center items-center bg-orange-400"}>
 
-        <img src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0 pointer-events-none" : "hidden" } alt="background"></img>
+        <img src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0 select-none pointer-events-none" : "hidden" } alt="background"></img>
         
 
             <div className="md:flex md:flex-row-reverse md:items-center md:gap-64">
-                <img src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80 pointer-events-none' : 'hidden'}/>
+                <img src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80 select-none ' : 'hidden'}/>
             
                 <div className={largeScreen ? "z-20 border shadow-md ml-44 rounded-xl p-8 bg-white w-auto" : "p-8 w-full h-full rounded-2xl bg-white shadow-xl"}>
                     
@@ -47,7 +47,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
                     {children}
                     <div>
                         
-                        <div className="flex flex-row items-center  mb-1 gap-4 text-gray-400">
+                        <div className="flex flex-row items-center select-none mb-1 gap-4 text-gray-400">
                             <div className="border-t grow ml-8 border-gray-200"></div>
                             <label> o </label>
                             <div className=" border-t grow mr-8 border-gray-200"></div>
