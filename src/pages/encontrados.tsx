@@ -2,8 +2,8 @@ import React from 'react';
 
 const Encontrados: React.FC = () : JSX.Element => {
     return (
-        <div>
-            <h1>Encontrados</h1>
+        <div className='flex justify-center'>
+            <h1 className='font-semibold text-orange-400'>Encontrados</h1>
         </div>
     )
 }

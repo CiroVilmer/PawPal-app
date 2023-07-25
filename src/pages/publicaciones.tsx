@@ -1,24 +1,31 @@
-import React from "react";
-import {useMediaQuery} from "@mantine/hooks";
-import Navigation from "./Components/navigation";
-import CustomizedTabs from "./Components/tabs";
+import React, { useState } from 'react';
+import CustomizedTabs from './Components/tabs';
+import Encontrados from './encontrados'; // Import Encontrados component
+import Perdidos from './perdidos'; // Import Perdidos component
+import Navigation from './Components/navigation';
 
-const Publicaciones: React.FC = () : JSX.Element => {
-    const largeScreen = useMediaQuery('(min-width: 1040px)');
+const Publicaciones = () => {
+  const [value, setValue] = useState<number>(0);
 
+  // Function to update the selected tab value
+  const handleChange = (newValue: number) => {
+    setValue(newValue);
+  };
 
-    return (
+  return (
+    <div>
+        <div className="h-auto flex items-center flex-col justify-start mt-10">
+        <h1 className="mb-10">Publicaciones</h1>
         <div>
-            
-            <div className="h-auto flex items-center flex-col justify-start mt-10">
-                <h1 className="mb-10">Publicaciones</h1>
-                <div><CustomizedTabs/></div>
-                
-            </div>
-            <footer><Navigation></Navigation></footer>
+        <CustomizedTabs value={value} onChange={handleChange} />
+        {value === 0 && <Encontrados />} 
+        {value === 1 && <Perdidos />} 
         </div>
-    )
+        </div>
+        <footer><Navigation></Navigation></footer>
 
-}
+    </div>
+  );
+};
 
 export default Publicaciones;

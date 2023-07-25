@@ -17,8 +17,8 @@ interface objetivoPicsProps{
 }
 //Diseño de las cards
 const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
-  <div className="bg-slate-50 w-80 mb-16 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group grow-0 lg:hover:scale-110 duration-700 ">
-    <div className="bg-cover aspect-square w-44 -mt-24 bg-center rounded-lg shadow-sm transition-all duration-1000 transform-gpu lg:group-hover:scale-75 z-20" style={{ backgroundImage }}></div>
+  <div className="bg-slate-50 w-80 mb-16 h-auto flex flex-col items-center p-8 rounded-lg shadow-lg group grow-0 lg:hover:scale-105 lg:hover:shadow-2xl duration-700 ">
+    <div className="bg-cover aspect-square w-36 -mt-24 bg-center rounded-lg shadow-sm transition-all duration-1000 transform-gpu z-20" style={{ backgroundImage }}></div>
     <div id="content-wrapper" className="flex flex-col opacity-100 visible h-full delay-200 z-10">
       <div id="content" className="flex flex-col items-center mt-2 opacity-100 transition-all duration-1000 delay-600">
         <h1 className="font-bold text-2xl tracking-wide text-slate-900">{title}</h1>
