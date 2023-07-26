@@ -9,7 +9,6 @@ import { BiBone } from 'react-icons/bi';
 import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks"; 
 import Link from 'next/link';
-import Navigation from './Components/navigation';
 
 const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
 
@@ -89,9 +88,9 @@ const MapComponent: React.FC = () => {
           </div>
       </div>
       
-      <footer className={largeScreen ? "hidden" : 'z-20 w-full absolute'}>
+      {/* <footer className={largeScreen ? "hidden" : 'z-20 w-full absolute'}>
         <Navigation />
-      </footer>
+      </footer> */}
     </div>
   );
 };
