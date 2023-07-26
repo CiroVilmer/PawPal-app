@@ -1,12 +1,10 @@
 import { getSession } from "next-auth/react";
 import { signOut, useSession } from "next-auth/react";
-import { GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next";
+import { GetServerSidePropsContext } from "next";
 import React from "react";
 
 
-type User = {
-    username: string;    
-}
+
 
 
 export function HomePage(): JSX.Element {
