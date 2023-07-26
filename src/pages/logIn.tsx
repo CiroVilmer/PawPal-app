@@ -6,7 +6,6 @@ import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi';
 import toast, { Toaster } from 'react-hot-toast';
-import { useMediaQuery } from "@mantine/hooks";
 
 import 
   {
@@ -14,7 +13,6 @@ import
     Checkbox,
     Input,
     Flex,
-    RingProgress
   } from '@mantine/core';
 import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
 import { router } from '@trpc/server';
@@ -24,7 +22,6 @@ import FormWrapper from './Components/formWrapper';
 
 export function LogInForm(): JSX.Element {
     
-  const largeScreen = useMediaQuery("(min-width: 1100px)");
 
 
   const router = useRouter()
@@ -61,13 +58,7 @@ export function LogInForm(): JSX.Element {
   }
 
 
-  const [passwordShown, setPasswordShown] = useState(false);
 
-  const togglePassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
-    setPasswordShown(!passwordShown)
-  }
 
   
     
