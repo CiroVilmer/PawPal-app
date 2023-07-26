@@ -20,8 +20,8 @@ const Header: React.FC = (): JSX.Element => {
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>
             <div className="grow w-full">
-                <div className={mediumScreen ? '' :` rounded-l-xl shadow-xl gap-3 p-3 bg-white h-auto absolute top-[88px]  opacity-0 ${isOpen === true ? "opacity-100 -right-1 duration-700" : "-right-28"} `}>
-                    <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : `${isOpen === true ? "flex flex-col" : "hidden"}`}>
+                <div className={mediumScreen ? '' :` rounded-l-xl shadow-xl gap-3 p-3 bg-white h-auto absolute top-[88px] ${isOpen === true ? "opacity-100 -right-1 duration-700" : "-right-32 opacity-0 duration-1000"} `}>
+                    <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : `${isOpen === true ? "flex flex-col" : "flex flex-col"}`}>
                         <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
                             Inicio
                         </button>
