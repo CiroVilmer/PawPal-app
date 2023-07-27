@@ -81,7 +81,7 @@ export function CreateAccount(): JSX.Element {
                       type="string"
                       id="last_name"
                       placeholder=""
-                      className='w-36'
+                      className='w-32 md:w-36'
                       size='sm'
                       required
                       {...formik.getFieldProps('surName')}
@@ -110,7 +110,7 @@ export function CreateAccount(): JSX.Element {
                     <PasswordInput
                       placeholder=""
                       required
-                      className='w-80'
+                      className='w-72 md:w-80'
                       {...formik.getFieldProps('password')}
                       visibilityToggleIcon={({ reveal, size }) =>
                         reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}

@@ -74,7 +74,7 @@ export function LogInForm(): JSX.Element {
           </button>
         </div>
         <div>
-          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-80'> 
+          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-72 md:w-80'> 
             <Input
               type="email"
               id="email"         
@@ -84,7 +84,7 @@ export function LogInForm(): JSX.Element {
             />
             {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs px-1">{formik.errors.email}</div> : null}
           </Input.Wrapper>  
-          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-80'>
+          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-72 md:w-80'>
             <PasswordInput
               placeholder=""
               required
