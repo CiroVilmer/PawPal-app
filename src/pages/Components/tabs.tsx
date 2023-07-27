@@ -13,7 +13,7 @@ interface StyledTabsProps {
 const StyledTabs = styled((props: StyledTabsProps) => (
   <Tabs
     {...props}
-    TabIndicatorProps={{ children: <span className=" max-w-[110px] bg-green-400 w-full" /> }}
+    TabIndicatorProps={{ children: <span className=" max-w-[110px] bg-orange-400 w-full" /> }}
   />
 ))({
   '& .MuiTabs-indicator': {
