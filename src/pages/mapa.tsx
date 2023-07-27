@@ -9,6 +9,7 @@ import { BiBone } from 'react-icons/bi';
 import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks"; 
 import Link from 'next/link';
+// import Navigation from './Components/navigation';
 
 const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
 
