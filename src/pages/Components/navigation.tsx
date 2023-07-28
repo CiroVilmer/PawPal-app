@@ -8,7 +8,7 @@ const NavigationItem = ({ path, icono, name}: { path: string; icono: JSX.Element
     <Link href={path}>
       <div className={`flex flex-col gap-1 items-center mt-2`}>
         <i className={`text-lg`}>{icono}</i>
-        <span className="font-semibold">{name}</span>
+        <span className="">{name}</span>
       </div>
     </Link>
   );
@@ -20,7 +20,7 @@ const Navigation = () => {
   
 
   return (
-    <div className="bg-slate-200 opacity-80 px-6 w-full h-14 rounded-t-2xl absolute bottom-0">
+    <div className="bg-slate-200 opacity-80 px-6 w-full h-14 rounded-t-2xl absolute bottom-0 font-Poppins text-[12px]">
       <ul className="flex relative flex-row gap-x-12 px-6 justify-center">
         <div className="flex flex-row flex-grow justify-between ">
           <NavigationItem path="/publicaciones" icono={<HiHome />} name="Inicio"/>

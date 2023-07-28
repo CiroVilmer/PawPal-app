@@ -13,7 +13,7 @@ export function HomePage(): JSX.Element {
 
     if (status === "authenticated") {
         return (
-            <div className="flex h-screen justify-center items-center ">
+            <div className="flex h-screen justify-center items-center font-Poppins">
                 <div className="bg-slate-200 border rounded-md p-10">
                     <div className="flex flex-col gap-7" >
                         <div className="flex justify-center">

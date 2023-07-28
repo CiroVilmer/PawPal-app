@@ -61,9 +61,9 @@ export function CreateAccount(): JSX.Element {
                   <Link href = "/logIn">Iniciar sesión</Link>
                 </button>
               </div>
-                <Flex className='flex flex-row justify-between '>
+                <Flex className='flex flex-row justify-between'>
 
-                  <Input.Wrapper withAsterisk label="Nombre">
+                  <Input.Wrapper withAsterisk label="Nombre" className='font-Poppins'>
                     <Input
                       type="string"
                       id="first_name"
@@ -76,7 +76,7 @@ export function CreateAccount(): JSX.Element {
                     {formik.errors.name && formik.touched.name ? <div className="text-red-500 text-xs">{formik.errors.name}</div> : null}
                   </Input.Wrapper>
 
-                  <Input.Wrapper withAsterisk label="Apellido">
+                  <Input.Wrapper withAsterisk label="Apellido" className='font-Poppins'>
                     <Input
                       type="string"
                       id="last_name"
@@ -95,7 +95,7 @@ export function CreateAccount(): JSX.Element {
                 <div>
 
 
-                  <Input.Wrapper withAsterisk label="Correo electrónico">
+                  <Input.Wrapper withAsterisk label="Correo electrónico" className='font-Poppins'>
                     <Input
                       type="string"
                       id="email"
@@ -106,7 +106,7 @@ export function CreateAccount(): JSX.Element {
                     />
                     {formik.errors.email && formik.touched.email ? <div className="text-red-500 text-xs">{formik.errors.email}</div> : null}
                   </Input.Wrapper>
-                  <Input.Wrapper withAsterisk label="Contraseña">
+                  <Input.Wrapper withAsterisk label="Contraseña" className='font-Poppins'>
                     <PasswordInput
                       placeholder=""
                       required
@@ -118,7 +118,7 @@ export function CreateAccount(): JSX.Element {
 
                     {formik.errors.password && formik.touched.password ? <div className="text-red-500 text-xs">{formik.errors.password}</div> : null}
                   </Input.Wrapper>
-                  <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9'>
+                  <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9 font-Poppins'>
                     <PasswordInput
                       placeholder=""
                       required

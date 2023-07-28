@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
     <div id="content-wrapper" className="flex flex-col opacity-100 visible h-full delay-200 z-10">
       <div id="content" className="flex flex-col items-center mt-2 opacity-100 transition-all duration-1000 delay-600">
         <h1 className="font-bold text-2xl tracking-wide text-slate-900">{title}</h1>
-        <p className="font-light text-center text-slate-700 mt-2">{description}</p>
+        <p className=" font-light text-[15px] text-center text-slate-700 mt-2">{description}</p>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ const LandingPage: React.FC = () : JSX.Element => {
     <div>
         <Header />
       
-        <div className="flex justify-center flex-col w-full md:relative">
+        <div className="flex justify-center flex-col w-full md:relative font-Poppins">
             <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-orange-300 ">
               <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between mx-20" : "flex flex-col p-5 justify-center mt-28"}>
                 <div className="flex flex-col">
@@ -71,7 +71,7 @@ const LandingPage: React.FC = () : JSX.Element => {
             </div>
 
             <div className="sticky h-auto flex flex-col items-center justify-start bg-stone-300 px-5 md:p-0">
-              <h1 className="text-3xl md:text-5xl pt-16 text-center font-semibold text-black mb-5">¿Cómo funciona nuestra aplicación?</h1>
+              <h1 className="text-3xl md:text-4xl pt-16 text-center font-semibold text-black mb-5">¿Cómo funciona nuestra aplicación?</h1>
               <p className='text-center text-black text-lg max-w-2xl'>
                 Los usuarios pueden realizar publicaciones sobre animales perdidos/encontrados, verlos en un mapa y acceder a puntos de interés cercanos. 
                 También ofrecemos funciones para refugios y abrir canales de comunicación.              
@@ -101,8 +101,8 @@ const LandingPage: React.FC = () : JSX.Element => {
             <div className="sticky -top-64 lg:-top-5 h-auto bg-orange-300 flex items-center md:p-0">
               <div className={largeScreen ? "flex flex-row-reverse items-center flex-grow px-16 justify-between py-24" : "flex flex-col justify-start gap-8 py-12 px-5"}>
                 <div className="flex flex-col">
-                  <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-5xl mb-6">¿Cuál es nuestro objetivo?</h1>
-                  <p className="font-normal flex md:text-xl lg:max-w-xl text-md justify-end lg:text-right text-center">
+                  <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-4xl mb-6">¿Cuál es nuestro objetivo?</h1>
+                  <p className="flex md:text-xl lg:max-w-xl text-md justify-end lg:text-right text-center">
                     
                   Nuestro objetivo es brindar a los dueños la posibilidad de encontrar servicios para sus mascotas, buscar o difundir mascotas perdidas, y al mismo tiempo ayudar a los refugios a difundir, concientizar y buscar voluntarios.                  </p>
                 </div>

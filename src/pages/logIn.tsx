@@ -67,14 +67,14 @@ export function LogInForm(): JSX.Element {
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
       
       <form action={''} onSubmit={formik.handleSubmit}>
-        <div className='text-center text-gray-500 text-sm mb-3 font-normal'> 
+        <div className='text-center text-gray-500 text-sm mb-3'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
           <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
             <Link href = "/createAccount">Crear cuenta</Link>
           </button>
         </div>
         <div>
-          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-[258px] md:w-80'> 
+          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-[258px] md:w-80 font-Poppins'> 
             <Input
               type="email"
               id="email"         
@@ -84,7 +84,7 @@ export function LogInForm(): JSX.Element {
             />
             {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs px-1">{formik.errors.email}</div> : null}
           </Input.Wrapper>  
-          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80'>
+          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
             <PasswordInput
               placeholder=""
               required
@@ -98,15 +98,17 @@ export function LogInForm(): JSX.Element {
           </Input.Wrapper>
               
         </div>        
-        <Flex className="flex items-center mb-8" direction={"row"} justify={"space-between"}>
-          <Checkbox
-            color='orange'
-            size={"xs"}
-            label="Recuerdame"
-          />
+        <Flex className="flex items-center mb-8 " direction={"row"} justify={"space-between"}>
+          <a className='flex flex-row gap-[6px]'>
+            <Checkbox
+              color='orange'
+              size={"xs"}
+            />
+            <label className="text-gray-500 text-xs">Recordarme</label>
+          </a>
           <button className="text-orange-500 text-xs hover:underline transform transition duration-100 ease-out active:scale-[.99]">
             <Link href = "/passwordRecovery">¿Olvidaste tu contraseña?</Link>
-            </button>
+          </button>
         </Flex>
         <div>
           <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>

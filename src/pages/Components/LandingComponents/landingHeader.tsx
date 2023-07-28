@@ -14,7 +14,7 @@ const Header: React.FC = (): JSX.Element => {
     const mediumScreen = useMediaQuery("(min-width: 768px)");
 
     return(
-        <div className= "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white z-20">
+        <div className= "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white z-20 font-Poppins">
             
             <button onClick={scrollUp} className='flex flex-row items-center'>
                 <img src='/logoPawPal.png' alt='logo'/>
@@ -23,18 +23,18 @@ const Header: React.FC = (): JSX.Element => {
             <div className="grow w-full">
                 <div className={mediumScreen ? '' :` rounded-l-xl shadow-xl gap-3 p-3 bg-white h-auto absolute top-[88px] ${isOpen === true ? "opacity-95 -right-1 duration-700" : "-right-32 opacity-0 delay-100 ease-in duration-500"} `}>
                     <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : `flex flex-col gap-2 p-2 items-center ${isOpen === true ? "" : ""}`}>
-                        <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
                             <Link href={'/publicaciones'}>Inicio</Link> 
                         </button>                        
                         {mediumScreen === false ? <Divider className=" w-16" color='#f1e5d3'></Divider> : ""}
 
-                        <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
                             <Link href={'/mapa'}>Mapa</Link>
                         </button>
 
                         {mediumScreen === false ? <Divider className="w-16" color='#f1e5d3'></Divider> : ""}
 
-                        <button className={mediumScreen ?'hover:-translate-y-1 duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
                             Contacto
                         </button>
                         {mediumScreen === false ? <Divider className=" w-16" color='#f1e5d3'></Divider> : ""}

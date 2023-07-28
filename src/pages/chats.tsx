@@ -5,7 +5,7 @@ import Navigation from "./Components/navigation";
 const Chats: React.FC = () : JSX.Element => {
     return (
         <div>
-            <div className="h-auto flex items-center flex-col justify-start mt-10">
+            <div className="h-auto flex items-center flex-col justify-start mt-10 font-Poppins">
                 <h1>Chats</h1>
                 
             </div>

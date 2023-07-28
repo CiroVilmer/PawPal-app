@@ -30,7 +30,7 @@ const MapComponent: React.FC = () => {
   const Chips: React.FC<ChipProps> = ({ num, servicio, icono }) => (
     <Chip value={num} color="orange" variant="outline" className="">
       <i className="pr-2">{icono}</i>
-      {servicio}
+      <a className='font-Poppins text-[13px]'>{servicio}</a>
     </Chip>
   );
 
@@ -38,7 +38,7 @@ const MapComponent: React.FC = () => {
 
 
   return (
-    <div className={"h-screen w-screen"}>
+    <div className={"h-screen w-screen font-Poppins"}>
       <div className="flex flex-col">
         <div id="map" className="w-full h-full z-10">
           <LeafletMap />

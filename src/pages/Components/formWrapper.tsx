@@ -22,7 +22,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
     
 
   return (
-    <div className={ largeScreen ? "flex w-full h-screen justify-start" : "flex h-screen w-screen px-1 justify-center items-center bg-orange-400"}>
+    <div className={ largeScreen ? "flex w-full h-screen justify-start font-Poppins" : "flex h-screen w-screen px-1 justify-center items-center bg-orange-400"}>
 
         <img src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0 select-none pointer-events-none" : "hidden" } alt="background"></img>
         

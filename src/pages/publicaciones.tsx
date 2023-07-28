@@ -14,8 +14,8 @@ const Publicaciones = () => {
 
   return (
     <div>
-        <div className="h-auto flex items-center flex-col justify-start mt-10">
-            <h1 className="mb-10 font-semibold text-xl font-mono">Publicaciones</h1>
+        <div className="h-auto flex items-center flex-col justify-start mt-10 font-Poppins">
+            <h1 className="mb-10 font-semibold text-xl">Publicaciones</h1>
             <div>
               <CustomizedTabs value={value} onChange={handleChange} />
               {value === 0 ? <Perdidos /> : <Encontrados />}            
