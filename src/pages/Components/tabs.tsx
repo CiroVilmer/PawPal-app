@@ -55,7 +55,7 @@ const CustomizedTabs = ({ onChange, value }: TabsProps) => {
            <StyledTab label="Encontrados"/>
            <StyledTab label="Perdidos" />  
          </StyledTabs>
-         <Box sx={{ p: 3 }} />
+         <Box sx={{ p: 2 }} />
        </Box>
      </Box>
    );

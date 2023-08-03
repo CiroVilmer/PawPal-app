@@ -13,13 +13,12 @@ const Publicaciones = () => {
   };
 
   return (
-    <div>
-        <div className="h-auto flex items-center flex-col justify-start mt-10 font-Poppins">
-            <h1 className="mb-10 font-semibold text-xl">Publicaciones</h1>
-            <div>
+    <div className ='bg-gray-200 h-screen'>
+        <div className="h-auto flex items-center flex-col justify-start font-Poppins">
+            <div className = 'mt-10'>
               <CustomizedTabs value={value} onChange={handleChange} />
-              {value === 0 ? <Perdidos /> : <Encontrados />}            
             </div>
+            {value === 1 ? <Perdidos /> : <Encontrados />}
         </div>
         <footer><Navigation></Navigation></footer>
 

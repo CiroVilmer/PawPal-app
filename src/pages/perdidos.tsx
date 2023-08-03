@@ -1,9 +1,40 @@
 import React from 'react';
+import Card from './Components/publicationCard'
 
 const Perdidos: React.FC = () : JSX.Element => {
     return (
-        <div className='flex justify-center font-Poppins'>
-            <h1 className='font-semibold text-orange-400'>Perdidos</h1>
+        <div className='flex justify-start flex-col font-Poppins overflow-auto h-[530px]'>
+            <Card 
+                img= "/perrito-gatito.png"
+                name = 'Carlitos'
+                ubication = 'Belgrano'
+                description = 'Le gusta chupar patas'
+            />
+            <Card 
+                img= "/perrito-gatito.png"
+                name = 'Carlitos'
+                ubication = 'Belgrano'
+                description = 'Le gusta chupar patas'
+            />
+            <Card 
+                img= "/perrito-gatito.png"
+                name = 'Carlitos'
+                ubication = 'Belgrano'
+                description = 'Le gusta chupar patas'
+            />
+            <Card 
+                img= "/perrito-gatito.png"
+                name = 'Carlitos'
+                ubication = 'Belgrano'
+                description = 'Le gusta chupar patas'
+            />
+            <Card 
+                img= "/perrito-gatito.png"
+                name = 'Carlitos'
+                ubication = 'Belgrano'
+                description = 'Le gusta chupar patas'
+            />
+            
         </div>
     )
 }

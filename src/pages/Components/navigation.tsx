@@ -20,7 +20,7 @@ const Navigation = () => {
   
 
   return (
-    <div className="bg-slate-200 opacity-80 px-6 w-full h-14 rounded-t-2xl absolute bottom-0 font-Poppins text-[12px]">
+    <div className="bg-white px-6 w-full h-14 rounded-t-full absolute bottom-0 font-Poppins text-[12px]">
       <ul className="flex relative flex-row gap-x-12 px-6 justify-center">
         <div className="flex flex-row flex-grow justify-between ">
           <NavigationItem path="/publicaciones" icono={<HiHome />} name="Inicio"/>
