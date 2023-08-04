@@ -41,7 +41,7 @@ export function LogInForm(): JSX.Element {
     redirect: false,
     email: values.email,
     password: values.password,
-    callbackUrl: "http://localhost:3000/homepage"
+    callbackUrl: "https://pawpalweb.vercel.app/homepage"
     })
 
     if(status?.ok){
