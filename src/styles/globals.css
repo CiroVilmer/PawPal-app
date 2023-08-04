@@ -26,3 +26,21 @@
     }
 }
 
+*{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+input,
+textarea,
+select,
+button,
+a{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+a:visited,
+a:active{
+    outline: none;
+}

@@ -12,7 +12,7 @@ const NavigationItem = ({ path, icono, name }: { path: string; icono: JSX.Elemen
       href={path}
       className={`${
         router.pathname == path ? "text-orange-300" : ""
-        } flex flex-col items-center gap-1 text-center text-xl mt-2`}>
+        } flex flex-col items-center gap-1 text-center w-[70px] p-[4px] text-xl mt-[4px] rounded-md active:bg-slate-200 duration-300`}>
       {icono}
       <span className="text-xs font-medium ">{name}</span>
     </Link>
