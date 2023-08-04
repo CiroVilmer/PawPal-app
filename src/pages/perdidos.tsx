@@ -3,7 +3,7 @@ import Card from './Components/publicationCard'
 
 const Perdidos: React.FC = () : JSX.Element => {
     return (
-        <div className='flex justify-start flex-col font-Poppins overflow-auto h-[530px]'>
+        <div className='flex justify-start flex-col font-Poppins overflow-auto h-[475px] overflow-auto'>
             <Card 
                 img= "/perrito-gatito.png"
                 name = 'Carlitos'

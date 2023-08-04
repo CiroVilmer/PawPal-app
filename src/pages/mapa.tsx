@@ -5,7 +5,7 @@ import { Chip } from '@mantine/core';
 import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
-import { BiBone } from 'react-icons/bi';
+import { BiBone, BiUser } from 'react-icons/bi';
 import { HiOutlineHome } from 'react-icons/hi';
 import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks"; 
@@ -45,7 +45,7 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className={`z-20 flex ${largeScreen ? "flex-row absolute left-10 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
+        <div className={`z-20 flex ${largeScreen ? "flex-row absolute left-10 mt-6 ml-4 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
           <div className={largeScreen ? "relative" : "absolute top-3"}>
             <input
               type="text"
@@ -75,18 +75,19 @@ const MapComponent: React.FC = () => {
           
         </div>
 
-        <div className={largeScreen ? 'absolute top-[30%] bg-white rounded h-auto  shadow-xl px-2 ml-3 z-20' : 'hidden'}>
-              <div className='md:flex md:flex-col md:gap-24 md:mt-3'>
-                <div className='flex flex-col gap-3'>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><HiOutlineHome/></Link></button>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>  
+        <div className={largeScreen ? 'absolute top-[0%] bg-white rounded-l-none rounded-r-[30px] h-full w-12 shadow-xl px-2 z-20' : 'hidden'}>
+              <div className='md:flex md:flex-col md:mt-3 '>
+                <div className='flex flex-col gap-4 mt-10 ml-1'>
+                  <button className='text-2xl rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><HiOutlineHome/></Link></button>
+                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>
+                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>
+                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>  
                 </div>
-                <div>            
-                  <button className='bg-slate-300 rounded-full h-6 w-6 mb-3 flex justify-center items-center'></button>
-                </div>
+                
               </div>
+                <div className = 'absolute bottom-5'>            
+                  <button className='bg-slate-200 rounded-full h-8 w-8 mb-3 flex justify-center items-center'><Link href = ''><BiUser/></Link></button>
+                </div>
           </div>
       </div>
       
