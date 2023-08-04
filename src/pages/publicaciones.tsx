@@ -13,7 +13,7 @@ const Publicaciones = () => {
   };
 
   return (
-    <div className ='bg-gray-200 h-screen'>
+    <div className ='bg-gray-200 h-screen overflow-hidden'>
         <div className="h-auto flex items-center flex-col justify-start font-Poppins">
             <div className = 'mt-10'>
               <CustomizedTabs value={value} onChange={handleChange} />

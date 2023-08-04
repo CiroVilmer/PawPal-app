@@ -52,12 +52,12 @@ const MapComponent: React.FC = () => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Buscar..."
-              className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-purple-400 transition-all duration-1000"
+              className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-orange-400 transition-all duration-1000"
             />
           
             <button
               onClick={handleSearch}
-              className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-purple-400 text-white rounded-full"
+              className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-orange-400 text-white rounded-full"
             >
                <FaSearchLocation />
             </button>
