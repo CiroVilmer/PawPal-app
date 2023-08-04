@@ -51,10 +51,10 @@ const LandingPage: React.FC = () : JSX.Element => {
         <Header />
       
         <div className="flex justify-center flex-col w-full md:relative font-Poppins">
-            <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-orange-300 ">
-              <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between mx-20" : "flex flex-col p-5 justify-center mt-28"}>
+            <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-orange-400 ">
+              <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between ml-20" : "flex flex-col p-5 justify-center mt-28"}>
                 <div className="flex flex-col">
-                  <h1 className="font-bold flex lg:mb-6 mb-12 lg:text-5xl text-4xl justify-center lg:justify-start text-center">Bienvenido a PawPal!</h1>
+                  <h1 className="font-bold flex lg:mb-6 mb-12 lg:text-5xl text-4xl justify-center lg:justify-start md:text-left">Bienvenido a PawPal!</h1>
                   <p className="font-normal flex text-xl lg:max-w-2xl lg:text-left text-center mb-8">
                     Nuestro objetivo es brindar al público una forma fácil y rápida para encontrar a su mascota extraviada. 
                     Para esto nos planteamos como fin, crear una app donde fomentar una red de usuarios unida para conseguir un beneficio generalizado.<br></br>
@@ -66,7 +66,7 @@ const LandingPage: React.FC = () : JSX.Element => {
                     </button>
                   </div>
                 </div>
-                <div className={largeScreen ? "drop-shadow-2xl" : "hidden"}><img  src="fotoProvisoria.png" alt=""/></div>
+                <div className={largeScreen ? "drop-shadow-xl scale-[75%] " : "hidden"}><img  src="petting-dog.png" alt=""/></div>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ const LandingPage: React.FC = () : JSX.Element => {
               </div>
             </div>
 
-            <div className="sticky -top-64 lg:-top-5 h-auto bg-orange-300 flex items-center md:p-0">
+            <div className="sticky -top-64 lg:-top-5 h-auto bg-orange-400 flex items-center md:p-0">
               <div className={largeScreen ? "flex flex-row-reverse items-center flex-grow px-16 justify-between py-24" : "flex flex-col justify-start gap-8 py-12 px-5"}>
                 <div className="flex flex-col">
                   <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-4xl mb-6">¿Cuál es nuestro objetivo?</h1>
@@ -140,7 +140,7 @@ const LandingPage: React.FC = () : JSX.Element => {
                   </p>
                   <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className='border-2 p-1 w-36 h-12 rounded-md border-black transform transition duration-300 ease-in hover:scale-110 active:scale-[.98]'>Contacto</button>
                 </div>
-                <div className={largeScreen ? "shadow-xl select-none pointer-events-none" : "hidden"}><img  src="/fotoProvisoria.png" alt="fotoProv"/></div>
+                <div className={largeScreen ? "drop-shadow-xl select-none pointer-events-none" : "hidden"}><img  src="/gatito-libros.png" alt="fotoProv"/></div>
               </div>
             </div>
         </div>

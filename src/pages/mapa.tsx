@@ -6,6 +6,7 @@ import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
 import { BiBone } from 'react-icons/bi';
+import { HiOutlineHome } from 'react-icons/hi';
 import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks"; 
 import Link from 'next/link';
@@ -51,12 +52,12 @@ const MapComponent: React.FC = () => {
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Buscar..."
-              className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-orange-400 transition-all duration-1000"
+              className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-purple-400 transition-all duration-1000"
             />
           
             <button
               onClick={handleSearch}
-              className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-orange-400 text-white rounded-full"
+              className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-purple-400 text-white rounded-full"
             >
                <FaSearchLocation />
             </button>
@@ -77,7 +78,7 @@ const MapComponent: React.FC = () => {
         <div className={largeScreen ? 'absolute top-[30%] bg-white rounded h-auto  shadow-xl px-2 ml-3 z-20' : 'hidden'}>
               <div className='md:flex md:flex-col md:gap-24 md:mt-3'>
                 <div className='flex flex-col gap-3'>
-                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><BsFillFileEarmarkPostFill></BsFillFileEarmarkPostFill></Link></button>
+                  <button className='bg-slate-300 rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><HiOutlineHome/></Link></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>
                   <button className='bg-slate-300 rounded h-6 w-6 flex justify-center items-center'></button>  
