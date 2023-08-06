@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HiChatAlt2, HiSpeakerphone, HiMap } from "react-icons/hi";
 import { IoHome } from 'react-icons/io5';
+import {BiUser} from 'react-icons/bi';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "@mui/material";
@@ -33,20 +34,26 @@ const Navigation = () => {
   return (
     
       
-    <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[25px] h-screen border-solid px-1 flex justify-center duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
-      <div className={mediumScreen ? `absolute top-6 z-20 duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`: "hidden"}>
+    <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[25px] h-screen border-solid px-1  duration-500 ${!isOpen ? ' w-12':'w-52'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
+      <div className={mediumScreen ? `flex mt-8 z-20 duration-500 ease-in-out ${isOpen ? "justify-end mr-4" : "justify-center"}`: "hidden"}>
         <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>
       </div>
-      <ul className={` relative ${mediumScreen ? "flex flex-col top-20 gap-4 items-center" : "flex flex-grow flex-row justify-between"}`}>
+      <ul className={`  ${mediumScreen ? "flex flex-col top-20 gap-4 items-center mt-8" : "flex flex-grow flex-row justify-between"}`}>
         
         <NavigationItem path="/publicaciones" icono={<IoHome />} name="Inicio" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
         <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
-        <NavigationItem path="/refugios" icono={<HiSpeakerphone />} name="Refugios" />
+        <div className={mediumScreen ? "" : "bottom-10 fixed rounded-full"}>
+          <NavigationItem path="/refugios" icono={<HiSpeakerphone />} name="Refugios" />
+        </div>
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
         <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat " />
-        
+        <div className={mediumScreen ? "bottom-10 fixed rounded-full" : ""}> 
+          <div className={mediumScreen ? "w-8 h-8 bg-slate-200 border-slate-400 rounded-full border-2 justify-center flex" : ""}> 
+            <NavigationItem path="/perfil" icono={<BiUser />} name="Perfil" />
+          </div>
+        </div>
       </ul>
     </div>
     
