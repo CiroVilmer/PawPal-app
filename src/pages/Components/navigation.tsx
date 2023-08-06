@@ -33,7 +33,7 @@ const Navigation = () => {
   return (
     
       
-    <div className={`" bg-gray-300 fixed  font-Poppins ${mediumScreen ? `top-0 rounded-e-[25px] h-screen border-solid px-1 flex justify-center duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : " px-6 w-full bottom-0 h-14 text-[12px]"}`}>
+    <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[25px] h-screen border-solid px-1 flex justify-center duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
       <div className={mediumScreen ? `absolute top-6 z-20 duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`: "hidden"}>
         <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>
       </div>

@@ -6,11 +6,10 @@ import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
 import { BiBone, BiUser } from 'react-icons/bi';
-import { IoHome } from 'react-icons/io5';
 import { ReactNode } from 'react';
-import { useMediaQuery } from "@mantine/hooks"; 
-import Link from 'next/link';
-import HamburgerButton from './Components/LandingComponents/hamburger';
+import { useMediaQuery } from "@mantine/hooks";
+import Navigation from './Components/navigation';
+
 
 // import Navigation from './Components/navigation';
 
@@ -77,6 +76,9 @@ const MapComponent: React.FC = () => {
           </div>
           
         </div>
+        <div className='z-20'>{largeScreen ?
+        <nav><Navigation/></nav> : <footer><Navigation/></footer>}</div>
+        
 
         {/* <div className={largeScreen ? `absolute top-0 bg-white rounded-e-[25px] h-screen shadow-2xl px-2 z-20 duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : 'hidden'}>
           <div className={`absolute top-5 ml-1  duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`}>
