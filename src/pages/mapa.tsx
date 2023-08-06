@@ -6,7 +6,7 @@ import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
 import { BiBone, BiUser } from 'react-icons/bi';
-import { HiHome } from 'react-icons/hi';
+import { IoHome } from 'react-icons/io5';
 import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks"; 
 import Link from 'next/link';
@@ -78,24 +78,24 @@ const MapComponent: React.FC = () => {
           
         </div>
 
-        <div className={largeScreen ? `absolute top-0 bg-white rounded-e-[25px] h-screen shadow-2xl px-2 z-20 duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : 'hidden'}>
+        {/* <div className={largeScreen ? `absolute top-0 bg-white rounded-e-[25px] h-screen shadow-2xl px-2 z-20 duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : 'hidden'}>
           <div className={`absolute top-5 ml-1  duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`}>
             <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>
           </div>
           <div className='md:flex md:flex-col md:absolute md:top-16'>
                 
             <div className='flex flex-col gap-4 ml-1 text-2xl'>
-              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center mt-6 items-center'><Link href='./publicaciones'><HiHome/></Link></button>
-              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'><HiHome/></Link></button>
-              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'><HiHome/></Link></button>
-              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'><HiHome/></Link></button>  
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center mt-6 items-center'><Link href='./publicaciones'><IoHome/></Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>  
             </div>
             
           </div>
           <div className='absolute bottom-10'>            
             <button className='bg-slate-200 hover:bg-slate-300 duration-500 rounded-full h-8 w-8 mb-3 flex justify-center items-center text-xl'><BiUser/></button>
           </div>
-        </div>
+        </div> */}
       </div>
       
       {/* <footer className={largeScreen ? "hidden" : 'z-20 w-full absolute'}>
