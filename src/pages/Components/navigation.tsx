@@ -44,9 +44,7 @@ const Navigation = () => {
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
         <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
-        <div className={mediumScreen ? "" : "bottom-10 fixed rounded-full"}>
-          <NavigationItem path="/refugios" icono={<HiSpeakerphone />} name="Refugios" />
-        </div>
+        <NavigationItem path="/refugios" icono={<HiSpeakerphone />} name="Refugios" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300":"hidden"}/>
         <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat " />
         <div className={mediumScreen ? "bottom-10 fixed rounded-full" : ""}> 

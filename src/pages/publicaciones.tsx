@@ -22,8 +22,8 @@ const Publicaciones = () => {
               <CustomizedTabs value={value} onChange={handleChange} />
             </div>
             {value === 1 ? <Perdidos /> : <Encontrados />}
-          <button className='fixed bottom-20 border-2 rounded-full border-orange-400 right-6 text-5xl drop-shadow-xl text-[#ffa826b6] opacity-80'>
-            <Link href='/publicar'><AiFillPlusCircle/></Link>
+          <button className='fixed bottom-20 md:bottom-10 border-2 rounded-full border-orange-400 right-6 text-5xl drop-shadow-xl text-[#ffa826b6] opacity-80'>
+            <Link href=''><AiFillPlusCircle/></Link>
           </button>
         </div>
         {mediumScreen ?
