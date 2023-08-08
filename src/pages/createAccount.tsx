@@ -24,7 +24,7 @@ export function CreateAccount(): JSX.Element {
       password: '',
       confirmPassword: '',
     },
-    validate: register_validate,
+    //validate: register_validate,
     onSubmit
 
   })
