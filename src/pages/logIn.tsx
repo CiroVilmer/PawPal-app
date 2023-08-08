@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { signIn } from "next-auth/react";
 import Link from 'next/link';
 import { useFormik } from 'formik';
@@ -14,10 +14,6 @@ import
     Input,
     Flex,
   } from '@mantine/core';
-import { staticGenerationAsyncStorage } from 'next/dist/client/components/static-generation-async-storage';
-import { router } from '@trpc/server';
-import { any, boolean } from 'zod';
-import { time } from 'console';
 import FormWrapper from './Components/formWrapper';
 
 export function LogInForm(): JSX.Element {

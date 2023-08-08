@@ -39,7 +39,7 @@ export function CreateAccount(): JSX.Element {
         void router.push("/homepage")
 
       },
-      onError: (error) => {
+      onError: (error: any) => {
         console.log(error)
         toast.error("Email en uso")
       }
