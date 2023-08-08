@@ -161,7 +161,7 @@ export function CreateAccount(): JSX.Element {
           />
         </div>
       );
-    };
+    }
 
     export default CreateAccount;
 
