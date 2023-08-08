@@ -1,39 +1,18 @@
 import React from 'react';
-import Card from './Components/publicationCard'
+import PostCard from './Components/publicationCard'
+import {useMediaQuery} from "@mantine/hooks";
 
 const Perdidos: React.FC = () : JSX.Element => {
+    const mediumScreen = useMediaQuery('(min-width: 768px)');
     return (
-        <div className='flex justify-start flex-col font-Poppins overflow-auto h-[475px] overflow-auto'>
-            <Card 
-                img= "/perrito-gatito.png"
-                name = 'Carlitos'
-                ubication = 'Belgrano'
-                description = 'Le gusta chupar patas'
-            />
-            <Card 
-                img= "/perrito-gatito.png"
-                name = 'Carlitos'
-                ubication = 'Belgrano'
-                description = 'Le gusta chupar patas'
-            />
-            <Card 
-                img= "/perrito-gatito.png"
-                name = 'Carlitos'
-                ubication = 'Belgrano'
-                description = 'Le gusta chupar patas'
-            />
-            <Card 
-                img= "/perrito-gatito.png"
-                name = 'Carlitos'
-                ubication = 'Belgrano'
-                description = 'Le gusta chupar patas'
-            />
-            <Card 
-                img= "/perrito-gatito.png"
-                name = 'Carlitos'
-                ubication = 'Belgrano'
-                description = 'Le gusta chupar patas'
-            />
+        <div className={`background ${mediumScreen ? 'grid  md:grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-6 overflow-auto h-[880px] w-auto ml-16 mr-10' : 'flex justify-start flex-col overflow-auto h-[600px]'}`}>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
+            <PostCard img='./perrito-gatito.png' name='Manolo' ubication='Pergamino' description='Manolo es un cholo cuando sale por la noche a los bolos. Hace chuza y se lo refriega a la lechuza que come pitusas'/>
             
         </div>
     )

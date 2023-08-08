@@ -4,7 +4,7 @@ import {SiGmail} from 'react-icons/si';
 
 const Footer : React.FC = () : JSX.Element => {
     return(
-        <div className='w-full flex flex-col bg-stone-200 py-10'>
+        <div className='w-full flex flex-col bg-white py-10'>
             <div className='flex flex-row items-center justify-center gap-3'>
             
                 

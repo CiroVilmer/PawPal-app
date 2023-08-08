@@ -20,6 +20,7 @@ const StyledTabs = styled((props: StyledTabsProps) => (
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'transparent',
+    height: '3px',
   },
 });
 
@@ -32,6 +33,7 @@ const StyledTab = styled((props: StyledTabProps) => (<Tab disableRipple {...prop
   textTransform: 'none',
   color: '#000000', '&.Mui-selected': { color: '#F97316',},
   fontFamily: 'Poppins',
+  fontSize: '18px'
 }));
 
 interface TabsProps {

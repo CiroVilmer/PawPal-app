@@ -44,7 +44,7 @@ const Header: React.FC = (): JSX.Element => {
                         </button>
                         {mediumScreen === false ? <Divider className=" w-16" color='#f1e5d3'></Divider> : ""}
 
-                        <button className={mediumScreen ? 'border-2 w-36 border-black bg-black text-white p-1 md:mr-10 rounded-md hover:text-black hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]' : ""}>
+                        <button className={mediumScreen ? 'border-2 w-36 border-[#144F60] azul text-white p-1 md:mr-10 rounded-md hover:text-[#144F60] hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]' : ""}>
                             <Link href={'/logIn'}>Iniciar sesión</Link> 
                         </button>
                     </div>

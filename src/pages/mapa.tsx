@@ -6,10 +6,11 @@ import { FaSearchLocation } from 'react-icons/fa';
 import { MdPets, MdLocalCafe, MdSpa } from 'react-icons/md';
 import { BsScissors, BsHouseHeartFill, BsFillFileEarmarkPostFill } from 'react-icons/bs';
 import { BiBone, BiUser } from 'react-icons/bi';
-import { HiOutlineHome } from 'react-icons/hi';
 import { ReactNode } from 'react';
-import { useMediaQuery } from "@mantine/hooks"; 
-import Link from 'next/link';
+import { useMediaQuery } from "@mantine/hooks";
+import Navigation from './Components/navigation';
+
+
 // import Navigation from './Components/navigation';
 
 const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
@@ -36,16 +37,17 @@ const MapComponent: React.FC = () => {
   );
 
   const largeScreen = useMediaQuery("(min-width: 1010px)");
+  const [isOpen, setIsOpen] = useState(false);
 
 
   return (
     <div className={"h-screen w-screen font-Poppins"}>
       <div className="flex flex-col">
-        <div id="map" className="w-full h-full z-10">
+        <div id="map" className={`w-full h-full z-10`}>
           <LeafletMap />
         </div>
 
-        <div className={`z-20 flex ${largeScreen ? "flex-row absolute left-10 mt-6 ml-4 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
+        <div className={`z-20 flex ${largeScreen ? "flex-row absolute left-14 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
           <div className={largeScreen ? "relative" : "absolute top-3"}>
             <input
               type="text"
@@ -74,21 +76,28 @@ const MapComponent: React.FC = () => {
           </div>
           
         </div>
+        <div className='z-20'>{largeScreen ?
+        <nav><Navigation/></nav> : <footer><Navigation/></footer>}</div>
+        
 
-        <div className={largeScreen ? 'absolute top-[0%] bg-white rounded-l-none rounded-r-[30px] h-full w-12 shadow-xl px-2 z-20' : 'hidden'}>
-              <div className='md:flex md:flex-col md:mt-3 '>
-                <div className='flex flex-col gap-4 mt-10 ml-1'>
-                  <button className='text-2xl rounded h-6 w-6 flex justify-center p-1 items-center'><Link href='./publicaciones'><HiOutlineHome/></Link></button>
-                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>
-                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>
-                  <button className='bg-slate-100 rounded h-6 w-6 flex justify-center items-center'></button>  
-                </div>
-                
-              </div>
-                <div className = 'absolute bottom-5'>            
-                  <button className='bg-slate-200 rounded-full h-8 w-8 mb-3 flex justify-center items-center'><Link href = ''><BiUser/></Link></button>
-                </div>
+        {/* <div className={largeScreen ? `absolute top-0 bg-white rounded-e-[25px] h-screen shadow-2xl px-2 z-20 duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : 'hidden'}>
+          <div className={`absolute top-5 ml-1  duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`}>
+            <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>
           </div>
+          <div className='md:flex md:flex-col md:absolute md:top-16'>
+                
+            <div className='flex flex-col gap-4 ml-1 text-2xl'>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center mt-6 items-center'><Link href='./publicaciones'><IoHome/></Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>
+              <button className='hover:bg-slate-200 duration-500 rounded h-6 w-6 flex justify-center items-center'><Link href='./publicaciones'> </Link></button>  
+            </div>
+            
+          </div>
+          <div className='absolute bottom-10'>            
+            <button className='bg-slate-200 hover:bg-slate-300 duration-500 rounded-full h-8 w-8 mb-3 flex justify-center items-center text-xl'><BiUser/></button>
+          </div>
+        </div> */}
       </div>
       
       {/* <footer className={largeScreen ? "hidden" : 'z-20 w-full absolute'}>

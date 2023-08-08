@@ -5,14 +5,14 @@ import {SiGmail} from 'react-icons/si';
 
 const NotFoundPage = () => {
     return (
-        <div className="not-found flex items-center justify-center flex-col h-screen font-Poppins">
-            <h1 className="text-9xl font-extrabold text-orange-400 mb-10 pointer-events-none select-none">Ooops...</h1>
-            <h2 className="text-4xl font-semibold text-orange-400 mb-14 pointer-events-none select-none">404 - PAGE NOT FOUND</h2>
-            <p className="text-lg text-slate-400 text-left w-[770px] mb-12 select-none">Parece que la pagina que estas buscando no existe, ha sido eliminada o su nombre ha cambiado.</p>
+        <div className="not-found flex items-center justify-center flex-col h-screen font-Poppins px-5">
+            <h1 className="md:text-9xl text-7xl font-extrabold text-orange-400 mb-10 pointer-events-none select-none">Ooops...</h1>
+            <h2 className="md:text-4xl text-2xl font-semibold text-orange-400 mb-14 pointer-events-none select-none">404 - PAGE NOT FOUND</h2>
+            <p className="md:text-lg text-sm text-slate-400 md:text-left text-center md:w-[770px] w-84 mb-12 select-none">Parece que la pagina que estas buscando no existe, ha sido eliminada o su nombre ha cambiado.</p>
             <button className="border-2 rounded-full text-orange-500 p-3 border-orange-400 hover:bg-orange-400 bg-white hover:scale-[115%] hover:text-white transition-all duration-700 mb-10">
                 <Link href = "/">Volver al inicio</Link>
             </button>
-            <Divider className="w-[470px] text-slate-600"></Divider>
+            <Divider className="md:w-[470px] w-72 text-slate-600"></Divider>
             <div className='flex flex-row mt-6 gap-3'>
                 <button 
                     id="instagram" 
