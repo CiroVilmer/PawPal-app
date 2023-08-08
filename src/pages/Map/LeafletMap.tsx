@@ -4,33 +4,35 @@ import L from 'leaflet';
 
 // Función para agregar marcadores
 function addMarker(
-  map: L.Map,
+  map: L.Map | null,
   lat: number,
   lng: number,
   name: string,
   description: string,
   myImage: string
 ) {
-  const myIcon = L.icon({
-    iconUrl: markerIcon.toString(),
-    iconSize: [40, 40],
-  });
+  if (map) {
+    const myIcon = L.icon({
+      iconUrl: markerIcon.toString(),
+      iconSize: [40, 40],
+    });
 
-  const marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
+    const marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
 
-  const content = document.createElement('div');
-  content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;
-  content.style.textAlign = 'center';
+    const content = document.createElement('div');
+    content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;
+    content.style.textAlign = 'center';
 
-  const popup = marker.bindPopup(content);
+    const popup = marker.bindPopup(content);
 
-  marker.on('mouseover', function () {
-    popup.openPopup();
-  });
+    marker.on('mouseover', function () {
+      popup.openPopup();
+    });
 
-  marker.on('mouseout', function () {
-    popup.closePopup();
-  });
+    marker.on('mouseout', function () {
+      popup.closePopup();
+    });
+  }
 }
 
 const LeafletMap: React.FC = () => {
@@ -57,6 +59,9 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
+        // Agregar marcador en Nueva York
+        addMarker(map, 40.7128, -74.0060, 'Nueva York', 'La Gran Manzana', '');
+
         // Solicitar geolocalización al usuario
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(
@@ -67,9 +72,6 @@ const LeafletMap: React.FC = () => {
 
               // Agregar marcador en la ubicación del usuario
               addMarker(map, userLocation.lat, userLocation.lng, 'Tu ubicación', '', '');
-
-              // Agregar marcador en Nueva York
-              addMarker(map, 40.7128, -74.0060, 'Nueva York', 'La Gran Manzana', '');
             },
             (error) => {
               console.error('Error getting user location:', error);
