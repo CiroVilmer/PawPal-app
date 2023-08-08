@@ -71,7 +71,7 @@ const LeafletMap: React.FC = () => {
               map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
 
               // Agregar marcador en la ubicación del usuario
-              addMarker(map, userLocation.lat, userLocation.lng, 'Tu ubicación', '', '');
+              // addMarker(map, userLocation.lat, userLocation.lng, 'Tu ubicación', '', '');
             },
             (error) => {
               console.error('Error getting user location:', error);
