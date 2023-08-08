@@ -30,10 +30,10 @@ export function CreateAccount(): JSX.Element {
 
   })
 
-  async function onSubmit(values: { email: string; name: string; surName: string; password: string;}) {
+  function onSubmit(values: { email: string; name: string; surName: string; password: string;}) {
     console.log(values)
     
-    await createAccount(values, {
+     createAccount(values, {
       onSuccess: () => {
         console.log("User Created")
         toast.success("Usuario creado")
