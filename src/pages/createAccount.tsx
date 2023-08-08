@@ -93,7 +93,9 @@ export function CreateAccount(): JSX.Element {
                 </Flex>
 
                 <div>
-
+                <button onClick={() => toast.error('custom-toast')}>
+                    Dismiss Custom Toast
+                  </button>
 
                   <Input.Wrapper withAsterisk label="Correo electrónico" className='font-Poppins'>
                     <Input
