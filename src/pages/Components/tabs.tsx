@@ -31,7 +31,7 @@ interface StyledTabProps {
 
 const StyledTab = styled((props: StyledTabProps) => (<Tab disableRipple {...props} />))(() => ({
   textTransform: 'none',
-  color: '#000000', '&.Mui-selected': { color: '#F97316',},
+  color: '#afafaf', '&.Mui-selected': { color: '#F97316',},
   fontFamily: 'Poppins',
   fontSize: '18px'
 }));

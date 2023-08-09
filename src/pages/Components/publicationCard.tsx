@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import { Divider } from '@mui/material';
 import { Spoiler } from '@mantine/core';
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import {HiShare} from 'react-icons/hi';
 
 interface CardProps {
     img: string,
@@ -85,38 +86,55 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description}) => {
 
             
         
+            <div className= {mediumScreen ? "container w-[280px] bg-transparent font-Poppins" : "container bg-transparent w-full px-10 py-2 font-Poppins"}>
 
             <Card shadow="sm" padding="lg" radius="lg" withBorder>
             <Card.Section component="a" href="">
               <Image
                 src={img}
-                height={200}
+                height={225}
                 width={'auto'}
                 alt=""
                 className=' flex justify-center'
+                radius={'0'}
               />
             </Card.Section>
       
             <Group position="apart" mt="md" mb="xs">
               <Text weight={500}>{name}</Text>
               
-              <Badge color="[#144F60]" variant="light">
-                <a className='flex flex-row gap-1 items-center'>
-                    <FiMapPin/>
-                    {ubication}
-                </a>
+             
+              <a className='flex flex-row gap-1 items-center md:justify-center text-sm text-gray-400'>
+                <FiMapPin/>
+                {ubication}
+              </a>
                 
-              </Badge>
+              
             </Group>
       
             <Spoiler maxHeight={22} hideLabel='Ver menos' showLabel='Ver mas' className='text-sm'>
               {description}
             </Spoiler>
-      
-            <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-              Ver en el mapa
-            </Button>
+            <div className='flex flex-row justify-between items-center mt-6'>
+              
+              <button className='w-auto hover:bg-orange-300 text-orange-300 hover:text-white border-2 border-orange-300 duration-500 rounded-lg p-[6px] text-sm'>
+                Mas informacion
+              </button>
+              <a className='flex flex-row-reverse gap-1'>
+                <button className='text-lg hover:bg-slate-100 duration-500 rounded-full p-1 justify-center items-center flex'> <HiShare/> </button>
+              <button className='text-xl hover:bg-slate-100 duration-500 rounded-full p-1 justify-center items-center flex' onClick={handleClick}> 
+                {!isOpen ? 
+                <AiOutlineHeart className = {mediumScreen ? '  hover:text-red-600 duration-500' : 'relative'}/>:
+                <AiFillHeart className = {mediumScreen ? ' hover:text-red-400 duration-500 text-red-500' : 'relative text-red-500'}/>
+                }
+              </button>
+
+              </a>
+              
+            </div>
+            
           </Card>
+        </div>
     );
 }
 

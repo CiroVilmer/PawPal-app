@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useMediaQuery } from "@mui/material";
 import HamburgerButton from "./LandingComponents/hamburger";
 import { Divider } from "@mui/material";
+import {ImArrowLeft2} from 'react-icons/im';
 
 
 
@@ -42,13 +43,16 @@ const Navigation = () => {
         
         <NavigationItem path="/publicaciones" icono={<IoHome />} name="Inicio" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
-        <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
-        <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
         <NavigationItem path="/refugios" icono={<HiUserGroup />} name="Refugios" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
+        <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
+        <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
         <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat " />
-        <div className={mediumScreen ? "bottom-10 fixed rounded-full" : ""}> 
-          <div className={mediumScreen ? "w-8 h-8 bg-slate-200 border-stone-400 rounded-full border-2 justify-center flex" : ""}> 
+        <div className={mediumScreen ? "bottom-10 fixed rounded-full flex flex-col gap-8 items-center" : ""}>
+          <div className={mediumScreen ? "" : "hidden"}> 
+            <NavigationItem path="/" icono={<ImArrowLeft2 />} name="Back" />
+          </div> 
+          <div className={mediumScreen ? "w-8 h-8 bg-slate-200 border-stone-400 rounded-full border-[3px] flex" : ""}> 
             <NavigationItem path="/perfil" icono={<FaUser />} name="Perfil" />
           </div>
         </div>
