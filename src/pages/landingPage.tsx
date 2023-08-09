@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ backgroundImage, title, description }) => (
 const Pics: React.FC<objetivoPicsProps> = ({image, title, description}) => (
   <div className="flex flex-col">
     <div className="flex justify-center">
-      <img src={image} alt='' className="flex justify-center scale-[.85] mb-2 border-4 border-[#144F60] rounded-2xl select-none pointer-events-none hover:scale-[.90] duration-500"/>
+      <img src={image} alt='' className="flex justify-center scale-[.85] mb-1 select-none pointer-events-none hover:scale-[.90] duration-500"/>
     </div>
     <h1 className='flex justify-center text-md font-bold mb-1'>{title}</h1>
     <p className='text-xs text-center max-w-[288px] lg:px-7'>{description}</p>
@@ -53,17 +53,17 @@ const LandingPage: React.FC = () : JSX.Element => {
         <Header />
       
         <div className="flex justify-center flex-col w-full md:relative font-Poppins">
-            <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen background">
+            <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-white">
               <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between ml-20" : "flex flex-col p-5 justify-center mt-28"}>
                 <div className="flex flex-col">
-                  <h1 className="font-bold flex lg:mb-6 mb-12  text-4xl justify-center text-center lg:justify-start md:text-left">Bienvenido a Paw<span className = 'text-[#FE8A2A]'>Pal</span>!</h1>
+                  <h1 className="font-bold flex lg:mb-6 mb-12  text-4xl justify-center text-center lg:justify-start md:text-left">Bienvenido a PawPal!</h1>
                   <p className="font-normal flex text-lg lg:max-w-2xl lg:text-left text-center mb-8">
                     Nuestro objetivo es brindar al público una forma fácil y rápida para encontrar a su mascota extraviada. 
                     Para esto nos planteamos como fin, crear una app donde fomentar una red de usuarios unida para conseguir un beneficio generalizado.<br></br>
                     ¡Únete a la comunidad para encontrar a tu mascota o ayudar a aquellos en busca de su hogar!                    
                   </p>
                   <div className={largeScreen ? "" :"flex justify-center mt-8"}>
-                    <button className='p-1 w-36 h-14 rounded-md transform text-[#144F60] font-semibold border-2 border-[#144F60] transition duration-300 ease-in hover:bg-[#144F60] hover:text-white active:scale-[.98]'>
+                    <button className='p-1 w-36 h-14 rounded-md transform font-semibold transition duration-300 ease-in bg-[#144F60] text-white active:scale-[.98]'>
                       <Link href='./createAccount' >Empezar ahora</Link>
                     </button>
                   </div>
@@ -100,7 +100,7 @@ const LandingPage: React.FC = () : JSX.Element => {
               </div>
             </div>
 
-            <div className="sticky -top-64 lg:-top-5 h-auto background flex items-center md:p-0">
+            <div className="sticky -top-64 lg:-top-5 h-auto bg-white flex items-center md:p-0">
               <div className={largeScreen ? "flex flex-row-reverse items-center flex-grow px-32  justify-between py-24" : "flex flex-col justify-start gap-8 py-12 px-5"}>
                 <div className="flex flex-col">
                   <h1 className="font-semibold md:font-bold flex lg:justify-end justify-center lg:text-right text-center text-3xl md:text-4xl mb-6">¿Cuál es nuestro objetivo?</h1>
@@ -133,13 +133,13 @@ const LandingPage: React.FC = () : JSX.Element => {
               </div>   
             </div>
 
-            <div className={largeScreen ? "sticky top-0 h-screen flex items-center justify-start orange-bg" : "sticky top-0 h-auto flex items-start py-48 justify-start bg-stone-300"}>
+            <div className={largeScreen ? "sticky top-0 h-screen flex items-center justify-start orange-bg" : "sticky top-0 h-auto flex items-start py-48 justify-center orange-bg"}>
               <div className="flex flex-row items-center flex-grow justify-between mx-32">
-                <div className="flex flex-col justify-start text-white">
-                  <h1 className="font-bold mb-6 text-4xl text-left max-w-[580px]">Ponete en <span className = "text-[#144F60]">contacto</span> con nosotros!</h1>
-                  <p className="font-normal flex text-lg lg:max-w-xl text-left mb-8">
+                <div className="flex flex-col justify-center items-center md:items-start md:justify-start text-white">
+                  <h1 className="font-bold mb-6 w-[330px] md:w-auto text-4xl text-center md:text-left md:max-w-[580px]">Ponete en <span className = "text-[#144F60]">contacto</span> con nosotros!</h1>
+                  <p className="font-normal flex text-lg text-center lg:max-w-xl md:text-left mb-8">
                     Nos encantaría escuchar tus comentarios y responder a tus preguntas. Estamos comprometidos en brindarte la mejor experiencia posible. No dudes en ponerte en contacto con nosotros                  </p>
-                  <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className=' p-1 w-36 h-14 text-md text-white rounded-md azul transform transition duration-300 ease-in hover:scale-105 active:scale-[.98]'>Contacto</button>
+                  <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className=' p-1 w-36 h-14 text-md text-white font-semibold rounded-md azul transform transition duration-300 ease-in hover:scale-105 active:scale-[.98]'>Contacto</button>
                 </div>
                 <div className={largeScreen ? "drop-shadow-xl select-none pointer-events-none" : "hidden"}><img  src="/gatito-libros.png" alt="fotoProv"/></div>
               </div>
