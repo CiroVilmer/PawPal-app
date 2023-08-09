@@ -2,7 +2,7 @@ import React from 'react';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-const postForm = () => {
+const postForm: React.FC = () : JSX.Element =>{
 
     const initialValues = {
         title: '',
@@ -47,4 +47,4 @@ const postForm = () => {
 
 }
 
-export default postForm();
+export default postForm;
