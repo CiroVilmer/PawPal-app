@@ -17,9 +17,7 @@ import
 import FormWrapper from './Components/formWrapper';
 
 export function LogInForm(): JSX.Element {
-    
-
-
+  
   const router = useRouter()
     
   const formik = useFormik({
@@ -52,17 +50,12 @@ export function LogInForm(): JSX.Element {
       //alertar al usuario que el email o la contraseña son incorrectos
     }
   }
-
-
-
-
-  
     
   return ( 
       
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
       
-      <form action={''} onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className='text-center text-gray-500 text-sm mb-3'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
           <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
