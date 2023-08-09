@@ -31,23 +31,28 @@ export function LogInForm(): JSX.Element {
   async function onSubmit (values: {email: string; password: string}){
     console.log(values)
 
-    const status = await signIn('credentials', {
-    redirect: false,
-    email: values.email,
-    password: values.password,
-    callbackUrl: "https://pawpalweb.vercel.app/homepage"
-    })
+    try {
+      const response = await signIn('credentials', {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "https://pawpalweb.vercel.app/homepage"
+      })
 
-    if(status?.ok){
-      console.log("User Logged in") 
-      void router.push("/homepage")
-    }
+      if(response?.ok){
+        console.log("User Logged in") 
+        void router.push("/homepage")
+      }
 
-    if(!status?.ok){
-      console.log("User not Logged in")
-      toast.error("Email o contraseña incorrectos")
+      if(!response?.ok){
+        console.log("User not Logged in")
+        toast.error("Email o contraseña incorrectos")
 
-      //alertar al usuario que el email o la contraseña son incorrectos
+        //alertar al usuario que el email o la contraseña son incorrectos
+      }
+
+    } catch(error) {
+      console.log(error)
     }
   }
     
