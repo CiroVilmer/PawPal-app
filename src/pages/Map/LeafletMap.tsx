@@ -1,39 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import markerIcon from '../../../public/marcador.png';
-import L from 'leaflet';
-
-// Función para agregar marcadores
-function addMarker(
-  map: L.Map | null,
-  lat: number,
-  lng: number,
-  name: string,
-  description: string,
-  myImage: string
-) {
-  if (map) {
-    const myIcon = L.icon({
-      iconUrl: markerIcon.toString(),
-      iconSize: [40, 40],
-    });
-
-    const marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
-
-    const content = document.createElement('div');
-    content.innerHTML = `<b>${name}</b><br>${description}<br>${myImage ? `<img src=${myImage} />` : ''}`;
-    content.style.textAlign = 'center';
-
-    const popup = marker.bindPopup(content);
-
-    marker.on('mouseover', function () {
-      popup.openPopup();
-    });
-
-    marker.on('mouseout', function () {
-      popup.closePopup();
-    });
-  }
-}
 
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
@@ -41,6 +7,11 @@ const LeafletMap: React.FC = () => {
   useEffect(() => {
     import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
+        const myIcon = L.icon({
+          iconUrl: markerIcon.toString(),
+          iconSize: [40, 40],
+        });
+
         const map = L.map('map').setView([-36.5039461, -63.8486787], 5); // Argentina
         mapRef.current = map;
 
@@ -59,9 +30,6 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
-        // Agregar marcador en Nueva York
-        addMarker(map, 40.7128, -74.0060, 'Nueva York', 'La Gran Manzana', '');
-
         // Solicitar geolocalización al usuario
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(
@@ -71,7 +39,7 @@ const LeafletMap: React.FC = () => {
               map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
 
               // Agregar marcador en la ubicación del usuario
-              // addMarker(map, userLocation.lat, userLocation.lng, 'Tu ubicación', '', '');
+              const userMarker = L.marker(userLocation, { icon: myIcon }).addTo(mapRef.current!);
             },
             (error) => {
               console.error('Error getting user location:', error);
