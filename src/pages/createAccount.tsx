@@ -51,9 +51,6 @@ export function CreateAccount(): JSX.Element {
       return (
 
         <FormWrapper title='Crear cuenta' buttonText='Crear cuenta'>
-                {/* link='/logIn' */}
-                {/* question='¿Ya eres miembro?' */}
-                {/* linkTo='Iniciar sesión' */}
               <form action="" onSubmit={formik.handleSubmit}>
               <div className='text-center text-gray-500 text-sm mb-3 font-normal'> 
                 ¿Ya eres miembro?{' '}<br></br>
@@ -130,14 +127,11 @@ export function CreateAccount(): JSX.Element {
                     {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className="text-red-500 text-xs">{formik.errors.confirmPassword}</div> : null}
                   </Input.Wrapper>
                 </div>
-              </form>
-              <div>
-              <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
+                <button className="w-full bg-orange-400 text-white rounded-xl py-2 mb-1 hover:bg-orange-500 focus:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1 transform transition duration-400 ease-in active:scale-[.98]" type='submit'>
                 Crear cuenta
               </button>
-
-              <button type="submit">SubmitForm</button>
-
+                </form>
+              <div>
               </div>
               <Toaster
               position="top-center"
