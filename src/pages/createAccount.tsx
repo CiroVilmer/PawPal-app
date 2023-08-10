@@ -8,6 +8,7 @@ import { PasswordInput, Input, Flex } from '@mantine/core';
 import { useRouter } from 'next/router';
 import FormWrapper from './Components/formWrapper';
 import { Field, Form, Formik, useFormik } from 'formik';
+import { error } from 'console';
 
 export function CreateAccount() {
 
@@ -68,7 +69,9 @@ export function CreateAccount() {
                   size='sm'
                   className='w-32 md:w-36'
                   required
+                  
                 />
+                {error.name && <div className='text-red-500 text-xs'>{error.name}</div>}
               </Input.Wrapper>
               <Input.Wrapper withAsterisk label="Apellido" className='font-Poppins'>
                 <Field
