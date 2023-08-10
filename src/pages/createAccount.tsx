@@ -8,6 +8,8 @@ import { PasswordInput, Input, Flex } from '@mantine/core';
 import { useRouter } from 'next/router';
 import FormWrapper from './Components/formWrapper';
 import { Field, Form, Formik, useFormik } from 'formik';
+import * as Yup from "yup"
+
 
 export function CreateAccount() {
 
@@ -15,6 +17,16 @@ export function CreateAccount() {
 
   const router = useRouter()
 
+  const registerSchema = Yup.object().shape({
+    name: Yup.string().required('Required'),
+    surName: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+    .min(8, "Mínimo 8 caracteres")
+    .max(40, "La contraseña es muy larga"),
+    confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
+  })
 
   const initialValues = {
     name: '',

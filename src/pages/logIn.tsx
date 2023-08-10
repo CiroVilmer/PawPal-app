@@ -77,7 +77,7 @@ function LogInForm(): JSX.Element {
               placeholder=""
               required
             />
-           {errors.email && touched.email && <div>{errors.email}</div>}
+           {errors.email && touched.email && <div className="text-red-500 text-xs">{errors.email}</div>}
 
           </Input.Wrapper>  
           <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
@@ -92,6 +92,7 @@ function LogInForm(): JSX.Element {
               //visibilityToggleIcon={({ reveal, size }) =>
               //reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
             />              
+            {errors.password && touched.password && <div className="text-red-500 text-xs">{errors.email}</div>}
           </Input.Wrapper>
               
         </div>        
