@@ -1,7 +1,7 @@
 import React   from 'react';
 import { signIn } from "next-auth/react";
 import Link from 'next/link';
-import { useFormik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi';
@@ -16,51 +16,42 @@ import
   } from '@mantine/core';
 import FormWrapper from './Components/formWrapper';
 
-export function LogInForm(): JSX.Element {
+function LogInForm(): JSX.Element {
   
   const router = useRouter()
     
-  const formik = useFormik({
-    initialValues:{
-    email: '',
-    password:''
-  },
-    validate: login_validate,
-    onSubmit
-  })
-  async function onSubmit (values: {email: string; password: string}){
-    console.log(values)
 
-    try {
-      const response = await signIn('credentials', {
+  const initialValues = {
+    email: '',
+    password: '',
+  }
+
+  async function onSubmit(values: { email: string, password: string }) {
+    console.log('Form values:', values);
+
+    const response = await signIn('credentials', {
       redirect: false,
       email: values.email,
       password: values.password,
       callbackUrl: "https://pawpalweb.vercel.app/homepage"
-      })
+    })
 
-      if(response?.ok){
-        console.log("User Logged in") 
-        void router.push("/homepage")
-      }
-
-      if(!response?.ok){
-        console.log("User not Logged in")
-        toast.error("Email o contraseña incorrectos")
-
-        //alertar al usuario que el email o la contraseña son incorrectos
-      }
-
-    } catch(error) {
-      console.log(error)
+    if (response?.ok) {
+      console.log("User Logged in")
+      void router.push("/homepage")
     }
-  }
+
+    if (!response?.ok) {
+      console.log("User not Logged in")
+      toast.error("Email o contraseña incorrectos")
+    }
+    }
     
-  return ( 
+    return ( 
       
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
-      
-      <form onSubmit={formik.handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Form>
         <div className='text-center text-gray-500 text-sm mb-3'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
           <button className="text-sm text-orange-500 hover:underline transform transition duration-100 ease-out active:scale-[.99]">            
@@ -69,26 +60,26 @@ export function LogInForm(): JSX.Element {
         </div>
         <div>
           <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-[258px] md:w-80 font-Poppins'> 
-            <Input
+            <Field
               type="email"
-              id="email"         
+              id="email"       
+              name="email"  
               placeholder=""
-              {...formik.getFieldProps('email')}
               required
             />
-            {formik.errors.email && formik.touched.email ? <div className = "text-red-500 text-xs px-1">{formik.errors.email}</div> : null}
           </Input.Wrapper>  
           <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
-            <PasswordInput
+            <Field
               placeholder=""
+              type="password"
+              id="password"
+              name="password"
               required
               size='sm'
               style = {{width: '400'}}
-              {...formik.getFieldProps('password')}
-              visibilityToggleIcon={({ reveal, size }) =>
-              reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+              //visibilityToggleIcon={({ reveal, size }) =>
+              //reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
             />              
-            {formik.errors.password && formik.touched.password ? <div className = "text-red-500 text-xs">{formik.errors.password}</div> : null}
           </Input.Wrapper>
               
         </div>        
@@ -110,7 +101,8 @@ export function LogInForm(): JSX.Element {
           </button>
         </div>
         
-      </form>
+      </Form>
+      </Formik>
         
       <Toaster
         position="top-center"
@@ -118,6 +110,8 @@ export function LogInForm(): JSX.Element {
       />
     </FormWrapper>
   );
+
+
 }
 
 export default LogInForm;
