@@ -50,7 +50,7 @@ function LogInForm(): JSX.Element {
     return ( 
       
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} validate={login_validate} onSubmit={onSubmit}>
       <Form>
         <div className='text-center text-gray-500 text-sm mb-3'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
@@ -66,7 +66,9 @@ function LogInForm(): JSX.Element {
               name="email"  
               placeholder=""
               required
+              validate
             />
+
           </Input.Wrapper>  
           <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
             <Field
@@ -77,6 +79,7 @@ function LogInForm(): JSX.Element {
               required
               size='sm'
               style = {{width: '400'}}
+              validate
               //visibilityToggleIcon={({ reveal, size }) =>
               //reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
             />              
