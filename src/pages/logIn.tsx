@@ -1,11 +1,12 @@
 import React   from 'react';
 import { signIn } from "next-auth/react";
 import Link from 'next/link';
-import { Field, Form, Formik, useFormik } from 'formik';
+import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
 import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi';
 import toast, { Toaster } from 'react-hot-toast';
+import * as Yup from 'yup'
 
 import 
   {
@@ -20,6 +21,12 @@ function LogInForm(): JSX.Element {
   
   const router = useRouter()
     
+  const logInSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+    .min(8, "Mínimo 8 caracteres")
+    .max(40, "La contraseña es muy larga")
+  })
 
   const initialValues = {
     email: '',
@@ -50,7 +57,10 @@ function LogInForm(): JSX.Element {
     return ( 
       
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
-      <Formik initialValues={initialValues} validate={login_validate} onSubmit={onSubmit}>
+      <Formik initialValues={initialValues} validationSchema={logInSchema} onSubmit={onSubmit}> 
+      {({ errors, touched}) => (
+
+      
       <Form>
         <div className='text-center text-gray-500 text-sm mb-3'> 
           ¿Todavía no creaste una cuenta?{' '}<br></br>
@@ -66,8 +76,8 @@ function LogInForm(): JSX.Element {
               name="email"  
               placeholder=""
               required
-              validate
             />
+           {errors.email && touched.email && <div>{errors.email}</div>}
 
           </Input.Wrapper>  
           <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
@@ -79,7 +89,6 @@ function LogInForm(): JSX.Element {
               required
               size='sm'
               style = {{width: '400'}}
-              validate
               //visibilityToggleIcon={({ reveal, size }) =>
               //reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
             />              
@@ -105,6 +114,7 @@ function LogInForm(): JSX.Element {
         </div>
         
       </Form>
+      )}
       </Formik>
         
       <Toaster
