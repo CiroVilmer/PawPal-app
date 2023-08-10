@@ -6,7 +6,7 @@ import login_validate from 'lib/validate';
 import { useRouter } from 'next/router';
 import {FiEyeOff, FiEye} from 'react-icons/fi';
 import toast, { Toaster } from 'react-hot-toast';
-import * as Yup from 'yup'
+import * as Yup from "yup"
 
 import 
   {
