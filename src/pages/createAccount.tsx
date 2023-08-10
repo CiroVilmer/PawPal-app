@@ -50,7 +50,7 @@ export function CreateAccount() {
             {/* link='/logIn' */}
             {/* question='¿Ya eres miembro?' */}
             {/* linkTo='Iniciar sesión' */}
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
+          <Formik initialValues={initialValues} validate={register_validate} onSubmit={onSubmit} >
           <Form>
           <div className='text-center text-gray-500 text-sm mb-3 font-normal'> 
             ¿Ya eres miembro?{' '}<br></br>
