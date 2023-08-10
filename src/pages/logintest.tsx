@@ -16,10 +16,27 @@ export function LogInFormTest(): JSX.Element {
     }
 
 
-    const onSubmit = (values: {email: string, password: string}) => {
-        console.log('Form values:', values);
+    async function onSubmit(values: {email: string, password: string}){
+      console.log('Form values:', values);
       
-        
+      const response = await signIn('credentials', {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+        callbackUrl: "https://pawpalweb.vercel.app/homepage"
+        })
+      
+        if(response?.ok){
+          console.log("User Logged in") 
+          void router.push("/homepage")
+        }
+
+        if(!response?.ok){
+          console.log("User not Logged in")
+          toast.error("Email o contraseña incorrectos")
+  
+          //alertar al usuario que el email o la contraseña son incorrectos
+        }
     }
     
   return ( 
