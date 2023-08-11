@@ -26,6 +26,7 @@ function LogInForm(): JSX.Element {
     password: Yup.string()
     .min(8, "Mínimo 8 caracteres")
     .max(40, "La contraseña es muy larga")
+    .required("Required")
   })
 
   const initialValues = {
