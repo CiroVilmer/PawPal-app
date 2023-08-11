@@ -76,7 +76,7 @@ function LogInForm(): JSX.Element {
               id="email"       
               name="email"  
               placeholder=""
-              className = 'outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
+              className = 'outline-none border-[1px] border-gray-400 rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
               required
             />
            {errors.email && touched.email && <div className="text-red-500 text-xs">{errors.email}</div>}
@@ -88,7 +88,7 @@ function LogInForm(): JSX.Element {
               type="password"
               id="password"
               name="password"
-              className = 'outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
+              className = 'outline-none border-[1px] border-gray-400 rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
               required
             />              
             {errors.password && touched.password && <div className="text-red-500 text-xs">{errors.email}</div>}
