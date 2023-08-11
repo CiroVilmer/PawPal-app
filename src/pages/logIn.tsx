@@ -22,7 +22,7 @@ function LogInForm(): JSX.Element {
   const router = useRouter()
     
   const logInSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string().email('Email no valido').required('Required'),
     password: Yup.string()
     .min(8, "Mínimo 8 caracteres")
     .max(40, "La contraseña es muy larga")

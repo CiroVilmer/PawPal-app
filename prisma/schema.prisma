@@ -35,6 +35,7 @@ model Post {
   localidadId Int?
   lat         Int?
   lng         Int?
+  description String?
   author      User       @relation("PostsUsuarios", fields: [authorId], references: [id])
   authorId    String
 
