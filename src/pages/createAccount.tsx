@@ -20,13 +20,13 @@ export function CreateAccount() {
   const registerSchema = Yup.object().shape({
     name: Yup.string().required('Required'),
     surName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string().email('Email no valido').required('Required'),
     password: Yup.string()
     .min(8, "Mínimo 8 caracteres")
     .max(40, "La contraseña es muy larga")
     .required("Required"),
     confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match').required("Required")
+    .oneOf([Yup.ref('password')], 'Las contraseñas no coinciden').required("Required")
   })
 
   const initialValues = {
