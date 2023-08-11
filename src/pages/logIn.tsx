@@ -1,4 +1,4 @@
-import React   from 'react';
+import React, {useState}   from 'react';
 import { signIn } from "next-auth/react";
 import Link from 'next/link';
 import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
@@ -54,6 +54,7 @@ function LogInForm(): JSX.Element {
     }
     }
     
+
     return ( 
       
     <FormWrapper title='Iniciar sesión' buttonText='Iniciar sesión'>
@@ -68,29 +69,27 @@ function LogInForm(): JSX.Element {
             <Link href = "/createAccount">Crear cuenta</Link>
           </button>
         </div>
-        <div>
-          <Input.Wrapper withAsterisk label = "Correo electronico" className='mb-5 w-[258px] md:w-80 font-Poppins'> 
+        <div className='flex flex-col gap-4 w-[258px] md:w-80 mb-2'>
+          <Input.Wrapper withAsterisk label = "Correo electronico" className='font-Poppins'> 
             <Field
               type="email"
               id="email"       
               name="email"  
               placeholder=""
+              className = 'outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
               required
             />
            {errors.email && touched.email && <div className="text-red-500 text-xs">{errors.email}</div>}
 
           </Input.Wrapper>  
-          <Input.Wrapper withAsterisk label="Contraseña" className='mb-2 w-[258px] md:w-80 font-Poppins'>
+          <Input.Wrapper withAsterisk label="Contraseña" className='font-Poppins'>
             <Field
               placeholder=""
               type="password"
               id="password"
               name="password"
+              className = 'outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
               required
-              size='sm'
-              style = {{width: '400'}}
-              //visibilityToggleIcon={({ reveal, size }) =>
-              //reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
             />              
             {errors.password && touched.password && <div className="text-red-500 text-xs">{errors.email}</div>}
           </Input.Wrapper>

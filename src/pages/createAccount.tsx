@@ -70,25 +70,25 @@ export function CreateAccount() {
             </button>
           </div>
             <Flex className='flex flex-row justify-between'>
-              <Input.Wrapper withAsterisk label="Nombre" className='font-Poppins'>
+              <Input.Wrapper withAsterisk label="Nombre" className='font-Poppins flex flex-col'>
                 <Field
                   type="string"
                   id="name"
                   name="name"
                   placeholder=""
                   size='sm'
-                  className='w-32 md:w-36'
+                  className='w-32 md:w-36 outline-none border-[1px] rounded-lg h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   required
                 />
 
               </Input.Wrapper>
-              <Input.Wrapper withAsterisk label="Apellido" className='font-Poppins'>
+              <Input.Wrapper withAsterisk label="Apellido" className='font-Poppins flex flex-col'>
                 <Field
                   type="string"
                   id="surName"
                   name="surName"
                   placeholder=""
-                  className='w-28 md:w-36'
+                  className='w-28 md:w-36 outline-none border-[1px] rounded-lg h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   size='sm'
                   required
                 />
@@ -97,35 +97,37 @@ export function CreateAccount() {
 
             <div>
 
-              <Input.Wrapper withAsterisk label="Correo electrónico" className='font-Poppins'>
+              <Input.Wrapper withAsterisk label="Correo electrónico" className='font-Poppins flex flex-col'>
                 <Field
                   type="string"
                   id="email"
                   name="email"
                   placeholder=""
                   size='sm'
+                  className='outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   required
                 />
               </Input.Wrapper>
-              <Input.Wrapper withAsterisk label="Contraseña" className='font-Poppins'>
+              <Input.Wrapper withAsterisk label="Contraseña" className='font-Poppins flex flex-col'>
                 <Field
                   placeholder=""
                   type="password"
                   id="password"
                   name="password"
                   required
-                  className='w-[258px] md:w-80'
+                  className='w-[258px] md:w-80 outline-none border-[1px] rounded-lg h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   // visibilityToggleIcon={({ reveal, size }) =>
                   //   reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
                 />
               </Input.Wrapper>
-              <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9 font-Poppins'>
+              <Input.Wrapper withAsterisk label="Confirmar contraseña" className='mb-9 font-Poppins flex flex-col'>
                 <Field
                   placeholder=""
                   required
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
+                  className='w-[258px] md:w-80 outline-none border-[1px] rounded-lg h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   // visibilityToggleIcon={({ reveal, size }) =>
                   //   reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
                 />
