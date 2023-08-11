@@ -63,7 +63,7 @@ const LandingPage: React.FC = () : JSX.Element => {
                     ¡Únete a la comunidad para encontrar a tu mascota o ayudar a aquellos en busca de su hogar!                    
                   </p>
                   <div className={largeScreen ? "" :"flex justify-center mt-8"}>
-                    <button className='p-1 w-36 h-14 rounded-md transform font-semibold transition duration-300 ease-in bg-[#144F60] text-white active:scale-[.98]'>
+                    <button className='p-1 w-36 h-14 rounded-md transform font-semibold transition duration-300 ease-in azul text-white active:scale-[.98] border-2 hover:bg-transparent hover:text-[#144F60] hover:border-[#144F60]'>
                       <Link href='./createAccount' >Empezar ahora</Link>
                     </button>
                   </div>
@@ -139,7 +139,7 @@ const LandingPage: React.FC = () : JSX.Element => {
                   <h1 className="font-bold mb-6 w-[330px] md:w-auto text-4xl text-center md:text-left md:max-w-[580px]">Ponete en <span className = "text-[#144F60]">contacto</span> con nosotros!</h1>
                   <p className="font-normal flex text-lg text-center lg:max-w-xl md:text-left mb-8">
                     Nos encantaría escuchar tus comentarios y responder a tus preguntas. Estamos comprometidos en brindarte la mejor experiencia posible. No dudes en ponerte en contacto con nosotros                  </p>
-                  <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className=' p-1 w-36 h-14 text-md text-white font-semibold rounded-md azul transform transition duration-300 ease-in hover:scale-105 active:scale-[.98]'>Contacto</button>
+                  <button onClick={() => window.open ('https://www.instagram.com/pawpal_app/')} className=' p-1 w-36 h-14 text-md text-white font-semibold rounded-md azul transform transition duration-300 ease-in border-[#144F60] active:scale-[.98] border-2 hover:bg-transparent hover:text-[#144F60] hover:border-[#144F60]'>Contacto</button>
                 </div>
                 <div className={largeScreen ? "drop-shadow-xl select-none pointer-events-none" : "hidden"}><img  src="/gatito-libros.png" alt="fotoProv"/></div>
               </div>

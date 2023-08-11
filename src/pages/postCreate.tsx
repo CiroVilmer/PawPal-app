@@ -48,30 +48,30 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-col gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="title" className = 'font-semibold'>Nombre</label>
-                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-400 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
                 
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="location" className='font-semibold'>Ubicación</label>
-                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-400 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
               </div>
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field type="text" id="especie" name="especie" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-400 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="especie" name="especie" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
                 
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="location" className='font-semibold'>Raza</label>
-                  <Field type="text" id="raza" name="raza" placeholder='Border Collie' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-400 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="raza" name="raza" placeholder='Border Collie' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
 
                 
               </div>
               <div className = 'flex flex-col gap-1'>
                   <label htmlFor="location" className='font-semibold '>Descripcion</label>
-                  <Field type="text" id="descripcion" name="descripcion" placeholder='Color, caracter, collar...' className='w-[300px] text-sm rounded-md h-16 p-4 border-gray-400 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="descripcion" name="descripcion" placeholder='Color, caracter, collar...' className='w-[300px] text-sm rounded-md h-16 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
               <button type="submit" className='flex bg-orange-200 rounded-lg fixed bottom-5 h-10 w-[320px] p-4 items-center justify-center'>Submit</button>
           </Form>

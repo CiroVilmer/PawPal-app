@@ -108,7 +108,7 @@ export function CreateAccount() {
                   name="email"
                   placeholder=""
                   size='sm'
-                  className='outline-none border-[1px] rounded-lg w-full h-8 mb-1 p-4 focus:border-orange-400 duration-300'
+                  className='w-[258px] md:w-80 outline-none border-[1px] rounded-lg h-8 mb-1 p-4 focus:border-orange-400 duration-300'
                   required
                 />
                {errors.email && touched.email && <div className="text-red-500 text-xs">{errors.email}</div>}
