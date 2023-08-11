@@ -3,7 +3,7 @@ import toast, { Toast, Toaster } from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
-import {useMediaQuery} from '@mantine/hooks'
+import {useMediaQuery} from '@mantine/hooks';
 
 export function postForm() : JSX.Element{
 
