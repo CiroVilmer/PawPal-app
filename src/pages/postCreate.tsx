@@ -5,7 +5,7 @@ import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
 
-export function postForm() : JSX.Element{
+function PostForm() : JSX.Element{
 
     const {mutate: createNewPost} = api.post.createPost.useMutation();
 
@@ -89,4 +89,4 @@ export function postForm() : JSX.Element{
 
 }
 
-export default postForm;
+export default PostForm;
