@@ -55,7 +55,7 @@ export function CreateAccount() {
     
 
   }
-
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <FormWrapper title='Crear cuenta' buttonText='Crear cuenta'>
@@ -124,6 +124,8 @@ export function CreateAccount() {
                   // visibilityToggleIcon={({ reveal, size }) =>
                   //   reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
                 />
+                
+               
                 {errors.password && touched.password && <div className="text-red-500 text-xs">{errors.password}</div>}
 
               </Input.Wrapper>

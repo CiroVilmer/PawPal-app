@@ -3,6 +3,7 @@ import Link from 'next/link';
 import HamburgerButton from './hamburger';
 import {useMediaQuery} from '@mantine/hooks'
 import { Divider } from '@mui/material';
+import Image from 'next/image';
 
 const Header: React.FC = (): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const Header: React.FC = (): JSX.Element => {
         <div className= "w-full flex items-center border-b-2 py-2 h-20 shadow-sm fixed bg-white z-20 font-Poppins">
             
             <button onClick={scrollUp} className='flex flex-row items-center'>
-                <img src='/logoPawPal.png' alt='logo'/>
+                <Image src='/logoPawPal.png' alt='logo' width={120} height={0}></Image>
                 <h1 className='font-bold text-xl'> Paw<span className='text-orange-500'>Pal</span> </h1>
             </button>
             <div className="grow w-full">

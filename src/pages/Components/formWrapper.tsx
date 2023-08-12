@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { useMediaQuery } from "@mantine/hooks";
 import { signIn } from "next-auth/react";
+import Image from 'next/image';
 
 
 interface FormWrapperProps {
@@ -24,11 +25,11 @@ const FormWrapper: React.FC<FormWrapperProps> = ({ children, title, buttonText }
   return (
     <div className={ largeScreen ? "flex w-full h-screen justify-start font-Poppins" : "flex h-screen w-screen px-1 justify-center items-center bg-orange-400"}>
 
-        <img src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0 select-none pointer-events-none" : "hidden" } alt="background"></img>
+        <Image width={1030} height={80} src='/Group-2.png' className={ largeScreen ? "flex bg-cover h-screen w-screen absolute saturate-100 z-0 select-none pointer-events-none" : "hidden" } alt="background"></Image>
         
 
             <div className="md:flex md:flex-row-reverse md:items-center md:gap-64">
-                <img src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80 select-none ' : 'hidden'}/>
+                <Image width={320} height={80} src="/perrito-gatito.png" alt="dog" className={ largeScreen ? 'z-20 drop-shadow-md w-80 h-80 absolute right-96 select-none ' : 'hidden'}/>
             
                 <div className={largeScreen ? "z-20 border shadow-md ml-44 rounded-xl p-8 bg-white w-auto" : "p-8 w-full h-full rounded-2xl bg-white shadow-xl"}>
                     

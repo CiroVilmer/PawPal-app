@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
+import styles from './postCreate.module.css';
+
 
 function PostForm() : JSX.Element{
 
@@ -69,11 +71,49 @@ function PostForm() : JSX.Element{
 
                 
               </div>
-              <div className = 'flex flex-col gap-1'>
-                  <label htmlFor="location" className='font-semibold '>Descripcion</label>
-                  <Field type="text" id="descripcion" name="descripcion" placeholder='Color, caracter, collar...' className='w-[300px] text-sm rounded-md h-16 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+              
+              <div className='flex flex-col gap-1 mb-3'>
+                <label htmlFor="location" className=' font-semibold '>Rango de edad</label>
+                <div className="flex flex-col space-y-2 w-[300px]">
+                  
+                  <input type="range" className="cursor-grab range-input w-full" min="1" max="10" step="3"></input>
+                  <ul className="flex justify-between w-full px-[10px]">
+                    <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Cachorro</span></li>
+                    <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Joven</span></li>
+                    <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Adulto</span></li>
+                    <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Mayor</span></li>
+
+                  </ul>
                 </div>
-              <button type="submit" className='flex bg-orange-200 rounded-lg fixed bottom-5 h-10 w-[320px] p-4 items-center justify-center'>Submit</button>
+              </div>
+
+            
+              <div className = 'flex flex-col gap-1'>
+                <label htmlFor="location" className='font-semibold '>Descripcion</label>
+                               
+                {/* <Field 
+                  maxLength={100} 
+                  type="text" 
+                  id="descripcion" 
+                  name="descripcion" 
+                  placeholder='Color, caracter, collar...' 
+                  autoComplete='off' 
+                  rows={4} 
+                  className=' w-[300px] text-sm rounded-md h-24 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'
+                /> */}
+                <textarea
+                  id="descripcion"
+                  name="descripcion"
+                  className="w-[300px] rounded-md h-24 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
+                  autoComplete="off"
+                  spellCheck="false"
+                  rows={4}
+                  placeholder="Color, caracter, collar..."
+                ></textarea>
+              </div>
+
+
+              <button type="submit" className='flex bg-orange-200 rounded-lg h-10 w-[320px] p-4 items-center justify-center'>Submit</button>
           </Form>
         </Formik>
 
