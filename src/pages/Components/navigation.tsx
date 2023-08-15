@@ -19,7 +19,7 @@ const NavigationItem = ({ path, icono, name }: { path: string; icono: JSX.Elemen
   return (
     <Link
       href={path}
-      className={`flex flex-col items-center gap-1 text-center w-[70px] p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
+      className={`flex flex-col justify-center items-center gap-1 text-center w-[70px] p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
     >
       {icono}
       <span className={mediumScreen ? "hidden" : "text-xs font-medium"}>{name}</span>
@@ -36,20 +36,32 @@ const Navigation = () => {
   return (
     <div className="">
 
-      { mediumScreen ? <a className='hidden'></a> : <div className={`bg-white w-auto h-auto p-2 absolute -bottom-16 left-0 ${isOpen ? "-translate-y-28 duration-700" : "translate-y-24 duration-1000"}`}>
-        <div className={ "flex flex-row gap-2 items-center"}>
+      { mediumScreen ? <a className='hidden'></a> : <div className={`bg-white w-32 h-auto absolute -bottom-16 left-2 ${isOpen ? "-translate-y-32 duration-700" : "translate-y-24 duration-1000"}`}>
+        <div className={ "flex flex-col gap-2 items-start ml-3 py-2"}>
           
-          <NavigationItem path="/" icono={<FaRegEnvelope className="text-2xl"/>} name="Back"/>
-           
-         
+            <Link href='/contacto'>
+                <div className="flex flex-row gap-2 text-gray-400 items-center">
+                  <FaRegEnvelope className="text-xl"/>
+                  <span className="text-sm font-medium">Contacto</span>
+                </div>
+            </Link>
           
-          <NavigationItem path="/" icono={<ImArrowLeft2 />} name="Back" />
+            <Link href='/'>
+                <div className="flex flex-row gap-2 text-gray-400 items-center">
+                  <ImArrowLeft2 className="text-xl"/>
+                  <span className="text-sm font-medium">Volver</span>
+                </div>
+            </Link>
           
-          <div className={mediumScreen ? "w-7 h-7 bg-slate-200 border-stone-400 rounded-full border-[3px] flex justify-center" : ""}> 
-            <NavigationItem path="/perfil" icono={<FaUser />} name="Perfil" />
+            <Link href='/perfil'>
+                <div className="flex flex-row gap-2 text-gray-400 items-center">
+                  <FaUser className="text-xl"/>
+                  <span className="text-sm font-medium">Perfil</span>
+                </div>
+            </Link>
           </div>
         </div>
-      </div>
+      
       }
    
     <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[0px] shadow-lg h-screen border-solid px-1  duration-500 ${!isOpen ? ' w-12':'w-52'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
