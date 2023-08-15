@@ -30,24 +30,14 @@ const LeafletMap: React.FC = () => {
         maxZoom: 20,
       }).addTo(map);
 
+      // Rest of your Leaflet-related code here
+
       // Solicitar geolocalización al usuario
       if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            const userLocation = L.latLng(latitude, longitude);
-            map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
-
-            // Agregar marcador en la ubicación del usuario
-            const userMarker = L.marker(userLocation, { icon: myIcon }).addTo(mapRef.current!);
-          },
-          (error) => {
-            console.error('Error getting user location:', error);
-          }
-        );
+        // ...
       }
     }
-  }, []);
+  }, []); // Empty dependency array ensures this code runs only once, after mount
 
   return <div id="map" className="w-full h-full" style={{ height: '100vh' }} />;
 };
