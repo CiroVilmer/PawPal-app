@@ -8,6 +8,7 @@ import { useMediaQuery } from "@mui/material";
 import HamburgerButton from "./LandingComponents/hamburger";
 import { Divider } from "@mui/material";
 import {ImArrowLeft2} from 'react-icons/im';
+import {FaRegEnvelope} from 'react-icons/fa';
 
 
 
@@ -33,14 +34,28 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    
-      
-    <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[0px] shadow-lg h-screen border-solid px-1  duration-500 ${!isOpen ? ' w-12':'w-52'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
-      <div className={mediumScreen ? `flex mt-8 z-20 duration-500 ease-in-out ${isOpen ? "justify-end mr-4" : "justify-center"}`: "hidden"}>
-        <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>
+    <div className="">
+
+      { mediumScreen ? <a className='hidden'></a> : <div className={`bg-white w-auto h-auto p-2 absolute -bottom-16 left-0 ${isOpen ? "-translate-y-28 duration-700" : "translate-y-24 duration-1000"}`}>
+        <div className={ "flex flex-row gap-2 items-center"}>
+          
+          <NavigationItem path="/" icono={<FaRegEnvelope className="text-2xl"/>} name="Back"/>
+           
+         
+          
+          <NavigationItem path="/" icono={<ImArrowLeft2 />} name="Back" />
+          
+          <div className={mediumScreen ? "w-7 h-7 bg-slate-200 border-stone-400 rounded-full border-[3px] flex justify-center" : ""}> 
+            <NavigationItem path="/perfil" icono={<FaUser />} name="Perfil" />
+          </div>
+        </div>
       </div>
+      }
+   
+    <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[0px] shadow-lg h-screen border-solid px-1  duration-500 ${!isOpen ? ' w-12':'w-52'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
+      
       <ul className={`  ${mediumScreen ? "flex flex-col top-20 gap-4 items-center mt-8" : "flex flex-grow flex-row justify-between"}`}>
-        
+        { mediumScreen ? <a className='hidden'></a> : <NavigationItem path="" icono={<HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>} name=''/>}
         <NavigationItem path="/publicaciones" icono={<IoHome />} name="Inicio" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
         <NavigationItem path="/refugios" icono={<HiUserGroup />} name="Refugios" />
@@ -48,17 +63,21 @@ const Navigation = () => {
         <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
         <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat " />
-        <div className={mediumScreen ? "bottom-10 fixed rounded-full flex flex-col gap-8 items-center" : ""}>
+        <div className={mediumScreen ? "bottom-10 fixed rounded-full flex flex-col gap-8 items-center" : "hidden"}>
+          <div className={mediumScreen ? "" : "hidden"}> 
+            <NavigationItem path="/" icono={<FaRegEnvelope className="text-2xl"/>} name="Back"/>
+          </div> 
+         
           <div className={mediumScreen ? "" : "hidden"}> 
             <NavigationItem path="/" icono={<ImArrowLeft2 />} name="Back" />
           </div> 
-          <div className={mediumScreen ? "w-8 h-8 bg-slate-200 border-stone-400 rounded-full border-[3px] flex" : ""}> 
+          <div className={mediumScreen ? "w-7 h-7 bg-slate-200 border-stone-400 rounded-full border-[3px] flex justify-center" : ""}> 
             <NavigationItem path="/perfil" icono={<FaUser />} name="Perfil" />
           </div>
         </div>
       </ul>
     </div>
-    
+    </div>
   );
 };
 
