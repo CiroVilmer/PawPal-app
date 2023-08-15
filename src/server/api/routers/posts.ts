@@ -12,6 +12,11 @@ export const postRouter = createTRPCRouter({
         z.object({
             title: z.string(),
             location: z.string(),
+            breed: z.string(),
+            age: z.string(),
+            description: z.string(),
+            contact: z.string(),
+            image: z.string(),
         })
     )
     .mutation(async ({ input, ctx }) => {
@@ -20,10 +25,18 @@ export const postRouter = createTRPCRouter({
             data: {
                 title: input.title,
                 location: input.location,
+                breed: input.breed,
+                age: input.age,
+                description: input.description,
+                contact: input.contact,
+                image: input.image,
                 author:{ connect: { id: ctx.session.user.id } },
             }
         });
-        return post
+        if (!post) {
+            throw new Error("Post not created");
+        }
+        return post;
 
     }),
 

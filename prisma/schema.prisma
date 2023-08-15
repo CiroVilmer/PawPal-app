@@ -30,13 +30,15 @@ model Post {
   breed       String?
   lastSeen    DateTime?
   createdAt   DateTime   @default(now())
-  age         Int?
+  age         String?
   location    String
   localidad   Localidad? @relation("LocalidadPost", fields: [localidadId], references: [id])
   localidadId Int?
   lat         Int?
   lng         Int?
   description String?
+  contact     String?
+  image       String?
   author      User       @relation("PostsUsuarios", fields: [authorId], references: [id])
   authorId    String
 
