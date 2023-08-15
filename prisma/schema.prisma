@@ -30,6 +30,7 @@ model Post {
   breed       String?
   lastSeen    DateTime?
   createdAt   DateTime   @default(now())
+  age         Int?
   location    String
   localidad   Localidad? @relation("LocalidadPost", fields: [localidadId], references: [id])
   localidadId Int?

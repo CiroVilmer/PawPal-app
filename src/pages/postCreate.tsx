@@ -5,34 +5,56 @@ import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
 import styles from './postCreate.module.css';
+import * as Yup from "yup"
 
 
 function PostForm() : JSX.Element{
 
-    const {mutate: createNewPost} = api.post.createPost.useMutation();
+  const {mutate: createNewPost} = api.post.createPost.useMutation();
 
-    const initialValues = {
-        title: '',
-        location: '',
+  const initialValues = {
+    title: '',
+    location: '',
+    species: '',
+    breed: '',
+    age: '',
+    description: '',
+    contact: '',
+    image: '',
+  }
+
+  const postSchema = Yup.object().shape({
+    title: Yup.string().required('Required'),
+    location: Yup.string().required('Required'),
+    species: Yup.string().required('Required'),
+    breed: Yup.string().required('Required'),
+    age: Yup.string().required('Required'),
+    description: Yup.string().required('Required').max(200, "Max 200 characters"),
+    contact: Yup.string().required('Required'),
+    image: Yup.string().required('Required'),
+  })
+    
+  const onSubmit = (values: {title: string, location: string, species: string, breed: string, age: string, description: string}) => {
+    console.log('Form values:', values);
+
+    //location parsing
+
+    createNewPost(values, {
+      onSuccess: () =>{
+        toast.success("Post Created")
+      },
+      onError: (error:any) => {
+        toast.error("Error creating post")
       }
+    })
+
     
-    const onSubmit = (values: {title: string, location: string}) => {
-      console.log('Form values:', values);
 
-      createNewPost(values, {
-        onSuccess: () =>{
-          toast.success("Post Created")
-        },
-        onError: (error:any) => {
-          toast.error("Error creating post")
-        }
-      })
+  };
 
-    };
-
-    const mediumScreen = useMediaQuery("(min-width: 768px)");
+  const mediumScreen = useMediaQuery("(min-width: 768px)");
     
-    return (
+  return (
 
         <div className = {mediumScreen ? 'h-screen w-full background flex justify-center font-Poppins' : "p-6 h-screen w-screen background flex justify-center font-Poppins"}>
         
@@ -61,12 +83,12 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field type="text" id="especie" name="especie" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="species" name="species" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
                 
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="location" className='font-semibold'>Raza</label>
-                  <Field type="text" id="raza" name="raza" placeholder='Border Collie' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
 
                 
