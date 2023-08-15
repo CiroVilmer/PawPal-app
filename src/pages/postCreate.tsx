@@ -15,7 +15,7 @@ function PostForm() : JSX.Element{
   const initialValues = {
     title: '',
     location: '',
-    species: '',
+    animal: '',
     breed: '',
     age: '',
     description: '',
@@ -26,7 +26,7 @@ function PostForm() : JSX.Element{
   const postSchema = Yup.object().shape({
     title: Yup.string().required('Required'),
     location: Yup.string().required('Required'),
-    species: Yup.string().required('Required'),
+    animal: Yup.string().required('Required'),
     breed: Yup.string().required('Required'),
     age: Yup.string().required('Required'),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
@@ -34,7 +34,7 @@ function PostForm() : JSX.Element{
     image: Yup.string().required('Required'),
   })
     
-  const onSubmit = (values: {title: string, location: string, species: string, breed: string, age: string, description: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string}) => {
     console.log('Form values:', values);
 
     //location parsing
@@ -58,7 +58,7 @@ function PostForm() : JSX.Element{
 
         <div className = {mediumScreen ? 'h-screen w-full background flex justify-center font-Poppins' : "p-6 h-screen w-screen background flex justify-center font-Poppins"}>
         
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
           <Form className = 'flex flex-col gap-6 items-center'>
             <div className={mediumScreen ? "flex items-center justify-center w-full mt-10" : "flex items-center justify-center w-full"}>
               <label  className="flex flex-col items-center justify-center md:w-[380px] w-[290px] h-44 md:h-64 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -83,7 +83,7 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field type="text" id="species" name="species" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 </div>
                 
                 <div className = 'flex flex-col gap-1'>
