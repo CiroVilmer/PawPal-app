@@ -37,7 +37,7 @@ const Navigation = () => {
     <div className="">
 
       { mediumScreen ? <a className='hidden'></a> : <div className={`bg-white w-32 h-auto absolute -bottom-16 left-2 ${isOpen ? "-translate-y-32 duration-700" : "translate-y-24 duration-1000"}`}>
-        <div className={ "flex flex-col gap-2 items-start ml-3 py-2"}>
+        <div className={`${isOpen ? "flex flex-col gap-2 items-start ml-3 py-2" : "hidden"} `}>
           
             <Link href='/contacto'>
                 <div className="flex flex-row gap-2 text-gray-400 items-center">
