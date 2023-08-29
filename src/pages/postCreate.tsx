@@ -31,7 +31,7 @@ function PostForm() : JSX.Element{
     age: Yup.string().required('Required'),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     contact: Yup.string().required('Required'),
-    image: Yup.string().required('Required'),
+    image: Yup.string(),
   })
     
   const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string}) => {
@@ -107,6 +107,7 @@ function PostForm() : JSX.Element{
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Joven</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Adulto</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Mayor</span></li>
+
                   </ul>
                 </div>
               </div>
@@ -125,23 +126,22 @@ function PostForm() : JSX.Element{
                   rows={4} 
                   className=' w-[300px] text-sm rounded-md h-24 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'
                 /> */}
-                <textarea
-                  id="descripcion"
-                  name="descripcion"
+                <Field as="textarea"
+                  id="description"
+                  name="description"
                   className="w-[300px] rounded-md h-24 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
                   autoComplete="off"
                   spellCheck="false"
                   rows={4}
                   placeholder="Color, caracter, collar..."
-                ></textarea>
+                ></Field>
+                {errors.description && touched.description ? <div className='text-red-500'>{errors.description}</div> : null}
               </div>
 
 
               <button type="submit" className='flex bg-orange-200 rounded-lg h-10 w-[320px] p-4 items-center justify-center'>Submit</button>
           </Form>
         )}
-
-
         </Formik>
 
         <Toaster
