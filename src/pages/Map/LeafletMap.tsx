@@ -46,6 +46,10 @@ const LeafletMap: React.FC = () => {
             }
           );
         }
+
+        // Agregar marcador en Nueva York
+        const newYorkMarker = L.marker([40.7128, -74.0060], { icon: myIcon }).addTo(mapRef.current!);
+        newYorkMarker.bindPopup('Nueva York'); // Agregar un popup al marcador con el texto "Nueva York"
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
