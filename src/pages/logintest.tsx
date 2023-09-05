@@ -28,7 +28,7 @@ export function LogInFormTest(): JSX.Element {
       
         if(response?.ok){
           console.log("User Logged in") 
-          void router.push("/homepage")
+          void router.push("/postCreate")
         }
 
         if(!response?.ok){
