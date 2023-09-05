@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
@@ -6,7 +7,7 @@ const LeafletMap: React.FC = () => {
     import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
-          iconUrl:'marcador.png',
+          iconUrl: 'marcador.png',
           iconSize: [40, 40],
         });
 
@@ -36,8 +37,20 @@ const LeafletMap: React.FC = () => {
               const userLocation = L.latLng(latitude, longitude);
               map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
 
-              // Agregar marcador en la ubicación del usuario
-              const userMarker = L.marker(userLocation, { icon: myIcon }).addTo(mapRef.current!);
+              // Agregar marcador en la ubicación del usuario con descripción emergente (popup)
+              const userMarker = L.marker(userLocation, { icon: myIcon })
+                .bindPopup('<b>Ubicación Actual</b><br>Tu ubicación')
+                .addTo(mapRef.current!);
+
+              // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
+              userMarker.on('mouseover', () => {
+                userMarker.openPopup();
+              });
+
+              // Cerrar el popup al retirar el mouse del marcador
+              userMarker.on('mouseout', () => {
+                userMarker.closePopup();
+              });
             },
             (error) => {
               console.error('Error getting user location:', error);
