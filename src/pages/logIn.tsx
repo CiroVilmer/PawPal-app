@@ -41,12 +41,12 @@ function LogInForm(): JSX.Element {
       redirect: false,
       email: values.email,
       password: values.password,
-      callbackUrl: "https://pawpalweb.vercel.app/homepage"
+      callbackUrl: "https://pawpalweb.vercel.app/postCreate"
     })
 
     if (response?.ok) {
       console.log("User Logged in")
-      void router.push("/homepage")
+      void router.push("/postCreate")
     }
 
     if (!response?.ok) {
