@@ -8,7 +8,7 @@ const LeafletMap: React.FC = () => {
     import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
-          iconUrl: markerIcon.toString(),
+          iconUrl:'marcador.png',
           iconSize: [40, 40],
         });
 
