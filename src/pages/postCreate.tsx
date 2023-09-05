@@ -28,10 +28,10 @@ function PostForm() : JSX.Element{
     location: Yup.string().required('Required'),
     animal: Yup.string().required('Required'),
     breed: Yup.string().required('Required'),
-    age: Yup.string(),
+    //age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
-    contact: Yup.string().required('Required'),
-    image: Yup.string(),
+    //contact: Yup.string().required('Required'),
+    //image: Yup.string(),
   })
     
   const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string}) => {
