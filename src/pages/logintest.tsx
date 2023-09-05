@@ -23,7 +23,7 @@ export function LogInFormTest(): JSX.Element {
         redirect: false,
         email: values.email,
         password: values.password,
-        callbackUrl: "https://pawpalweb.vercel.app/homepage"
+        callbackUrl: "https://pawpalweb.vercel.app/postCreate"
         })
       
         if(response?.ok){
