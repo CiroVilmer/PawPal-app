@@ -54,13 +54,13 @@ function PostForm() : JSX.Element{
     
   return (
 
-        <div className = {mediumScreen ? 'h-screen w-full background flex justify-center font-Poppins' : "p-6 h-screen w-screen background flex justify-center font-Poppins"}>
+        <div className = {mediumScreen ? 'flex justify-center font-Poppins' : "p-6 background h-screen w-screen background flex justify-center font-Poppins"}>
         
         <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
         {({ errors, touched}) => (
-          <Form className = 'flex flex-col gap-6 items-center'>
-            <div className={mediumScreen ? "flex items-center justify-center w-full mt-10" : "flex items-center justify-center w-full"}>
-              <label  className="flex flex-col items-center justify-center md:w-[380px] w-[290px] h-44 md:h-64 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+          <Form className = 'flex flex-col gap-6 md:gap-4 items-center'>
+            <div className={mediumScreen ? "flex items-center justify-center w-full" : "flex items-center justify-center w-full"}>
+              <label  className="flex flex-col items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div className="flex flex-col items-center pb-6">
                   <i className='text-[110px] text-gray-700'><MdOutlineImage/></i>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Clickeá para subir</span></p>
@@ -84,20 +84,20 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                  {errors.animal && touched.animal ? <div className='text-red-500'>{errors.animal}</div> : null}
                 </div>
                 
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="location" className='font-semibold'>Raza</label>
-                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.breed && touched.breed ? <div className='text-red-500'>{errors.breed}</div> : null}
                 </div>
 
                 
               </div>
               
-              <div className='flex flex-col gap-1 mb-3'>
+              {/* <div className='flex flex-col gap-1 mb-3'>
                 <label htmlFor="location" className=' font-semibold '>Rango de edad</label>
                 <div className="flex flex-col space-y-2 w-[300px]">
                   
@@ -110,7 +110,7 @@ function PostForm() : JSX.Element{
 
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
             
               <div className = 'flex flex-col gap-1'>
