@@ -32,10 +32,10 @@ const Publicaciones = () => {
           <CustomizedTabs value={value} onChange={handleChange} />
         </div>
         {value === 1 ? <Perdidos /> : <Encontrados />}
-        {/* <button className='fixed bottom-16 md:bottom-5 md:right-6 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6]' onClick={handleClick}>
-          {mediumScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
-        </button> */}
-        <ModalExample/>
+        {mediumScreen ?
+        <ModalExample/> : <button className='fixed z-20 bottom-16 md:bottom-10 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6] hover:scale-105 duration-500' onClick={handleClick}>
+          <Link href='/postCreate'><AiFillPlusCircle/></Link></button>}
+        
       </div>
       {mediumScreen ? <nav><Navigation/></nav> : <footer><Navigation/></footer>}
 
