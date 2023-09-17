@@ -12,6 +12,7 @@ import Navigation from './Components/navigation';
 import Link from 'next/link';
 import {AiFillPlusCircle} from 'react-icons/ai';
 import PostForm from './postCreate';
+import ModalExample from './Components/modal';
 
 
 // import Navigation from './Components/navigation';
@@ -81,10 +82,11 @@ const MapComponent: React.FC = () => {
           </div>
           
         </div>
-        <button className='fixed z-20 bottom-16 md:bottom-10 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6] hover:scale-105 duration-500' onClick={handleClick}>
+        <ModalExample/>
+        {/* <button className='fixed z-20 bottom-16 md:bottom-10 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6] hover:scale-105 duration-500' onClick={handleClick}>
           {largeScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
         </button>
-        <div>{isOpen ? <div className='absolute right-[30%] top-[20%] z-20 h-96 w-72 bg-white rounded-lg'> <PostForm/> </div> : <a></a>} </div>
+        <div>{isOpen ? <div className='absolute right-[30%] top-[20%] z-20 h-96 w-72 bg-white rounded-lg'> <PostForm/> </div> : <a></a>} </div> */}
         <div className='z-20'>{largeScreen ?
         <nav><Navigation/></nav> : <footer><Navigation/></footer>}</div>
         

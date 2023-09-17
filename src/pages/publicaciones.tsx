@@ -8,6 +8,7 @@ import Link from 'next/link';
 import {AiFillPlusCircle} from 'react-icons/ai';
 import PostForm from './postCreate';
 import {IoIosArrowBack} from 'react-icons/io'
+import ModalExample from './Components/modal';
 
 const Publicaciones = () => {
   const [value, setValue] = useState<number>(0);
@@ -31,9 +32,10 @@ const Publicaciones = () => {
           <CustomizedTabs value={value} onChange={handleChange} />
         </div>
         {value === 1 ? <Perdidos /> : <Encontrados />}
-        <button className='fixed bottom-16 md:bottom-5 md:right-6 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6]' onClick={handleClick}>
+        {/* <button className='fixed bottom-16 md:bottom-5 md:right-6 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6]' onClick={handleClick}>
           {mediumScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
-        </button>
+        </button> */}
+        <ModalExample/>
       </div>
       {mediumScreen ? <nav><Navigation/></nav> : <footer><Navigation/></footer>}
 

@@ -54,13 +54,13 @@ function PostForm() : JSX.Element{
     
   return (
 
-        <div className = {mediumScreen ? 'flex justify-center font-Poppins' : "p-6 background h-screen w-screen background flex justify-center font-Poppins"}>
+    <div className = {mediumScreen ? 'z-40 p-0 h-auto w-auto bg-transparent' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
         
         <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
         {({ errors, touched}) => (
           <Form className = 'flex flex-col gap-6 md:gap-4 items-center'>
-            <div className={mediumScreen ? "flex items-center justify-center w-full" : "flex items-center justify-center w-full"}>
-              <label  className="flex flex-col items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+            <div className={mediumScreen ? "w-full" : "flex items-center justify-center w-full"}>
+              <label  className="flex flex-col items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200">
                 <div className="flex flex-col items-center pb-6">
                   <i className='text-[110px] text-gray-700'><MdOutlineImage/></i>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Clickeá para subir</span></p>
@@ -84,7 +84,11 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col gap-1'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field as="select" type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] font-Poppins md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                    <option value="dog">Perro</option>
+                    <option value="cat">Gato</option>
+                    <option value="other">Otro</option>
+                  </Field>
                  {errors.animal && touched.animal ? <div className='text-red-500'>{errors.animal}</div> : null}
                 </div>
                 
@@ -112,24 +116,14 @@ function PostForm() : JSX.Element{
                 </div>
               </div> */}
 
-            
+              
               <div className = 'flex flex-col gap-1'>
                 <label htmlFor="location" className='font-semibold '>Descripcion</label>
                                
-                {/* <Field 
-                  maxLength={100} 
-                  type="text" 
-                  id="descripcion" 
-                  name="descripcion" 
-                  placeholder='Color, caracter, collar...' 
-                  autoComplete='off' 
-                  rows={4} 
-                  className=' w-[300px] text-sm rounded-md h-24 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'
-                /> */}
                 <Field as="textarea"
                   id="description"
                   name="description"
-                  className="w-[300px] rounded-md h-24 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
+                  className="w-[600px] max-h-[100px] rounded-md h-12 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
                   autoComplete="off"
                   spellCheck="false"
                   rows={4}
@@ -138,8 +132,9 @@ function PostForm() : JSX.Element{
                 {errors.description && touched.description ? <div className='text-red-500'>{errors.description}</div> : null}
               </div>
 
-
-              <button type="submit" className='flex bg-orange-200 rounded-lg h-10 w-[320px] p-4 items-center justify-center'>Submit</button>
+              <div className = 'absolute bottom-2'>
+                <button type="submit" className='flex bg-orange-300 hover:bg-transparent border-orange-300 border-2 text-white hover:text-orange-300 font-semibold duration-500 rounded-lg h-10 md:w-[420px] w-[320px] p-4 items-center justify-center'>Crear publicación</button>
+              </div>
           </Form>
         )}
         </Formik>
