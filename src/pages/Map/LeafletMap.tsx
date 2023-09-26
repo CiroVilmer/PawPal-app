@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { Markerlocations, Circlelocations } from './MapLocations';
+import { Circle } from '@chakra-ui/react';
 
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
@@ -11,14 +13,14 @@ const LeafletMap: React.FC = () => {
           iconSize: [40, 40],
         });
 
-        const map = L.map('map').setView([-36.5039461, -63.8486787], 5); // Argentina
+        const map = L.map('map').setView([-36.5039461, -63.8486787], 5); // Coordenadas de Argentina
         mapRef.current = map;
 
-        const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)); // Map boundaries
+        const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)); // Limite del mapa
         map.setMaxBounds(bounds);
 
         map.on('drag', () => {
-          map.panInsideBounds(bounds, { animate: false }); // Prevent dragging the map outside the boundaries
+          map.panInsideBounds(bounds, { animate: false }); // Para que no se pueda arrastrar el mapa fuera de los límites
         });
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -29,7 +31,7 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
-        // Agregar marcador de la ubicación actual
+        // Esto es para obtener la ubicación del usuario
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -37,20 +39,18 @@ const LeafletMap: React.FC = () => {
               const userLocation = L.latLng(latitude, longitude);
               map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
 
-              // Agregar marcador en la ubicación del usuario con descripción emergente (popup)
-              const userMarker = L.marker(userLocation, { icon: myIcon })
-                .bindPopup('<b>Ubicación Actual</b><br>Tu ubicación')
-                .addTo(mapRef.current!);
-
-              // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
-              userMarker.on('mouseover', () => {
-                userMarker.openPopup();
-              });
-
-              // Cerrar el popup al retirar el mouse del marcador
-              userMarker.on('mouseout', () => {
-                userMarker.closePopup();
-              });
+              // // Agregar marcador en la ubicación del usuario con descripción (popup)
+              // const userMarker = L.marker(userLocation, { icon: myIcon })
+              //   .bindPopup('<b>Ubicación Actual</b><br>Tu ubicación')
+              //   .addTo(mapRef.current!);
+              // // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
+              // userMarker.on('mouseover', () => {
+              //   userMarker.openPopup();
+              // });
+              // // Cerrar el popup al retirar el mouse del marcador
+              // userMarker.on('mouseout', () => {
+              //   userMarker.closePopup();
+              // });
             },
             (error) => {
               console.error('Error getting user location:', error);
@@ -58,20 +58,50 @@ const LeafletMap: React.FC = () => {
           );
         }
 
-        // Agregar marcador en la posición especificada
-        const doctorsHouseMarker = L.marker([-34.5550092,-58.4844013], { icon: myIcon })
-          .bindPopup('<b>Doctors House</b><br>Descripcion')
-          .addTo(mapRef.current!);
+        //Funcion para agregar los marcadores
+        function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
 
-        // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
-        doctorsHouseMarker.on('mouseover', () => {
-          doctorsHouseMarker.openPopup();
-        });
+          const marker = L.marker([lat,lng], { icon: myIcon })
+            .bindPopup(`<b>${name}</b><br>${description}`)
+            .addTo(mapRef.current!);
 
-        // Cerrar el popup al retirar el mouse del marcador
-        doctorsHouseMarker.on('mouseout', () => {
-          doctorsHouseMarker.closePopup();
-        });
+          // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
+          marker.on('mouseover', () => {
+            marker.openPopup();
+          });
+
+          // Cerrar el popup al retirar el mouse del marcador
+          marker.on('mouseout', () => {
+            marker.closePopup();
+          });
+        }
+
+        function addArea (lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
+          const area = L.circle([lat, lng], { radius: radius, color: color})
+            .bindPopup(`<b>${name}</b><br>${description}`)
+            .addTo(mapRef.current!);
+
+          // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
+          area.on('mouseover', () => {
+            area.openPopup();
+          });
+
+          // Cerrar el popup al retirar el mouse del marcador
+          area.on('mouseout', () => {
+            area.closePopup();
+          });
+        }
+
+        //Recorre la lista de ubicaciones y agrega los marcadores
+        Markerlocations.forEach((location) => {
+          addMarker(location.lat, location.lng, location.name, location.description, location.category);
+        }, []);
+        //Lo mismo pero con areas
+        Circlelocations.forEach((location) => {
+          addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
+        }, []);
+
+
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
