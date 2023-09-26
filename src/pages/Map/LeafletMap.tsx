@@ -29,34 +29,20 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
-        // Solicitar geolocalización al usuario
-        if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              const { latitude, longitude } = position.coords;
-              const userLocation = L.latLng(latitude, longitude);
-              map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
+        // Agregar marcador en la posición especificada
+        const doctorsHouseMarker = L.marker([-34.5550092,-58.4844013], { icon: myIcon })
+          .bindPopup('<b>Doctors House</b><br>Descripcion')
+          .addTo(mapRef.current!);
 
-              // Agregar marcador en la ubicación del usuario con descripción emergente (popup)
-              const userMarker = L.marker(userLocation, { icon: myIcon })
-                .bindPopup('<b>Ubicación Actual</b><br>Tu ubicación')
-                .addTo(mapRef.current!);
+        // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
+        doctorsHouseMarker.on('mouseover', () => {
+          doctorsHouseMarker.openPopup();
+        });
 
-              // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
-              userMarker.on('mouseover', () => {
-                userMarker.openPopup();
-              });
-
-              // Cerrar el popup al retirar el mouse del marcador
-              userMarker.on('mouseout', () => {
-                userMarker.closePopup();
-              });
-            },
-            (error) => {
-              console.error('Error getting user location:', error);
-            }
-          );
-        }
+        // Cerrar el popup al retirar el mouse del marcador
+        doctorsHouseMarker.on('mouseout', () => {
+          doctorsHouseMarker.closePopup();
+        });
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
