@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-// import { Markerlocations, Circlelocations } from './MapLocations';
+import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 
 const LeafletMap: React.FC = () => {
@@ -31,7 +31,7 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
-        // Esto es para obtener la ubicación del usuario
+        // Esto es para obtener la ubicación del usuario. No se porque pero no es precisa
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -60,32 +60,28 @@ const LeafletMap: React.FC = () => {
 
         //Funcion para agregar los marcadores
         function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
-
           const marker = L.marker([lat,lng], { icon: myIcon })
             .bindPopup(`<b>${name}</b><br>${description}`)
             .addTo(mapRef.current!);
-
           // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
           marker.on('mouseover', () => {
             marker.openPopup();
           });
-
           // Cerrar el popup al retirar el mouse del marcador
           marker.on('mouseout', () => {
             marker.closePopup();
           });
         }
 
+        //Funcion para agregar circulos de areas
         function addArea (lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
           const area = L.circle([lat, lng], { radius: radius, color: color})
             .bindPopup(`<b>${name}</b><br>${description}`)
             .addTo(mapRef.current!);
-
           // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
           area.on('mouseover', () => {
             area.openPopup();
           });
-
           // Cerrar el popup al retirar el mouse del marcador
           area.on('mouseout', () => {
             area.closePopup();
@@ -93,15 +89,15 @@ const LeafletMap: React.FC = () => {
         }
 
 
-        const Markerlocations = [
-          { lat: -34.5550092, lng: -58.4844013, name: 'Doctors House', description: 'Descripcion', category: 'Home' },
-        ];
+        // const Markerlocations = [
+        //   { lat: -34.5550092, lng: -58.4844013, name: 'Doctors House', description: 'Descripcion', category: 'Home' },
+        // ];
       
-        const Circlelocations = [
-          { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'orange', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
-          { lat: -34.5366564, lng: -58.4548797, radius: 500, color: 'red', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden adulto', category: 'LostDog' },
-          { lat: -34.5626489, lng: -58.4528739, radius: 500, color: 'green', name: 'Perro perdido', description: 'Se perdio Pancho, es un galgo adulto', category: 'LostDog' },
-        ];  
+        // const Circlelocations = [
+        //   { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'orange', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
+        //   { lat: -34.5366564, lng: -58.4548797, radius: 500, color: 'red', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden adulto', category: 'LostDog' },
+        //   { lat: -34.5626489, lng: -58.4528739, radius: 500, color: 'green', name: 'Perro perdido', description: 'Se perdio Pancho, es un galgo adulto', category: 'LostDog' },
+        // ];  
 
 
         //Recorre la lista de ubicaciones y agrega los marcadores
