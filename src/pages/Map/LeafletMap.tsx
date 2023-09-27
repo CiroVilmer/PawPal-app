@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Markerlocations, Circlelocations } from './MapLocations';
+// import { Markerlocations, Circlelocations } from './MapLocations';
 import { Circle } from '@chakra-ui/react';
 
 const LeafletMap: React.FC = () => {
@@ -91,6 +91,18 @@ const LeafletMap: React.FC = () => {
             area.closePopup();
           });
         }
+
+
+        const Markerlocations = [
+          { lat: -34.5550092, lng: -58.4844013, name: 'Doctors House', description: 'Descripcion', category: 'Home' },
+        ];
+      
+        const Circlelocations = [
+          { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'orange', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
+          { lat: -34.5366564, lng: -58.4548797, radius: 500, color: 'red', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden adulto', category: 'LostDog' },
+          { lat: -34.5626489, lng: -58.4528739, radius: 500, color: 'green', name: 'Perro perdido', description: 'Se perdio Pancho, es un galgo adulto', category: 'LostDog' },
+        ];  
+
 
         //Recorre la lista de ubicaciones y agrega los marcadores
         Markerlocations.forEach((location) => {
