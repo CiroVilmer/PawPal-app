@@ -1,8 +1,10 @@
 // Geocoder.ts
 
+// NO ANDA PARA LA BUILD
+
 import axios from 'axios';
 
-export async function geocodeAddress(address: string): Promise<any> {
+export async function geocodeAddress(address: string): Promise<{ lat: number, lon: number }> {
     try {
         const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
         const response = await axios.get(apiUrl);
@@ -12,10 +14,10 @@ export async function geocodeAddress(address: string): Promise<any> {
 
             if (data.length > 0) {
                 const firstResult = data[0];
-                const latitude = firstResult.lat;
-                const longitude = firstResult.lon;
+                const lat = parseFloat(firstResult.lat);
+                const lon = parseFloat(firstResult.lon);
 
-                return { latitude, longitude };
+                return { lat, lon };
             } else {
                 throw new Error('No se encontraron resultados para la dirección proporcionada.');
             }
@@ -26,3 +28,11 @@ export async function geocodeAddress(address: string): Promise<any> {
         throw new Error(`Error al geocodificar la dirección: ${error.message}`);
     }
 }
+
+// 14:13  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+// 17:15  Error: Unsafe assignment of an `any` value.  @typescript-eslint/no-unsafe-assignment
+// 18:32  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+// 18:32  Error: Unsafe member access .lat on an `any` value.  @typescript-eslint/no-unsafe-member-access
+// 19:32  Error: Unsafe argument of type `any` assigned to a parameter of type `string`.  @typescript-eslint/no-unsafe-argument
+// 19:32  Error: Unsafe member access .lon on an `any` value.  @typescript-eslint/no-unsafe-member-access
+

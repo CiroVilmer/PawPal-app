@@ -62,8 +62,8 @@ const LeafletMap: React.FC = () => {
         // Traduce una dirección a coordenadas
         try {
           const address = 'Avenida Cramer 2159';
-          const result = await geocodeAddress(address);
-          console.log('Coordenadas de la dirección:', result);
+          const result = await geocodeAddress(address); 
+          console.log('Coordenadas de la dirección:', result.lat, result.lon);
         } catch (error) {
           console.error('Error al geocodificar la dirección:', error);
         }
