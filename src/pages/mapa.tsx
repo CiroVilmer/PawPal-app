@@ -14,6 +14,7 @@ import {AiFillPlusCircle} from 'react-icons/ai';
 import PostForm from './postCreate';
 import ModalExample from './Components/modal';
 import { geocodeAddress } from '../../lib/Geocoder';
+import { AddressSearched } from './Map/LeafletMap';
 
 
 // import Navigation from './Components/navigation';
@@ -33,13 +34,14 @@ const MapComponent: React.FC = () => {
   const handleSearch = async () => {
 
     // Traduce una dirección a coordenadas
-    try {
-    const address = searchValue;
-    const result = await geocodeAddress(address); 
-    console.log('Coordenadas de la dirección:', result.lat, result.lon);
-    } catch (error) {
-    console.error('Error al geocodificar la dirección:', error);
-    }
+    // try {
+    // const address = searchValue;
+    // const result = await geocodeAddress(address); 
+    // console.log('Coordenadas de la dirección:', result.lat, result.lon);
+    // } catch (error) {
+    // console.error('Error al geocodificar la dirección:', error);
+    // }
+    AddressSearched(searchValue);
 
   };
 
