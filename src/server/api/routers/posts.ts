@@ -42,4 +42,29 @@ export const postRouter = createTRPCRouter({
 
     }),
 
+    getPosts: publicProcedure.input(z.object({})).query(async ({ ctx }) => {
+        const posts = await ctx.prisma.post.findMany();
+
+        return posts;
+    }),
+
+    getLocations: publicProcedure.input(z.object({})).query(async ({ ctx }) => {
+        const locations = await ctx.prisma.post.findMany({
+            select: { location: true },
+        });
+
+        return locations;
+    }),
+
+    getPostByAnimal: publicProcedure
+        .input(z.object({ animal: z.string() }))
+        .query(async ({ input, ctx }) => {
+            const posts = await ctx.prisma.post.findMany({
+                where: { animal: input.animal },
+            });
+
+            return posts;
+        }
+    ),
+
 });

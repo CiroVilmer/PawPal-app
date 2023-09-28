@@ -74,7 +74,7 @@ const MapComponent: React.FC = () => {
             />
           
             <button
-              onClick={handleSearch}
+              onClick={() => void handleSearch()}
               className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-orange-400 text-white rounded-full"
             >
                <FaSearchLocation />

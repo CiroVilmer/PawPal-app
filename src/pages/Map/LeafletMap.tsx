@@ -7,7 +7,7 @@ const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    import('leaflet').then(async (L) => {
+    import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
           iconUrl: 'marcador.png',
