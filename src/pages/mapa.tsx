@@ -13,6 +13,7 @@ import Link from 'next/link';
 import {AiFillPlusCircle} from 'react-icons/ai';
 import PostForm from './postCreate';
 import ModalExample from './Components/modal';
+import { geocodeAddress } from '../../lib/Geocoder';
 
 
 // import Navigation from './Components/navigation';
@@ -29,8 +30,17 @@ interface ChipProps {
 const MapComponent: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSearch = () => {
-    console.log('Realizar búsqueda:', searchValue);
+  const handleSearch = async () => {
+
+    // Traduce una dirección a coordenadas
+    try {
+    const address = searchValue;
+    const result = await geocodeAddress(address); 
+    console.log('Coordenadas de la dirección:', result.lat, result.lon);
+    } catch (error) {
+    console.error('Error al geocodificar la dirección:', error);
+    }
+
   };
 
   const Chips: React.FC<ChipProps> = ({ num, servicio, icono }) => (

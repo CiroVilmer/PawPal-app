@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
-import { geocodeAddress } from '../../../lib/Geocoder';
+// import { geocodeAddress } from '../../../lib/Geocoder';
 
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
@@ -59,14 +59,14 @@ const LeafletMap: React.FC = () => {
           );
         }
 
-        // Traduce una dirección a coordenadas
-        try {
-          const address = 'Avenida Cramer 2159';
-          const result = await geocodeAddress(address); 
-          console.log('Coordenadas de la dirección:', result.lat, result.lon);
-        } catch (error) {
-          console.error('Error al geocodificar la dirección:', error);
-        }
+        // // Traduce una dirección a coordenadas
+        // try {
+        //   const address = 'Avenida Cramer 2159';
+        //   const result = await geocodeAddress(address); 
+        //   console.log('Coordenadas de la dirección:', result.lat, result.lon);
+        // } catch (error) {
+        //   console.error('Error al geocodificar la dirección:', error);
+        // }
 
         //Funcion para agregar los marcadores
         function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
