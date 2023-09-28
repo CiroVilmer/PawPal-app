@@ -12,6 +12,7 @@ export const postRouter = createTRPCRouter({
         z.object({
             title: z.string(),
             location: z.string(),
+            animal: z.string(),
             breed: z.string(),
             age: z.string(),
             description: z.string(),
@@ -25,6 +26,7 @@ export const postRouter = createTRPCRouter({
             data: {
                 title: input.title,
                 location: input.location,
+                animal: input.animal,
                 breed: input.breed,
                 age: input.age,
                 description: input.description,

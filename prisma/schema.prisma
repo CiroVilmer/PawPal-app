@@ -25,8 +25,9 @@ model Example {
 model Post {
   id          String     @id @default(uuid())
   title       String
-  animal      Animal?    @relation("AnimalPosts", fields: [animalId], references: [id])
-  animalId    Int?
+  // animal      Animal?    @relation("AnimalPosts", fields: [animalId], references: [id])
+  //animalId    Int?
+  animal      String?
   breed       String?
   lastSeen    DateTime?
   createdAt   DateTime   @default(now())
@@ -43,7 +44,7 @@ model Post {
   authorId    String
 
   @@index([authorId])
-  @@index([animalId])
+  //@@index([animalId])
   @@index([localidadId])
 }
 
@@ -54,7 +55,7 @@ model Animal {
   name    String @unique
   breed   Breed? @relation("AnimalBreed", fields: [breedId], references: [id])
   breedId Int?
-  posts   Post[] @relation("AnimalPosts")
+  //posts   Post[] @relation("AnimalPosts")
 
   @@index([breedId])
 }
