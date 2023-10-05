@@ -104,4 +104,17 @@ a:active{
     word-break: break-word;
 }
   
+.btn-landing::after{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(20, 79, 96);
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
 
+}
+.btn-landing:hover::after{
+    transform: scale(0.9);
+    cursor: pointer;
+}

@@ -24,18 +24,18 @@ const Header: React.FC = (): JSX.Element => {
             <div className="grow w-full">
                 <div className={mediumScreen ? '' :` rounded-l-xl shadow-xl gap-3 p-3 bg-white h-auto absolute top-[88px] ${isOpen === true ? "opacity-100 -right-1 duration-700" : "-right-40 opacity-100 ease-in duration-500"} `}>
                     <div className={mediumScreen ? 'flex justify-end flex-row gap-6' : `flex flex-col gap-2 p-2 items-center ${isOpen === true ? "" : ""}`}>
-                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300 btn-landing':''}>
                             <Link href={'/publicaciones'}>Inicio</Link> 
                         </button>                        
                         {mediumScreen === false ? <Divider className=" w-12 opacity-30 bg-gray-300" ></Divider> : ""}
 
-                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300  btn-landing':''}>
                             <Link href={'/mapa'}>Mapa</Link>
                         </button>
 
-                        {mediumScreen === false ? <Divider className="w-12 opacity-30 bg-gray-300" ></Divider> : ""}
+                        {mediumScreen === false ? <Divider className="w-12 opacity-30 bg-gray-300 " ></Divider> : ""}
 
-                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
+                        <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300 btn-landing':''}>
                             <Link href="/contacto">Contacto</Link>
                         </button>
                         {mediumScreen === false ? <Divider className=" w-12 opacity-30 bg-gray-300" ></Divider> : ""}

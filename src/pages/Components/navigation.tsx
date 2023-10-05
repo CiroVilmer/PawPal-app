@@ -77,7 +77,7 @@ const Navigation = () => {
         <NavigationItem path="/chats" icono={<HiChatAlt2 />} name="Chat " />
         <div className={mediumScreen ? "bottom-10 fixed rounded-full flex flex-col gap-8 items-center" : "hidden"}>
           <div className={mediumScreen ? "" : "hidden"}> 
-            <NavigationItem path="/" icono={<FaRegEnvelope className="text-2xl"/>} name="Back"/>
+            <NavigationItem path="/contacto" icono={<FaRegEnvelope className="text-2xl"/>} name="Back"/>
           </div> 
          
           <div className={mediumScreen ? "" : "hidden"}> 
