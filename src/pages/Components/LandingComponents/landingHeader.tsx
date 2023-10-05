@@ -36,7 +36,7 @@ const Header: React.FC = (): JSX.Element => {
                         {mediumScreen === false ? <Divider className="w-12 opacity-30 bg-gray-300" ></Divider> : ""}
 
                         <button className={mediumScreen ?'hover:-translate-y-[2.8px] duration-300':''}>
-                            Contacto
+                            <Link href="/contacto">Contacto</Link>
                         </button>
                         {mediumScreen === false ? <Divider className=" w-12 opacity-30 bg-gray-300" ></Divider> : ""}
 

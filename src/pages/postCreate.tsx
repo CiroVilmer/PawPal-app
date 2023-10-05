@@ -72,20 +72,21 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-col gap-2'}>
                 <div className = 'flex flex-col'>
                   <label htmlFor="title" className = 'font-semibold'>Nombre</label>
-                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.title && touched.title ? <div className='text-red-500 text-xs'>{errors.title}</div> : null}
                 </div>
                 
                 <div className = 'flex flex-col'>
                   <label htmlFor="location" className='font-semibold'>Ubicación</label>
-                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.location && touched.location ? <div className='text-red-500 text-xs'>{errors.location}</div> : null}
                 </div>
               </div>
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field as="select" type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] font-Poppins md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                  <Field as="select" type="text" id="animal" name="animal" className='w-[145px] px-3 font-Poppins md:w-[300px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                  <option hidden selected>Selecciona una opcion</option>
                     <option value="dog">Perro</option>
                     <option value="cat">Gato</option>
                     <option value="other">Otro</option>
@@ -95,7 +96,7 @@ function PostForm() : JSX.Element{
                 
                 <div className = 'flex flex-col'>
                   <label htmlFor="location" className='font-semibold'>Raza</label>
-                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] md:w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.breed && touched.breed ? <div className='text-red-500 text-xs'>{errors.breed}</div> : null}
                 </div>
 
@@ -105,20 +106,24 @@ function PostForm() : JSX.Element{
                 <div className='flex flex-col'>
                   <label htmlFor="location" className=' font-semibold '>Edad</label>
                     
-                  <Field as="select" type="text" id="animal" name="animal" placeholder='Perro' className='w-[145px] font-Poppins md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                  <Field as="select" type="text" name="age" id="age" className='w-[145px] px-3 font-Poppins md:w-[300px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                     {/* <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Cachorro</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Joven</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Adulto</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Mayor</span></li> */}
+                    <option hidden selected>Selecciona una opcion</option>
+                    <option value="cachorro">Cachorro</option>
                     <option value="joven">Joven</option>
                     <option value="adulto">Adulto</option>
                     <option value="mayor">Mayor</option>
                   </Field>
+
+                  
                   
                 </div>
                 <div className='flex flex-col'>
                   <label className='font-semibold'>Contacto</label>
-                  <Field type="phone" id="contact" name="contact" placeholder='+11 1323-3213' pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" className='w-[145px] md:w-[300px] text-sm rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="phone" id="contact" name="contact" placeholder='+11 1323-3213' className='w-[145px] md:w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.contact && touched.contact ? <div className='text-red-500 text-xs'>{errors.contact}</div> : null}
                 </div>
               </div>

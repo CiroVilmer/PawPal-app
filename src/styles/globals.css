@@ -39,6 +39,12 @@ a{
     -webkit-tap-highlight-color: transparent;
 }
 
+#select-input:focus,
+#select-input:visited,
+#select-input:active{
+    outline: none;
+}
+
 a:focus,
 a:visited,
 a:active{
