@@ -11,10 +11,10 @@ const Contacto: React.FC = () => {
     const mediumScreen =  useMediaQuery('(min-width: 768px)');
 
   return (
-    <div>
+    <body>
         <Header />
         <div className='flex flex-col items-start justify-center h-screen font-Poppins background'>
-            <div className={mediumScreen ? 'flex flex-col mt-12 items-start ml-36' : 'flex flex-col items-center justify-center'}>
+            <div className={mediumScreen ? 'flex flex-col mt-12 items-start ml-36' : 'flex flex-col items-center mt-16 overflow-hidden justify-center'}>
                 <div className = "flex flex-col gap-2 mb-5 md:mb-0">
                     <h1 className={mediumScreen ? 'font-bold text-6xl text-left' : 'font-bold text-4xl mb-3 text-center'}>Contactanos!</h1>
                     <p className='text-sm md:text-lg text-center md:text-start mx-12 md:mx-0'>Nos encantaría escuchar tus opiniones y/o propuestas</p>
@@ -59,7 +59,7 @@ const Contacto: React.FC = () => {
                 </form>
             </div>
         </div>
-    </div>
+    </body>
    
   );
 };
