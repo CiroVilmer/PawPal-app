@@ -41,7 +41,7 @@ function LogInForm(): JSX.Element {
       redirect: false,
       email: values.email,
       password: values.password,
-      callbackUrl: "https://pawpalweb.vercel.app/postCreate"
+      callbackUrl: "https://pawpalweb.vercel.app/mapa"
     })
 
     if (response?.ok) {
