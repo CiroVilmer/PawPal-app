@@ -54,7 +54,7 @@ const LandingPage: React.FC = () : JSX.Element => {
       
         <div className="flex justify-center flex-col w-full md:relative font-Poppins">
             <div className="flex lg:items-center items-start sticky -top-36 lg:top-0 h-auto lg:h-screen bg-white">
-              <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between ml-20" : "flex flex-col p-5 justify-center mt-28"}>
+              <div className={largeScreen ? "flex flex-row items-center flex-grow justify-between ml-32" : "flex flex-col p-5 justify-center mt-28"}>
                 <div className="flex flex-col">
                   <h1 className="font-bold flex lg:mb-6 mb-12  text-4xl justify-center text-center lg:justify-start md:text-left">Bienvenido a PawPal!</h1>
                   <p className="font-normal flex text-lg lg:max-w-2xl lg:text-left text-center mb-8">
@@ -63,12 +63,12 @@ const LandingPage: React.FC = () : JSX.Element => {
                     ¡Únete a la comunidad para encontrar a tu mascota o ayudar a aquellos en busca de su hogar!                    
                   </p>
                   <div className={largeScreen ? "" :"flex justify-center mt-8"}>
-                    <button className='p-1 w-36 h-14 rounded-md transform font-semibold transition duration-300 ease-in azul text-white active:scale-[.98] border-2 hover:bg-transparent hover:text-[#144F60] hover:border-[#144F60]'>
+                    <button className='p-1 w-44 h-16 rounded-md transform font-semibold transition duration-300 ease-in azul text-white active:scale-[.98] border-2 hover:bg-transparent hover:text-[#144F60] hover:border-[#144F60]'>
                       <Link href='./createAccount' >Empezar ahora</Link>
                     </button>
                   </div>
                 </div>
-                <div className={largeScreen ? "drop-shadow-xl scale-[75%] " : "hidden"}><img  src="petting-dog.png" alt=""/></div>
+                <div className={largeScreen ? "drop-shadow-xl scale-[65%] " : "hidden"}><img  src="petting-dog.png" alt=""/></div>
               </div>
             </div>
 

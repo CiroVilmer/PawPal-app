@@ -52,7 +52,7 @@ const MapComponent: React.FC = () => {
     </Chip>
   );
 
-  const largeScreen = useMediaQuery("(min-width: 1010px)");
+  const largeScreen = useMediaQuery("(min-width: 1024px)");
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen((prevState) => !prevState);
