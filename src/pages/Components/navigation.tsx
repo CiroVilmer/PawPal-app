@@ -19,7 +19,7 @@ const NavigationItem = ({ path, icono, name }: { path: string; icono: JSX.Elemen
   return (
     <Link
       href={path}
-      className={`flex flex-col justify-center items-center gap-1 text-center w-[70px] p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
+      className={`flex flex-col justify-center items-center gap-1 text-center w-auto min-w-50 p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
     >
       {icono}
       <span className={mediumScreen ? "hidden" : "text-xs font-medium"}>{name}</span>
@@ -66,7 +66,7 @@ const Navigation = () => {
    
     <div className={`" bg-white fixed  font-Poppins ${mediumScreen ? `top-0 left-0 rounded-e-[0px] shadow-lg h-screen border-solid px-1  duration-500 ${!isOpen ? ' w-12':'w-52'}` : " px-6 w-full bottom-0 left-0 h-14 text-[12px]"}`}>
       
-      <ul className={`  ${mediumScreen ? "flex flex-col top-20 gap-4 items-center mt-8" : "flex flex-grow flex-row justify-between"}`}>
+      <ul className={`  ${mediumScreen ? "flex flex-col top-20 gap-4 items-center mt-8" : "flex  flex-row justify-between"}`}>
         { mediumScreen ? <a className='hidden'></a> : <NavigationItem path="" icono={<HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>} name=''/>}
         <NavigationItem path="/publicaciones" icono={<IoHome />} name="Inicio" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
