@@ -19,7 +19,7 @@ const NavigationItem = ({ path, icono, name }: { path: string; icono: JSX.Elemen
   return (
     <Link
       href={path}
-      className={`flex flex-col justify-center items-center gap-1 text-center w-auto min-w-50 p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
+      className={`flex flex-col justify-center items-center gap-1 text-center w-auto min-w-[48px] p-[4px]  md:p-0 text-xl md:text-2xl mt-[4px] rounded-md  ${router.pathname == path ? "text-orange-300 bg-[#ffebd47a] md:bg-transparent" : "text-stone-400"}`}
     >
       {icono}
       <span className={mediumScreen ? "hidden" : "text-xs font-medium"}>{name}</span>
