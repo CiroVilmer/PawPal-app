@@ -4,7 +4,6 @@ import {
     publicProcedure,
     protectedProcedure,
 } from "~/server/api/trpc";
-
 import { prisma } from "~/server/db";
 
 export const postRouter = createTRPCRouter({

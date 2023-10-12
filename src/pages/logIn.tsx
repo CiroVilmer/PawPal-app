@@ -1,5 +1,5 @@
 import React, {useState}   from 'react';
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import Link from 'next/link';
 import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
 import login_validate from 'lib/validate';
@@ -16,6 +16,7 @@ import
     Flex,
   } from '@mantine/core';
 import FormWrapper from './Components/formWrapper';
+import { GetServerSidePropsContext } from 'next';
 
 function LogInForm(): JSX.Element {
   
@@ -127,5 +128,6 @@ function LogInForm(): JSX.Element {
 
 
 }
+
 
 export default LogInForm;

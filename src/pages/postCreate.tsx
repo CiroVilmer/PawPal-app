@@ -6,9 +6,13 @@ import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
 import styles from './postCreate.module.css';
 import * as Yup from "yup"
+import { getSession, useSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
 
 
 function PostForm() : JSX.Element{
+
+  const {data: session, status} = useSession();
 
   const {mutate: createNewPost} = api.post.createPost.useMutation();
 
@@ -52,6 +56,7 @@ function PostForm() : JSX.Element{
 
   const mediumScreen = useMediaQuery("(min-width: 768px)");
     
+  if (status === "authenticated") {
   return (
 
     <div className = {mediumScreen ? 'z-40 p-0 h-auto w-auto bg-transparent' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
@@ -160,7 +165,31 @@ function PostForm() : JSX.Element{
     
     
   );
+ }
+    else{
+      return (
+        <h1>Not Logged in</h1>
+      )
+    }
+}
 
+
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
+  const session = await getSession({ req });
+
+  if (!session) {
+      console.log("Not Signed in")
+      // return {
+      //     redirect: {
+      //         destination: "/logIn",
+      //         permanent: false,
+      //     },
+      // };
+  }
+
+  return {
+      props: { session },
+  };
 }
 
 export default PostForm;
