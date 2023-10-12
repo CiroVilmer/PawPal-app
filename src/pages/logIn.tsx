@@ -46,7 +46,7 @@ function LogInForm(): JSX.Element {
 
     if (response?.ok) {
       console.log("User Logged in")
-      void router.push("/postCreate")
+      void router.push("/mapa")
     }
 
     if (!response?.ok) {
