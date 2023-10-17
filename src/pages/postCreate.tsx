@@ -27,7 +27,6 @@ function PostForm() : JSX.Element{
     image: '',
     author: "",
   }
-  initialValues.author = session?.user?.email || ""
   
   const postSchema = Yup.object().shape({
     title: Yup.string().required('Required'),
