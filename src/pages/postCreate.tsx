@@ -25,8 +25,10 @@ function PostForm() : JSX.Element{
     description: '',
     contact: '',
     image: '',
+    author: "",
   }
-
+  initialValues.author = session?.user?.email || ""
+  
   const postSchema = Yup.object().shape({
     title: Yup.string().required('Required'),
     location: Yup.string().required('Required'),
@@ -38,7 +40,7 @@ function PostForm() : JSX.Element{
     //image: Yup.string(),
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing

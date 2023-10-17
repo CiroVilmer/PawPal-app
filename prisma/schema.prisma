@@ -40,10 +40,8 @@ model Post {
   description String?
   contact     String?
   image       String?
-  author      User       @relation("PostsUsuarios", fields: [authorId], references: [id])
-  authorId    String
+  author      String?
 
-  @@index([authorId])
   //@@index([animalId])
   @@index([localidadId])
 }
@@ -138,7 +136,7 @@ model User {
 
   accounts         Account[]
   sessions         Session[]
-  posts            Post[]          @relation("PostsUsuarios")
+  // posts            Post[]          @relation("PostsUsuarios")
   userPreference   UserPreference? @relation(fields: [userPreferenceId], references: [id])
   userPreferenceId String?         @unique
 
