@@ -1,7 +1,5 @@
 // Geocoder.ts
 
-// NO ANDA PARA LA BUILD
-
 import axios from 'axios';
 
 type Coord = {
