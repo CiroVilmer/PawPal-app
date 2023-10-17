@@ -44,6 +44,8 @@ function PostForm() : JSX.Element{
 
     //location parsing
 
+    values.author = session?.user?.email as string;
+
     createNewPost(values, {
       onSuccess: () =>{
         toast.success("Post Created")
