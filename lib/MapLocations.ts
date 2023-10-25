@@ -6,8 +6,8 @@ const postsArray = api.post.getPosts.useQuery({});
 for (const post of postsArray?.data ?? []) {
     const title = post.title;
     const location = post.location;
+    //CONVERTIR A COORDENADAS
     const description = post.description;
-
 }
 
 //
