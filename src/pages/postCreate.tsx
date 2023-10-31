@@ -63,14 +63,14 @@ function PostForm() : JSX.Element{
   if (status === "authenticated") {
   return (
 
-    <div className = {mediumScreen ? 'z-40 p-0 h-auto w-auto bg-transparent' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
+    <div className = {mediumScreen ? 'z-40 p-0 h-[600px] w-auto bg-transparent' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
         
         <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
         {({ errors, touched}) => (
           <Form className = 'flex flex-col gap-6 md:gap-4 items-center'>
             <div className = 'flex flex-col gap-1'>
             <div className={mediumScreen ? "w-full" : "flex items-center justify-center w-full"}>
-              <label  className="flex flex-col mb-4 mt-4 items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200">
+              <label  className="flex flex-col mb-4  items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200">
                 <div className="flex flex-col items-center pb-6">
                   <i className='text-[110px] text-gray-700'><MdOutlineImage/></i>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Clickeá para subir</span></p>

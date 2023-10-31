@@ -87,7 +87,7 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description}) => {
     <div className= {mediumScreen ? "container w-[280px] bg-transparent font-Poppins" : "container  bg-transparent w-full px-10 py-2 font-Poppins"}>
 
       <Card shadow="sm" padding="lg" radius="lg" withBorder>
-        <Card.Section component="a" href="">
+        <Card.Section component="a">
           <Image
           src={img}
           height={225}
