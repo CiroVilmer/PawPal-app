@@ -1,14 +1,14 @@
 import { api } from "~/utils/api";
 import { prisma } from "~/server/db"; 
 
-const postsArray = api.post.getPosts.useQuery({});
+// const postsArray = api.post.getPosts.useQuery({});
 
-for (const post of postsArray?.data ?? []) {
-    const title = post.title;
-    const location = post.location;
-    const description = post.description;
+// for (const post of postsArray?.data ?? []) {
+//     const title = post.title;
+//     const location = post.location;
+//     const description = post.description;
 
-}
+// }
 
 //
 
