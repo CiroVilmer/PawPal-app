@@ -8,6 +8,7 @@ import styles from './postCreate.module.css';
 import * as Yup from "yup"
 import { getSession, useSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
+import Link from 'next/link';
 
 
 function PostForm() : JSX.Element{
@@ -171,7 +172,20 @@ function PostForm() : JSX.Element{
  }
     else{
       return (
-        <h1>Not Logged in</h1>
+        <body className='flex items-center justify-center h-full flex-col gap-2'>          
+          <h1 className="font-Poppins text-7xl font-bold text-orange-400 mb-6">Oops...</h1>
+          <h2 className="font-Poppins text-2xl font-semibold text-gray-400">Parece que aún no has iniciado sesión</h2>
+          <h3 className="font-Poppins text-lg">Registrate o inicia sesión para poder crear una publicación</h3>
+          <div className="flex flex-row gap-8 mt-16">
+            <button className='border-2 w-44 h-12 text-lg border-orange-400 bg-orange-400 text-white p-1 rounded-md hover:text-orange-400 hover:bg-white active:bg-black active:text-white transform transition duration-300 ease-in active:scale-[.98]'>
+              <Link href={'/createAccount'}>Crear cuenta</Link>
+            </button>
+
+            <button className='border-2 w-44 h-12 text-lg border-[#144F60] azul text-white p-1 rounded-md hover:text-[#144F60] hover:bg-white active:azul active:text-white transform transition duration-300 ease-in active:scale-[.98]'>
+              <Link href={'/logIn'}>Iniciar sesión</Link> 
+            </button>
+          </div>
+        </body>
       )
     }
 }

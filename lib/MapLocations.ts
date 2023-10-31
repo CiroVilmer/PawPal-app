@@ -10,7 +10,13 @@ import { prisma } from "~/server/db";
 
 // }
 
-//
+//for (const post of postsArray?.data ?? []) {
+//     const title = post.title;
+//     const location = post.location;
+//     //CONVERTIR A COORDENADAS
+//     const description = post.description;
+// }
+
 
 
 export const Markerlocations = [
