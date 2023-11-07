@@ -34,7 +34,7 @@ function PostForm() : JSX.Element{
     location: Yup.string().required('Required'),
     animal: Yup.string().required('Required'),
     breed: Yup.string().required('Required'),
-    //age: Yup.string(),
+    age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     //contact: Yup.string().required('Required'),
     //image: Yup.string(),
@@ -96,9 +96,9 @@ function PostForm() : JSX.Element{
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
                   <Field as="select" type="text" id="animal" name="animal" className='w-[145px] px-3 font-Poppins md:w-[300px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                   <option hidden selected>Selecciona una opcion</option>
-                    <option value="dog">Perro</option>
-                    <option value="cat">Gato</option>
-                    <option value="other">Otro</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Otro">Otro</option>
                   </Field>
                  {errors.animal && touched.animal ? <div className='text-red-500 text-xs'>{errors.animal}</div> : null}
                 </div>
