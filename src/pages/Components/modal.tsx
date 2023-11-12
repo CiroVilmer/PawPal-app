@@ -30,8 +30,8 @@ const ModalExample = () => {
         <ModalOverlay className="bg-[#000] !opacity-20 z-0" />
         <ModalContent className="z-30 !m-auto !w-max min-w-[350px] !max-w-[85%] md:top-[2vh]"> 
           <ModalBody>
-            <div className="md:w-[640px] h-[630px] flex flex-col items-center justify-center z-30 bg-white rounded-xl">
-                <PostForm/>
+            <div className="md:w-[640px] h-[600px] p-8 flex flex-col items-center justify-center z-30 bg-white rounded-xl">
+              <PostForm/>
             </div>
           </ModalBody>
         </ModalContent>

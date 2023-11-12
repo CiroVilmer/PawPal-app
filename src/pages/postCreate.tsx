@@ -63,7 +63,7 @@ function PostForm() : JSX.Element{
   if (status === "authenticated") {
   return (
 
-    <div className = {mediumScreen ? 'z-40 p-0 h-[600px] w-auto bg-transparent' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
+    <div className = {mediumScreen ? 'z-40 w-auto ' : "p-6  h-screen w-screen background flex justify-center font-Poppins"}>
         
         <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
         {({ errors, touched}) => (
@@ -153,7 +153,7 @@ function PostForm() : JSX.Element{
                 {errors.description && touched.description ? <div className='text-red-500 text-xs'>{errors.description}</div> : null}
               </div>
           </div>
-              <div className = 'absolute bottom-4'>
+              <div className = ''>
                 <button type="submit" className='flex bg-orange-300 hover:bg-transparent border-orange-300 border-2 text-white hover:text-orange-300 font-semibold duration-500 rounded-lg h-12 text-lg md:w-[420px] w-[320px] p-4 items-center justify-center'>Crear publicación</button>
               </div>
           </Form>
