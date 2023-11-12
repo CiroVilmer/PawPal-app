@@ -67,10 +67,10 @@ function PostForm() : JSX.Element{
         
         <Formik initialValues={initialValues} validationSchema={postSchema} onSubmit={onSubmit}>
         {({ errors, touched}) => (
-          <Form className = 'flex flex-col gap-6 md:gap-4 items-center'>
-            <div className = 'flex flex-col gap-1'>
-            <div className={mediumScreen ? "w-full" : "flex items-center justify-center w-full"}>
-              <label  className="flex flex-col mb-4  items-center justify-center md:w-full w-[290px] h-44 md:h-52 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200">
+          <Form className = 'flex flex-col gap-6 md:gap-4 items-center justify-center'>
+            <div className = 'flex flex-col gap-1 items-center'>
+            <div className={mediumScreen ? "w-auto" : "flex items-center justify-center w-full"}>
+              <label  className="flex flex-col mb-4  items-center justify-center md:w-[450px] w-[290px] h-44 md:h-44 border-2 border-gray-300 px-4 rounded-lg cursor-pointer bg-gray-200">
                 <div className="flex flex-col items-center pb-6">
                   <i className='text-[110px] text-gray-700'><MdOutlineImage/></i>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Clickeá para subir</span></p>
@@ -81,20 +81,20 @@ function PostForm() : JSX.Element{
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-col gap-2'}>
                 <div className = 'flex flex-col'>
                   <label htmlFor="title" className = 'font-semibold'>Nombre</label>
-                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="title" name="title" placeholder='Firulais' className='w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.title && touched.title ? <div className='text-red-500 text-xs'>{errors.title}</div> : null}
                 </div>
                 
                 <div className = 'flex flex-col'>
                   <label htmlFor="location" className='font-semibold'>Ubicación</label>
-                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.location && touched.location ? <div className='text-red-500 text-xs'>{errors.location}</div> : null}
                 </div>
               </div>
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-row gap-2'}>
                 <div className = 'flex flex-col'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
-                  <Field as="select" type="text" id="animal" name="animal" className='w-[145px] px-3 font-Poppins md:w-[300px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                  <Field as="select" type="text" id="animal" name="animal" className='w-[145px] px-3 font-Poppins md:w-[290px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                   <option hidden selected>Selecciona una opcion</option>
                     <option value="Perro">Perro</option>
                     <option value="Gato">Gato</option>
@@ -105,7 +105,7 @@ function PostForm() : JSX.Element{
                 
                 <div className = 'flex flex-col'>
                   <label htmlFor="location" className='font-semibold'>Raza</label>
-                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] md:w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="text" id="breed" name="breed" placeholder='Border Collie' className='w-[145px] md:w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.breed && touched.breed ? <div className='text-red-500 text-xs'>{errors.breed}</div> : null}
                 </div>
 
@@ -115,7 +115,7 @@ function PostForm() : JSX.Element{
                 <div className='flex flex-col'>
                   <label htmlFor="location" className=' font-semibold '>Edad</label>
                     
-                  <Field as="select" type="text" name="age" id="age" className='w-[145px] px-3 font-Poppins md:w-[300px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                  <Field as="select" type="text" name="age" id="age" className='w-[145px] px-3 font-Poppins md:w-[290px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                     {/* <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Cachorro</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Joven</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Adulto</span></li>
@@ -132,7 +132,7 @@ function PostForm() : JSX.Element{
                 </div>
                 <div className='flex flex-col'>
                   <label className='font-semibold'>Contacto</label>
-                  <Field type="phone" id="contact" name="contact" placeholder='+11 1323-3213' className='w-[145px] md:w-[300px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
+                  <Field type="phone" id="contact" name="contact" placeholder='+11 1323-3213' className='w-[145px] md:w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.contact && touched.contact ? <div className='text-red-500 text-xs'>{errors.contact}</div> : null}
                 </div>
               </div>
@@ -144,7 +144,7 @@ function PostForm() : JSX.Element{
                 <Field as="textarea"
                   id="description"
                   name="description"
-                  className="md:w-[600px] w-auto max-h-[100px] rounded-md h-12 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
+                  className="md:w-[600px] w-auto max-h-[100px] rounded-md h-[100px] md:h-20 p-4 flex items-center outline-none text-sm border-gray-200 border-[1px] focus:border-orange-400 duration-500"
                   autoComplete="off"
                   spellCheck="false"
                   rows={4}

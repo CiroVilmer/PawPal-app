@@ -61,11 +61,11 @@ const MapComponent: React.FC = () => {
   return (
     <div className={"h-screen w-screen font-Poppins"}>
       <div className="flex flex-col">
-        <div id="map" className={`w-full h-full z-10`}>
+        <div id="map" className={`w-full h-full z-0`}>
           <LeafletMap />
         </div>
 
-        <div className={`z-20 flex ${largeScreen ? "flex-row absolute left-14 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
+        <div className={`z-0 flex ${largeScreen ? "flex-row absolute left-14 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
           <div className={largeScreen ? "relative" : "absolute top-3"}>
             <input
               type="text"
@@ -99,7 +99,7 @@ const MapComponent: React.FC = () => {
           {largeScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
         </button>
         <div>{isOpen ? <div className='absolute right-[30%] top-[20%] z-20 h-96 w-72 bg-white rounded-lg'> <PostForm/> </div> : <a></a>} </div> */}
-        <div className='z-20'>{largeScreen ?
+        <div className='z-0'>{largeScreen ?
         <nav><Navigation/></nav> : <footer><Navigation/></footer>}</div>
         
 
