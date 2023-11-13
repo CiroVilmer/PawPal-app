@@ -27,7 +27,7 @@ const ModalExample = () => {
         </button>
       </div>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay className="bg-[#000] !opacity-20 z-0" />
+        <ModalOverlay className="bg-[#000] !opacity-40 z-0" />
         <ModalContent className="z-30 !m-auto !w-max min-w-[350px] !max-w-[85%] md:top-[2vh]"> 
           <ModalBody>
             <div className="md:w-[640px] h-auto py-4 flex flex-col items-center justify-center z-30 bg-white rounded-xl">

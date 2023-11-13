@@ -19,7 +19,7 @@ const ModalForo = () => {
                 </button>
             </div>
             <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay className="bg-[#000] !opacity-20 z-0" />
+                <ModalOverlay className="bg-[#000] !opacity-30 z-0" />
                 <ModalContent className="z-30 !m-auto !w-max min-w-[350px] !max-w-[85%] relative pt-[10%]"> 
                     <ModalBody>
                         <div className="md:w-auto h-auto flex items-start p-12 justify-center z-30 bg-white rounded-xl">

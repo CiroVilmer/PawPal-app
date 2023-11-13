@@ -70,7 +70,7 @@ const Navigation = () => {
         { mediumScreen ? <a className='hidden'></a> : <NavigationItem path="" icono={<HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen}/>} name=''/>}
         <NavigationItem path="/publicaciones" icono={<IoHome />} name="Inicio" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
-        <NavigationItem path="/refugios" icono={<HiUserGroup />} name="Refugios" />
+        <NavigationItem path="/foro" icono={<HiUserGroup />} name="Refugios" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
         <NavigationItem path="/mapa" icono={<HiMap />} name="Mapa" />
         <Divider className={mediumScreen ? "w-4 bg-gray-300 opacity-30":"hidden"}/>
