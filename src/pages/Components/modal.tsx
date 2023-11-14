@@ -12,6 +12,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { MdOutlineImage } from 'react-icons/md';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import PostForm from "../postCreate";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 
 
 const ModalExample = () => {
@@ -31,7 +33,12 @@ const ModalExample = () => {
         <ModalContent className="z-30 !m-auto !w-max min-w-[350px] !max-w-[85%] md:top-[2vh]"> 
           <ModalBody>
             <div className="md:w-[640px] h-auto py-4 flex flex-col items-center justify-center z-30 bg-white rounded-xl">
+              <button onClick={onClose} className='flex justify-center items-center text-gray-400 absolute right-[10px] top-[15px] z-20 w-10 h-8 text-4xl'>
+                <IoIosCloseCircleOutline/>
+              </button>
+              <div className='z-10'>
               <PostForm/>
+              </div>
             </div>
           </ModalBody>
         </ModalContent>
