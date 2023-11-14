@@ -30,8 +30,8 @@ const AccordionForo : React.FC = () => {
     ));
 
     return (
-        <div className='w-[940px]'>
-            <Accordion variant='separated' radius={"md"} >{items}</Accordion>
+        <div className='w-[340px] md:w-[940px]'>
+            <Accordion variant='separated' radius={"md"} className=''>{items}</Accordion>
         </div>
     )
       
