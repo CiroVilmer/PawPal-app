@@ -3,36 +3,40 @@ import { prisma } from "~/server/db";
 import { geocodeAddress } from "./Geocoder";
 
 // Función para obtener las ubicaciones geocodificadas
-const getGeocodedLocations = async () => {
-  const postsArray = api.post.getPosts.useQuery({});
+// const getGeocodedLocations = async () => {
+//   const postsArray = api.post.getPosts.useQuery({});
 
-  const geocodedLocations = [];
+//   const geocodedLocations = [];
 
-  for (const post of postsArray?.data ?? []) {
-    const title = post.title;
-    const location = post.location;
-    const description = post.description;
+//   for (const post of postsArray?.data ?? []) {
+//     const title = post.title;
+//     const location = post.location;
+//     const description = post.description;
 
-    try {
-      const address = post.location;
-      const result = await geocodeAddress(address);
-      geocodedLocations.push({
-        lat: result.lat,
-        lng: result.lon,
-        name: title, // Asigna el título como nombre
-        description: description,
-        category: 'Pet', // Puedes asignar una categoría predeterminada o modificar esto según tus necesidades
-      });
-    } catch (error) {
-      console.error('Error geocoding address:', error);
-    }
-  }
+//     try {
+//       const address = post.location;
+//       const result = await geocodeAddress(address);
+//       geocodedLocations.push({
+//         lat: result.lat,
+//         lng: result.lon,
+//         name: title, // Asigna el título como nombre
+//         description: description,
+//         category: 'Pet', // Puedes asignar una categoría predeterminada o modificar esto según tus necesidades
+//       });
+//     } catch (error) {
+//       console.error('Error geocoding address:', error);
+//     }
+//   }
 
-  return geocodedLocations;
-};
+//   return geocodedLocations;
+// };
 
 // Exporta las ubicaciones geocodificadas
-export const Markerlocations = await getGeocodedLocations();
+// export const Markerlocations = await getGeocodedLocations();
+
+export const Markerlocations = [
+  { lat: -34.5550092, lng: -58.4844013, name: 'Doctors House ...', description: 'Descripcion', category: 'Home' }
+]
 
 export const Circlelocations = [
     { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'yellow', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
