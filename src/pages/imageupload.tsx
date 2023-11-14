@@ -1,9 +1,7 @@
 import { env } from "process";
+import { v2 as cloudinary } from 'cloudinary'
 
 // Require the cloudinary library
-env
-const cloudinary = require('cloudinary').v2;
-
 // Return "https" URLs by setting secure: true
 cloudinary.config({
     cloudname: env.CLOUDINARY_USER_NAME,
