@@ -10,7 +10,7 @@ const Refugios: React.FC = () : JSX.Element => {
     const mediumScreen = useMediaQuery('(min-width: 768px)');
     return (
         <div className="background h-screen flex items-start justify-center font-Poppins">
-            <div className="flex-col justify-start mt-10  ">
+            <div className="flex-col justify-start mt-10 gap-12 ">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center">Foro</h1>
                 
                 <AccordionForo/>
