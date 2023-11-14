@@ -1,8 +1,7 @@
 import { env } from "process";
-import { v2 as cloudinary } from 'cloudinary'
+var cloudinary = require('cloudinary').v2;
 
-// Require the cloudinary library
-// Return "https" URLs by setting secure: true
+
 cloudinary.config({
     cloudname: process.env.CLOUDINARY_USER_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -11,7 +10,6 @@ cloudinary.config({
   secure: true
 });
 
-// Log the configuration
 console.log(cloudinary.config());
 
 const Formulario = () => {
