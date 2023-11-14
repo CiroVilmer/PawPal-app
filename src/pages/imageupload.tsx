@@ -4,9 +4,9 @@ import { v2 as cloudinary } from 'cloudinary'
 // Require the cloudinary library
 // Return "https" URLs by setting secure: true
 cloudinary.config({
-    cloudname: env.CLOUDINARY_USER_NAME,
-    api_key: env.CLOUDINARY_API_KEY,
-    api_secret: env.CLOUDINARY_API_SECRET,
+    cloudname: process.env.CLOUDINARY_USER_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 
   secure: true
 });
