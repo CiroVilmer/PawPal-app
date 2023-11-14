@@ -1,6 +1,5 @@
 import { env } from "process";
-import { v2 as cloudinary } from 'cloudinary';
-
+const cloudinary = require('cloudinary')
 cloudinary.config({
     cloudname: process.env.CLOUDINARY_USER_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
