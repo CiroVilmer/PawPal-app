@@ -12,6 +12,7 @@ interface CardProps {
     name: string,
     ubication: string
     description: string,
+    key: string,
 }
 
 
