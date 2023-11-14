@@ -12,11 +12,12 @@ interface CardProps {
     name: string,
     ubication: string
     description: string,
+    key: string,
 }
 
 
 
-const PostCard: React.FC<CardProps> = ({img, name, ubication, description}) => {
+const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key}) => {
     
   const mediumScreen = useMediaQuery("(min-width: 768px)");
 
