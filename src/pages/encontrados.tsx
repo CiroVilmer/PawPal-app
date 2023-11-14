@@ -16,6 +16,20 @@ const Encontrados: React.FC = () : JSX.Element => {
         const description = post.description;
 
     }
+    
+    activePosts?.data?.map((post) => {
+        console.log(post);
+
+        const title = post.title;
+        const location = post.location;
+        const descriptionPost = post.description;
+
+        return (
+        <PostCard img='./hotdog.jpg' name={title} ubication={location} description={descriptionPost === null ? "" : descriptionPost }/>
+        )
+
+    });
+
 
     const mediumScreen = useMediaQuery('(min-width: 768px)');
     return (
