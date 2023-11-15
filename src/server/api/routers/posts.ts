@@ -42,6 +42,30 @@ export const postRouter = createTRPCRouter({
 
     }),
 
+    createForumPost: protectedProcedure.input(
+        z.object({
+            title: z.string(),
+            postType: z.string(),
+            description: z.string(),
+        })
+        
+    )
+    .mutation(async ({ input, ctx }) => {
+
+        const post = await ctx.prisma.forumPost.create({
+            data: {
+                title: input.title,
+                // postType: input.postType,
+                description: input.description,
+            }
+        });
+        if (!post) {
+            throw new Error("Post not created");
+        }
+        return post;
+
+    }),
+
     getPosts: publicProcedure.input(z.object({})).query(async ({ ctx }) => {
         const posts = await ctx.prisma.post.findMany();
 
@@ -66,5 +90,7 @@ export const postRouter = createTRPCRouter({
             return posts;
         }
     ),
+
+
 
 });

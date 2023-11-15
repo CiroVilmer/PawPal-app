@@ -46,6 +46,14 @@ model Post {
   @@index([localidadId])
 }
 
+model forumPost {
+  id          String  @id @default(uuid())
+  title       String?
+  type        String?
+  description String?
+  author      String?
+}
+
 //Tablas de animales
 
 model Animal {

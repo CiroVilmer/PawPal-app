@@ -15,7 +15,7 @@ const PostFormForo = () => {
 
     const {data: session, status} = useSession();
 
-    const {mutate: createNewPost} = api.post.createPost.useMutation();
+    const {mutate: createNewPost} = api.post.createForumPost.useMutation();
   
     const initialValues = {
       title: '',
@@ -38,14 +38,14 @@ const PostFormForo = () => {
   
       values.author = session?.user?.email as string; 
       
-      // createNewPost(values, {
-      //   onSuccess: () =>{
-      //     toast.success("Post Created")
-      //   },
-      //   onError: (error:any) => {
-      //     toast.error("Error creating post")
-      //   } 
-      // })
+      createNewPost(values, {
+        onSuccess: () =>{
+          toast.success("Post Created")
+        },
+        onError: (error:any) => {
+          toast.error("Error creating post")
+        } 
+      })
     };
     if (status === 'authenticated') {
         return (
@@ -59,7 +59,7 @@ const PostFormForo = () => {
                                 <div className="flex flex-row justify-between">
                                     <div className='flex flex-col'>
                                         <label className="font-semibold" htmlFor="postType"> Tipo de publicación </label>
-                                        <Field as="select" type="text" name="age" id="age" className='w-[145px] px-3 font-Poppins md:w-[250px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                                        <Field as="select" type="text" name="postType" id="postType" className='w-[145px] px-3 font-Poppins md:w-[250px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                                             <option hidden>- Seleccione una opcion -</option>
                                             <option value="informacion">Informacion</option>
                                             <option value="pregunta">Pregunta</option>
