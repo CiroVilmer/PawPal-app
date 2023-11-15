@@ -15,7 +15,7 @@ const AccordionForo: React.FC<PosteosForoProps> = ({ title, description, key }) 
     <div className='w-[340px] md:w-[940px]'>
       <Accordion variant='separated' radius='md'>
         <Accordion.Item key={key} value={title}>
-          {/* <Accordion.Control>{title}</Accordion.Control> */}
+          <Accordion.Control>{title}</Accordion.Control>
           <Accordion.Panel>{description}</Accordion.Panel>
         </Accordion.Item>
       </Accordion>

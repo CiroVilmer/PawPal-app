@@ -45,7 +45,7 @@ export const postRouter = createTRPCRouter({
     createForumPost: protectedProcedure.input(
         z.object({
             title: z.string(),
-            postType: z.string(),
+            type: z.string(),
             description: z.string(),
         })
         
@@ -55,7 +55,7 @@ export const postRouter = createTRPCRouter({
         const post = await ctx.prisma.forumPost.create({
             data: {
                 title: input.title,
-                // postType: input.postType,
+                type: input.type,
                 description: input.description,
             }
         });

@@ -20,18 +20,18 @@ const PostFormForo = () => {
     const initialValues = {
       title: '',
       description: '',
-      postType: '',
+      type: '',
       author: '',
     }
     
     const postSchema = Yup.object().shape({
       title: Yup.string().required('Required'),
-      postType: Yup.string().required('Required'),
+      type: Yup.string().required('Required'),
       description: Yup.string().required('Required').max(200, "Max 200 characters"),
       
     })
       
-    const onSubmit = (values: {title: string, postType:string, description: string, author: string}) => {
+    const onSubmit = (values: {title: string, type:string, description: string, author: string}) => {
       console.log('Form values:', values);
   
       //location parsing
@@ -59,7 +59,7 @@ const PostFormForo = () => {
                                 <div className="flex flex-row justify-between">
                                     <div className='flex flex-col'>
                                         <label className="font-semibold" htmlFor="postType"> Tipo de publicación </label>
-                                        <Field as="select" type="text" name="postType" id="postType" className='w-[145px] px-3 font-Poppins md:w-[250px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
+                                        <Field as="select" type="text" name="type" id="type" className='w-[145px] px-3 font-Poppins md:w-[250px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
                                             <option hidden>- Seleccione una opcion -</option>
                                             <option value="informacion">Informacion</option>
                                             <option value="pregunta">Pregunta</option>
@@ -68,7 +68,7 @@ const PostFormForo = () => {
                                             <option value="opinion">Opinion</option>
                                             <option value="otro">Otro</option>
                                         </Field>
-                                        {errors.postType && touched.postType ? <div className='text-red-500 text-xs'>{errors.postType}</div> : null}
+                                        {errors.type && touched.type ? <div className='text-red-500 text-xs'>{errors.type}</div> : null}
                                     </div>
                                 
                                     <div className='flex flex-col'>
