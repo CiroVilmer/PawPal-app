@@ -66,6 +66,14 @@ export const postRouter = createTRPCRouter({
 
     }),
 
+    
+    getForumPosts: publicProcedure.input(z.object({})).query(async ({ ctx }) => {
+        const posts = await ctx.prisma.forumPost.findMany();
+
+        return posts;
+    }),
+
+
     getPosts: publicProcedure.input(z.object({})).query(async ({ ctx }) => {
         const posts = await ctx.prisma.post.findMany();
 
