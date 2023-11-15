@@ -14,12 +14,12 @@ const Formulario : React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     if (selectedFile) {
       try {
-        const imageUrl = await imageUploader(selectedFile);
+        const imageUrl = imageUploader(selectedFile);
         console.log('Image uploaded:', imageUrl);
         // You can handle the uploaded URL as needed (e.g., store in state, send to server, etc.)
       } catch (error) {
