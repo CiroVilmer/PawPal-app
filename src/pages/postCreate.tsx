@@ -95,7 +95,7 @@ function PostForm() : JSX.Element{
                 <div className = 'flex flex-col'>
                   <label htmlFor="" className = 'font-semibold'>Especie</label>
                   <Field as="select" type="text" id="animal" name="animal" className='w-[145px] px-3 font-Poppins md:w-[290px] text-sm rounded-md h-9  border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'>
-                  <option hidden selected>Selecciona una opcion</option>
+                  <option hidden>- Selecciona una opcion -</option>
                     <option value="Perro">Perro</option>
                     <option value="Gato">Gato</option>
                     <option value="Otro">Otro</option>
@@ -120,7 +120,7 @@ function PostForm() : JSX.Element{
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Joven</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Adulto</span></li>
                     <li className="flex justify-center relative"><span className="absolute text-gray-400 text-xs">Mayor</span></li> */}
-                    <option hidden selected>Selecciona una opcion</option>
+                    <option hidden>- Selecciona una opcion -</option>
                     <option value="cachorro">Cachorro</option>
                     <option value="joven">Joven</option>
                     <option value="adulto">Adulto</option>

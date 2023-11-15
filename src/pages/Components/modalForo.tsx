@@ -12,7 +12,7 @@ const ModalForo = () => {
     const mediumScreen = useMediaQuery("(min-width: 710px)");
 
     return (
-        <body>
+        <div>
             <div onClick={onOpen}>
                 <button className='fixed z-30 bottom-16 md:bottom-10 border-2 rounded-full border-orange-400 right-6 text-5xl drop-shadow-xl text-[#ffa826b6] hover:scale-105 duration-500'>
                     {mediumScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
@@ -28,7 +28,7 @@ const ModalForo = () => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-        </body>
+        </div>
     )
 }
 
