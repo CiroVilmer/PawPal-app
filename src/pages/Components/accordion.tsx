@@ -7,6 +7,10 @@ interface PosteosForoProps {
 }
 
 const AccordionForo: React.FC<PosteosForoProps> = ({ title, description, key }) => {
+  if (!title || !key) {
+    // Handle error or provide default values
+    return null;
+  }
   return (
     <div className='w-[340px] md:w-[940px]'>
       <Accordion variant='separated' radius='md'>
