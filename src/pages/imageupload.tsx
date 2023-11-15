@@ -1,14 +1,5 @@
-import { env } from "process";
-const cloudinary = require('cloudinary')
-cloudinary.config({
-    cloudname: process.env.CLOUDINARY_USER_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+import { imageUploader } from "~/utils/imageUploade";
 
-  secure: true
-});
-
-console.log(cloudinary.config());
 
 // const Formulario = () => {
 //     return(
