@@ -6,7 +6,7 @@ const Formulario : React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
 
     if (files && files.length > 0) {
@@ -14,7 +14,7 @@ const Formulario : React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
     if (selectedFile) {
