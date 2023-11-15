@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
+import App from "next/app";
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
