@@ -30,7 +30,6 @@ const Refugios: React.FC = () : JSX.Element => {
             <div className="flex-col justify-start mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
                 
-                <AccordionForo title='Hola' description='Panchito, el salchi, se mandó el viernes a pique para fletar una paloma. Chiquito pero picante, dejó a todos pillos. Ahora anda desaparecido en acción, dejando a su banda buscándolo por cada rincón de la city. ¡A cruzar los dedos para que este fierrito vuelva a casa!' key=''/>
                 {activePosts?.data?.map((post) => (
                 <AccordionForo title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
