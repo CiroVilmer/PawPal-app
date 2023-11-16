@@ -21,7 +21,7 @@ const Formulario : React.FC = () => {
     }
 
     const formData = new FormData();
-    formData.append("file", selectedFile!);
+    formData.append("file", selectedFile);
     formData.append("upload_preset", "pawpalupload-unsigned");
 
     const apiKey = process.env.CLOUDINARY_API_KEY;
