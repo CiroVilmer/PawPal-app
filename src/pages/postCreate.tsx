@@ -72,9 +72,11 @@ function PostForm() : JSX.Element{
         .then((data) => {
           console.log(data);
           toast.success("Image uploaded successfully");
+          return data; 
         })
         .catch((error) => {
           console.error(error);
+          throw error;
         });
         
       result.then((data: any) => {
