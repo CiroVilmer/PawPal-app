@@ -17,8 +17,9 @@ const Encontrados: React.FC = () : JSX.Element => {
         const title = post.title;
         const location = post.location;
         const descriptionPost = post.description;
+        const image = post.image;
         return (
-        <PostCard img='./hotdog.jpg' name={title} ubication={location} description={descriptionPost === null ? "" : descriptionPost } key={id} />
+        <PostCard img={image === null? "": image} name={title} ubication={location} description={descriptionPost === null ? "" : descriptionPost } key={id} />
         )
 
     });
