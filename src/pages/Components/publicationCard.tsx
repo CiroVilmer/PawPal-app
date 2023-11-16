@@ -88,16 +88,18 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
     <div className= {mediumScreen ? "container w-[280px] bg-transparent font-Poppins" : "container  bg-transparent w-full px-10 py-2 font-Poppins"}>
 
       <Card shadow="sm" padding="lg" radius="lg" withBorder>
-        <Card.Section component="a">
-          <Image
-          src={img}
-          height={225}
-          width={'auto'}
-          alt=""
-          className=' flex justify-center'
-          radius={'0'}
-        />
-      </Card.Section>
+      <Card.Section>
+    <a href={img} target="_blank" rel="noopener noreferrer">
+      <Image
+        src={img}
+        height={225}
+        width={'auto'}
+        alt=""
+        className='flex justify-center'
+        radius={'0'}
+      />
+    </a>
+  </Card.Section>
       
         <Group position="apart" mt="md" mb="xs">
           <Text weight={500}>{name}</Text>         
