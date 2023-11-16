@@ -72,7 +72,7 @@ function PostForm() : JSX.Element{
         .then((data) => {
           console.log(data);
           toast.success("Image uploaded successfully");
-          values.image = data.secure_url;
+          values.image = data?.secure_url?.toString();
           createNewPost(values, {
             onSuccess: () =>{
               toast.success("Post Created")
