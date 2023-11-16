@@ -76,16 +76,16 @@ function PostForm() : JSX.Element{
         console.log(data);
   
         // Use optional chaining to safely access nested properties
-        if (data?.url) {
+        if (data && "url" in data) {
           values.image = data.url as string;
         } else {
           console.error("Image upload failed:", data);
         }
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
-
+  }
+  
     //se crea el post
     createNewPost(values, {
       onSuccess: () =>{
