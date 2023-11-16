@@ -37,12 +37,12 @@ const MapComponent: React.FC = () => {
 
     //Obtener las coordenadas actuales de donde esta la vista del mapa NO ANDAAAAA
 
-    if (mapRef.current) {
-      // Obtiene las coordenadas actuales del centro del mapa
-      const map = mapRef.current.leafletMap; // Cambié 'leafletElement' a 'leafletMap'
-      const center = map.getCenter();
-      console.log(`Coordenadas del centro del mapa actual: ${center.lat}, ${center.lng}`);
-    }
+    // if (mapRef.current) {
+    //   // Obtiene las coordenadas actuales del centro del mapa
+    //   const map = mapRef.current.leafletMap; // Cambié 'leafletElement' a 'leafletMap'
+    //   const center = map.getCenter();
+    //   console.log(`Coordenadas del centro del mapa actual: ${center.lat}, ${center.lng}`);
+    // }
 
     // Traduce una dirección a coordenadas
     try {
