@@ -12,16 +12,16 @@ export const centerMap = (lat: number, lng: number) => {
   }
 };
 
+// // Manejador para obtener las coordenadas del centro del mapa
+export const handleGetCurrentMapCenter = () => {
+  if (mapInstance) {
+    const center = mapInstance.getCenter();
+    console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
+  }
+};
+
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
-
-  // Manejador para obtener las coordenadas del centro del mapa
-  const handleGetCurrentMapCenter = () => {
-    if (mapRef.current) {
-      const center = mapRef.current.getCenter();
-      console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
-    }
-  };
 
   useEffect(() => {
     import('leaflet').then((L) => {
@@ -114,17 +114,17 @@ const LeafletMap: React.FC = () => {
         });
 
         // Agrega el botón para obtener las coordenadas del centro del mapa
-        const getCurrentMapCenterButton = L.Control.extend({
-          options: { position: 'topright' },
-          onAdd: () => {
-            const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
-            button.innerHTML = 'Obtener Coordenadas del Centro del Mapa';
-            button.addEventListener('click', handleGetCurrentMapCenter);
-            return button;
-          },
-        });
+        // const getCurrentMapCenterButton = L.Control.extend({
+        //   options: { position: 'topright' },
+        //   onAdd: () => {
+        //     const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
+        //     button.innerHTML = 'Obtener Coordenadas del Centro del Mapa';
+        //     button.addEventListener('click', handleGetCurrentMapCenter);
+        //     return button;
+        //   },
+        // });
 
-        new getCurrentMapCenterButton().addTo(map);
+        // new getCurrentMapCenterButton().addTo(map);
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
