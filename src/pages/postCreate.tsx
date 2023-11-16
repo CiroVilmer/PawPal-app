@@ -49,7 +49,7 @@ function PostForm() : JSX.Element{
     image: Yup.string(),
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
+  const onSubmit = async (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
@@ -62,22 +62,30 @@ function PostForm() : JSX.Element{
       formData.append("upload_preset", "pawpalupload-unsigned");
       formData.append("api_key", "251334789667561");
   
-      const result = fetch(
-        `https://api.cloudinary.com/v1_1/dc2tlippg/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          values.image = data.url;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      try {
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/dc2tlippg/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+  
+        const data = await response.json();
+  
+        console.log(data);
+  
+        // Use optional chaining to safely access nested properties
+        if (data && "url" in data) {
+          values.image = data.url as string;
+        } else {
+          console.error("Image upload failed:", data);
+        }
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
-
+  }
+  
     //se crea el post
     createNewPost(values, {
       onSuccess: () =>{
