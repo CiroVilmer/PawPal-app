@@ -61,8 +61,8 @@ function PostForm() : JSX.Element{
       formData.append("file", selectedFile);
       formData.append("upload_preset", "pawpalupload-unsigned");
       formData.append("api_key", "251334789667561");
-  
-      const result = fetch(
+      
+      fetch(
         `https://api.cloudinary.com/v1_1/dc2tlippg/image/upload`,
         {
           method: "POST",
@@ -71,15 +71,22 @@ function PostForm() : JSX.Element{
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          if (data.url){
-            values.image = data.url;
-          }
+          toast.success("Image uploaded successfully");
+          values.image = data.secure_url;
+          createNewPost(values, {
+            onSuccess: () =>{
+              toast.success("Post Created")
+              console.log(values)
+            },
+            onError: (error:any) => {
+              toast.error("Error creating post")
+            } 
+          })
         })
         .catch((error) => {
           console.error(error);
         });
-    }
-
+      }
     //se crea el post
     createNewPost(values, {
       onSuccess: () =>{
