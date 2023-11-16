@@ -71,15 +71,11 @@ function PostForm() : JSX.Element{
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          toast.success("Image uploaded successfully");
+          values.image = data.url;
         })
         .catch((error) => {
           console.error(error);
         });
-        
-      result.then((data: any) => {
-        values.image = data.url;
-      });
     }
 
     //se crea el post
