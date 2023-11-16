@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { imageUploader } from "~/server/api/imageUploade";
 
 
 
@@ -24,10 +23,18 @@ const Formulario : React.FC = () => {
     const formData = new FormData();
     formData.append("file", selectedFile!);
     formData.append("upload_preset", "pawpalupload-unsigned");
-    formData.append("api_key", process.env.CLOUDINARY_API_KEY!);
+
+    const apiKey = process.env.CLOUDINARY_API_KEY;
+    const cloudinaryUserName = process.env.CLOUDINARY_USER_NAME;
+
+    if (!apiKey || !cloudinaryUserName) {
+      console.error("Cloudinary API key or user name is missing.");
+      return;
+    }
+    formData.append("api_key", apiKey);
 
     const result = fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_USER_NAME}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${cloudinaryUserName}/image/upload`,
       {
         method: "POST",
         body: formData,
