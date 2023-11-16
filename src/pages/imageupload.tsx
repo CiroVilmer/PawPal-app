@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { imageUploader } from "~/utils/imageUploade";
+import { imageUploader } from "~/server/api/imageUploade";
 
 
 const Formulario : React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
