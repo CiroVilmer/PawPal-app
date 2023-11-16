@@ -90,14 +90,6 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
       <Card shadow="sm" padding="lg" radius="lg" withBorder>
       <Card.Section>
     <a href={img} target="_blank" rel="noopener noreferrer">
-      <Image
-        src={img}
-        height={225}
-        width={'auto'}
-        alt=""
-        className='flex justify-center'
-        radius={'0'}
-      />
     </a>
   </Card.Section>
       
