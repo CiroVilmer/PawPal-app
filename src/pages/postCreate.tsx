@@ -71,9 +71,8 @@ function PostForm() : JSX.Element{
         .then((response) => response.json())
         .then((data: { secure_url?: string }) => {
           console.log(data);
-          toast.success("Image uploaded successfully");
           if(data.secure_url){
-            values.image = data.secure_url as string;
+            values.image = data.secure_url;
           }
           createNewPost(values, {
             onSuccess: () =>{
