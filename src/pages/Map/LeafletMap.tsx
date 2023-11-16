@@ -18,8 +18,8 @@ const LeafletMap: React.FC = () => {
   // Manejador para obtener las coordenadas del centro del mapa
   const handleGetCurrentMapCenter = () => {
     if (mapRef.current) {
-      const center = mapRef.current.getCenter();
-      console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
+      const center = (mapRef.current as L.Map).getCenter();
+      console.log(`Coordenadas del centro del mapa: ${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}`);
     }
   };
 
@@ -39,7 +39,7 @@ const LeafletMap: React.FC = () => {
         map.setMaxBounds(bounds);
 
         map.on('drag', () => {
-          map.panInsideBounds(bounds, { animate: false }); // Para que no se pueda arrastrar el mapa fuera de los límites
+          (map as L.Map).panInsideBounds(bounds, { animate: false }); // Para que no se pueda arrastrar el mapa fuera de los límites
         });
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -56,7 +56,7 @@ const LeafletMap: React.FC = () => {
             (position) => {
               const { latitude, longitude } = position.coords;
               const userLocation = L.latLng(latitude, longitude);
-              map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
+              (map as L.Map).setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
             },
             (error) => {
               console.error('Error getting user location:', error);
@@ -125,7 +125,6 @@ const LeafletMap: React.FC = () => {
         });
 
         new getCurrentMapCenterButton().addTo(map);
-
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
