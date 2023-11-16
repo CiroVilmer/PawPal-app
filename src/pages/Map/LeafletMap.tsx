@@ -18,8 +18,8 @@ const LeafletMap: React.FC = () => {
   // Manejador para obtener las coordenadas del centro del mapa
   const handleGetCurrentMapCenter = () => {
     if (mapRef.current) {
-      const center = (mapRef.current as L.Map).getCenter();
-      console.log(`Coordenadas del centro del mapa: ${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}`);
+      const center = mapRef.current.getCenter();
+      console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
     }
   };
 
@@ -32,14 +32,14 @@ const LeafletMap: React.FC = () => {
         });
 
         const map = L.map('map').setView([-36.5039461, -63.8486787], 5); // Coordenadas de Argentina
-        mapRef.current = map;
-        mapInstance = map; // Asigna el mapa a la referencia mapInstance
+        mapRef.current = map as L.Map;
+        mapInstance = map as L.Map; // Asigna el mapa a la referencia mapInstance
 
         const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)); // Limite del mapa
         map.setMaxBounds(bounds);
 
         map.on('drag', () => {
-          (map as L.Map).panInsideBounds(bounds, { animate: false }); // Para que no se pueda arrastrar el mapa fuera de los límites
+          map.panInsideBounds(bounds, { animate: false }); // Para que no se pueda arrastrar el mapa fuera de los límites
         });
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -56,7 +56,7 @@ const LeafletMap: React.FC = () => {
             (position) => {
               const { latitude, longitude } = position.coords;
               const userLocation = L.latLng(latitude, longitude);
-              (map as L.Map).setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
+              map.setView(userLocation, 15); // Centrar el mapa en la ubicación con zoom 15
             },
             (error) => {
               console.error('Error getting user location:', error);
@@ -103,8 +103,8 @@ const LeafletMap: React.FC = () => {
           const { lat, lng, name, description, category } = location;
 
           // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description !== null && description !== undefined ? description : '';
-
+          const fixedDescription = description ?? '';
+          
           addMarker(lat, lng, name, fixedDescription, category);
         });
 
@@ -125,6 +125,7 @@ const LeafletMap: React.FC = () => {
         });
 
         new getCurrentMapCenterButton().addTo(map);
+
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
