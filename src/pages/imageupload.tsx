@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { imageUploader } from "~/server/api/imageUploade";
 
 
+
 const Formulario : React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
@@ -16,15 +17,29 @@ const Formulario : React.FC = () => {
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
-    if (selectedFile) {
-      try {
-        const imageUrl = imageUploader(selectedFile);
-        console.log('Image uploaded:', imageUrl);
-        // You can handle the uploaded URL as needed (e.g., store in state, send to server, etc.)
-      } catch (error) {
-        console.error('Error uploading image:', error);
-      }
+    if (!selectedFile) {
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile!);
+    formData.append("upload_preset", "pawpalupload-unsigned");
+    formData.append("api_key", process.env.CLOUDINARY_API_KEY!);
+
+    const result = fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_USER_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      
   };
 
   return (
