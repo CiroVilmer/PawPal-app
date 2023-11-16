@@ -32,8 +32,8 @@ const LeafletMap: React.FC = () => {
         });
 
         const map = L.map('map').setView([-36.5039461, -63.8486787], 5); // Coordenadas de Argentina
-        mapRef.current = map as L.Map;
-        mapInstance = map as L.Map; // Asigna el mapa a la referencia mapInstance
+        mapRef.current = map;
+        mapInstance = map; // Asigna el mapa a la referencia mapInstance
 
         const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)); // Limite del mapa
         map.setMaxBounds(bounds);
@@ -104,7 +104,7 @@ const LeafletMap: React.FC = () => {
 
           // Asigna una descripción vacía si description es null o undefined
           const fixedDescription = description ?? '';
-          
+
           addMarker(lat, lng, name, fixedDescription, category);
         });
 
@@ -125,7 +125,6 @@ const LeafletMap: React.FC = () => {
         });
 
         new getCurrentMapCenterButton().addTo(map);
-
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
