@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-
-
 const Formulario : React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
@@ -21,17 +19,18 @@ const Formulario : React.FC = () => {
       return;
     }
 
-    const apiKey = process.env.CLOUDINARY_API_KEY;
+    //const apiKey = process.env.CLOUDINARY_API_KEY;
+    // const cloudinaryUserName = process.env.CLOUDINARY_USER_NAME;
 
-    if (!apiKey) {
-       console.error("Cloudinary API key or user name is missing.");
-        return;
-    }
+    // if (!apiKey || !cloudinaryUserName) {
+    //   console.error("Cloudinary API key or user name is missing.");
+    //   return;
+    // }
 
     const formData = new FormData();
     formData.append("file", selectedFile);
     formData.append("upload_preset", "pawpalupload-unsigned");
-    formData.append("api_key", apiKey);
+    formData.append("api_key", "251334789667561");
 
     const result = fetch(
       `https://api.cloudinary.com/v1_1/dc2tlippg/image/upload`,
@@ -42,7 +41,7 @@ const Formulario : React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        toast.success("Post Created")
+        toast.success("Image uploaded successfully");
       })
       .catch((error) => {
         console.error(error);
