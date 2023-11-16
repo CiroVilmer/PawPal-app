@@ -71,7 +71,9 @@ function PostForm() : JSX.Element{
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          values.image = data.url;
+          if (data.url){
+            values.image = data.url;
+          }
         })
         .catch((error) => {
           console.error(error);
