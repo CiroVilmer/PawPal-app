@@ -13,7 +13,7 @@ const Refugios: React.FC = () : JSX.Element => {
     const activePosts = api.post.getForumPosts.useQuery({});
 
 
-    activePosts?.data?.map((post) => {
+    activePosts?.data?.map((post: { id: any; title: any; description: any; }) => {
         console.log(post);
 
         const id = post.id;
@@ -30,10 +30,11 @@ const Refugios: React.FC = () : JSX.Element => {
             <div className="flex-col justify-start mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
                 <AccordionForo title="Para que sirve la castración?" description="La castración, en el contexto veterinario, se realiza para controlar la reproducción y modificar el comportamiento de animales, como perros y gatos, al eliminar sus órganos reproductores. También puede tener beneficios en la salud y reducir comportamientos no deseados." key=''/>
-                {activePosts?.data?.map((post) => (
+                <AccordionForo title="Reunion de goldens" description="Vamos a estar organizando una nueva reunion de goldens en el río de Vicente Lopez el domingo a las 14hs." key=''/>
+                {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; }) => (
                 <AccordionForo title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
-                
+
     
             </div>
             <ModalForo/>
