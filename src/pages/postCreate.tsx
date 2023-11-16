@@ -69,10 +69,11 @@ function PostForm() : JSX.Element{
           body: formData,
         })
         .then((response) => response.json())
-        .then((data) => {
+        .then((data: { secure_url?: string }) => {
           console.log(data);
-          toast.success("Image uploaded successfully");
-          values.image = data?.secure_url?.toString();
+          if(data.secure_url){
+            values.image = data.secure_url;
+          }
           createNewPost(values, {
             onSuccess: () =>{
               toast.success("Post Created")
@@ -87,17 +88,18 @@ function PostForm() : JSX.Element{
           console.error(error);
         });
       }
-    //se crea el post
-    createNewPost(values, {
-      onSuccess: () =>{
-        toast.success("Post Created")
-        console.log(values)
-      },
-      onError: (error:any) => {
-        toast.error("Error creating post")
-      } 
-    })
-
+      else {
+        // Create the post without an image
+        createNewPost(values, {
+          onSuccess: () => {
+            toast.success("Post Created");
+            console.log(values);
+          },
+          onError: (error: any) => {
+            toast.error("Error creating post");
+          }
+        });
+      }
   };
 
   const mediumScreen = useMediaQuery("(min-width: 768px)");
