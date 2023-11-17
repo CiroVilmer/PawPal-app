@@ -6,7 +6,7 @@ interface PosteosForoProps {
   key: string;
 }
 
-const AccordionForo: React.FC<PosteosForoProps> = ({ title, description }) => {
+const ForoCard: React.FC<PosteosForoProps> = ({ title, description }) => {
   
   return (
     <div className='w-[340px] md:w-[940px]'>
@@ -22,4 +22,4 @@ const AccordionForo: React.FC<PosteosForoProps> = ({ title, description }) => {
   );
 };
 
-export default AccordionForo;
+export default ForoCard;
