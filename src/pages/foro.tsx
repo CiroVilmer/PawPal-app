@@ -13,7 +13,7 @@ const Refugios: React.FC = () : JSX.Element => {
     const activePosts = api.post.getForumPosts.useQuery({});
 
 
-    activePosts?.data?.map((post: { id: string; title: string; description: string; }) => {
+    activePosts?.data?.map((post: { id: string; title: string | null; description: string | null; }) => {
         console.log(post);
 
         const id = post.id;
