@@ -3,11 +3,20 @@ import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 
 let mapInstance: L.Map | null = null; // Referencia al mapa
-//Centra el mapa en las coordenadas dadas, las cuales son obtenidas de la dirección ingresada del otro archivo
-export const centerMap = ( lat: number, lng: number) => {
+
+// Centra el mapa en las coordenadas dadas, las cuales son obtenidas de la dirección ingresada del otro archivo
+export const centerMap = (lat: number, lng: number) => {
   if (mapInstance) {
     mapInstance.setView([lat, lng], 18);
     console.log('Centrado en:', lat, lng);
+  }
+};
+
+// // Manejador para obtener las coordenadas del centro del mapa
+export const handleGetCurrentMapCenter = () => {
+  if (mapInstance) {
+    const center = mapInstance.getCenter();
+    console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
   }
 };
 
@@ -41,7 +50,7 @@ const LeafletMap: React.FC = () => {
           maxZoom: 20,
         }).addTo(map);
 
-        // Esto es para obtener la ubicación del usuario. No se por qué pero no es precisa
+        // Esto es para obtener la ubicación del usuario. No sé por qué pero no es precisa
         if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -57,28 +66,32 @@ const LeafletMap: React.FC = () => {
 
         //Funcion para agregar los marcadores
         function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
-          const marker = L.marker([lat,lng], { icon: myIcon })
+          const marker = L.marker([lat, lng], { icon: myIcon })
             .bindPopup(`<b>${name}</b><br>${description}`)
             .addTo(mapRef.current!);
+
           // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
           marker.on('mouseover', () => {
             marker.openPopup();
           });
+
           // Cerrar el popup al retirar el mouse del marcador
           marker.on('mouseout', () => {
             marker.closePopup();
           });
         }
 
-        //Funcion para agregar circulos de areas
-        function addArea (lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
-          const area = L.circle([lat, lng], { radius: radius, color: color})
+        //Funcion para agregar circulos de áreas
+        function addArea(lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
+          const area = L.circle([lat, lng], { radius: radius, color: color })
             .bindPopup(`<b>${name}</b><br>${description}`)
             .addTo(mapRef.current!);
+
           // Hacer que el popup aparezca al pasar el mouse sobre el marcador (hover)
           area.on('mouseover', () => {
             area.openPopup();
           });
+
           // Cerrar el popup al retirar el mouse del marcador
           area.on('mouseout', () => {
             area.closePopup();
@@ -88,19 +101,30 @@ const LeafletMap: React.FC = () => {
         //Recorre la lista de ubicaciones y agrega los marcadores
         Markerlocations.forEach((location) => {
           const { lat, lng, name, description, category } = location;
-        
+
           // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description !== null && description !== undefined ? description : '';
-        
+          const fixedDescription = description ?? '';
+
           addMarker(lat, lng, name, fixedDescription, category);
         });
-        
-        
 
         //Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
+
+        // Agrega el botón para obtener las coordenadas del centro del mapa
+        // const getCurrentMapCenterButton = L.Control.extend({
+        //   options: { position: 'topright' },
+        //   onAdd: () => {
+        //     const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
+        //     button.innerHTML = 'Obtener Coordenadas del Centro del Mapa';
+        //     button.addEventListener('click', handleGetCurrentMapCenter);
+        //     return button;
+        //   },
+        // });
+
+        // new getCurrentMapCenterButton().addTo(map);
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
@@ -111,6 +135,3 @@ const LeafletMap: React.FC = () => {
 };
 
 export default LeafletMap;
-
-
-

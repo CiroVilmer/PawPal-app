@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import 'leaflet/dist/leaflet.css';
 import { Chip } from '@mantine/core';
@@ -10,11 +10,12 @@ import { ReactNode } from 'react';
 import { useMediaQuery } from "@mantine/hooks";
 import Navigation from './Components/navigation';
 import Link from 'next/link';
-import {AiFillPlusCircle} from 'react-icons/ai';
+import { AiFillPlusCircle } from 'react-icons/ai';
 import PostForm from './postCreate';
 import ModalExample from './Components/modal';
 import { geocodeAddress } from '../../lib/Geocoder';
 import { centerMap } from './Map/LeafletMap';
+
 
 
 // import Navigation from './Components/navigation';
@@ -30,17 +31,27 @@ interface ChipProps {
 
 const MapComponent: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
-
+  const mapRef = useRef<any>(null);
+  
   const handleSearch = async () => {
+
+    //Obtener las coordenadas actuales de donde esta la vista del mapa NO ANDAAAAA
+
+    // if (mapRef.current) {
+    //   // Obtiene las coordenadas actuales del centro del mapa
+    //   const map = mapRef.current.leafletMap; // Cambié 'leafletElement' a 'leafletMap'
+    //   const center = map.getCenter();
+    //   console.log(`Coordenadas del centro del mapa actual: ${center.lat}, ${center.lng}`);
+    // }
 
     // Traduce una dirección a coordenadas
     try {
-    const address = searchValue;
-    const result = await geocodeAddress(address); 
-    console.log('Coordenadas de la dirección:', result.lat, result.lon);
-    centerMap( result.lat, result.lon);
+      const address = searchValue;
+      const result = await geocodeAddress(address);
+      console.log('Coordenadas de la dirección:', result.lat, result.lon);
+      centerMap(result.lat, result.lon);
     } catch (error) {
-    console.error('Error al geocodificar la dirección:', error);
+      console.error('Error al geocodificar la dirección:', error);
     }
 
   };
@@ -74,12 +85,12 @@ const MapComponent: React.FC = () => {
               placeholder="Buscar..."
               className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-orange-400 transition-all duration-1000"
             />
-          
+
             <button
               onClick={() => void handleSearch()}
               className="absolute top-0 right-0 flex items-center justify-center h-full w-9 bg-orange-400 text-white rounded-full"
             >
-               <FaSearchLocation />
+              <FaSearchLocation />
             </button>
           </div>
 
@@ -92,16 +103,16 @@ const MapComponent: React.FC = () => {
             <Chips num="5" icono={<MdSpa />} servicio="Spa" />
             <Chips num="6" icono={<MdLocalCafe />} servicio="Cafes" />
           </div>
-          
+
         </div>
-        <ModalExample/>
+        <ModalExample />
         {/* <button className='fixed z-20 bottom-16 md:bottom-10 border-2 rounded-full border-orange-400 right-2 text-5xl drop-shadow-xl text-[#ffa826b6] hover:scale-105 duration-500' onClick={handleClick}>
           {largeScreen ? <AiFillPlusCircle/> : <Link href='/postCreate'><AiFillPlusCircle/></Link>}
         </button>
         <div>{isOpen ? <div className='absolute right-[30%] top-[20%] z-20 h-96 w-72 bg-white rounded-lg'> <PostForm/> </div> : <a></a>} </div> */}
         <div className='z-0'>{largeScreen ?
-        <nav><Navigation/></nav> : <footer><Navigation/></footer>}</div>
-        
+          <nav><Navigation /></nav> : <footer><Navigation /></footer>}</div>
+
 
         {/* <div className={largeScreen ? `absolute top-0 bg-white rounded-e-[25px] h-screen shadow-2xl px-2 z-20 duration-500 ${!isOpen ? ' w-12 ':'w-72'}` : 'hidden'}>
           <div className={`absolute top-5 ml-1  duration-500 ease-in-out ${isOpen ? "translate-x-[230px]" : ""}`}>
@@ -122,7 +133,7 @@ const MapComponent: React.FC = () => {
           </div>
         </div> */}
       </div>
-      
+
       {/* <footer className={largeScreen ? "hidden" : 'z-20 w-full absolute'}>
         <Navigation />
       </footer> */}
@@ -137,6 +148,6 @@ const MapComponent: React.FC = () => {
               
             </div> 
           </div>*/}
-          
+
 
 export default MapComponent;

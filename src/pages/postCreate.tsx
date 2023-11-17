@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import toast, { Toast, Toaster } from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { api } from '~/utils/api';
@@ -16,6 +16,15 @@ function PostForm() : JSX.Element{
   const {data: session, status} = useSession();
 
   const {mutate: createNewPost} = api.post.createPost.useMutation();
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+
+    if (files && files.length > 0) {
+      setSelectedFile(files[0]!);
+    }
+  };
 
   const initialValues = {
     title: '',
@@ -37,7 +46,7 @@ function PostForm() : JSX.Element{
     age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     //contact: Yup.string().required('Required'),
-    //image: Yup.string(),
+    image: Yup.string(),
   })
     
   const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
@@ -46,16 +55,51 @@ function PostForm() : JSX.Element{
     //location parsing
 
     values.author = session?.user?.email as string;
-
-    createNewPost(values, {
-      onSuccess: () =>{
-        toast.success("Post Created")
-      },
-      onError: (error:any) => {
-        toast.error("Error creating post")
-      } 
-    })
-
+   //se sube la imagen
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("upload_preset", "pawpalupload-unsigned");
+      formData.append("api_key", "251334789667561");
+      
+      fetch(
+        `https://api.cloudinary.com/v1_1/dc2tlippg/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        })
+        .then((response) => response.json())
+        .then((data: { secure_url?: string }) => {
+          console.log(data);
+          if(data.secure_url){
+            values.image = data.secure_url;
+          }
+          createNewPost(values, {
+            onSuccess: () =>{
+              toast.success("Post Created")
+              console.log(values)
+            },
+            onError: (error:any) => {
+              toast.error("Error creating post")
+            } 
+          })
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
+      else {
+        // Create the post without an image
+        createNewPost(values, {
+          onSuccess: () => {
+            toast.success("Post Created");
+            console.log(values);
+          },
+          onError: (error: any) => {
+            toast.error("Error creating post");
+          }
+        });
+      }
   };
 
   const mediumScreen = useMediaQuery("(min-width: 768px)");
@@ -75,7 +119,10 @@ function PostForm() : JSX.Element{
                   <i className='text-[110px] text-gray-700'><MdOutlineImage/></i>
                   <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Clickeá para subir</span></p>
                 </div>
-                <input id="dropzone-file" type="file" className="hidden" />
+                <input id="dropzone-file" type="file" className="hidden" onChange={handleFileChange} />
+                {selectedFile && <p className="text-sm text-gray-500">{selectedFile.name}</p>
+                }
+                {errors.image && touched.image ? <div className='text-red-500 text-xs'>{errors.image}</div> : null}
               </label>
             </div>
               <div className = {mediumScreen ? 'flex flex-row gap-2' : 'flex flex-col gap-2'}>
