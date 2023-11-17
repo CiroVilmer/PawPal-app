@@ -30,7 +30,6 @@ const Refugios: React.FC = () : JSX.Element => {
             <div className="flex-col justify-start mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
                 <section className="overflow-y-auto h-[400px] flex flex-col-reverse">
-                <ForoCard title="Para que sirve la castración?" description="La castración, en el contexto veterinario, se realiza para controlar la reproducción y modificar el comportamiento de animales, como perros y gatos, al eliminar sus órganos reproductores. También puede tener beneficios en la salud y reducir comportamientos no deseados." key=''/>
                 {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; }) => (
                 <ForoCard title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
