@@ -27,7 +27,7 @@ const PostFormForo = () => {
     const postSchema = Yup.object().shape({
       title: Yup.string().required('Required'),
       type: Yup.string().required('Required'),
-      description: Yup.string().required('Required').max(200, "Max 200 characters"),
+      description: Yup.string().required('Required').max(300, "Max 300 characters"),
       
     })
       
@@ -63,9 +63,7 @@ const PostFormForo = () => {
                                             <option hidden>- Seleccione una opcion -</option>
                                             <option value="informacion">Informacion</option>
                                             <option value="pregunta">Pregunta</option>
-                                            <option value="anuncio">Anuncio</option>
                                             <option value="evento">Evento</option>
-                                            <option value="opinion">Opinion</option>
                                             <option value="otro">Otro</option>
                                         </Field>
                                         {errors.type && touched.type ? <div className='text-red-500 text-xs'>{errors.type}</div> : null}
