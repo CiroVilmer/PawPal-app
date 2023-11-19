@@ -27,7 +27,7 @@ const PostFormForo = () => {
     const postSchema = Yup.object().shape({
       title: Yup.string().required('Required'),
       type: Yup.string().required('Required'),
-      description: Yup.string().required('Required').max(300, "Max 300 characters"),
+      description: Yup.string().required('Required').max(700, "Max 700 characters"),
       
     })
       
@@ -38,7 +38,7 @@ const PostFormForo = () => {
   
       values.author = session?.user?.email as string; 
       
-      createNewPost(values, {
+      createNewPost (values, {
         onSuccess: () =>{
           toast.success("Post Created")
         },

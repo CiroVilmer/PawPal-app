@@ -21,7 +21,7 @@ const Refugios: React.FC = () : JSX.Element => {
         const descriptionPost = post.description;
         const type = post.type;
         return (
-        <ForoCard title={title === null ? "" : title } description={descriptionPost === null ? "" : descriptionPost } key={id} />
+        <ForoCard type={type === null ? "" : type} title={title === null ? "" : title } description={descriptionPost === null ? "" : descriptionPost } key={id} />
         )
 
     });
@@ -31,8 +31,8 @@ const Refugios: React.FC = () : JSX.Element => {
             <div className="flex-col justify-start mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
                 <section className="overflow-y-auto h-[400px]">
-                {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; }) => (
-                <ForoCard title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
+                {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; type: string | null;}) => (
+                <ForoCard type={post.type === null ? "" : post.type} title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
                 </section>    
             </div>
