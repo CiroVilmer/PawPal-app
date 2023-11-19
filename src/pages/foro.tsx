@@ -30,7 +30,7 @@ const Refugios: React.FC = () : JSX.Element => {
         <div className="background h-screen flex items-start justify-center font-Poppins">
             <div className="flex-col justify-start mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
-                <section className="overflow-y-auto h-[400px]">
+                <section className="overflow-y-auto h-auto md:h-[400px] xl:h-[600px]">
                 {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; type: string | null;}) => (
                 <ForoCard type={post.type === null ? "" : post.type} title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
