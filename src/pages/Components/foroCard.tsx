@@ -10,7 +10,7 @@ interface PosteosForoProps {
 const ForoCard: React.FC<PosteosForoProps> = ({ title, description, type}) => {
   
   return (
-    <div className='w-[300px] md:w-[640px] xl:w-[940px]'>
+    <div className='w-[300px] md:w-[640px] xl:w-[950px]'>
       <Card color='orange' withBorder className='shadow-md rounded-lg p-8 mb-2'>
         <Card.Section>
           <Box>
