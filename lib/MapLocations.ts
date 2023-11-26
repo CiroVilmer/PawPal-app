@@ -50,7 +50,7 @@ export let Circlelocations: {
 
 export const loadAreasFromDatabase = async () => {
   try {
-    const activePosts = await api.post.getPosts.useQuery({});
+    const activePosts = api.post.getPosts.useQuery({});
 
     if (activePosts) {
       Circlelocations = activePosts.data?.map((post) => {
