@@ -146,8 +146,11 @@ const LeafletMap: React.FC = () => {
           const description = descriptionPost ?? '';
           const postTitle = title ?? ''; // Provide a default value for title
 
-          addMarker(lat ?? 0, lng ?? 0, postTitle ?? '', description ?? "", category ?? "");
+          addMarker(Number(lat) || 0, Number(lng) || 0, postTitle, description, category ?? '');
         });
+
+
+
 
       }
     }).catch((error) => {

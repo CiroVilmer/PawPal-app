@@ -10,6 +10,7 @@ import { getSession, useSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { handleGetCurrentMapCenter } from  '../pages/Map/LeafletMap';
+import { Decimal } from '@prisma/client/runtime';
 
 
 
@@ -53,7 +54,7 @@ function PostForm() : JSX.Element{
 
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: number, lng: number, contact:string, author: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: Decimal, lng: Decimal, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
