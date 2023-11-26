@@ -109,7 +109,7 @@ const LeafletMap: React.FC = () => {
         });
 
         // Cargar áreas desde la base de datos
-        await loadAreasFromDatabase();
+        loadAreasFromDatabase();
 
         // Lo mismo pero con áreas (utilizando Circlelocations que ahora se carga desde la base de datos)
         Circlelocations.forEach((location) => {
