@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
+import { api } from '~/utils/api';
+import { red } from '@mui/material/colors';
 
 let mapInstance: L.Map | null = null; // Referencia al mapa
 
@@ -113,6 +115,26 @@ const LeafletMap: React.FC = () => {
         //Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
+        });
+
+        const activePosts = api.post.getPosts.useQuery({});
+        activePosts?.data?.map((post) => {
+          //const id = post.id;
+          const title = post.title;
+          const descriptionPost = post.description;
+          //const image = post.image;
+          const category = "Perdido";
+          const lat = post.lat ?? 0;
+          const lng = post.lng ?? 0;
+          const radius = 500;
+          const color = "orange";
+          const fixedDescription = descriptionPost ?? '';
+
+          if(lat === 0 || lng === 0){
+            return;
+          }else{
+            addArea(lat, lng, radius, color, title, fixedDescription, category);
+          }
         });
 
         // Agrega el botón para obtener las coordenadas del centro del mapa
