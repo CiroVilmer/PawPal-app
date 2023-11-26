@@ -23,6 +23,8 @@ export const handleGetCurrentMapCenter = () => {
   }
 };
 
+const activePosts = api.post.getPosts.useQuery({});
+
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
@@ -116,33 +118,30 @@ const LeafletMap: React.FC = () => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
 
-        // Cambios para cargar áreas desde la base de datos
-        // const loadAreasFromDatabase = () => {
-        //   try {
-        //     const activePosts =  api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
+        const loadAreasFromDatabase = () => {
+          try {
+            if (activePosts) {
+              activePosts.data?.forEach((post) => {
+                const name = post.title;
+                const descriptionPost = post.description;
+                const category = 'Perdido';
+                const lat = post.lat ?? 0;
+                const lng = post.lng ?? 0;
+                const radius = 500;
+                const color = 'orange';
+                const fixedDescription = descriptionPost ?? '';
 
-        //     if (activePosts) {
-        //       activePosts.data?.forEach((post) => {
-        //         const name = post.title;
-        //         const descriptionPost = post.description;
-        //         const category = 'Perdido';
-        //         const lat = post.lat ?? 0;
-        //         const lng = post.lng ?? 0;
-        //         const radius = 500;
-        //         const color = 'orange';
-        //         const fixedDescription = descriptionPost ?? '';
+                console.log('Agregando área:', name, descriptionPost, category, lat, lng, radius, color);
 
-        //         console.log('Agregando área:', name, descriptionPost, category, lat, lng, radius, color);
+                addArea(lat, lng, radius, color, name, fixedDescription, category);
+              });
+            }
+          } catch (error) {
+            console.error('Error loading areas from database:', error);
+          }
+        };
 
-        //         addArea(lat, lng, radius, color, name, fixedDescription, category);
-        //       });
-        //     }
-        //   } catch (error) {
-        //     console.error('Error loading areas from database:', error);
-        //   }
-        // };
-
-        // loadAreasFromDatabase(); // Llamar a la función para cargar áreas desde la base de datos
+        loadAreasFromDatabase(); // Llamar a la función para cargar áreas desde la base de datos
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
