@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Markerlocations, Circlelocations, databaseLocations, loadAreasFromDatabase} from '../../../lib/MapLocations';
+import { Markerlocations, Circlelocations, loadAreasFromDatabase} from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 import { api } from '~/utils/api';
 import { red } from '@mui/material/colors';
@@ -115,17 +115,7 @@ const LeafletMap: React.FC = () => {
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-
-        databaseLocations.forEach((location) => {
-          const { lat, lng, name, description, category } = location;
-
-          // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description ?? '';
-
-          addArea(lat, lng, 500, "orange", name, fixedDescription, category);
-        });
-        
-
+      
         const activePosts = loadAreasFromDatabase();
 
         activePosts?.data?.map((post) => {

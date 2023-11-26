@@ -44,15 +44,12 @@ export const Circlelocations = [
     { lat: -34.5626489, lng: -58.4528739, radius: 500, color: 'green', name: 'Perro perdido', description: 'Se perdio Pancho, es un galgo adulto', category: 'LostDog' },
 ];
 
-export let databaseLocations = [
-  { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'yellow', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
-];
-
 export const loadAreasFromDatabase = () => {
   try {
     const activePosts = api.post.getPosts.useQuery({});
 
     return activePosts
+
   } catch (error) {
     console.error('Error loading areas from database:', error);
   }
