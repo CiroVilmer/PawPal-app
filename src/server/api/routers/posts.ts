@@ -16,6 +16,8 @@ export const postRouter = createTRPCRouter({
             age: z.string(),
             description: z.string(),
             contact: z.string(),
+            lat: z.number(),
+            lng: z.number(),
             image: z.string(),
             author: z.string(),
         })
@@ -31,6 +33,8 @@ export const postRouter = createTRPCRouter({
                 age: input.age,
                 description: input.description,
                 contact: input.contact,
+                lat: input.lat,
+                lng: input.lng,
                 image: input.image,
                 author: input.author,
             }
