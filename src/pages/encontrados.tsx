@@ -28,7 +28,7 @@ const Encontrados: React.FC = () : JSX.Element => {
     return (
         <div className={`background ${mediumScreen ? 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-2 gap-x-6 overflow-y-auto h-[450px] xl:h-[520px] w-auto ml-16 mr-10' : 'flex flex-col ml-4 overflow-y-auto h-[480px]'}`}>
             {activePosts?.data?.map((post) => (
-                <PostCard img={post.image  === null ? "/vector.jpg" : post.image} name={post.title} ubication={post.location} description={post.description === null ? "" : post.description } key={post.id} />
+                <PostCard img={post.image  === null || post.image === "" ? "./vector.jpg" : post.image} name={post.title} ubication={post.location} description={post.description === null ? "" : post.description } key={post.id} />
             ))}
         
         </div>
