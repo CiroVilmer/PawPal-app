@@ -153,3 +153,4 @@ const LeafletMap: React.FC = () => {
   return <div id="map" className="w-full h-full" style={{ height: '100vh' }} />;
 };
 
+export default LeafletMap;
