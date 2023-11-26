@@ -38,8 +38,43 @@ export const Markerlocations = [
   { lat: -34.5550092, lng: -58.4844013, name: 'Doctors House ...', description: 'Descripcion', category: 'Home' }
 ]
 
-export const Circlelocations = [
+export let Circlelocations = [
     { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'yellow', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
     { lat: -34.5366564, lng: -58.4548797, radius: 500, color: 'red', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden adulto', category: 'LostDog' },
     { lat: -34.5626489, lng: -58.4528739, radius: 500, color: 'green', name: 'Perro perdido', description: 'Se perdio Pancho, es un galgo adulto', category: 'LostDog' },
 ];
+
+export let databaseLocations = [
+  { lat: -34.5497574, lng: -58.4541175, radius: 500, color: 'yellow', name: 'Perro perdido', description: 'Se perdio Pancho, es un golden cachorro', category: 'LostDog' },
+];
+
+export const loadAreasFromDatabase = () => {
+  try {
+    const activePosts = api.post.getPosts.useQuery({});
+
+    if (activePosts) {
+        databaseLocations =activePosts.data?.map((post) => {
+        const name = post.title;
+        const descriptionPost = post.description;
+        const category = 'Perdido';
+        const lat = post.lat ?? 0;
+        const lng = post.lng ?? 0;
+        const radius = 500;
+        const color = 'orange';
+        const fixedDescription = descriptionPost ?? '';
+
+        return {
+          lat,
+          lng,
+          radius,
+          color,
+          name,
+          description: fixedDescription,
+          category,
+        };
+      }) ?? [];
+    }
+  } catch (error) {
+    console.error('Error loading areas from database:', error);
+  }
+}
