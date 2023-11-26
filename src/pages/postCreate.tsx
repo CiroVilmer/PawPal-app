@@ -59,10 +59,8 @@ function PostForm() : JSX.Element{
 
     //location parsing
     const coords = handleGetCurrentMapCenter();
-    if(coords){
-      values.lat = coords.lat?.toString();
-      values.lng = coords.lng?.toString();
-    }
+    values.lat = coords?.lat.toString() ?? '';
+    values.lng = coords?.lng?.toString() ?? '';
 
     values.author = session?.user?.email as string;
    //se sube la imagen

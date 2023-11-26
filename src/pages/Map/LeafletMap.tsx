@@ -20,8 +20,7 @@ export const handleGetCurrentMapCenter = () => {
     const center = mapInstance.getCenter();
     console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
 
-    return center;
-  }
+    return { lat: center.lat, lng: center.lng };  }
 };
 
 const LeafletMap: React.FC = () => {
