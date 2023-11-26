@@ -138,6 +138,7 @@ const LeafletMap: React.FC = () => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
 
+        console.log(dataPosts);
         //Lo mismo pero con áreas
         dataPosts?.forEach((post) => {
           const { lat, lng, radius, color, title, fixedDescription, category } = post ?? {};
