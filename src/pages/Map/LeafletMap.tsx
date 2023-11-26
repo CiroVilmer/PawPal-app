@@ -141,9 +141,7 @@ const LeafletMap: React.FC = () => {
         //Lo mismo pero con áreas
         activePosts?.data?.map((post) => {
           const title = post.title;
-          const location = post.location;
           const descriptionPost = post.description;
-          const image = post.image;
           const category = "Perdido";
           const lat = post.lat ?? 0;
           const lng = post.lng ?? 0;
@@ -153,11 +151,9 @@ const LeafletMap: React.FC = () => {
 
           console.log(post);
 
-          if (lat === 0 || lng === 0) {
-            return
-          }else{
-            addArea(lat, lng, radius, color, title, fixedDescription, category);
-          }
+  
+          addArea(lat, lng, radius, color, title, fixedDescription, category);
+      
         }
         );
         
