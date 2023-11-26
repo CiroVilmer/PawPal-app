@@ -26,28 +26,28 @@ export const handleGetCurrentMapCenter = () => {
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
-  const activePosts = api.post.getPosts.useQuery([]);
+  const activePosts = api.post.getPosts.useQuery({});
 
-  const dataPosts = activePosts?.data?.map((post) => {
-    const title = post.title;
-    const location = post.location;
-    const descriptionPost = post.description;
-    const image = post.image;
-    const category = "Perdido";
-    const lat = post.lat;
-    const lng = post.lng;
-    const radius = 500;
-    const color = "orange";
-    const fixedDescription = descriptionPost ?? '';
+  // const dataPosts = activePosts?.data?.map((post) => {
+  //   const title = post.title;
+  //   const location = post.location;
+  //   const descriptionPost = post.description;
+  //   const image = post.image;
+  //   const category = "Perdido";
+  //   const lat = post.lat;
+  //   const lng = post.lng;
+  //   const radius = 500;
+  //   const color = "orange";
+  //   const fixedDescription = descriptionPost ?? '';
 
-    console.log(post);
+  //   console.log(post);
 
-    if (lat === 0 || lng === 0) {
-      return
-    }else{
-      return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
-    }
-  });
+  //   if (lat === 0 || lng === 0) {
+  //     return
+  //   }else{
+  //     return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
+  //   }
+  // });
 
   useEffect(() => {
     import('leaflet').then((L) => {
