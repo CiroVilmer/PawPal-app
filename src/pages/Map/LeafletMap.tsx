@@ -133,7 +133,7 @@ const LeafletMap: React.FC = () => {
           if(lat === 0 || lng === 0){
             return;
           }else{
-            addArea(lat, lng, radius, color, title, fixedDescription, category);
+            return addArea(lat, lng, radius, color, title, fixedDescription, category);
           }
         });
 
