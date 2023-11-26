@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Markerlocations, Circlelocations, databaseLocations} from '../../../lib/MapLocations';
+import { Markerlocations, Circlelocations, databaseLocations, loadAreasFromDatabase} from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 import { api } from '~/utils/api';
 import { red } from '@mui/material/colors';
@@ -125,6 +125,27 @@ const LeafletMap: React.FC = () => {
           addArea(lat, lng, 500, "orange", name, fixedDescription, category);
         });
         
+
+        const activePosts = loadAreasFromDatabase();
+
+        activePosts?.data?.map((post) => {
+          console.log(post);
+
+          const id = post.id;
+          const title = post.title;
+          const location = post.location;
+          const descriptionPost = post.description;
+          const image = post.image;
+          const category = "Lost";
+          const radius = 500;
+          const color = "orange";
+          const lat = post.lat ?? 0;
+          const lng = post.lng ?? 0;
+          const fixedDescription = descriptionPost ?? '';
+
+          addArea(lat, lng, radius, color, title, fixedDescription, category);
+        });
+
         
 
       }

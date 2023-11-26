@@ -52,28 +52,7 @@ export const loadAreasFromDatabase = () => {
   try {
     const activePosts = api.post.getPosts.useQuery({});
 
-    if (activePosts) {
-        databaseLocations =activePosts.data?.map((post) => {
-        const name = post.title;
-        const descriptionPost = post.description;
-        const category = 'Perdido';
-        const lat = post.lat ?? 0;
-        const lng = post.lng ?? 0;
-        const radius = 500;
-        const color = 'orange';
-        const fixedDescription = descriptionPost ?? '';
-
-        return {
-          lat,
-          lng,
-          radius,
-          color,
-          name,
-          description: fixedDescription,
-          category,
-        };
-      }) ?? [];
-    }
+    return activePosts
   } catch (error) {
     console.error('Error loading areas from database:', error);
   }
