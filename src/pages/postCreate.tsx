@@ -49,7 +49,6 @@ function PostForm() : JSX.Element{
     breed: Yup.string().required('Required'),
     age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
-    //contact: Yup.string().required('Required'),
     image: Yup.string(),
 
   })
@@ -58,9 +57,9 @@ function PostForm() : JSX.Element{
     console.log('Form values:', values);
 
     //location parsing
-    const coords = handleGetCurrentMapCenter();
-    values.lat = coords?.lat ?? 0;
-    values.lng = coords?.lng ?? 0;
+    //const coords = handleGetCurrentMapCenter();
+    values.lat = 5888;
+    values.lng = 5888;
 
     values.author = session?.user?.email as string;
    //se sube la imagen
