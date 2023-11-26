@@ -48,7 +48,7 @@ export let Circlelocations: {
   category: string;
 }[] = [];
 
-export const loadAreasFromDatabase = async () => {
+export const loadAreasFromDatabase = () => {
   try {
     const activePosts = api.post.getPosts.useQuery({});
 
