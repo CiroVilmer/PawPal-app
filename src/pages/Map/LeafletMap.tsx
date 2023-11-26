@@ -19,7 +19,6 @@ export const handleGetCurrentMapCenter = () => {
   if (mapInstance) {
     const center = mapInstance.getCenter();
     console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
-
     return center;
   }
 };
@@ -68,7 +67,7 @@ const LeafletMap: React.FC = () => {
           );
         }
 
-        //Funcion para agregar los marcadores
+        // Funcion para agregar los marcadores
         function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
           const marker = L.marker([lat, lng], { icon: myIcon })
             .bindPopup(`<b>${name}</b><br>${description}`)
@@ -85,7 +84,7 @@ const LeafletMap: React.FC = () => {
           });
         }
 
-        //Funcion para agregar circulos de áreas
+        // Funcion para agregar circulos de áreas
         function addArea(lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
           const area = L.circle([lat, lng], { radius: radius, color: color })
             .bindPopup(`<b>${name}</b><br>${description}`)
@@ -102,7 +101,7 @@ const LeafletMap: React.FC = () => {
           });
         }
 
-        //Recorre la lista de ubicaciones y agrega los marcadores
+        // Recorre la lista de ubicaciones y agrega los marcadores
         Markerlocations.forEach((location) => {
           const { lat, lng, name, description, category } = location;
 
@@ -112,15 +111,15 @@ const LeafletMap: React.FC = () => {
           addMarker(lat, lng, name, fixedDescription, category);
         });
 
-        //Lo mismo pero con áreas
+        // Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
 
         // Cambios para cargar áreas desde la base de datos
-        const loadAreasFromDatabase =  () => {
+        const loadAreasFromDatabase = async () => {
           try {
-            const activePosts = api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
+            const activePosts =  await api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
 
             if (activePosts) {
               activePosts.data?.forEach((post) => {
@@ -142,19 +141,6 @@ const LeafletMap: React.FC = () => {
         };
 
         loadAreasFromDatabase(); // Llamar a la función para cargar áreas desde la base de datos
-
-        // Agrega el botón para obtener las coordenadas del centro del mapa
-        // const getCurrentMapCenterButton = L.Control.extend({
-        //   options: { position: 'topright' },
-        //   onAdd: () => {
-        //     const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
-        //     button.innerHTML = 'Obtener Coordenadas del Centro del Mapa';
-        //     button.addEventListener('click', handleGetCurrentMapCenter);
-        //     return button;
-        //   },
-        // });
-
-        // new getCurrentMapCenterButton().addTo(map);
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
