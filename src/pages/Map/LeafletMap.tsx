@@ -119,7 +119,7 @@ const LeafletMap: React.FC = () => {
 
         const activePosts = api.post.getPosts.useQuery({});
         activePosts?.data?.map((post) => {
-          const title = post.title;
+          const name = post.title;
           const descriptionPost = post.description;
           const category = "Perdido";
           const lat = post.lat ?? 0;
@@ -129,7 +129,7 @@ const LeafletMap: React.FC = () => {
           const fixedDescription = descriptionPost ?? '';
 
 
-          return addArea(lat, lng, radius, color, title, fixedDescription, category);
+          return addArea(lat, lng, radius, color, name, fixedDescription, category);
           
         });
 
