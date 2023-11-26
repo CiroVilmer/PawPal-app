@@ -34,8 +34,8 @@ const LeafletMap: React.FC = () => {
     const descriptionPost = post.description;
     const image = post.image;
     const category = "Perdido";
-    const lat = post.lat ?? 0;
-    const lng = post.lng ?? 0;
+    const lat = post.lat;
+    const lng = post.lng;
     const radius = 500;
     const color = "orange";
     const fixedDescription = descriptionPost ?? '';
@@ -140,15 +140,10 @@ const LeafletMap: React.FC = () => {
 
         //Lo mismo pero con áreas
         dataPosts?.forEach((post) => {
-          const { lat, lng, title, descriptionPost, category } = post ?? {};
-
-          // Asigna una descripción vacía si descriptionPost es null o undefined
-          const description = descriptionPost ?? '';
-          const postTitle = title ?? ''; // Provide a default value for title
-
-          addMarker(lat ?? 0, lng ?? 0, postTitle, description, category ?? '');
+          const { lat, lng, radius, color, title, fixedDescription, category } = post ?? {};
+          addArea(lat ?? 0 , lng ?? 0, radius ?? 500, color ?? "orange", title ?? "", fixedDescription ?? "", category ?? "");
         });
-
+        
 
 
 
