@@ -27,6 +27,9 @@ export const handleGetCurrentMapCenter = () => {
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
+  const activePosts = api.post.getPosts.useQuery({});
+  
+
   useEffect(() => {
     import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
@@ -116,7 +119,29 @@ const LeafletMap: React.FC = () => {
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-        
+        //Funcion para agregar los marcadores
+        function mapActivePosts() {
+          activePosts?.data?.map((post) => {
+            const id = post.id;
+            const title = post.title;
+            const location = post.location;
+            const descriptionPost = post.description;
+            const image = post.image;
+            const category = "Perdido";
+            const lat = post.lat ?? 0;
+            const lng = post.lng ?? 0;
+            const radius = 500;
+            const color = "orange";
+            const fixedDescription = descriptionPost ?? '';
+
+            
+            addArea(lat, lng, radius, color, title, fixedDescription, category);
+          });
+        }
+
+        mapActivePosts();
+
+
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
