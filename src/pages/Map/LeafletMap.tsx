@@ -24,11 +24,12 @@ export const handleGetCurrentMapCenter = () => {
   }
 };
 
-const LeafletMap: React.FC = (): JSX.Element => {
+const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    import('leaflet').then((L) => {
+    const loadMap = async () => {
+      const L = await import('leaflet');
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
           iconUrl: 'marcador.png',
@@ -117,14 +118,10 @@ const LeafletMap: React.FC = (): JSX.Element => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
 
-        
-
-
-
         // Cambios para cargar áreas desde la base de datos
         const loadAreasFromDatabase =  () => {
           try {
-            const activePosts = api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
+            const activePosts =  api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
 
             if (activePosts) {
               activePosts.data?.forEach((post) => {
@@ -162,7 +159,9 @@ const LeafletMap: React.FC = (): JSX.Element => {
 
         // new getCurrentMapCenterButton().addTo(map);
       }
-    }).catch((error) => {
+    };
+
+    loadMap().catch((error) => {
       console.log('Error loading Leaflet:', error);
     });
   }, []);
