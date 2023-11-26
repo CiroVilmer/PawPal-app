@@ -34,8 +34,8 @@ const LeafletMap: React.FC = () => {
     const descriptionPost = post.description;
     const image = post.image;
     const category = "Perdido";
-    const lat = parseInt(post.lat ?? '0', 10);
-    const lng = parseInt(post.lng ?? '0', 10);
+    const lat = post.lat ?? 0;
+    const lng = post.lng ?? 0;
     const radius = 500;
     const color = "orange";
     const fixedDescription = descriptionPost ?? '';
