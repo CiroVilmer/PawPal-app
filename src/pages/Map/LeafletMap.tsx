@@ -41,6 +41,8 @@ const LeafletMap: React.FC = () => {
     const color = "orange";
     const fixedDescription = descriptionPost ?? '';
 
+    console.log(post);
+
     if (lat === 0 || lng === 0) {
       return
     }else{
