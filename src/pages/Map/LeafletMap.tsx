@@ -28,7 +28,7 @@ const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
   const activePosts = api.post.getPosts.useQuery({});
-  
+
   const dataPosts = activePosts?.data?.map((post) => {
     const title = post.title;
     const location = post.location;
@@ -41,7 +41,11 @@ const LeafletMap: React.FC = () => {
     const color = "orange";
     const fixedDescription = descriptionPost ?? '';
 
-    return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
+    if (lat === 0 || lng === 0) {
+      return
+    }else{
+      return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
+    }
   });
 
   useEffect(() => {
@@ -129,19 +133,19 @@ const LeafletMap: React.FC = () => {
           addMarker(lat, lng, name, fixedDescription, category);
         });
 
-        //Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-        //Funcion para agregar los marcadores
-        
+
+        //Lo mismo pero con áreas
         dataPosts?.forEach((post) => {
-          const { lat, lng, title, fixedDescription, category } = post;
+          const { lat, lng, title, descriptionPost, category } = post ?? {};
 
-          // Asigna una descripción vacía si description es null o undefined
-          const description = fixedDescription ?? '';
+          // Asigna una descripción vacía si descriptionPost es null o undefined
+          const description = descriptionPost ?? '';
+          const postTitle = title ?? ''; // Provide a default value for title
 
-          addMarker(lat, lng, title, description, category);
+          addMarker(lat ?? 0, lng ?? 0, postTitle ?? '', description ?? "", category ?? "");
         });
 
       }
