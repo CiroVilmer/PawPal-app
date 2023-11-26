@@ -132,6 +132,8 @@ const LeafletMap: React.FC = () => {
                 const color = 'orange';
                 const fixedDescription = descriptionPost ?? '';
 
+                console.log('Agregando área:', name, descriptionPost, category, lat, lng, radius, color);
+
                 addArea(lat, lng, radius, color, name, fixedDescription, category);
               });
             }
