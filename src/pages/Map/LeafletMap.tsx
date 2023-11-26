@@ -118,9 +118,9 @@ const LeafletMap: React.FC = () => {
         });
 
         // Cambios para cargar áreas desde la base de datos
-        const loadAreasFromDatabase = async () => {
+        const loadAreasFromDatabase =  () => {
           try {
-            const activePosts = await api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
+            const activePosts = api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
 
             if (activePosts) {
               activePosts.data?.forEach((post) => {
