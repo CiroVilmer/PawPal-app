@@ -20,7 +20,7 @@ import { centerMap } from './Map/LeafletMap';
 
 // import Navigation from './Components/navigation';
 
-const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
+const LeafletMap = dynamic(() => import('./Map/LeafletMap') as Promise<any>, { ssr: false });
 
 interface ChipProps {
   num: string;
