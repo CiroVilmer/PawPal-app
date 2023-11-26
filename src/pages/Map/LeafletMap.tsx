@@ -14,7 +14,7 @@ export const centerMap = (lat: number, lng: number) => {
   }
 };
 
-// // Manejador para obtener las coordenadas del centro del mapa
+// Manejador para obtener las coordenadas del centro del mapa
 export const handleGetCurrentMapCenter = () => {
   if (mapInstance) {
     const center = mapInstance.getCenter();
@@ -117,21 +117,31 @@ const LeafletMap: React.FC = () => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
 
-        const activePosts = api.post.getPosts.useQuery({});
-        activePosts?.data?.map((post) => {
-          const name = post.title;
-          const descriptionPost = post.description;
-          const category = "Perdido";
-          const lat = post.lat ?? 0;
-          const lng = post.lng ?? 0;
-          const radius = 500;
-          const color = "orange";
-          const fixedDescription = descriptionPost ?? '';
+        // Cambios para cargar áreas desde la base de datos
+        const loadAreasFromDatabase = async () => {
+          try {
+            const activePosts = await api.post.getPosts.useQuery({}); // Asumiendo que api.post.getPosts devuelve una Promise
 
+            if (activePosts) {
+              activePosts.data?.forEach((post) => {
+                const name = post.title;
+                const descriptionPost = post.description;
+                const category = 'Perdido';
+                const lat = post.lat ?? 0;
+                const lng = post.lng ?? 0;
+                const radius = 500;
+                const color = 'orange';
+                const fixedDescription = descriptionPost ?? '';
 
-          return addArea(lat, lng, radius, color, name, fixedDescription, category);
-          
-        });
+                addArea(lat, lng, radius, color, name, fixedDescription, category);
+              });
+            }
+          } catch (error) {
+            console.error('Error loading areas from database:', error);
+          }
+        };
+
+        loadAreasFromDatabase(); // Llamar a la función para cargar áreas desde la base de datos
 
         // Agrega el botón para obtener las coordenadas del centro del mapa
         // const getCurrentMapCenterButton = L.Control.extend({
