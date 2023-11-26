@@ -57,8 +57,9 @@ function PostForm() : JSX.Element{
 
     //location parsing
     const coords = handleGetCurrentMapCenter();
-    values.lat = 23.1212;
-    values.lng = 23.232;
+    console.log('Coords:', coords);
+    values.lat = coords?.lat ?? 0;
+    values.lng = coords?.lng ?? 0;
 
     values.author = session?.user?.email as string;
 
