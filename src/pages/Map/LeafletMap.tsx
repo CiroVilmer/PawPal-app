@@ -23,8 +23,6 @@ export const handleGetCurrentMapCenter = () => {
   }
 };
 
-const activePosts = api.post.getPosts.useQuery({});
-
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
