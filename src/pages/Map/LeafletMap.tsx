@@ -1,9 +1,8 @@
-// LeafletMap.tsx
-
 import React, { useEffect, useRef } from 'react';
-import { Circlelocations, loadAreasFromDatabase } from '../../../lib/MapLocations';
+import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 import { api } from '~/utils/api';
+import { red } from '@mui/material/colors';
 
 let mapInstance: L.Map | null = null; // Referencia al mapa
 
@@ -15,11 +14,12 @@ export const centerMap = (lat: number, lng: number) => {
   }
 };
 
-// Manejador para obtener las coordenadas del centro del mapa
+// // Manejador para obtener las coordenadas del centro del mapa
 export const handleGetCurrentMapCenter = () => {
   if (mapInstance) {
     const center = mapInstance.getCenter();
     console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
+
     return center;
   }
 };
@@ -28,8 +28,7 @@ const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    const loadMap = async () => {
-      const L = await import('leaflet');
+    import('leaflet').then((L) => {
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
           iconUrl: 'marcador.png',
@@ -69,7 +68,7 @@ const LeafletMap: React.FC = () => {
           );
         }
 
-        // Funcion para agregar los marcadores
+        //Funcion para agregar los marcadores
         function addMarker(lat: number, lng: number, name: string, description: string, category: string) {
           const marker = L.marker([lat, lng], { icon: myIcon })
             .bindPopup(`<b>${name}</b><br>${description}`)
@@ -86,7 +85,7 @@ const LeafletMap: React.FC = () => {
           });
         }
 
-        // Funcion para agregar circulos de áreas
+        //Funcion para agregar circulos de áreas
         function addArea(lat: number, lng: number, radius: number, color: string, name: string, description: string, category: string) {
           const area = L.circle([lat, lng], { radius: radius, color: color })
             .bindPopup(`<b>${name}</b><br>${description}`)
@@ -103,22 +102,23 @@ const LeafletMap: React.FC = () => {
           });
         }
 
-        // Recorre la lista de ubicaciones y agrega los marcadores
+        //Recorre la lista de ubicaciones y agrega los marcadores
+        Markerlocations.forEach((location) => {
+          const { lat, lng, name, description, category } = location;
+
+          // Asigna una descripción vacía si description es null o undefined
+          const fixedDescription = description ?? '';
+
+          addMarker(lat, lng, name, fixedDescription, category);
+        });
+
+        //Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-
-        // Cargar áreas desde la base de datos
-        loadAreasFromDatabase();
-
-        // Lo mismo pero con áreas (utilizando Circlelocations que ahora se carga desde la base de datos)
-        Circlelocations.forEach((location) => {
-          addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
-        });
+        
       }
-    };
-
-    loadMap().catch((error) => {
+    }).catch((error) => {
       console.log('Error loading Leaflet:', error);
     });
   }, []);
