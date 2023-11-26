@@ -39,8 +39,8 @@ function PostForm() : JSX.Element{
     contact: '',
     image: '',
     author: "",
-    lat: 0,
-    lng: 0,
+    lat: new Decimal(0),
+    lng: new Decimal(0),
   }
   
   const postSchema = Yup.object().shape({
@@ -51,7 +51,8 @@ function PostForm() : JSX.Element{
     age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     image: Yup.string(),
-
+    lat: Yup.mixed<Decimal>(),
+    lng: Yup.mixed<Decimal>(),
   })
     
   const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: Decimal, lng: Decimal, contact:string, author: string}) => {
@@ -59,8 +60,8 @@ function PostForm() : JSX.Element{
 
     //location parsing
     const coords = handleGetCurrentMapCenter();
-    values.lat = coords?.lat ?? 0;
-    values.lng = coords?.lng ?? 0;
+    values.lat = new Decimal(coords?.lat ?? 0);
+    values.lng = new Decimal(coords?.lng ?? 0);
 
     values.author = session?.user?.email as string;
    //se sube la imagen
