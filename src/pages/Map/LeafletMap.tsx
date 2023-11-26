@@ -1,8 +1,9 @@
+// LeafletMap.tsx
+
 import React, { useEffect, useRef } from 'react';
-import { Markerlocations, Circlelocations, loadAreasFromDatabase} from '../../../lib/MapLocations';
+import { Circlelocations, loadAreasFromDatabase } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
 import { api } from '~/utils/api';
-import { red } from '@mui/material/colors';
 
 let mapInstance: L.Map | null = null; // Referencia al mapa
 
@@ -27,7 +28,8 @@ const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    import('leaflet').then((L) => {
+    const loadMap = async () => {
+      const L = await import('leaflet');
       if (typeof window !== 'undefined') {
         const myIcon = L.icon({
           iconUrl: 'marcador.png',
@@ -102,44 +104,21 @@ const LeafletMap: React.FC = () => {
         }
 
         // Recorre la lista de ubicaciones y agrega los marcadores
-        Markerlocations.forEach((location) => {
-          const { lat, lng, name, description, category } = location;
-
-          // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description ?? '';
-
-          addMarker(lat, lng, name, fixedDescription, category);
-        });
-
-        // Lo mismo pero con áreas
         Circlelocations.forEach((location) => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-      
-        const activePosts = loadAreasFromDatabase();
 
-        activePosts?.data?.map((post) => {
-          console.log(post);
+        // Cargar áreas desde la base de datos
+        await loadAreasFromDatabase();
 
-          const id = post.id;
-          const title = post.title;
-          const location = post.location;
-          const descriptionPost = post.description;
-          const image = post.image;
-          const category = "Lost";
-          const radius = 500;
-          const color = "orange";
-          const lat = post.lat ?? 0;
-          const lng = post.lng ?? 0;
-          const fixedDescription = descriptionPost ?? '';
-
-          addArea(lat, lng, radius, color, title, fixedDescription, category);
+        // Lo mismo pero con áreas (utilizando Circlelocations que ahora se carga desde la base de datos)
+        Circlelocations.forEach((location) => {
+          addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
-
-        
-
       }
-    }).catch((error) => {
+    };
+
+    loadMap().catch((error) => {
       console.log('Error loading Leaflet:', error);
     });
   }, []);
