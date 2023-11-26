@@ -17,6 +17,8 @@ export const handleGetCurrentMapCenter = () => {
   if (mapInstance) {
     const center = mapInstance.getCenter();
     console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
+
+    return center;
   }
 };
 

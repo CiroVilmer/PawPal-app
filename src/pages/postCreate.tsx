@@ -9,6 +9,8 @@ import * as Yup from "yup"
 import { getSession, useSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+import { handleGetCurrentMapCenter } from  '../pages/Map/LeafletMap';
+
 
 
 function PostForm() : JSX.Element{
@@ -36,6 +38,8 @@ function PostForm() : JSX.Element{
     contact: '',
     image: '',
     author: "",
+    lat: "",
+    lng: "",
   }
   
   const postSchema = Yup.object().shape({
@@ -47,12 +51,18 @@ function PostForm() : JSX.Element{
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     //contact: Yup.string().required('Required'),
     image: Yup.string(),
+
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat:string, lng:string, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
+    const coords = handleGetCurrentMapCenter();
+    if(coords && coords.lat && coords.lng){
+      values.lat = coords.lat.toString();
+      values.lng = coords.lng.toString();
+    }
 
     values.author = session?.user?.email as string;
    //se sube la imagen
