@@ -58,8 +58,7 @@ function PostForm() : JSX.Element{
 
     //location parsing
     //const coords = handleGetCurrentMapCenter();
-    values.lat = 5888;
-    values.lng = 5888;
+
 
     values.author = session?.user?.email as string;
    //se sube la imagen
@@ -81,6 +80,8 @@ function PostForm() : JSX.Element{
           if(data.secure_url){
             values.image = data.secure_url;
           }
+          values.lat = 5888;
+          values.lng = 5888;
           createNewPost(values, {
             onSuccess: () =>{
               toast.success("Post Created")
