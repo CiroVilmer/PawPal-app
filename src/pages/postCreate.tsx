@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import toast, { Toast, Toaster } from 'react-hot-toast';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, yupToFormErrors } from 'formik';
 import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
@@ -11,7 +11,6 @@ import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { handleGetCurrentMapCenter } from  '../pages/Map/LeafletMap';
 import { Decimal } from '@prisma/client/runtime';
-
 
 
 function PostForm() : JSX.Element{
@@ -39,8 +38,8 @@ function PostForm() : JSX.Element{
     contact: '',
     image: '',
     author: "",
-    lat: new Decimal(0),
-    lng: new Decimal(0),
+    lat: 0.0,
+    lng: 0.0,
   }
   
   const postSchema = Yup.object().shape({
@@ -51,19 +50,19 @@ function PostForm() : JSX.Element{
     age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
     image: Yup.string(),
-    lat: Yup.mixed<Decimal>(),
-    lng: Yup.mixed<Decimal>(),
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: Decimal, lng: Decimal, contact:string, author: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: number, lng: number, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
     const coords = handleGetCurrentMapCenter();
-    values.lat = new Decimal(coords?.lat ?? 0);
-    values.lng = new Decimal(coords?.lng ?? 0);
+    values.lat = coords?.lat ?? 0;
+    values.lng = coords?.lng ?? 0;
 
     values.author = session?.user?.email as string;
+
+
    //se sube la imagen
     if (selectedFile) {
       const formData = new FormData();
