@@ -29,6 +29,20 @@ const LeafletMap: React.FC = () => {
 
   const activePosts = api.post.getPosts.useQuery({});
   
+  const dataPosts = activePosts?.data?.map((post) => {
+    const title = post.title;
+    const location = post.location;
+    const descriptionPost = post.description;
+    const image = post.image;
+    const category = "Perdido";
+    const lat = post.lat ?? 0;
+    const lng = post.lng ?? 0;
+    const radius = 500;
+    const color = "orange";
+    const fixedDescription = descriptionPost ?? '';
+
+    return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
+  });
 
   useEffect(() => {
     import('leaflet').then((L) => {
@@ -120,27 +134,15 @@ const LeafletMap: React.FC = () => {
           addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
         });
         //Funcion para agregar los marcadores
-        function mapActivePosts() {
-          activePosts?.data?.map((post) => {
-            const id = post.id;
-            const title = post.title;
-            const location = post.location;
-            const descriptionPost = post.description;
-            const image = post.image;
-            const category = "Perdido";
-            const lat = post.lat ?? 0;
-            const lng = post.lng ?? 0;
-            const radius = 500;
-            const color = "orange";
-            const fixedDescription = descriptionPost ?? '';
+        
+        dataPosts?.forEach((post) => {
+          const { lat, lng, title, fixedDescription, category } = post;
 
-            
-            addArea(lat, lng, radius, color, title, fixedDescription, category);
-          });
-        }
+          // Asigna una descripción vacía si description es null o undefined
+          const description = fixedDescription ?? '';
 
-        mapActivePosts();
-
+          addMarker(lat, lng, title, description, category);
+        });
 
       }
     }).catch((error) => {
@@ -151,4 +153,3 @@ const LeafletMap: React.FC = () => {
   return <div id="map" className="w-full h-full" style={{ height: '100vh' }} />;
 };
 
-export default LeafletMap;
