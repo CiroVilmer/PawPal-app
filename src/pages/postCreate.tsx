@@ -53,12 +53,13 @@ function PostForm() : JSX.Element{
 
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat:number, lng:number, contact:string, author: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: number, lng: number, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
-    //const coords = handleGetCurrentMapCenter();
-
+    const coords = handleGetCurrentMapCenter();
+    values.lat = coords?.lat ?? 0;
+    values.lng = coords?.lng ?? 0;
 
     values.author = session?.user?.email as string;
    //se sube la imagen
@@ -80,8 +81,6 @@ function PostForm() : JSX.Element{
           if(data.secure_url){
             values.image = data.secure_url;
           }
-          values.lat = 5888;
-          values.lng = 5888;
           createNewPost(values, {
             onSuccess: () =>{
               toast.success("Post Created")
