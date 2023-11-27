@@ -142,7 +142,7 @@ function PostForm() : JSX.Element{
                 </div>
                 
                 <div className = 'flex flex-col'>
-                  <label htmlFor="location" className='font-semibold'>Ubicación</label>
+                  <label htmlFor="location" className='font-semibold'>Zona</label>
                   <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.location && touched.location ? <div className='text-red-500 text-xs'>{errors.location}</div> : null}
                 </div>

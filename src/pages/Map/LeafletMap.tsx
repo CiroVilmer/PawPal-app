@@ -125,14 +125,14 @@ const LeafletMap: React.FC = () => {
         }
 
         //Recorre la lista de ubicaciones y agrega los marcadores
-        Markerlocations.forEach((location) => {
-          const { lat, lng, name, description, category } = location;
+        // Markerlocations.forEach((location) => {
+        //   const { lat, lng, name, description, category } = location;
 
-          // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description ?? '';
+        //   // Asigna una descripción vacía si description es null o undefined
+        //   const fixedDescription = description ?? '';
 
-          addMarker(lat, lng, name, fixedDescription, category);
-        });
+        //   addMarker(lat, lng, name, fixedDescription, category);
+        // });
 
         // Circlelocations.forEach((location) => {
         //   addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
