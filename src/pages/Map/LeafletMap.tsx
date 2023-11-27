@@ -148,12 +148,8 @@ const LeafletMap: React.FC = () => {
           const radius = 500;
           const color = "orange";
           const fixedDescription = descriptionPost ?? '';
-
-          console.log(post);
-
-  
+ 
           addArea(lat, lng, radius, color, title, fixedDescription, category);
-      
         }
         );
         
@@ -164,7 +160,7 @@ const LeafletMap: React.FC = () => {
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
     });
-  }, []);
+  }, [activePosts]);
 
   return <div id="map" className="w-full h-full" style={{ height: '100vh' }} />;
 };
