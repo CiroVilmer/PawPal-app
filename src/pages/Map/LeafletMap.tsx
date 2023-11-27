@@ -134,9 +134,9 @@ const LeafletMap: React.FC = () => {
           addMarker(lat, lng, name, fixedDescription, category);
         });
 
-        Circlelocations.forEach((location) => {
-          addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
-        });
+        // Circlelocations.forEach((location) => {
+        //   addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
+        // });
 
         //Lo mismo pero con áreas
         activePosts?.data?.map((post) => {
