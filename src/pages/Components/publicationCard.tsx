@@ -87,7 +87,7 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
         
     <div className= {mediumScreen ? "container w-[280px] bg-transparent font-Poppins" : "container  bg-transparent w-full px-10 py-2 font-Poppins"}>
 
-      <Card shadow="sm" padding="lg" radius="lg" withBorder>
+      <Card shadow="sm" padding="lg" radius="lg"  withBorder>
         <Card.Section component="a">
           <Image
           src={img}
@@ -97,7 +97,7 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
           className=' flex justify-center'
           radius={'0'}
         />
-      </Card.Section>
+        </Card.Section>
       
         <Group position="apart" mt="md" mb="xs">
           <Text weight={500}>{name}</Text>         
@@ -108,11 +108,10 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
           </a>
               
         </Group>
-      
-        <Spoiler maxHeight={22} hideLabel='Ver menos' showLabel='Ver mas' className='text-sm'>
+        <Spoiler maxHeight={20} hideLabel='Ver menos' showLabel='Ver mas' className='text-sm'>
           {description}
         </Spoiler>
-        <div className='flex flex-row justify-between items-center mt-3'>
+        <div className='flex flex-row justify-between items-center mt-3 '>
               
           <button className='w-auto hover:bg-orange-300 text-orange-300 hover:text-white border-2 border-orange-300 duration-500 rounded-lg p-[6px] text-sm'>
             Mas informacion
@@ -127,6 +126,7 @@ const PostCard: React.FC<CardProps> = ({img, name, ubication, description, key})
             </button>
 
           </a>
+          
                 
         </div>
       </Card>

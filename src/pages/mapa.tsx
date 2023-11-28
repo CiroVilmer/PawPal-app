@@ -20,7 +20,7 @@ import { centerMap } from './Map/LeafletMap';
 
 // import Navigation from './Components/navigation';
 
-const LeafletMap = dynamic(() => import('./Map/LeafletMap'), { ssr: false });
+const LeafletMap = dynamic(() => import('./Map/LeafletMap') as Promise<any>, { ssr: false });
 
 interface ChipProps {
   num: string;
@@ -76,14 +76,14 @@ const MapComponent: React.FC = () => {
           <LeafletMap />
         </div>
 
-        <div className={`z-0 flex ${largeScreen ? "flex-row absolute left-14 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
+        <div className={`z-0 flex ${largeScreen ? "flex-row absolute left-20 mt-6 flex-grow items-center gap-3" : "flex flex-col  items-center"}`}>
           <div className={largeScreen ? "relative" : "absolute top-3"}>
             <input
               type="text"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Buscar..."
-              className="pl-4 pr-10 py-1 w-56 rounded-full border-2 flex outline-none focus:border-orange-400 transition-all duration-1000"
+              className="pl-4 pr-10 py-1 w-64 rounded-full border-2 flex outline-none focus:border-orange-400 transition-all duration-1000"
             />
 
             <button

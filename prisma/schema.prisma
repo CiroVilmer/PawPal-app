@@ -35,8 +35,8 @@ model Post {
   location    String
   localidad   Localidad? @relation("LocalidadPost", fields: [localidadId], references: [id])
   localidadId Int?
-  lat         Int?
-  lng         Int?
+  lat         Float?
+  lng         Float?
   description String?
   contact     String?
   image       String?

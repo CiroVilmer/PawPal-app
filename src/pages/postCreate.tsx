@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import toast, { Toast, Toaster } from 'react-hot-toast';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, yupToFormErrors } from 'formik';
 import { api } from '~/utils/api';
 import {MdOutlineImage} from 'react-icons/md'
 import {useMediaQuery} from '@mantine/hooks';
@@ -9,6 +9,8 @@ import * as Yup from "yup"
 import { getSession, useSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+import { handleGetCurrentMapCenter } from  '../pages/Map/LeafletMap';
+import { Decimal } from '@prisma/client/runtime';
 
 
 function PostForm() : JSX.Element{
@@ -36,6 +38,8 @@ function PostForm() : JSX.Element{
     contact: '',
     image: '',
     author: "",
+    lat: 0.0,
+    lng: 0.0,
   }
   
   const postSchema = Yup.object().shape({
@@ -45,16 +49,21 @@ function PostForm() : JSX.Element{
     breed: Yup.string().required('Required'),
     age: Yup.string(),
     description: Yup.string().required('Required').max(200, "Max 200 characters"),
-    //contact: Yup.string().required('Required'),
     image: Yup.string(),
   })
     
-  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, contact:string, author: string}) => {
+  const onSubmit = (values: {title: string, location: string, animal: string, breed: string, age: string, description: string, image: string, lat: number, lng: number, contact:string, author: string}) => {
     console.log('Form values:', values);
 
     //location parsing
+    const coords = handleGetCurrentMapCenter();
+    values.lat = coords?.lat ?? 0;
+    values.lng = coords?.lng ?? 0;
+    console.log('Coords:', values.lat, values.lng);
+
 
     values.author = session?.user?.email as string;
+
    //se sube la imagen
     if (selectedFile) {
       const formData = new FormData();
@@ -133,7 +142,7 @@ function PostForm() : JSX.Element{
                 </div>
                 
                 <div className = 'flex flex-col'>
-                  <label htmlFor="location" className='font-semibold'>Ubicación</label>
+                  <label htmlFor="location" className='font-semibold'>Zona</label>
                   <Field type="text" id="location" name="location" placeholder='Saenz Valiente 1174, Martínez' className='w-[290px] text-md rounded-md h-9 p-4 border-gray-200 border-[1px] outline-none focus:border-orange-400 duration-500'/>
                 {errors.location && touched.location ? <div className='text-red-500 text-xs'>{errors.location}</div> : null}
                 </div>

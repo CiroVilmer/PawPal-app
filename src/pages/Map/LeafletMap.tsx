@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Markerlocations, Circlelocations } from '../../../lib/MapLocations';
 import { Circle } from '@chakra-ui/react';
+import { api } from '~/utils/api';
+import { red } from '@mui/material/colors';
 
 let mapInstance: L.Map | null = null; // Referencia al mapa
 
@@ -17,11 +19,35 @@ export const handleGetCurrentMapCenter = () => {
   if (mapInstance) {
     const center = mapInstance.getCenter();
     console.log(`Coordenadas del centro del mapa: ${center.lat}, ${center.lng}`);
-  }
+
+    return { lat: center.lat, lng: center.lng };  }
 };
 
 const LeafletMap: React.FC = () => {
   const mapRef = useRef<L.Map | null>(null);
+
+  const activePosts = api.post.getPosts.useQuery({});
+
+  // const dataPosts = activePosts?.data?.map((post) => {
+  //   const title = post.title;
+  //   const location = post.location;
+  //   const descriptionPost = post.description;
+  //   const image = post.image;
+  //   const category = "Perdido";
+  //   const lat = post.lat;
+  //   const lng = post.lng;
+  //   const radius = 500;
+  //   const color = "orange";
+  //   const fixedDescription = descriptionPost ?? '';
+
+  //   console.log(post);
+
+  //   if (lat === 0 || lng === 0) {
+  //     return
+  //   }else{
+  //     return { title, location, descriptionPost, image, category, lat, lng, radius, color, fixedDescription};
+  //   }
+  // });
 
   useEffect(() => {
     import('leaflet').then((L) => {
@@ -99,37 +125,42 @@ const LeafletMap: React.FC = () => {
         }
 
         //Recorre la lista de ubicaciones y agrega los marcadores
-        Markerlocations.forEach((location) => {
-          const { lat, lng, name, description, category } = location;
+        // Markerlocations.forEach((location) => {
+        //   const { lat, lng, name, description, category } = location;
 
-          // Asigna una descripción vacía si description es null o undefined
-          const fixedDescription = description ?? '';
+        //   // Asigna una descripción vacía si description es null o undefined
+        //   const fixedDescription = description ?? '';
 
-          addMarker(lat, lng, name, fixedDescription, category);
-        });
-
-        //Lo mismo pero con áreas
-        Circlelocations.forEach((location) => {
-          addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
-        });
-
-        // Agrega el botón para obtener las coordenadas del centro del mapa
-        // const getCurrentMapCenterButton = L.Control.extend({
-        //   options: { position: 'topright' },
-        //   onAdd: () => {
-        //     const button = L.DomUtil.create('button', 'leaflet-bar leaflet-control leaflet-control-custom');
-        //     button.innerHTML = 'Obtener Coordenadas del Centro del Mapa';
-        //     button.addEventListener('click', handleGetCurrentMapCenter);
-        //     return button;
-        //   },
+        //   addMarker(lat, lng, name, fixedDescription, category);
         // });
 
-        // new getCurrentMapCenterButton().addTo(map);
+        // Circlelocations.forEach((location) => {
+        //   addArea(location.lat, location.lng, location.radius, location.color, location.name, location.description, location.category);
+        // });
+
+        //Lo mismo pero con áreas
+        activePosts?.data?.map((post) => {
+          const title = post.title;
+          const descriptionPost = post.description;
+          const category = "Perdido";
+          const lat = post.lat ?? 0;
+          const lng = post.lng ?? 0;
+          const radius = 500;
+          const color = "orange";
+          const fixedDescription = descriptionPost ?? '';
+ 
+          addArea(lat, lng, radius, color, title, fixedDescription, category);
+        }
+        );
+        
+
+
+
       }
     }).catch((error) => {
       console.log('Error loading Leaflet:', error);
     });
-  }, []);
+  }, [activePosts]);
 
   return <div id="map" className="w-full h-full" style={{ height: '100vh' }} />;
 };

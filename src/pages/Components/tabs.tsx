@@ -54,8 +54,8 @@ const CustomizedTabs = ({ onChange, value }: TabsProps) => {
            value={value}
            onChange={handleChange}
          >
-           <StyledTab label="Encontrados"/>
-           <StyledTab label="Perdidos" />  
+           <StyledTab label="Perdidos"/>
+           <StyledTab label="Encontrados" />  
          </StyledTabs>
          <Box sx={{ p: 2 }} />
        </Box>

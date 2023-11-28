@@ -2,7 +2,7 @@ import React from "react";
 import {useMediaQuery} from "@mantine/hooks";
 import Navigation from "./Components/navigation";
 import ModalForo from "./Components/modalForo";
-import AccordionForo from "./Components/accordion";
+import ForoCard from "./Components/foroCard";
 import { api } from "~/utils/api";
 
 
@@ -13,29 +13,28 @@ const Refugios: React.FC = () : JSX.Element => {
     const activePosts = api.post.getForumPosts.useQuery({});
 
 
-    activePosts?.data?.map((post: { id: string; title: string | null; description: string | null; }) => {
+    activePosts?.data?.map((post: { id: string; title: string | null; description: string | null; type: string | null }) => {
         console.log(post);
 
         const id = post.id;
         const title = post.title;
         const descriptionPost = post.description;
+        const type = post.type;
         return (
-        <AccordionForo title={title === null ? "" : title } description={descriptionPost === null ? "" : descriptionPost } key={id} />
+        <ForoCard type={type === null ? "" : type} title={title === null ? "" : title } description={descriptionPost === null ? "" : descriptionPost } key={id} />
         )
 
     });
 
     return (
         <div className="background h-screen flex items-start justify-center font-Poppins">
-            <div className="flex-col justify-start mt-10">
+            <div className="flex-col justify-start items-center mt-10">
                 <h1 className="text-7xl font-semibold text-orange-400 text-center mb-16">Foro</h1>
-                <section className="overflow-y-auto h-[340px]">
-                <AccordionForo title="Para que sirve la castración?" description="La castración, en el contexto veterinario, se realiza para controlar la reproducción y modificar el comportamiento de animales, como perros y gatos, al eliminar sus órganos reproductores. También puede tener beneficios en la salud y reducir comportamientos no deseados." key=''/>
-                {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; }) => (
-                <AccordionForo title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
+                <section className="flex flex-col overflow-y-auto h-screen md:h-[400px] xl:h-[400px] items-center">
+                {activePosts?.data?.map((post: { title: string | null; description: string | null; id: string; type: string | null;}) => (
+                <ForoCard type={post.type === null ? "" : post.type} title={post.title === null ? "" : post.title } description={post.description === null ? "" : post.description } key={post.id} />
                 ))}
-                </section>
-    
+                </section>    
             </div>
             <ModalForo/>
             {mediumScreen ?
